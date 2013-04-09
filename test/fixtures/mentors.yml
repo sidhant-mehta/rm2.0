@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fname: MyString
+  lname: MyString
+  role_title: MyString
+  sector_ids: MyString
+  organisation: MyString
+  closing_date: 2013-04-09
+  location: MyString
+  description: MyString
+  email: MyString
+  telephone: MyString
+  image: MyString
+  draft: false
+
+two:
+  fname: MyString
+  lname: MyString
+  role_title: MyString
+  sector_ids: MyString
+  organisation: MyString
+  closing_date: 2013-04-09
+  location: MyString
+  description: MyString
+  email: MyString
+  telephone: MyString
+  image: MyString
+  draft: false

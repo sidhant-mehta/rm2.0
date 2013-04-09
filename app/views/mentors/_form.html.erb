@@ -1,0 +1,65 @@
+<%= form_for(@mentor) do |f| %>
+  <% if @mentor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mentor.errors.count, "error") %> prohibited this mentor from being saved:</h2>
+
+      <ul>
+      <% @mentor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fname %><br />
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br />
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :role_title %><br />
+    <%= f.text_field :role_title %>
+  </div>
+  <div class="field">
+    <%= f.label :sector_ids %><br />
+    <%= f.text_field :sector_ids %>
+  </div>
+  <div class="field">
+    <%= f.label :organisation %><br />
+    <%= f.text_field :organisation %>
+  </div>
+  <div class="field">
+    <%= f.label :closing_date %><br />
+    <%= f.date_select :closing_date %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone %><br />
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :draft %><br />
+    <%= f.check_box :draft %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

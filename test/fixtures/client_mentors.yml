@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  client_id: 
+  mentor_id: 
+
+two:
+  client_id: 
+  mentor_id: 
