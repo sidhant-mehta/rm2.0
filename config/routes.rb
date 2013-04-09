@@ -63,7 +63,9 @@ RaisonMentors20::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  
+  # TODO need to change the root to point to a home page
+  root :to => 'mentors#index'
 
   # See how all your routes lay out with "rake routes"
 
