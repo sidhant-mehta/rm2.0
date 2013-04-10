@@ -1,4 +1,10 @@
 RaisonMentors20::Application.routes.draw do
+  devise_for :admins
+
+  devise_for :clients
+
+  devise_for :members
+
   resources :employer_profiles
 
 
