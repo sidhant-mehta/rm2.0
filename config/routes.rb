@@ -1,4 +1,46 @@
 RaisonMentors20::Application.routes.draw do
+  get "clients/list_projects"
+
+  get "clients/add_project"
+
+  get "clients/edit_project"
+
+  get "clients/list_mentors"
+
+  get "clients/add_mentor"
+
+  get "clients/edit_mentor"
+
+  get "clients/list_jobs"
+
+  get "clients/add_job"
+
+  get "clients/edit_job"
+
+  get "clients/dashboard"
+
+  get "clients/profle"
+
+  get "admin/login"
+
+  get "admin/dashboard"
+
+  get "admin/adverts"
+
+  get "admin/team"
+
+  get "admin/members"
+
+  get "admin/mentors"
+
+  get "admin/projects"
+
+  get "admin/clients"
+
+  get "admin/jobs"
+
+  get "admin/employer_profiles"
+
   devise_for :admins
 
   devise_for :clients
