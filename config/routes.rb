@@ -1,5 +1,27 @@
 RaisonMentors20::Application.routes.draw do
   
+  get "about_us/what_we_do"
+
+  get "about_us/how_it_works"
+
+  get "about_us/our_philosophy"
+
+  get "about_us/meet_the_team"
+
+  get "pages/our_policy"
+
+  get "pages/terms_of_use"
+
+  get "pages/terms_and_conditions"
+
+  get "pages/contact_us"
+
+  get "pages/confirmation"
+
+  get "pages/register"
+
+  get "pages/home"
+
   get "members/dashboard"
   
   get "clients/list_projects"
