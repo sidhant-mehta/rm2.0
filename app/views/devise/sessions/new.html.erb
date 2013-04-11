@@ -1,17 +1,60 @@
-<h2>Sign in</h2>
+<%= stylesheet_link_tag "login"%>
+<br /><br /><br /><br /><br /><br />
+<h1>Sign in</h1>
+<div>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => ""} ) do |f| %>
+	
+  	<p>
+  		<%= f.label :email %>
+  		<%= f.email_field :email, :autofocus => true %>
+	</p>
+<br/>
+  	<p>
+  		<%= f.label :password %>
+  		<%= f.password_field :password %>
+	</p>
+ <br/>
+ 
+ <% if devise_mapping.rememberable? -%>
+    	<p>
+    		<%= f.check_box :remember_me %> 
+    		<%= f.label :remember_me %>
+    			<%= f.submit "Sign in", :style => "margin-left: 14em;" %>
+    	</p>
+    	
+  <br/>  	
+  <p>
+ 
+ </p>
+ 
+  	
+  	<% end -%>
+ 
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
+ 
+ <p class="forgot-password">
+ 	<%= render "devise/shared/links" %>
+</p>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+   <div class="loginbody">
+   <form method="post" action="index.html" class="login">
+    <p>
+      <label for="login">Email:</label>
+      <input type="text" name="login" id="login" value="name@example.com">
+    </p>
+
+    <p>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" value="4815162342">
+    </p>
+
+    <p class="login-submit">
+      <input type="submit" class="login-button">Login</input>
+    </p>
+
+    <p class="forgot-password"><a href="index.html">Forgot your password?</a></p>
+  </form>
+  </div>
