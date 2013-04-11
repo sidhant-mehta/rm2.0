@@ -1,4 +1,7 @@
 RaisonMentors20::Application.routes.draw do
+  
+  get "members/dashboard"
+  
   get "clients/list_projects"
 
   get "clients/add_project"
