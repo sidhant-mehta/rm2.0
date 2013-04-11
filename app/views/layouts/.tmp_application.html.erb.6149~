@@ -5,14 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
+	<% #TODO change the style sheet below to rails style sheet tag%>
+	<% #TODO change the JS tag below to rails JStag%>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/script.js"></script>
 	
-	<%= stylesheet_link_tag    "style", :media => "all" %>
-	<%= javascript_include_tag "jquery-1.7.1.min"%>
-	<%= javascript_include_tag "script"%>
-	
-	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= javascript_include_tag "application" %>
-  	<%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
 	<p class="notice"><%= notice %></p>
