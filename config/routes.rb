@@ -22,6 +22,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "pages/home"
 
+  get "members/" => "members#dashboard"
   get "members/dashboard"
   
   get "clients/list_projects"

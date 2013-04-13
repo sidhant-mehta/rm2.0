@@ -1,8 +1,11 @@
 class MembersController < ApplicationController
 before_filter :authenticate_member!
-
-def dashboard
   
-end
+  layout 'admin'
+
+
+  def dashboard
+    
+  end
 
 end
