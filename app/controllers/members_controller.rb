@@ -7,5 +7,18 @@ before_filter :authenticate_member!
   def dashboard
     
   end
+  
+  def applications 
+   
+  end
+  
+  def settings
+    
+  end
+  
+  def profile
+    
+  end
+
 
 end

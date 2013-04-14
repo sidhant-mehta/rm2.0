@@ -1,18 +1,14 @@
 	<%= render :partial => 'shared/member/header' %>
 	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
-	
-		<section id="main" class="column">
-		
-		<% #TODO change the welcome message %>
-		<h4 class="alert_info">Welcome to your dashboard! This is where you can view recent application, edit your profile & change your settings.</h4>
-		
-		<!-- start of table -->
+
+	<section id="main" class="column">
+			<!-- start of table -->
 		<article class="module width_3_quarter">
-		<header><h3 class="tabs_involved">Recent Applications</h3>
+		<header><h3 class="tabs_involved">All Applications</h3>
 		<ul class="tabs">
    			<li><a href="#tab1">Mentors</a></li>
     		<li><a href="#tab2">Projects</a></li>
-    		<li><a href="#tab2">Jobs</a></li>
+    		<li><a href="#tab3">Jobs</a></li>
 		</ul>
 		</header>
 
@@ -23,8 +19,8 @@
 			<thead> 
 				<tr> 
    					<th></th> 
-    				<th>Entry Name</th> 
-    				<th>Category</th> 
+    				<th>Mentor Name</th> 
+    				<th>Status</th> 
     				<th>Created On</th> 
     				<th>Actions</th> 
 				</tr> 
@@ -75,9 +71,9 @@
 			<thead> 
 				<tr> 
    					<th></th> 
-    				<th>Comment</th> 
-    				<th>Posted by</th> 
-    				<th>Posted On</th> 
+    				<th>Project Name</th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
     				<th>Actions</th> 
 				</tr> 
 			</thead> 
@@ -128,16 +124,16 @@
 			<thead> 
 				<tr> 
    					<th></th> 
-    				<th>Comment</th> 
-    				<th>Posted by</th> 
-    				<th>Posted On</th> 
+    				<th>Job Name</th> 
+    				<th>Status</th> 
+    				<th>Created on</th> 
     				<th>Actions</th> 
 				</tr> 
 			</thead> 
 			<tbody> 
 				<tr> 
    					<td><input type="checkbox"></td> 
-    				<td>Lorem Ipsum Dolor Sit Amet</td> 
+    				<td>Dolor Lorem Amet</td> 
     				<td>Mark Corrigan</td> 
     				<td>5th April 2011</td> 
     				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
@@ -176,29 +172,7 @@
 			</div><!-- end of #tab3 -->
 			
 		</div><!-- end of .tab_container -->
+
 		
 		</article><!-- end of content manager article -->
-		
-	</aside><!-- end of sidebar -->
-	
-	<!-- latest updates area -->
-	<article class="module width_quarter">
-			<header><h3>Messages</h3></header>
-			<div class="message_list">
-				<div class="module_content">
-					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-					<p><strong>John Doe</strong></p></div>
-					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-					<p><strong>John Doe</strong></p></div>
-					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-					<p><strong>John Doe</strong></p></div>
-					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-					<p><strong>John Doe</strong></p></div>
-					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
-					<p><strong>John Doe</strong></p></div>
-				</div>
-			</div>
-			<footer>
-		</article><!-- end of messages article -->
-	
-	</section> <!-- end of column section (at top) -->
+	</section>

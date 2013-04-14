@@ -1,0 +1,22 @@
+	<section id="secondary_bar">
+		<div class="user">
+			<% #TODO get user name %>
+			<p>[USER NAME]</p>
+			 <a class="logout_user" href="<=% destroy_member_session_path %>" title="Logout">Logout</a> 
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	<% #TODO get the correct links for the list below %>
+	<aside id="sidebar" class="column">
+		<hr/>
+		<h3>Options</h3>
+		<ul class="toggle">
+			<li class="icn_edit_article"><%= link_to "Edit Profile", "profile" %></li>
+			<li class="icn_categories"><%= link_to "View Applications", "applications" %></li>
+			<li class="icn_settings"><%= link_to "Settings", "settings" %></li>
+		</ul>
+		
+		<%= render :partial => 'shared/admin_footer' %>
+	</aside><!-- end of sidebar -->
