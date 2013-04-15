@@ -2,7 +2,8 @@
 		<div class="user">
 			<% #TODO get user name %>
 			<p>[USER NAME]</p>
-			 <a class="logout_user" href="<%= destroy_member_session_path %>" title="Logout">Logout</a> 
+			<%= link_to "Logout", destroy_member_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %>
+			
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
@@ -16,8 +17,8 @@
 			<li class="icn_edit_article"><%= link_to "Edit Profile", "profile" %></li>
 			<li class="icn_categories"><%= link_to "View Applications", "applications" %></li>
 			<li class="icn_settings"><%= link_to "Settings", "settings" %></li>
-			<%= #TODO the sign out function is not working. see how to add it in a link %>
-			<li class="icn_jump_back"><%= link_to "Logout", destroy_member_session_path, :method => :delete %></li>
+			<% #TODO the sign out function is not working. see how to add it in a link %>
+			<li class= "icn_jump_back"><%= link_to "Logout", destroy_member_session_path, :method => :delete %></li>
 		</ul>
 		
 		<%= render :partial => 'shared/admin_footer' %>

@@ -4,7 +4,8 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Dashboard</title>
-	
+
+  	<%= javascript_include_tag "application" %><% "#this line is req to get the standard javascripts to let devise work" %>
 	<%= stylesheet_link_tag "admin/layout", :type => "text/css", :media => "screen"%>
 	<!--[if lt IE 9]>
 	<%= stylesheet_link_tag "admin/ie", :type => "text/css", :media => "screen"%>	

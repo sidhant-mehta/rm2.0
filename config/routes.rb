@@ -1,4 +1,10 @@
 RaisonMentors20::Application.routes.draw do
+  devise_for :admins
+
+  devise_for :clients
+
+  devise_for :members
+  
   
   get "about_us/what_we_do"
 
@@ -70,12 +76,6 @@ RaisonMentors20::Application.routes.draw do
   get "admin/jobs"
 
   get "admin/employer_profiles"
-
-  devise_for :admins
-
-  devise_for :clients
-
-  devise_for :members
 
   resources :employer_profiles
 
