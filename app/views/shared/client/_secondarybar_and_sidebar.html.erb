@@ -1,0 +1,39 @@
+	<section id="secondary_bar">
+		<div class="user">
+			<% #TODO get user name %>
+			<p>[USER NAME]</p>
+			 <a class="logout_user" href="<%= destroy_member_session_path %>" title="Logout">Logout</a> 
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	<% #TODO get the correct links for the list below %>
+	<aside id="sidebar" class="column">
+		<hr/>
+		<h3>Mentors</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="add_mentor">New Mentor</a></li>
+			<li class="icn_edit_article"><a href="list_mentors">Edit Mentor</a></li>
+			<li class="icn_categories"><a href="list_mentors">List Mentors</a></li>
+		</ul>
+		<h3>Projects</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="add_project">New Project</a></li>
+			<li class="icn_edit_article"><a href="list_projects">Edit Project</a></li>
+			<li class="icn_categories"><a href="#list_projects">List Project</a></li>
+		</ul>
+		<h3>Jobs</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="add_job">New Job</a></li>
+			<li class="icn_edit_article"><a href="list_jobs">Edit Job</a></li>
+			<li class="icn_categories"><a href="list_jobs">List Jobs</a></li>
+		</ul>
+		<h3>Other</h3>
+		<ul class="toggle">
+			<li class="icn_profile"><a href="profle">Edit Profile</a></li>
+			<li class="icn_jump_back"><a href="<%= destroy_member_session_path %>">Logout</a></li>
+		</ul>
+		
+		<%= render :partial => 'shared/admin_footer' %>
+	</aside><!-- end of sidebar -->

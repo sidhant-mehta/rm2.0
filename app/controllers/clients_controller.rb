@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
     before_filter :authenticate_client!
 
+  layout 'admin'
   
   def list_projects
   end

@@ -22,6 +22,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "pages/home"
   
+  get "members/sign_out"
   get "members/profile"
   get "members/settings"
   get "members/applications"
