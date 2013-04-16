@@ -29,11 +29,12 @@ RaisonMentors20::Application.routes.draw do
   get "pages/home"
   
   get "members/sign_out"
-  get "members/profile"
+  match "members/profile", :to => "members#profile", :as => :member
   get "members/settings"
   get "members/applications"
   get "members/" => "members#dashboard"
   get "members/dashboard"
+  put "members/update"
   
   get "clients/list_projects"
 

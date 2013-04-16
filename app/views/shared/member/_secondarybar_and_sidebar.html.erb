@@ -14,12 +14,15 @@
 		<hr/>
 		<h3>Options</h3>
 		<ul class="toggle">
-			<li class="icn_edit_article"><%= link_to "Edit Profile", "profile" %></li>
-			<li class="icn_categories"><%= link_to "View Applications", "applications" %></li>
-			<li class="icn_settings"><%= link_to "Settings", "settings" %></li>
+			<li class="icn_edit_article"><%= link_to "Edit Profile", :controller => "members", :action => "profile" %></li>
+			<li class="icn_categories"><%= link_to "View Applications", :controller => "members", :action => "applications" %></li>
+		</ul>
+		<br/>
+		<h3>Other</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><%= link_to "Settings", :controller => "members", :action => "settings" %></li>
 			<% #TODO the sign out function is not working. see how to add it in a link %>
 			<li class= "icn_jump_back"><%= link_to "Logout", destroy_member_session_path, :method => :delete %></li>
 		</ul>
-		
 		<%= render :partial => 'shared/admin_footer' %>
 	</aside><!-- end of sidebar -->

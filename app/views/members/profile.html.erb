@@ -5,4 +5,42 @@
 	
 	<% #TODO insert JQuery here for boxes that open up sections which will have parts to fill in %>
 	
+	<article class="module width_full" style="border:none; background:transparent;">
+		
+		<ul class="tabs">
+   			<li><a href="#tab1">Personal Details</a></li>
+    		<li><a href="#tab2">Section 2</a></li>
+    		<li><a href="#tab2">Section 3</a></li>
+		</ul>
+		
+		<%= form_for @member, :as => :post, :url => members_update_path(@member) do |f| %> 
+		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
+		
+			<div id="tab1" class="tab_content">
+				<h1><%= link_to "edit", edit_member_registration_path %></h1>
+				<p> 
+					<%= f.text_field :id, :value => @member.id %>
+					<%= f.label :fname, "First Name" %>
+					<%= f.text_field :fname, :value => @member.fname %>
+				</p>
+				<p> 
+					<%= f.label :lname, "Last Name" %>
+					<%= f.text_field :lname, :value => @member.lname %>
+				</p>
+			</div>
+			
+			<div id="tab2" class="tab_content">
+				<p> content </p>
+			</div>
+			
+			<div id="tab3" class="tab_content">
+				<p> content </p>
+			</div>
+		</div>
+		
+		<div class ="submit_link">
+			<%= f.submit "Save Changes" %>
+			<% end%>
+		</div>
+	</article>
 	</section>

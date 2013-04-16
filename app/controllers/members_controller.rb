@@ -17,8 +17,19 @@ before_filter :authenticate_member!
   end
   
   def profile
+    @member = Member.find(current_member.id)
+  end
+  
+  def update
+    @member = Member.find(current_member.id)
+    @member.fname = params[:fname]
+    @member.lname = params[:lname]
+    
+    
+    @member.save
     
   end
-
-
+  
+  def destroy
+  end
 end
