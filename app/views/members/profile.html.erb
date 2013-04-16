@@ -13,20 +13,21 @@
     		<li><a href="#tab2">Section 3</a></li>
 		</ul>
 		
-		<%= form_for @member, :as => :post, :url => members_update_path(@member) do |f| %> 
+		 
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
 		
 			<div id="tab1" class="tab_content">
-				<h1><%= link_to "edit", edit_member_registration_path %></h1>
+			<%= form_tag('/members/update') %> 
+				<h1><%= link_to "edit", edit_member_registration_path(@member) %></h1>
 				<p> 
-					<%= f.text_field :id, :value => @member.id %>
-					<%= f.label :fname, "First Name" %>
-					<%= f.text_field :fname, :value => @member.fname %>
+					<%=label_tag('fname', 'First Name')%>
+					<%=text_field_tag 'fname', @member.fname %>
 				</p>
 				<p> 
-					<%= f.label :lname, "Last Name" %>
-					<%= f.text_field :lname, :value => @member.lname %>
+					<%=label_tag('lname', 'Last Name')%>
+					<%=text_field_tag'lname', @member.lname%>
 				</p>
+			
 			</div>
 			
 			<div id="tab2" class="tab_content">
@@ -39,8 +40,7 @@
 		</div>
 		
 		<div class ="submit_link">
-			<%= f.submit "Save Changes" %>
-			<% end%>
+			<%=submit_tag('Save Changes')	%>
 		</div>
 	</article>
 	</section>

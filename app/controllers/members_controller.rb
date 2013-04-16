@@ -21,12 +21,17 @@ before_filter :authenticate_member!
   end
   
   def update
-    @member = Member.find(current_member.id)
-    @member.fname = params[:fname]
-    @member.lname = params[:lname]
+    @m = Member.find(current_member.id)
+    #@m =  Member.find(params[:member => ""])
+    @m.fname = params[:fname]
+    @m.lname = params[:lname]
     
     
-    @member.save
+    if @m.save 
+      redirect_to member_path, :notice => 'Your profile has been updated successfully.'
+    else
+      render "profile"
+    end
     
   end
   
