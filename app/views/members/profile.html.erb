@@ -3,21 +3,22 @@
 	
 	<section id="main" class="column">
 	
-	<% #TODO insert JQuery here for boxes that open up sections which will have parts to fill in %>
+	<% '#TODO insert JQuery here for boxes that open up sections which will have parts to fill in' %>
 	
 	<article class="module width_full" style="border:none; background:transparent;">
 		
 		<ul class="tabs">
    			<li><a href="#tab1">Personal Details</a></li>
-    		<li><a href="#tab2">Section 2</a></li>
-    		<li><a href="#tab2">Section 3</a></li>
+    		<li><a href="#tab2">Academic Details</a></li>
+    		<li><a href="#tab3">Career Details</a></li>
 		</ul>
 		
 		 
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
 		
 			<div id="tab1" class="tab_content">
-			<%= form_tag('/members/update') %> 
+			<%= form_tag('/members/update') %>
+			<% '#TODO add validation code to the below. Javascript and serverside.'  %> 
 				<p> 
 					<%=label_tag('fname', 'First Name')%>
 					<%=text_field_tag 'fname', @member.fname %>
@@ -26,15 +27,59 @@
 					<%=label_tag('lname', 'Last Name')%>
 					<%=text_field_tag'lname', @member.lname%>
 				</p>
-			
+				<p> 
+					<%=label_tag('email', 'Email Address')%>
+					<%=text_field_tag'email', @member.email%>
+				</p>
+				<p> 
+					<%=label_tag('dob', 'Date of birth dd/mm/yyyy')%>
+					<%=text_field_tag'dob', @member.dob%>
+				</p>
+				<p> 
+					<%'#TODO select tag. Male Female'%>
+					<%=label_tag('gender', 'Gender')%>
+					<%=text_field_tag'gender', @member.gender%>
+				</p>
+				<p> 
+					<%=label_tag('telephone', 'Telephone Number')%>
+					<%=text_field_tag'telephone', @member.telephone%>
+				</p>
+				
+				<p> 
+					<%'#TODO select tag. of location'%>
+					<%=label_tag('location', 'You live in')%>
+					<%=text_field_tag'location', @member.location%>
+				</p>
+				
+							
 			</div>
 			
 			<div id="tab2" class="tab_content">
-				<p> content </p>
-			</div>
+				<p> 
+					<%=label_tag('academic_institution', 'Your Academic Institution')%>
+					<%=text_field_tag'academic_institution', @member.academic_institution%>
+				</p>
+				<p> 
+					<%=label_tag('course', 'Your Course')%>
+					<%=text_field_tag'course', @member.course%>
+				</p>
+				</div>
 			
 			<div id="tab3" class="tab_content">
-				<p> content </p>
+				<p> 
+					<%=label_tag('sector_ids', 'Interested in (select max 3)')%>
+					<%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_name), {:multiple => true} %>
+				</p>
+				<p> 
+					<%'#TODO select tag. of employment status'%>
+					<%=label_tag('employment_status', 'Your employment status')%>
+					<%=text_field_tag'employment_status', @member.employment_status%>
+				</p>			
+				<p> 
+					<%'#TODO file tag. upload cv'%>
+					<%=label_tag('cv', 'Upload Your CV')%>
+					<%=text_field_tag'cv', @member.cv%>
+				</p>
 			</div>
 		</div>
 		

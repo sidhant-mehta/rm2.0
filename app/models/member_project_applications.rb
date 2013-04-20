@@ -1,3 +1,3 @@
-class MemberProject < ActiveRecord::Base
+class MemberProjectApplications < ActiveRecord::Base
   attr_accessible :member_id, :project_id, :status
 end
