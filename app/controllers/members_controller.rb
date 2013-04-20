@@ -21,7 +21,8 @@ before_filter :authenticate_member!
   
   def profile
     @member = Member.find(current_member.id)
-    
+    @member_gender = @member.gender
+    @member_employment_status = @member.employment_status
     @locations = Location.all
     @member_location = @member.location
     
@@ -48,14 +49,15 @@ before_filter :authenticate_member!
     @m.location = params[:location]
     @m.academic_institution = params[:academic_institution]
     @m.course = params[:course]
-    @m.sector_ids = params[:sector_ids]
+    @m.sector_ids = params[:sector_ids].join(',')
     @m.employment_status = params[:employment_status]
     @m.cv = params[:cv]
+
 #TODO the save function is not working. fix it. make it show errors upon update. 
     if @m.save 
-      redirect_to member_path, :notice => 'Your profile has been updated successfully.\n'
+      redirect_to member_path, :notice => "Your profile has been updated successfully."
     else
-      render "profile", :notice => @m.errors
+      render "profile", :notice => @m.sector_ids
     end
     
   end
