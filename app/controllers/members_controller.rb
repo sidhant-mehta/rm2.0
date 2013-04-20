@@ -22,7 +22,6 @@ before_filter :authenticate_member!
   
   def update
     @m = Member.find(current_member.id)
-    #@m =  Member.find(params[:member => ""])
     @m.fname = params[:fname]
     @m.lname = params[:lname]
     
