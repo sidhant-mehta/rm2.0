@@ -21,16 +21,19 @@ before_filter :authenticate_member!
   
   def profile
     @member = Member.find(current_member.id)
-    @member_sectors_array = @member.sector_ids.split(",")
+    
+    @locations = Location.all
+    @member_location = @member.location
     
     @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
-    
-     @member_sectors_name = [] #need to initialize this array first
-     @member_sectors_array.each_with_index do |s, i| 
-       @member_sectors_name << Sector.find(s).id
+
+     @member_sectors_ids_array = @member.sector_ids.split(",")
+     @member_sectors_ids = [] #need to initialize this array first
+     @member_sectors_ids_array.each_with_index do |s, i| 
+       @member_sectors_ids << Sector.find(s).id
     end
   end
   

@@ -36,9 +36,8 @@
 					<%=text_field_tag'dob', @member.dob%>
 				</p>
 				<p> 
-					<%'#TODO select tag. Male Female'%>
 					<%=label_tag('gender', 'Gender')%>
-					<%=text_field_tag'gender', @member.gender%>
+					<%=select_tag 'gender', options_for_select([["Male"],["Female"]]) %>
 				</p>
 				<p> 
 					<%=label_tag('telephone', 'Telephone Number')%>
@@ -48,7 +47,7 @@
 				<p> 
 					<%'#TODO select tag. of location'%>
 					<%=label_tag('location', 'You live in')%>
-					<%=text_field_tag'location', @member.location%>
+					<%=select_tag 'location', options_from_collection_for_select(@locations, "id", "name", @member_location) %>
 				</p>
 				
 							
@@ -68,7 +67,7 @@
 			<div id="tab3" class="tab_content">
 				<p> 
 					<%=label_tag('sector_ids', 'Interested in (select max 3)')%>
-					<%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_name), {:multiple => true} %>
+					<%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {:multiple => true, :style => "background: white;"} %>
 				</p>
 				<p> 
 					<%'#TODO select tag. of employment status'%>
