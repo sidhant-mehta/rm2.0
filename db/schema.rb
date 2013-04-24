@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420153348) do
+ActiveRecord::Schema.define(:version => 20130420194422) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -85,6 +85,12 @@ ActiveRecord::Schema.define(:version => 20130420153348) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "member_job_applications", :force => true do |t|
     t.integer  "member_id"
     t.integer  "job_id"
@@ -96,6 +102,14 @@ ActiveRecord::Schema.define(:version => 20130420153348) do
   create_table "member_mentor_applications", :force => true do |t|
     t.integer  "member_id"
     t.integer  "mentor_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "member_project_applications", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "project_id"
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -168,6 +182,12 @@ ActiveRecord::Schema.define(:version => 20130420153348) do
     t.boolean  "draft"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "sectors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teams", :force => true do |t|
