@@ -60,7 +60,7 @@ end
 
 
   def dashboard
-    
+    @member = Member.find(current_member.id)
   end
   
   def applications 
