@@ -50,6 +50,15 @@
   <%= @mentor.telephone %>
 </p>
 
+
+<p>
+	<%= form_tag('/mentors/apply', :id=>"mentor_apply_form") %>
+	<%= hidden_field 'member_id', @member, {:value => @member} %>
+	<%= hidden_field 'mentor_id', @mentor.id, {:value => @mentor.id}%>
+	<%= submit_tag('Apply')%>
+</p>
+
+
 <p>
   <b>Image:</b>
   <%= @mentor.image %>

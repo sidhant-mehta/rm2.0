@@ -89,9 +89,9 @@ RaisonMentors20::Application.routes.draw do
 
   resources :projects
 
-
+  
   resources :mentors
-
+post "mentors/apply" => "mentors#apply"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

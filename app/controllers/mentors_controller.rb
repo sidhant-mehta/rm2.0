@@ -1,6 +1,29 @@
 class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
+ 
+  def apply
+    params[:member_id].each do |key,value|
+        @member_id = value
+    end 
+    
+    params[:mentor_id].each do |key,value|
+        @mentor_id = value
+    end
+
+    if (can_member_make_application_checks @member_id == true)
+       @application = MemberMentorApplication.new(:member_id => @member_id, :mentor_id => @mentor_id, :status => "Applied")
+       
+       if @application.save    
+          redirect_to mentors_path,  :notice => "Done"
+       else
+          redirect_to mentors_path, :notice => @application.errors
+       end
+   else
+         redirect_to mentors_path, :notice => "You must be logged in to make appilcations."
+    end
+  end
+  
   def index
     @mentors = Mentor.all
 
@@ -13,6 +36,12 @@ class MentorsController < ApplicationController
   # GET /mentors/1
   # GET /mentors/1.json
   def show
+    if (current_member.blank? ) 
+        @member =-1
+    else
+        @member = Member.find(current_member.id).id
+    end
+    
     @mentor = Mentor.find(params[:id])
 
     respond_to do |format|
