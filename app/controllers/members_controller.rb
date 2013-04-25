@@ -9,11 +9,13 @@ def getMemberMentorApplications (member_id)
    @mentors =[]
    @mentor_application_statuses = []
    @mentor_application_created_at = []
+   @mentor_application_id = [] 
    
    @mentor_application_ids.each do |mentor_ap|
      @mentors << Mentor.find(mentor_ap.mentor_id)
      @mentor_application_statuses << mentor_ap.status
      @mentor_application_created_at << mentor_ap.created_at.strftime("%d %b %Y - %H:%M")
+     @mentor_application_id << mentor_ap.id
    end
   
 end
@@ -24,11 +26,13 @@ def getMemberProjectApplications (member_id)
    @projects =[]
    @project_application_statuses = []
    @project_application_created_at = []
+   @project_application_id =[]
    
    @project_application_ids.each do |project_ap|
      @projects << Project.find(project_ap.project_id)
      @project_application_statuses << project_ap.status
      @project_application_created_at << project_ap.created_at.strftime("%d %b %Y - %H:%M")
+     @project_application_id << project_ap.id
    end
   
 end
@@ -39,18 +43,19 @@ def getMemberJobApplications (member_id)
    @jobs =[]
    @job_application_statuses = []
    @job_application_created_at = []
+   @job_application_id =[]
    
    @job_application_ids.each do |job_ap|
      @jobs << Job.find(job_ap.job_id)
      @job_application_statuses << job_ap.status
      @job_application_created_at << job_ap.created_at.strftime("%d %b %Y - %H:%M")
+     @job_application_id << job_ap.id
    end
   
 end
 
 
-
-
+#----------------END LOCAL METHODS ------------------------
 
 
 
@@ -59,14 +64,15 @@ end
   end
   
   def applications 
-    #TODO find by member_id. 
+   @member = Member.find(current_member.id)
    getMemberMentorApplications(current_member.id)
    getMemberProjectApplications(current_member.id)
    getMemberJobApplications(current_member.id)
   end
   
   def settings
-    
+    @member = Member.find(current_member.id)
+
   end
   
   def profile
@@ -93,8 +99,6 @@ end
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
-     
-      
      
     @member = Member.find(current_member.id)
     @member.fname = params[:fname]

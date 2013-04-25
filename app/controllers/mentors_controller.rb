@@ -15,7 +15,8 @@ class MentorsController < ApplicationController
        @application = MemberMentorApplication.new(:member_id => @member_id, :mentor_id => @mentor_id, :status => "Applied")
        
        if @application.save    
-          redirect_to mentors_path,  :notice => "Done"
+          redirect_to mentors_path,  :notice => "Your application has been made successfully."
+          #TODO send email to HR => mentor name and id, member name and id
        else
           redirect_to mentors_path, :notice => @application.errors
        end

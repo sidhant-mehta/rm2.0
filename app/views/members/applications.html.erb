@@ -18,7 +18,7 @@
 			<table class="tablesorter" cellspacing="0"> 
 			<thead> 
 				<tr> 
-   					<th></th> 
+   					<th>Application ID</th>
     				<th>Mentor Name</th> 
     				<th>Status</th> 
     				<th>Created On</th> 
@@ -29,8 +29,8 @@
 				<% @mentors.each_with_index do |mentor,index| %> 
 				<tr> 
 					<%  %> 
-   					<td><input type="checkbox"></td> 
-    				<td><%= mentor.fname%> <%= mentor.lname%></td> 
+   					<td><%= @mentor_application_id [index]%></td> 
+    				<td><%= link_to "#{mentor.fname} #{mentor.lname}", mentors_path + "/" + mentor.id.to_s %></td> 
     				<td><%=@mentor_application_statuses[index]%></td> 
     				<td><%=@mentor_application_created_at[index]%></td> 
     				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %>
@@ -45,7 +45,7 @@
 			<table class="tablesorter" cellspacing="0"> 
 			<thead> 
 				<tr> 
-   					<th></th> 
+   					<th>Application ID</th> 
     				<th>Project Name</th> 
     				<th>Status</th> 
     				<th>Created On</th> 
@@ -56,7 +56,7 @@
 				<% @projects.each_with_index do |project,index| %> 
 					<tr> 
 						<%  %> 
-	   					<td><input type="checkbox"></td> 
+	   					<td><%= @project_application_id [index]%></td> 
 	    				<td><%= project.name%></td> 
 	    				<td><%=@project_application_statuses[index]%></td> 
 	    				<td><%=@project_application_created_at[index]%></td> 
@@ -73,7 +73,7 @@
 			<table class="tablesorter" cellspacing="0"> 
 			<thead> 
 				<tr> 
-   					<th></th> 
+   					<th>Application ID</th> 
     				<th>Job Name</th> 
     				<th>Status</th> 
     				<th>Created on</th> 
@@ -83,7 +83,7 @@
 			<tbody> 
 					<% @jobs.each_with_index do |job,index| %> 
 					<tr> 
-						<%  %> 
+						<td><%= @job_application_id [index]%></td> 
 	   					<td><input type="checkbox"></td> 
 	    				<td><%= job.name%></td> 
 	    				<td><%=@job_application_statuses[index]%></td> 
