@@ -12,4 +12,6 @@ def can_member_make_application_checks (member_id)
   
 end 
 
+
+
 end

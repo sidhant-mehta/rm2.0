@@ -1,7 +1,58 @@
 class MembersController < ApplicationController
 before_filter :authenticate_member!
+layout 'admin'
+
+#------- LOCAL METHODS -----------
+def getMemberMentorApplications (member_id)
   
-  layout 'admin'
+   @mentor_application_ids = MemberMentorApplication.where("member_id = ?", member_id)
+   @mentors =[]
+   @mentor_application_statuses = []
+   @mentor_application_created_at = []
+   
+   @mentor_application_ids.each do |mentor_ap|
+     @mentors << Mentor.find(mentor_ap.mentor_id)
+     @mentor_application_statuses << mentor_ap.status
+     @mentor_application_created_at << mentor_ap.created_at.strftime("%d %b %Y - %H:%M")
+   end
+  
+end
+
+def getMemberProjectApplications (member_id)
+  
+   @project_application_ids = MemberProjectApplications .where("member_id = ?", member_id)
+   @projects =[]
+   @project_application_statuses = []
+   @project_application_created_at = []
+   
+   @project_application_ids.each do |project_ap|
+     @projects << Project.find(project_ap.project_id)
+     @project_application_statuses << project_ap.status
+     @project_application_created_at << project_ap.created_at.strftime("%d %b %Y - %H:%M")
+   end
+  
+end
+
+def getMemberJobApplications (member_id)
+  
+   @job_application_ids = MemberJobApplication.where("member_id = ?", member_id)
+   @jobs =[]
+   @job_application_statuses = []
+   @job_application_created_at = []
+   
+   @job_application_ids.each do |job_ap|
+     @jobs << Job.find(job_ap.job_id)
+     @job_application_statuses << job_ap.status
+     @job_application_created_at << job_ap.created_at.strftime("%d %b %Y - %H:%M")
+   end
+  
+end
+
+
+
+
+
+
 
   def dashboard
     
@@ -9,20 +60,9 @@ before_filter :authenticate_member!
   
   def applications 
     #TODO find by member_id. 
-   @job_applications = MemberJobApplication.all
-   
-   @mentor_application_ids = MemberMentorApplication.where("member_id = ?", current_member.id)
-   @mentors =[]
-   @mentor_application_statuses = []
-   @mentor_application_created_at = []
-   @mentor_application_ids.each do |mentor_ap|
-     debugger
-     @mentors << Mentor.find(mentor_ap.mentor_id)
-     @mentor_application_statuses << mentor_ap.status
-     @mentor_application_created_at << mentor_ap.created_at
-   end
-   
-   @project_applications = MemberProjectApplications.all
+   getMemberMentorApplications(current_member.id)
+   getMemberProjectApplications(current_member.id)
+   getMemberJobApplications(current_member.id)
   end
   
   def settings
