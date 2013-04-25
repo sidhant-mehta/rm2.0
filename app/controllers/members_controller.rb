@@ -5,7 +5,7 @@ layout 'admin'
 #------- LOCAL METHODS -----------
 def getMemberMentorApplications (member_id)
   
-   @mentor_application_ids = MemberMentorApplication.where("member_id = ?", member_id)
+   @mentor_application_ids = MemberMentorApplication.where("member_id = ?", member_id).order("created_at DESC")
    @mentors =[]
    @mentor_application_statuses = []
    @mentor_application_created_at = []
@@ -22,7 +22,7 @@ end
 
 def getMemberProjectApplications (member_id)
   
-   @project_application_ids = MemberProjectApplications .where("member_id = ?", member_id)
+   @project_application_ids = MemberProjectApplication.where("member_id = ?", member_id).order("created_at DESC")
    @projects =[]
    @project_application_statuses = []
    @project_application_created_at = []
@@ -39,7 +39,7 @@ end
 
 def getMemberJobApplications (member_id)
   
-   @job_application_ids = MemberJobApplication.where("member_id = ?", member_id)
+   @job_application_ids = MemberJobApplication.where("member_id = ?", member_id).order("created_at DESC")
    @jobs =[]
    @job_application_statuses = []
    @job_application_created_at = []
@@ -61,6 +61,10 @@ end
 
   def dashboard
     @member = Member.find(current_member.id)
+     @all_mentor_apps= getMemberMentorApplications(current_member.id)
+     @all_project_apps= getMemberProjectApplications(current_member.id)
+     @all_job_apps= getMemberJobApplications(current_member.id)
+     @limit = 5 #limit for how many to show
   end
   
   def applications 

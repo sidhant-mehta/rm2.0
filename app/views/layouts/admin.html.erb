@@ -50,6 +50,8 @@
 
 
 <body>
+<h1><%= flash[:notice] %></h1>
+<p class="alert"><%= flash[:alert] %></p>
 <%= yield %>
 
 <div class="clear"></div>
