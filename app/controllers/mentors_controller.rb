@@ -4,14 +4,14 @@ class MentorsController < ApplicationController
  
   def apply
     params[:member_id].each do |key,value|
-        @member_id = value
+        @member_id = value.to_i
     end 
     
     params[:mentor_id].each do |key,value|
-        @mentor_id = value
+        @mentor_id = value.to_i
     end
-
-    if (can_member_make_application_checks @member_id == true)
+  
+    if can_member_make_application_checks (@member_id)
        @application = MemberMentorApplication.new(:member_id => @member_id, :mentor_id => @mentor_id, :status => "Applied")
        
        if @application.save    

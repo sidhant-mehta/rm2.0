@@ -10,7 +10,18 @@ before_filter :authenticate_member!
   def applications 
     #TODO find by member_id. 
    @job_applications = MemberJobApplication.all
-   @mentor_applications = MemberMentorApplication.all
+   
+   @mentor_application_ids = MemberMentorApplication.where("member_id = ?", current_member.id)
+   @mentors =[]
+   @mentor_application_statuses = []
+   @mentor_application_created_at = []
+   @mentor_application_ids.each do |mentor_ap|
+     debugger
+     @mentors << Mentor.find(mentor_ap.mentor_id)
+     @mentor_application_statuses << mentor_ap.status
+     @mentor_application_created_at << mentor_ap.created_at
+   end
+   
    @project_applications = MemberProjectApplications.all
   end
   
