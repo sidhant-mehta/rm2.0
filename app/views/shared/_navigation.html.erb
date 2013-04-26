@@ -1,17 +1,17 @@
 <%#TODO fix all the a href tags to link_to rails tags with correct naems. %>
 <nav class="main-menu">
 	<ul class="sf-menu">
-		<li><a href="index.html"><em>About Us</em><strong></strong></a>  <!-- class="current" -->
+		<li><em><%=link_to "About Us", :controller=>"about_us", :action =>"index" %></em><strong></strong>  <!-- class="current" -->
 			<ul>
-				<li><a href="more.html">How it works</a></li><!-- look at services.html-->
-				<li><a href="more.html">Meet the team</a></li><!-- look at team html-->
-				<li><a href="more.html">Our philosohpy</a></li>
-				<li><a href="more.html">What we do</a></li><!-- look at services.html-->
+				<li><%=link_to "How it works", :controller=>"about_us", :action =>"how_it_works" %></li>
+				<li><%=link_to "Meet the team", :controller=>"about_us", :action =>"meet_the_team" %></li>
+				<li><%=link_to "Our philosophy", :controller=>"about_us", :action =>"our_philosophy"%></li>
+				<li><%=link_to "What we do", :controller=>"about_us", :action=> "what_we_do"%></li>
 			</ul>
 		</li>
-		<li><a href="index-1.html"><em>Mentors</em><strong></strong></a>
+		<li><em><%=link_to "Mentors", :controller=>"mentors", :action =>"index" %></em><strong></strong>
 			<ul>
-				<li><a href="more.html">Find a mentor</a></li><!-- look at services.html-->
+				<li><%=link_to "Find a mentor", mentors_search_path %></li>
 				<li><a href="more.html">Become a mentor</a></li><!-- look at team html-->
 			</ul>
 		</li>

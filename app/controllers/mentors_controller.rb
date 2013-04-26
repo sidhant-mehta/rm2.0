@@ -34,6 +34,10 @@ class MentorsController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   # GET /mentors/1
   # GET /mentors/1.json
   def show

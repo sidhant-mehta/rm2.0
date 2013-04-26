@@ -5,9 +5,9 @@ RaisonMentors20::Application.routes.draw do
 
   devise_for :members
   
-  
+  get "about_us/index"
   get "about_us/what_we_do"
-
+  
   get "about_us/how_it_works"
 
   get "about_us/our_philosophy"
@@ -90,8 +90,10 @@ RaisonMentors20::Application.routes.draw do
   resources :projects
 
   
+  get "mentors/search" => "mentors#search"  
   resources :mentors
-post "mentors/apply" => "mentors#apply"
+  post "mentors/apply" => "mentors#apply"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
