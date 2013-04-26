@@ -86,7 +86,7 @@ RaisonMentors20::Application.routes.draw do
 
   resources :adverts
 
-
+  get "projects/search" => "projects#search"
   resources :projects
 
   

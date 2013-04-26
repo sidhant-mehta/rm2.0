@@ -1,37 +1,37 @@
 <%#TODO fix all the a href tags to link_to rails tags with correct naems. %>
 <nav class="main-menu">
 	<ul class="sf-menu">
-		<li><em><%=link_to "About Us", :controller=>"about_us", :action =>"index" %></em><strong></strong>  <!-- class="current" -->
+		<li><em><%=link_to "About Us", about_us_index_path %></em><strong></strong>  <!-- class="current" -->
 			<ul>
-				<li><%=link_to "How it works", :controller=>"about_us", :action =>"how_it_works" %></li>
-				<li><%=link_to "Meet the team", :controller=>"about_us", :action =>"meet_the_team" %></li>
-				<li><%=link_to "Our philosophy", :controller=>"about_us", :action =>"our_philosophy"%></li>
-				<li><%=link_to "What we do", :controller=>"about_us", :action=> "what_we_do"%></li>
+				<li><%=link_to "How it works", about_us_how_it_works_path %></li>
+				<li><%=link_to "Meet the team", about_us_meet_the_team_path %></li>
+				<li><%=link_to "Our philosophy", about_us_our_philosophy_path%></li>
+				<li><%=link_to "What we do", about_us_what_we_do_path%></li>
 			</ul>
 		</li>
-		<li><em><%=link_to "Mentors", :controller=>"mentors", :action =>"index" %></em><strong></strong>
+		<li><em><%=link_to "Mentors", mentors_path %></em><strong></strong>
 			<ul>
 				<li><%=link_to "Find a mentor", mentors_search_path %></li>
-				<li><a href="more.html">Become a mentor</a></li><!-- look at team html-->
+				<li><%=link_to "Become a mentor", pages_contact_us_path %></li><!-- look at team html-->
 			</ul>
 		</li>
-		<li><a href="index.html"><em>Projects</em><strong></strong></a>  <!-- class="current" -->
+		<li><em><%=link_to "Projects", projects_path %></em><strong></strong>  <!-- class="current" -->
 			<ul>
-				<li><a href="more.html">Find a project</a></li><!-- look at services.html-->
-				<li><a href="more.html">Set up a project</a></li><!-- look at team html-->
+				<li><%=link_to "Find a project", projects_search_path %></li><!-- look at services.html-->
+				<li><%=link_to "Create a project", pages_contact_us_path %></li><!-- look at team html-->
 			</ul>
 		</li>
-		<li><a href="index.html"><em>Jobs</em><strong></strong></a>  <!-- class="current" -->
+		<li><a href=""><em>Jobs</em><strong></strong></a>  <!-- class="current" -->
 			<ul>
-				<li><a href="more.html">Find a job</a></li><!-- look at services.html-->
-				<li><a href="more.html">Set up a job</a></li><!-- look at team html-->
+				<li><a href="">Find a job</a></li><!-- look at services.html-->
+				<li><a href="">Set up a job</a></li><!-- look at team html-->
 			</ul>
 		</li>
-		<li><a href="index-4.html"><em>Employer profiles</em><strong></strong></a></li>
-		<li class="last"><a href="index-6.html"><em>Contact us</em><strong></strong></a></li>
+		<li><em><%=link_to "Employer profiles", employer_profiles_path %></em><strong></strong></li>
+		<li class="last"><em><%= link_to "Contact us", pages_contact_us_path%></em><strong></strong></li>
 		
 		<% if member_signed_in? == false && client_signed_in? == false %>
-		<li><a href="index-4.html"><em>Login</em><strong></strong></a>
+		<li><a href=""><em>Login</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "members", new_member_session_path %></li>
 				<li><%= link_to "clients", new_client_session_path %></li>
@@ -39,7 +39,7 @@
 		</li>
 		<% end%>
 		<% if member_signed_in? %>
-		<li><a href="index-4.html"><em>Members</em><strong></strong></a>
+		<li><a href=""><em>Members</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "dashboard", members_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_member_session_path, :method => :delete %></li>
@@ -47,7 +47,7 @@
 		</li>
 		<% end%>
 		<% if client_signed_in? %>
-		<li><a href="index-4.html"><em>Clients</em><strong></strong></a>
+		<li><a href=""><em>Clients</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "dashboard", clients_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_client_session_path, :method => :delete %></li>

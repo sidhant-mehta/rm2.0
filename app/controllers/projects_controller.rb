@@ -10,6 +10,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def search
+    
+  end
+
   # GET /projects/1
   # GET /projects/1.json
   def show
