@@ -30,12 +30,31 @@
 		<li><a href="index-4.html"><em>Employer profiles</em><strong></strong></a></li>
 		<li class="last"><a href="index-6.html"><em>Contact us</em><strong></strong></a></li>
 		
+		<% if member_signed_in? == false && client_signed_in? == false %>
 		<li><a href="index-4.html"><em>Login</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "members", new_member_session_path %></li>
 				<li><%= link_to "clients", new_client_session_path %></li>
 			</ul> 
 		</li>
+		<% end%>
+		<% if member_signed_in? %>
+		<li><a href="index-4.html"><em>Members</em><strong></strong></a>
+			<ul>
+				<li><%= link_to "dashboard", members_dashboard_path %></li>
+				<li><%= link_to "logout", destroy_member_session_path, :method => :delete %></li>
+			</ul> 
+		</li>
+		<% end%>
+		<% if client_signed_in? %>
+		<li><a href="index-4.html"><em>Clients</em><strong></strong></a>
+			<ul>
+				<li><%= link_to "dashboard", clients_dashboard_path %></li>
+				<li><%= link_to "logout", destroy_client_session_path, :method => :delete %></li>
+			</ul> 
+		</li>
+		<% end%>
+		
 	</ul>
 	<div class="clear"></div>
 </nav>
