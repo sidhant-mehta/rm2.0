@@ -88,11 +88,13 @@ end
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
-
-     @member_sectors_ids_array = @member.sector_ids.split(",")
-     @member_sectors_ids = [] #need to initialize this array first
-     @member_sectors_ids_array.each_with_index do |s, i| 
-       @member_sectors_ids << Sector.find(s).id
+     if @member.sector_ids.blank?
+     else   
+         @member_sectors_ids_array = @member.sector_ids.split(",")
+         @member_sectors_ids = [] #need to initialize this array first
+         @member_sectors_ids_array.each_with_index do |s, i| 
+           @member_sectors_ids << Sector.find(s).id
+     end
     end
   end
   

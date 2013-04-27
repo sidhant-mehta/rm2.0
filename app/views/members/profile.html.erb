@@ -14,13 +14,14 @@
    			<li><a href="#tab1">Personal Details</a></li>
     		<li><a href="#tab2">Academic Details</a></li>
     		<li><a href="#tab3">Career Details</a></li>
+    		<li><a href="#tab4">Other</a></li>
 		</ul>
 		
 		 
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
 		
 			<div id="tab1" class="tab_content">
-			<%= form_tag('/members/update', :id=>"member_profile_form", :onsubmit => "return validateForm();") %>
+			<%= form_tag('/members/update', :id=>"member_profile_form") %>
 			<% '#TODO add validation code to the below. Javascript and serverside.'  %>
 			<table> 
 				<tr>
@@ -87,9 +88,23 @@
 				</table>
 			</div>
 		</div>
+		<% #TODO add this option to members model!
+		%>
+		<div id="tab4" class="tab_content">
+			<table>
+				<tr>
+					<td><%=label_tag('hear_about_us', 'Where did you hear about us?')%></td>
+					<td><%=select_tag "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {:onchange => "checkHearAboutUs();"} %></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><%= text_field_tag "hear_about_us_other",'' , {:style => 'visibility:hidden;'} %></td>
+				</tr>
+			</table>
+		</div>
 		
 		<div class ="submit_link">
-			<%=submit_tag('Save Changes')	%>
+			<%=submit_tag('Save Changes', :onclick => "return validateForm();")	%>
 		</div>
 	</article>
 	</section>
