@@ -1,6 +1,5 @@
 	<section id="secondary_bar">
 		<div class="user">
-			<% #TODO get user name %>
 			<p><%= "#{@member.fname} #{@member.lname}" %></p>
 			<%= link_to "Logout", destroy_member_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %>
 			
@@ -9,7 +8,6 @@
 			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
-	<% #TODO get the correct links for the list below %>
 	<aside id="sidebar" class="column">
 		<hr/>
 		<h3>Options</h3>
@@ -21,7 +19,6 @@
 		<h3>Other</h3>
 		<ul class="toggle">
 			<li class="icn_settings"><%= link_to "Settings", :controller => "members", :action => "settings" %></li>
-			<% #TODO the sign out function is not working. see how to add it in a link %>
 			<li class= "icn_jump_back"><%= link_to "Logout", destroy_member_session_path, :method => :delete %></li>
 		</ul>
 		<%= render :partial => 'shared/admin_footer' %>

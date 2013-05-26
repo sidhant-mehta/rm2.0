@@ -80,7 +80,7 @@ end
   end
   
   def profile
-    #TODO change the date format to DD-MM-YYYY here or change it in the model.
+    #date saved in american format in db.
     @member = Member.find(current_member.id)
     @locations = Location.all
     

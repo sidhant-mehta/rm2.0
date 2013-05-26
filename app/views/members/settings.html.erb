@@ -2,6 +2,7 @@
 	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
 	
 	<section id="main" class="column">
+		<%= render :partial => 'shared/member/alerts_and_notices'%>
 	<article class="module width_full" style="border:none; background:transparent;">
 	
 		<ul class="tabs">
@@ -32,9 +33,8 @@
 					</table>
 				</div>
 				<div id="tab2" class="tab_content">
-					<p> <%=link_to "Change your password", edit_member_registration_path%> </p>
-					<h3>Cancel my account</h3>
-					<p>Unhappy? <%= button_to "Cancel my account", edit_member_registration_path, :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+					<p> <%=button_to "Change your password", edit_member_registration_path %> </p>
+					<p><%= button_to "Cancel my account", member_registration_path, :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 					<p> premium account </p>
 				</div>

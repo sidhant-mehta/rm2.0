@@ -2,6 +2,7 @@
 	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
 	
 		<section id="main" class="column">
+		<%= render :partial => 'shared/member/alerts_and_notices'%>
 		
 		<% #TODO change the welcome message %>
 		<h4 class="alert_info">Welcome to your dashboard! This is where you can view recent application, edit your profile & change your settings.</h4>
@@ -16,7 +17,7 @@
 		</ul>
 		</header>
 
-		<!-- tab 1--> <% "#TODO create a table for mentors you've applied for" %>
+		<!-- tab 1-->
 		<div class="tab_container">
 			<div id="tab1" class="tab_content">
 			<table class="tablesorter" cellspacing="0"> 
