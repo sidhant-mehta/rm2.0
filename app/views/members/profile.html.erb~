@@ -21,7 +21,7 @@
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
 		
 			<div id="tab1" class="tab_content">
-			<%= form_tag('/members/update', :id=>"form", :class=>"blocks") %>
+			<%= form_tag('/members/update', :id=>"member_profile_form") %>
 			<% '#TODO add validation code to the below. Javascript and serverside.'  %>
 			<table> 
 				<tr>
@@ -42,7 +42,7 @@
 				</tr>
 				<tr> 
 					<td><%=label_tag('gender', 'Gender')%></td>
-					<td><%=select_tag 'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), :class => "text", :style=> "width:242px" %></td>
+					<td><%=select_tag 'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), :class => "text" %></td>
 				</tr>
 				<tr> 
 					<td><%=label_tag('telephone', 'Telephone Number')%></td>
@@ -51,7 +51,7 @@
 				
 				<tr> 
 					<td><%=label_tag('location', 'You live in')%></td>
-					<td><%=select_tag 'location', options_from_collection_for_select(@locations, "id", "name", @member.location), :class => "text", :style=> "width:242px" %></td>
+					<td><%=select_tag 'location', options_from_collection_for_select(@locations, "id", "name", @member.location) %></td>
 				</tr>
 			</table>
 							
@@ -61,11 +61,11 @@
 				<table>
 					<tr> 
 						<td><%=label_tag('academic_institution', 'Your Academic Institution')%></td>
-						<td><%=text_field_tag'academic_institution', @member.academic_institution,:class => "text"%></td>
+						<td><%=text_field_tag'academic_institution', @member.academic_institution%></td>
 					</tr>
 					<tr> 
 						<td><%=label_tag('course', 'Your Course')%></td>
-						<td><%=text_field_tag'course', @member.course,:class => "text"%></td>
+						<td><%=text_field_tag'course', @member.course%></td>
 					</tr>
 				</table>
 			</div>
@@ -74,11 +74,11 @@
 				<table>
 					<tr> 
 						<td><%=label_tag('sector_ids', 'Interested in (select max 3)')%></td>
-						<td><%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {:multiple => true, :style => "background: white; width:242px;"} %></td>
+						<td><%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {:multiple => true, :style => "background: white;"} %></td>
 					</tr>
 					<tr> 
 						<td><%=label_tag('employment_status', 'Your employment status')%></td>
-						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['other']], @member_employment_status),:class => "text", :style=>"width:242px"%></td>
+						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['other']], @member_employment_status)%></td>
 					</tr>			
 					<tr> 
 						<%'#TODO file tag. upload cv'%>
@@ -94,7 +94,7 @@
 			<table>
 				<tr>
 					<td><%=label_tag('hear_about_us', 'Where did you hear about us?')%></td>
-					<td><%=select_tag "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
+					<td><%=select_tag "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {:onchange => "checkHearAboutUs();"} %></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -104,7 +104,7 @@
 		</div>
 		
 		<div class ="submit_link">
-			<%=submit_tag('Save Changes', :onclick => "return validateForm();")%>
+			<%=submit_tag('Save Changes', :onclick => "return validateForm();")	%>
 		</div>
 	</article>
 	</section>

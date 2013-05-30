@@ -1,6 +1,6 @@
 $(function(){
 	
-	$("#form").validate({
+	$("#member_profile_form").validate({
 		rules: {
 			fname: {
 				required: true,
