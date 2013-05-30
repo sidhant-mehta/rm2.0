@@ -12,11 +12,11 @@ $(function(){
 			},
 			dob: { 
 				required: true,
-				date: true,
+				date: true
 			},
 			telephone: {
 				required: true,
-				number: true,
+				digits: true,
 				minlength: 6
 			},
 			email: {
@@ -37,7 +37,7 @@ $(function(){
 			},
 			telephone: {
 				required: 'This field is required',
-				number: 'Invalid phone number',
+				digits: 'Invalid phone number',
 				minlength: 'Minimum length: 6'
 			},
 			email: 'Invalid e-mail address',
