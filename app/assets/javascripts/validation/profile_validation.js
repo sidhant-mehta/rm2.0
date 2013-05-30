@@ -69,7 +69,7 @@ function checkEmail()
 	 }
 	 else
 	 {
-	 	var dob_pattern =/^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
+	 	//var dob_pattern =/^([0-9]{2})/([0-9]{2})/([0-9]{4})$/;
 		if(dob_pattern.test(dob.value) == false)
 		{
 		    alert("Please enter a valid Date of birth in the form dd-mm-yyyy");

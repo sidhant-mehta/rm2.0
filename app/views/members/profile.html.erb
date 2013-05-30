@@ -3,7 +3,10 @@
 	
 	<%= javascript_include_tag "validation/validate.min.js"%>
 	<%= javascript_include_tag "validation/member_profile.js"%>
+	<%= javascript_include_tag "admin/UIfunctions.js"%>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
 	
 	<section id="main" class="column">
@@ -37,15 +40,15 @@
 					<td><%=text_field_tag'email', @member.email, :class => "text"%></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('dob', 'Date of birth')%> <br/>dd-mm-yyyy</td>
-					<td><%=text_field_tag'dob', @member.dob.strftime("%d-%m-%Y"), :class => "text"%></td>
+					<td><%=label_tag('dob', 'Date of birth')%> <br/></td>
+					<td><%=text_field_tag'dob', @member.dob.strftime("%d-%m-%Y"), :class => "text", :id=>"datepicker", :readonly =>true%></td>
 				</tr>
 				<tr> 
 					<td><%=label_tag('gender', 'Gender')%></td>
 					<td><%=select_tag 'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), :class => "text", :style=> "width:242px" %></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('telephone', 'Telephone Number')%></td>
+					<td><%=label_tag('telephone', 'Telephone')%></td>
 					<td><%=telephone_field_tag'telephone', @member.telephone, :class => "text"%></td>
 				</tr>
 				
@@ -78,7 +81,7 @@
 					</tr>
 					<tr> 
 						<td><%=label_tag('employment_status', 'Your employment status')%></td>
-						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['other']], @member_employment_status),:class => "text", :style=>"width:242px"%></td>
+						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['Other']], @member_employment_status),:class => "text", :style=>"width:242px"%></td>
 					</tr>			
 					<tr> 
 						<%'#TODO file tag. upload cv'%>

@@ -11,7 +11,8 @@ $(function(){
 				minlength: 3
 			},
 			dob: { 
-				required: true
+				required: true,
+				date: true,
 			},
 			telephone: {
 				required: true,
