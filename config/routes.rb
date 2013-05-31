@@ -4,7 +4,7 @@ RaisonMentors20::Application.routes.draw do
   devise_for :clients
 
   devise_for :members
-  
+
   get "about_us/index"
   get "about_us/what_we_do"
   

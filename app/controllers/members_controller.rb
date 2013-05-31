@@ -127,9 +127,7 @@ end
      end    
     
 
-#TODO the save function is not working. fix it. make it show errors upon update. 
     if @member.save 
-      #redirect_to root_path, :notice => "Your profile has been updated successfully."
       flash[:notice] = "Your profile has been updated successfully."
     
       respond_to do |format|
@@ -147,5 +145,12 @@ end
   end
   
   def destroy
+  end
+end
+
+class Member::RegistrationsController < Devise::RegistrationsController
+  def new
+        resource = build_resource({})
+        respond_with resource
   end
 end
