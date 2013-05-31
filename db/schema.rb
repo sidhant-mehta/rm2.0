@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531133502) do
+ActiveRecord::Schema.define(:version => 20130531134450) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -116,8 +116,8 @@ ActiveRecord::Schema.define(:version => 20130531133502) do
   end
 
   create_table "members", :force => true do |t|
-    t.string   "email",                                     :default => "", :null => false
-    t.string   "encrypted_password",                        :default => "", :null => false
+    t.string   "email",                                     :default => "",    :null => false
+    t.string   "encrypted_password",                        :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -126,8 +126,8 @@ ActiveRecord::Schema.define(:version => 20130531133502) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
+    t.datetime "created_at",                                                   :null => false
+    t.datetime "updated_at",                                                   :null => false
     t.string   "fname"
     t.string   "lname"
     t.date     "dob"
@@ -139,10 +139,10 @@ ActiveRecord::Schema.define(:version => 20130531133502) do
     t.string   "academic_institution"
     t.string   "course"
     t.string   "cv"
-    t.boolean  "settings_receive_email_updates"
-    t.boolean  "settings_pass_info_to_employment_agencies"
-    t.boolean  "settings_mentoring_highschool"
-    t.boolean  "settings_pass_info_to_marketing"
+    t.boolean  "settings_receive_email_updates",            :default => false
+    t.boolean  "settings_pass_info_to_employment_agencies", :default => false
+    t.boolean  "settings_mentoring_highschool",             :default => false
+    t.boolean  "settings_pass_info_to_marketing",           :default => false
   end
 
   add_index "members", ["email"], :name => "index_members_on_email", :unique => true
