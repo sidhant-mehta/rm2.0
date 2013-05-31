@@ -129,9 +129,19 @@ end
 
 #TODO the save function is not working. fix it. make it show errors upon update. 
     if @member.save 
-      redirect_to member_path, :notice => "Your profile has been updated successfully."
+      #redirect_to root_path, :notice => "Your profile has been updated successfully."
+      flash[:notice] = "Your profile has been updated successfully."
+    
+      respond_to do |format|
+        format.html { redirect_to members_dashboard_path }
+      end
     else
-      render "profile", :notice => @member.sector_ids
+      flash.now[:alert] = @member.errors.full_messages
+      
+      respond_to do |format|
+        format.html { render member_path }
+      end
+    
     end
     
   end

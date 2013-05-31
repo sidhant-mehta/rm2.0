@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'devise'
+gem 'validates_timeliness', '~> 3.0'
 gem 'debugger', group: [:development, :test]
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -1,6 +1,12 @@
 <% if notice.presence%>
-	<h4 class="alert_info"><%= notice %></h4>
-	<%end%>
-	<% if alert.presence%>
-	<h4 class="alert_info"><%= alert %></h4>
-	<%end%>
+	<h4 class="alert_info"><%= flash[:notice] %></h4>
+<%end%>
+
+<% if alert.presence%>
+	<h4 class="alert_info"><%= flash[:alert]  %></h4>
+<%end%>
+
+
+<% if flash[:error].presence%>
+		<h4 class="alert_info"><%= flash[:error] %></h4>
+<%end%>
