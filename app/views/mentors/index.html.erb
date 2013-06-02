@@ -1,45 +1,16 @@
-<h1>Listing mentors</h1>
-
-<table>
-  <tr>
-    <th>Fname</th>
-    <th>Lname</th>
-    <th>Role title</th>
-    <th>Sector ids</th>
-    <th>Organisation</th>
-    <th>Closing date</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th>Email</th>
-    <th>Telephone</th>
-    <th>Image</th>
-    <th>Draft</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Our Mentors</h1>
 
 <% @mentors.each do |mentor| %>
-  <tr>
-    <td><%= mentor.fname %></td>
-    <td><%= mentor.lname %></td>
-    <td><%= mentor.role_title %></td>
-    <td><%= mentor.sector_ids %></td>
-    <td><%= mentor.organisation %></td>
-    <td><%= mentor.closing_date %></td>
-    <td><%= mentor.location %></td>
-    <td><%= mentor.description %></td>
-    <td><%= mentor.email %></td>
-    <td><%= mentor.telephone %></td>
-    <td><%= mentor.image %></td>
-    <td><%= mentor.draft %></td>
-    <td><%= link_to 'Show', mentor %></td>
-    <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
-    <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table">
+	<tr>
+		<th class="mentor_title"><%=link_to "#{mentor.fname} #{mentor.lname}", mentor%></th>
+		<th><%= image_tag(mentor.image , :class => "mentor_image" )%></th> 	
+		<td>
+			<table class="mentor_inner">
+				<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>
+				<tr><td><%= mentor.organisation%></td><td><%= mentor.role_title %></td><td><%=sectorsHTML(mentor)%></td><td><%=mentor.closing_date%></td></tr>
+			</table>
+		</td>
+	</tr>
 </table>
-
-<br />
-
-<%= link_to 'New Mentor', new_mentor_path %>
+<%end%>

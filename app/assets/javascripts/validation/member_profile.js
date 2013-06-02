@@ -4,18 +4,20 @@ $(function(){
 		rules: {
 			fname: {
 				required: true,
-				minlength: 3
+				minlength: 3,
+				digits: false
 			},
 			lname: {
 				required: true,
-				minlength: 3
+				minlength: 3,
+				digits: false
 			},
 			dob: { 
 				required: true,
 				date: true
 			},
 			telephone: {
-				required: true,
+				//required: true,
 				digits: true,
 				minlength: 6
 			},
@@ -28,15 +30,21 @@ $(function(){
 			}
 		},
 		messages: {
-			name: {
+			fname: {
 				required: 'This field is required',
-				minlength: 'Minimum length: 3'
+				minlength: 'Minimum length: 3',
+				digits: 'Letters only'
+			},
+			lname: {
+				required: 'This field is required',
+				minlength: 'Minimum length: 3',
+				digits: 'Letters only'
 			},
 			dob: {
 				required: 'This field is required'
 			},
 			telephone: {
-				required: 'This field is required',
+				//required: 'This field is required',
 				digits: 'Invalid phone number',
 				minlength: 'Minimum length: 6'
 			},

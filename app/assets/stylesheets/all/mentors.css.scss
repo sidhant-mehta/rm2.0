@@ -1,3 +1,27 @@
 // Place all the styles related to the Mentors controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table a:hover{
+  color: cornflowerblue;
+  border: none;}
+
+.mentor_title {
+font-family: arial;
+font-size: 140%;
+letter-spacing: 2px;
+line-height: 1.3em !important;
+width: 17em;
+font-weight: normal !important;
+
+}
+
+.mentor_inner tr td 
+{
+  color: darkslategray;
+}
+
+.mentor_image {
+width: 150px;
+margin: 0 auto;
+}
