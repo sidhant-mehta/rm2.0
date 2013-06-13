@@ -134,7 +134,12 @@ end
         format.html { redirect_to members_dashboard_path }
       end
     else
-      flash.now[:alert] = @member.errors.full_messages
+      @error_str = ""
+      @member.errors.each do |field, msg|
+            @error_str = @error_str + msg + " "
+      end
+      
+      flash.now[:alert] = @error_str
       
       respond_to do |format|
         format.html { render member_path }

@@ -1,0 +1,79 @@
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script> 
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+	 var steps = [
+	    "Expenses only",
+	    "100",
+	    "200",
+	    "300",
+	    "400+"
+	];
+	
+	$(function() {
+	    $("#slider").slider({
+	        value: 1,
+	        min: 0,
+	        max: 4,
+	        step: 1,
+	        slide: function(event, ui) {
+	            $("#amount").val(steps[ui.value]);
+	        }
+	    });
+	    $("#amount").val(steps[$("#slider").slider("value")]);
+	});
+	$(function() {
+	    $("#accordion").accordion({ header: "h3", collapsible: true, heightStyle: "content" });
+	  });
+	$(function() {
+	    $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+	  });
+  </script>
+<style>
+	.search_div, .slider_div
+	{
+		width:100%
+	}
+	#slider 
+	{
+		width: 50%;
+	}
+</style>
+
+<div class ="search_div">
+	
+	<div id="accordion">
+		<h3> Search our mentors </h3>
+		<div>
+			 <input type="text" id="search_mentor_name" placeholder="Mentor's name..."/>
+			 in <select id="search_mentor_sector"> <option value="accounting">Accounting</option><option value="law">Law</option><option value="consulting">Consulting</option>
+			</select>
+		</div>
+		  <h3>+Advanced options</h3>
+		<div>
+			<table>
+				<tr>   
+					<td>
+						<p>
+						  <label for="amount">Salary above (£)</label>
+						  <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+						</p>
+					</td>
+					<td><p>Closing Date: </p></td>
+				</tr>
+				
+				<tr>
+					<td><div id="slider"></div></td>
+					<td><input type="text" id="datepicker" /></td>
+				</tr>
+			</table>
+	  </div> 
+	</div>
+</div>
+
+
+<p>
+<button style="float: right; margin: 3em 0 ; padding: 0 2em" >Search</button>
+</p>
+<br/>

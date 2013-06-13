@@ -533,7 +533,7 @@ ol ul{ padding:2px 0 2px 20px;}
 .list-wrapper .btn.prev{ right:31px;}
 /* tables */
 table { max-width: 100%; border-collapse: collapse; border-spacing: 0;}
-.table { width: 100%; margin-bottom: 18px;}
+.table { width: 96%; margin-bottom: 18px;}
 .table th, .table td { padding: 8px; line-height: 18px; text-align: left; border-top: 1px solid #ddd; min-width:100px}
 .table th { font-weight: bold; vertical-align: middle;}
 .table td { vertical-align: middle;}

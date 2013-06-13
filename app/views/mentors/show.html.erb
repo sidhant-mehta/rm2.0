@@ -1,74 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Fname:</b>
-  <%= @mentor.fname %>
-</p>
+<span class="mentor_title"> <%= @mentor.fname %> <%= @mentor.lname %> </span>
+<table class="table">
+	<th><%= image_tag(@mentor.image , :class => "individual_mentor_image" )%></th>
+	<td>
+		<table class="mentor_inner"> 
+			<tr><th>Organisation</th><td><%= @mentor.organisation%></td></tr>
+			<tr><th>Role</th><td><%= @mentor.role_title %></td></tr>
+			<tr><th>Location</th><td><%= @mentor.location%></td></tr>
+			<tr><th>Sectors</th><td><%=sectorsHTML(@mentor)%></td></tr>
+			<tr><th>Biography</th><td><%=@mentor.description%></td></tr>
+			<tr class="individual_closing_date_row"><th>Closing Date</th><td><%=@mentor.closing_date%></td> 
+				<td><p>
+						<%= form_tag('/mentors/apply', :id=>"mentor_apply_form") %>
+						<%= hidden_field 'member_id', @member, {:value => @member} %>
+						<%= hidden_field 'mentor_id', @mentor.id, {:value => @mentor.id}%>
+						<%= submit_tag('Apply')%>
+					</p>
+				</td></tr>
+		</table>
+	</td>
+</table>
 
-<p>
-  <b>Lname:</b>
-  <%= @mentor.lname %>
-</p>
-
-<p>
-  <b>Role title:</b>
-  <%= @mentor.role_title %>
-</p>
-
-<p>
-  <b>Sector ids:</b>
-  <%= @mentor.sector_ids %>
-</p>
-
-<p>
-  <b>Organisation:</b>
-  <%= @mentor.organisation %>
-</p>
-
-<p>
-  <b>Closing date:</b>
-  <%= @mentor.closing_date %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @mentor.location %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @mentor.description %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @mentor.email %>
-</p>
-
-<p>
-  <b>Telephone:</b>
-  <%= @mentor.telephone %>
-</p>
-
-
-<p>
-	<%= form_tag('/mentors/apply', :id=>"mentor_apply_form") %>
-	<%= hidden_field 'member_id', @member, {:value => @member} %>
-	<%= hidden_field 'mentor_id', @mentor.id, {:value => @mentor.id}%>
-	<%= submit_tag('Apply')%>
-</p>
-
-
-<p>
-  <b>Image:</b>
-  <%= @mentor.image %>
-</p>
-
-<p>
-  <b>Draft:</b>
-  <%= @mentor.draft %>
-</p>
-
-
+<div style="display: none;">
 <%= link_to 'Edit', edit_mentor_path(@mentor) %> |
 <%= link_to 'Back', mentors_path %>
+</div>

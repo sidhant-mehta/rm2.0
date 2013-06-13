@@ -1,11 +1,12 @@
-<h2>Sign up USING THE NEW REG</h2>
+<h2>Sign up </h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= #f.error_messages 
   devise_error_messages! 
   %>
 
-  <div><%= f.label :fname, 'First name' %><br />	
+  <div>
+  <%= f.label :fname, 'First name' %><br />	
   <%= f.text_field :fname %></div>	
 
   <div><%= f.label :lname,'Last name' %><br />	
