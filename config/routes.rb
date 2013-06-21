@@ -93,7 +93,7 @@ RaisonMentors20::Application.routes.draw do
   get "mentors/search" => "mentors#search"  
   resources :mentors
   post "mentors/apply" => "mentors#apply"
-
+  post "mentors/search" => "mentors#search"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,20 @@
+<div class="tabs-vert-left">
+    <ul class="tabs-nav">
+        <li><a href="">Simple</a></li>
+        <li><a href="">Advanced</a></li>
+    </ul>
+ 	<div class="tab-content">
+ 		<%= form_tag('/mentors/search', :id=> 'form')%>
+			<%=text_field_tag('mentor_name', nil, :placeholder => "Mentor's name...", :id=>'mentor_name')%>
+			
+		    <label>
+		    	<span class="text-form fleft">in:</span>
+		    <%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
+			</label>   
+			<%=submit_tag('Search')%>
+		</form>
+ 	</div>
+  
+    <div class="tab-content"> 
+	</div>
+</div>
