@@ -1,13 +1,9 @@
-	<%= render :partial => 'shared/member/header' %>
-	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
-	
-	<%= javascript_include_tag "validation/validate.min.js"%>
-	<%= javascript_include_tag "validation/member_profile.js"%>
-	<%= javascript_include_tag "admin/UIfunctions.js"%>
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+	
+	<%= render :partial => 'shared/member/header' %>
+	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
 	
 	<section id="main" class="column">
 	<%= render :partial => 'shared/member/alerts_and_notices'%>

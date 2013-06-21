@@ -13,15 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require pages/superfish
-//= require pages/FF-cash
-//= require pages/tms-0.4.x
-//= require pages/uCarausel
-//= require pages/jquery.easing.1.3
-//= require pages/jquery.tools.min
-//= require pages/jquery.quicksand
-//= require pages/jquery.jqtransform
-//= require pages/jquery.snippet.min
-//= require pages/jquery-ui-1.8.17.custom.min
-//= require pages/jquery.cycle.all.min
-//= require pages/jquery.cookie
+//= require_directory ./pages
