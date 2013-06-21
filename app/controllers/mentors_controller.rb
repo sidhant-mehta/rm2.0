@@ -40,7 +40,6 @@ class MentorsController < ApplicationController
     @search_sector = params[:sector_id]
     
     @sectors = Sector.find(:all, :order=>'name')
-    debugger
     @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector )
     
   end
