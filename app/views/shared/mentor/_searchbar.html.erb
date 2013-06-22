@@ -4,9 +4,9 @@
         <li><a href="">Simple</a></li>
         <li><a href="">Advanced</a></li>
     </ul>
-	<%= form_tag('/mentors/search', :id=> 'form')%>
+	<%= form_tag('/'+@type+'s/search', :id=> 'form')%>
  	<div class="tab-content">
-			<%=text_field_tag('mentor_name', nil, :placeholder => "Mentor's name...", :id=>'mentor_name')%>
+			<%=text_field_tag(@type+'_name', nil, :placeholder => "#{@type}'s name...", :id=>@type+'_name')%>
 			
 		    <label>
 		    	<span class="text-form fleft">in:</span>
@@ -21,11 +21,13 @@
 						<label >Closing After:</label>
 						<input class="closing_date" id="closing_date" name="closing_date" readonly="readonly" type="text" class="hasDatepicker">		
 					</div>
+					<% if (@type == "project")%>
 					<div class="grid_12" style="width: 50%;">
 						<label for="amount">Min Salary (£):</label>
 						<div style="" class="pay_slider" id="pay_slider"></div> 
 			            <%=text_field_tag('pay_value', nil, :class => "pay_value", :id  => "pay_value")%>
 					</div> 
+					<% end%>
 				</div>
 		</div>		
 	</div>

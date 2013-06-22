@@ -26,6 +26,7 @@ class MentorsController < ApplicationController
   end
   
   def index
+    @type = "mentor"
     @mentors = Mentor.all
     @sectors = Sector.find(:all, :order=>'name')
     
@@ -36,6 +37,7 @@ class MentorsController < ApplicationController
   end
 
   def search
+    @type = "mentor"
     @search_name = params[:mentor_name].split(" ")
     @search_sector = params[:sector_id]
     @search_closing_date = params[:closing_date]
