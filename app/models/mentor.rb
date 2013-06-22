@@ -5,7 +5,8 @@ class Mentor < ActiveRecord::Base
   
     def self.search (fname, lname, sector)
       t = Mentor.arel_table
-        return Mentor.where(t[:fname].matches("%#{fname}%").and(t[:lname].matches("%#{lname}%").and((t[:sector_ids].matches("%#{sector}%")))))
+      
+      return Mentor.where(t[:fname].matches("%#{fname}%").and(t[:lname].matches("%#{lname}%").and((t[:sector_ids].matches("%#{sector}%")))))
         
 
     end

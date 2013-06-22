@@ -4,24 +4,59 @@
         <li><a href="">Simple</a></li>
         <li><a href="">Advanced</a></li>
     </ul>
+	<%= form_tag('/mentors/search', :id=> 'form')%>
  	<div class="tab-content">
- 		<%= form_tag('/mentors/search', :id=> 'form')%>
 			<%=text_field_tag('mentor_name', nil, :placeholder => "Mentor's name...", :id=>'mentor_name')%>
 			
 		    <label>
 		    	<span class="text-form fleft">in:</span>
-		    <%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
+		    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
 			</label>   
-			<%=submit_tag('Search')%>
-		</form>
  	</div>
   
-    <div class="tab-content"> 
-			<%=text_field_tag'closing_date', nil, :id=>"date", :style=>"width:100px; position: relative; z-index: 100000", :readonly =>true%>		
+   <div class="tab-content" style="display: block;"> 
+		<div class="container_24">
+				<div class="wrapper">
+					<div class="grid_12">
+						<label >Closing Date:</label>
+						<input class="closing_date" id="closing_date" name="closing_date" readonly="readonly" type="text" class="hasDatepicker">		
+					</div>
+					<div class="grid_12" style="width: 50%;">
+						<label for="amount">Min Salary (£):</label>
+						<div style="" class="pay_slider" id="pay_slider"></div> 
+			            <%=text_field_tag('pay_value', nil, :class => "pay_value", :id  => "pay_value")%>
+					</div> 
+				</div>
+		</div>		
 	</div>
+	
 </div>
+<%=submit_tag('Search', :class => "search_button")%>
+</form>
+
 <script>
-$( "#date" ).datepicker();
+$( "#closing_date" ).datepicker({dateFormat: "dd-mm-yy"});
+
+var steps = [
+	    "Expenses only",
+	    "100",
+	    "200",
+	    "300",
+	    "400+"
+	];
+
+$(function() {
+    $( "#pay_slider" ).slider({
+      value: 1,
+      min: 0,
+      max: 4,
+      slide: function( event, ui ) {
+        $( "#pay_value" ).val(steps[ui.value]);
+      }
+    });
+    $( "#pay_value" ).val(steps[$( "#pay_slider" ).slider( "value" )] );
+  });
+
 </script>
   
   
