@@ -3,11 +3,11 @@ class Mentor < ActiveRecord::Base
 
     
   
-    def self.search (fname, lname, sector)
+    def self.search (fname, lname, sector, closing_date)
       t = Mentor.arel_table
-      
-      return Mentor.where(t[:fname].matches("%#{fname}%").and(t[:lname].matches("%#{lname}%").and((t[:sector_ids].matches("%#{sector}%")))))
-        
+debugger      
+      return Mentor.where(t[:fname].matches("%#{fname}%").and(t[:lname].matches("%#{lname}%").and((t[:sector_ids].matches("%#{sector}%"))))).
+            where("closing_date > ?", Date.strptime(closing_date,"%d-%m-%Y"))
 
-    end
+     end
 end
