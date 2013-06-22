@@ -1,3 +1,4 @@
+<link rel="stylesheet"href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <div class="tabs-vert-left">
     <ul class="tabs-nav">
         <li><a href="">Simple</a></li>
@@ -16,6 +17,12 @@
  	</div>
   
     <div class="tab-content"> 
-		<td><%=text_field_tag'closing_date', nil, :id=>"datepicker", :readonly =>true%></td>
+			<%=text_field_tag'closing_date', nil, :id=>"date", :style=>"width:100px; position: relative; z-index: 100000", :readonly =>true%>		
 	</div>
 </div>
+<script>
+$( "#date" ).datepicker();
+</script>
+  
+  
+  
