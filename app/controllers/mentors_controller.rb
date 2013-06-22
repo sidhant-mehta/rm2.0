@@ -37,8 +37,14 @@ class MentorsController < ApplicationController
   end
 
   def search
+    debugger
     @type = "mentor"
-    @search_name = params[:mentor_name].split(" ")
+     if ( params.has_key?(:mentor_name) )
+           @search_name =params[:mentor_name].split(" ")    
+     else
+            @search_name =""
+     end
+     
     @search_sector = params[:sector_id]
     @search_closing_date = params[:closing_date]
     #@search_pay_value = params[:pay_value]
