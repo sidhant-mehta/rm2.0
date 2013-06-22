@@ -39,7 +39,7 @@ class MentorsController < ApplicationController
     @search_name = params[:mentor_name].split(" ")
     @search_sector = params[:sector_id]
     @search_closing_date = params[:closing_date]
-    @search_pay_value = params[:pay_value]
+    #@search_pay_value = params[:pay_value]
     
     @sectors = Sector.find(:all, :order=>'name')
     @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector, @search_closing_date )
