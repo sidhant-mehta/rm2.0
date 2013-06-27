@@ -15,8 +15,8 @@
 		<th><%= image_tag(project.image , :class => "project_image" )%></th> 	
 		<td>
 			<table class="project_inner">
-				<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Closing Date</th></tr>
-				<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%=project.closing_date%></td></tr>
+				<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Salary</th><th>Closing Date</th></tr>
+					<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%= project.salary%></td><td><%=project.closing_date%></td></tr>
 			</table>
 		</td>
 	</tr>
