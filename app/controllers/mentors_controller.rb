@@ -37,7 +37,6 @@ class MentorsController < ApplicationController
   end
 
   def search
-    debugger
     @type = "mentor"
      if ( params.has_key?(:mentor_name) )
            @search_name =params[:mentor_name].split(" ")    

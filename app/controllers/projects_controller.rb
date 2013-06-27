@@ -1,9 +1,35 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
+  
+   def apply
+    params[:member_id].each do |key,value|
+        @member_id = value.to_i
+    end 
+    
+    params[:project_id].each do |key,value|
+        @project_id = value.to_i
+    end
+  
+    if can_member_make_application_checks (@member_id)
+       @application = MemberProjectApplication.new(:member_id => @member_id, :project_id => @project_id, :status => "Applied")
+       
+       if @application.save    
+          redirect_to projects_path,  :notice => "Your application has been made successfully."
+          #TODO send email to HR => project name and id, member name and id
+       else
+          redirect_to projects_path, :notice => @application.errors
+       end
+   else
+         redirect_to projects_path, :notice => "You must be logged in to make appilcations."
+    end
+  end
+  
   def index
+    @type = "project" 
     @projects = Project.all
-
+    @sectors = Sector.find(:all, :order=>'name')
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -11,12 +37,31 @@ class ProjectsController < ApplicationController
   end
 
   def search
+    @type = "project"
+     if ( params.has_key?(:project_name) )
+           @search_name =params[:project_name]    
+     else
+            @search_name =""
+     end
+     
+    @search_sector = params[:sector_id]
+    @search_closing_date = params[:closing_date]
+    @search_pay_value = params[:pay_value]
+    
+    @sectors = Sector.find(:all, :order=>'name')
+    @result_projects = Project.search(@search_name[0], @search_sector, @search_closing_date, @search_pay_value )
     
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    if (current_member.blank? ) 
+        @member =-1
+    else
+        @member = Member.find(current_member.id).id
+    end
+    
     @project = Project.find(params[:id])
 
     respond_to do |format|
