@@ -88,7 +88,8 @@ RaisonMentors20::Application.routes.draw do
 
   get "projects/search" => "projects#search"
   resources :projects
-
+  post "projects/apply" => "projects#apply"
+  post "projects/search" => "projects#search"
   
   get "mentors/search" => "mentors#search"  
   resources :mentors

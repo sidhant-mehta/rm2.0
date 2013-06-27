@@ -6,7 +6,7 @@
 	If you cannot find a project that meets your requirement then please contact us and we will do our best to find a suitable project as soon as possible.
 </span>
 
-<%= render :partial => "shared/project/searchbar"%>
+<%= render :partial => "shared/searchbar"%>
 </div>
 <% @projects.each do |project| %>
 <table class="table">
@@ -15,8 +15,8 @@
 		<th><%= image_tag(project.image , :class => "project_image" )%></th> 	
 		<td>
 			<table class="project_inner">
-				<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>
-				<tr><td><%= project.organisation%></td><td><%= project.role_title %></td><td><%=sectorsHTML(project)%></td><td><%=project.closing_date%></td></tr>
+				<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Closing Date</th></tr>
+				<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%=project.closing_date%></td></tr>
 			</table>
 		</td>
 	</tr>
