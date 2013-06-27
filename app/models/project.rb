@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
           result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%"))))
       end
       
-      if (salary.is_number? ==true) #if it is a number then you need to add another condition to have salary at least that much. If it is not a number (so "Expenses") then you can include all results hence no need to add a condition. If someone enteres another non-number except for "Expenses" same idea applies (it is not a number so show all)
+      if (!salary.nil? and salary.is_number? ==true) #if it is a number then you need to add another condition to have salary at least that much. If it is not a number (so "Expenses") then you can include all results hence no need to add a condition. If someone enteres another non-number except for "Expenses" same idea applies (it is not a number so show all)
           result = result.where("salary <> ? and salary > ?", "Expenses", salary) #needed to add the <> condition because with just > it still shows the "Expenses" results
       end
         

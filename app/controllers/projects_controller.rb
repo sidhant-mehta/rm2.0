@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
           redirect_to projects_path, :notice => @application.errors
        end
    else
-         redirect_to projects_path, :notice => "You must be logged in to make appilcations."
+         redirect_to new_member_session_path, :notice => "You must be logged in to make appilcations."
     end
   end
   

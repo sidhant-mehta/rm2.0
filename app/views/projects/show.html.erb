@@ -1,55 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<span class="project_title"> <%= @project.name %></span>
+<table class="table">
+	<th><%= image_tag(@project.image , :class => "individual_project_image" )%></th>
+	<td>
+		<table class="project_inner"> 
+			<tr><th>Organisation</th><td><%= @project.organisation%></td></tr>
+			<tr><th>Salary</th><td><%= @project.salary %></td></tr>
+			<tr><th>Location</th><td><%= @project.location%></td></tr>
+			<tr><th>Sectors</th><td><%=sectorsHTML(@project)%></td></tr>
+			<tr><th>Biography</th><td><%=@project.description%></td></tr>
+			<tr class="individual_closing_date_row"><th>Closing Date</th><td><%=@project.closing_date%></td> 
+				<td><p>
+						<%= form_tag('/projects/apply', :id=>"project_apply_form") %>
+						<%= hidden_field 'member_id', @member, {:value => @member} %>
+						<%= hidden_field 'project_id', @project.id, {:value => @project.id}%>
+						<%= submit_tag('Apply')%>
+					</p>
+				</td></tr>
+		</table>
+	</td>
+</table>
 
-<p>
-  <b>Project leader:</b>
-  <%= @project.project_leader %>
-</p>
-
-<p>
-  <b>Sector ids:</b>
-  <%= @project.sector_ids %>
-</p>
-
-<p>
-  <b>Organisation:</b>
-  <%= @project.organisation %>
-</p>
-
-<p>
-  <b>Closing date:</b>
-  <%= @project.closing_date %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @project.location %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @project.description %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @project.email %>
-</p>
-
-<p>
-  <b>Telephone:</b>
-  <%= @project.telephone %>
-</p>
-
-<p>
-  <b>Draft:</b>
-  <%= @project.draft %>
-</p>
-
-
+<div style="display: none;">
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+</div>
