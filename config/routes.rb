@@ -44,7 +44,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "clients/list_mentors"
 
-  get "clients/add_mentor"
+  get "clients/new_mentor"
   post "clients/create_mentor" => "clients#create_mentor"
   get "clients/edit_mentor"
 

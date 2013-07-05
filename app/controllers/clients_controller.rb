@@ -26,7 +26,7 @@ end
   def list_mentors
   end
 
-  def add_mentor
+  def new_mentor
     @mentor = Mentor.new
     
     @sectors=[]
@@ -46,13 +46,21 @@ end
     m = clean_select_multiple_params params[:mentor]
     m["sector_ids"] = m["sector_ids"].join(',')
     @mentor = Mentor.new(m)
+    
     respond_to do |format|
       if @mentor.save
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
         format.json { render json: @mentor, status: :created, location: @mentor }
       else
-        format.html { render action: "new" }
-        format.json { render json: @mentor.errors, status: :unprocessable_entity }
+        @error_str = ""
+        @mentor.errors.each do |field, msg|
+              @error_str = @error_str + msg + " "
+        end
+        
+        flash.now[:alert] = @error_str
+        
+        format.html { render action: "new_mentor" }
+        #format.json { render json: @mentor.errors, status: :unprocessable_entity }
       end
     end
   end

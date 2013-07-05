@@ -99,7 +99,6 @@ end
   end
   
   def update
-    #TODO change the date format to DD-MM-YYYY here or change it in the model.
     @locations = Location.all
     @sectors=[]
     Sector.all.each_with_index do |s,i|

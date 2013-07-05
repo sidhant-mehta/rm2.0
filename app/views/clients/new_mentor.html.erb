@@ -55,13 +55,11 @@
 							</tr>
 							<tr>
 								<td><%= f.label :location %></td>
-								<td><%= f.text_field :location, :class => "text" %></td>
+								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.id]},{}, {:class=>"text", :style=> "width:242px"} %> 
 							</tr>
 							<tr>
 								<td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
-								<td><%=f.select :sector_ids, Sector.all.collect {|s| [ s.name, s.id ] }, {:include_blank => false}, { :multiple => true, :size => 3 } 
-								#f.select_tag :sector_ids, options_from_collection_for_select(@sectors, "id", "name"), {:multiple => true, :style => "background: white; width:242px;"} 
-								%></td>
+								<td><%=f.select :sector_ids, Sector.all.collect {|s| [ s.name, s.id ] }, {:include_blank => false}, { :multiple => true, :size => 3, :style=> "width:242px"} %></td>
 							</tr>
 							<tr>
 								
