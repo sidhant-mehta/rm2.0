@@ -1,2 +1,32 @@
-<h1>Pages#contact_us</h1>
-<p>Find me in app/views/pages/contact_us.html.erb</p>
+<div class="grid_8">
+				<form id="contact-form">
+                    <div class="success" style="display: none;">Contact form submitted! <strong>We will be in touch soon.</strong></div>
+                    <fieldset>
+                        <label class="name">
+                            <input type="text" value="Name">
+                            <span class="error" style="display: none;">*This is not a valid name.</span>
+                            <span class="empty" style="display: none;">*This field is required.</span>
+                            <span class="clear"></span>
+                        </label>
+                        <label class="email">
+                            <input type="text" value="E-mail">
+                            <span class="error" style="display: none;">*This is not a valid email address.</span>
+                            <span class="empty" style="display: none;">*This field is required.</span>
+                            <span class="clear"></span>
+                        </label>
+                        <label class="phone">
+                            <input type="text" value="Phone">
+                            <span class="error" style="display: none;">*This is not a valid phone number.</span>
+                            <span class="empty" style="display: none;">*This field is required.</span>
+                            <span class="clear"></span>
+                        </label>
+                        <label class="message">
+                            <textarea>Message</textarea>
+                            <span class="error" style="display: none;">*The message is too short.</span>
+                            <span class="empty" style="display: none;">*This field is required.</span>
+                            <span class="clear"></span>
+                        </label>
+                        <div class="buttons"><span><a class="btn" data-type="reset">Clear</a></span><span><a class="btn" data-type="submit">Send</a></span></div>
+                    </fieldset>
+                </form>
+			</div>
