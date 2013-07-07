@@ -18,6 +18,7 @@ end
   end
 
   def add_project
+    
   end
 
   def edit_project
@@ -71,8 +72,10 @@ end
       end
     end
   end
-
+  
+  # GET /mentors/1/edit
   def edit_mentor
+    @mentor = Mentor.find(params[:id])
   end
 
   def list_jobs

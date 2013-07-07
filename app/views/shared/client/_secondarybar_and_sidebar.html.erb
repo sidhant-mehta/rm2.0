@@ -1,6 +1,6 @@
 	<section id="secondary_bar">
 		<div class="user">
-			<% #TODO get user name %>
+			<% #TODO get user name => based on email to organisation table %>
 			<p>[USER NAME]</p>
 			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
 		</div>
@@ -13,9 +13,9 @@
 		<hr/>
 		<h3>Mentors</h3>
 		<ul class="toggle">
-			<li class="icn_new_article"><a href="new_mentor">New Mentor</a></li>
-			<li class="icn_edit_article"><a href="list_mentors">Edit Mentor</a></li>
-			<li class="icn_categories"><a href="list_mentors">List Mentors</a></li>
+			<li class="icn_new_article"><%= link_to "Add Mentor", clients_new_mentor_path %></li>
+			<li class="icn_edit_article"><%= link_to "Edit Mentor", clients_list_mentors_path %></li>
+			<li class="icn_categories"><%= link_to "List Mentors", clients_list_mentors_path  %></li>
 		</ul>
 		<h3>Projects</h3>
 		<ul class="toggle">

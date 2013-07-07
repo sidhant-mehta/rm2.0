@@ -7,7 +7,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "about_us/index"
   get "about_us/what_we_do"
-  
+
   get "about_us/how_it_works"
 
   get "about_us/our_philosophy"
@@ -27,7 +27,7 @@ RaisonMentors20::Application.routes.draw do
   get "pages/register"
 
   get "pages/home"
-  
+
   get "members/sign_out"
   match "members/profile", :to => "members#profile", :as => :member
   get "members/settings"
@@ -35,7 +35,7 @@ RaisonMentors20::Application.routes.draw do
   get "members/" => "members#dashboard"
   get "members/dashboard"
   post "members/update" => "members#update"
-  
+
   get "clients/list_projects"
 
   get "clients/add_project"
@@ -47,6 +47,7 @@ RaisonMentors20::Application.routes.draw do
   get "clients/new_mentor"
   post "clients/create_mentor" => "clients#create_mentor"
   get "clients/edit_mentor"
+  match "clients/edit_mentor/:id/:fname" => "clients#edit_mentor"
 
   get "clients/list_jobs"
 
@@ -80,9 +81,7 @@ RaisonMentors20::Application.routes.draw do
 
   resources :employer_profiles
 
-
   resources :teams
-
 
   resources :adverts
 
@@ -90,8 +89,8 @@ RaisonMentors20::Application.routes.draw do
   resources :projects
   post "projects/apply" => "projects#apply"
   post "projects/search" => "projects#search"
-  
-  get "mentors/search" => "mentors#search"  
+
+  get "mentors/search" => "mentors#search"
   resources :mentors
   post "mentors/apply" => "mentors#apply"
   post "mentors/search" => "mentors#search"
@@ -145,12 +144,12 @@ RaisonMentors20::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  
+
   root :to => 'pages#home'
 
-  # See how all your routes lay out with "rake routes"
+# See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+# This is a legacy wild controller route that's not recommended for RESTful applications.
+# Note: This route will make all actions in every controller accessible via GET requests.
+# match ':controller(/:action(/:id))(.:format)'
 end
