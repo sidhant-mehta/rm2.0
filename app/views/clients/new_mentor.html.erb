@@ -1,3 +1,4 @@
+<%= javascript_include_tag "clients" %>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <%= render :partial => 'shared/client/header' %>
@@ -17,7 +18,7 @@
 				</ul>
 
 				<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
-					<%= form_for(@mentor,url: {action: "create_mentor"},html: {id:"form", class: "blocks"}) do |f| %>
+					<%= form_for(@mentor,url: {action: "create_mentor"},html: {id:"form_add_mentor", class: "blocks"}) do |f| %>
 					<div id="tab1" class="tab_content">
 						<table>
 							<tr>

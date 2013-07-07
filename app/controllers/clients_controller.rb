@@ -24,6 +24,13 @@ end
   end
 
   def list_mentors
+    @mentors = Mentor.all #TODO Find only ones from certain organisation. 
+    @sectors = Sector.find(:all, :order=>'name')
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @mentors }
+    end
   end
 
   def new_mentor
