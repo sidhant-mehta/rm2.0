@@ -38,7 +38,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "clients/list_projects"
 
-  get "clients/add_project"
+  get "clients/new_project"
 
   get "clients/edit_project"
 

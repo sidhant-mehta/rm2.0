@@ -1,0 +1,60 @@
+	<%= form_for(@project,url: {action: "create_project"},html: {id:"form_add_project", class: "blocks"}) do |f| %>
+					<div id="tab1" class="tab_content">
+						<table>
+							 <tr>
+							    <td><%= f.label :name, 'Name' %></td>
+							    <td><%= f.text_field :name, :class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :project_leader %></td>
+							    <td><%= f.text_field :project_leader,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :organisation %></td>
+							    <td><%= f.text_field :organisation,:class=>"text" %></td>
+						   </tr>
+							 <tr>
+							    <td><%= f.label :sector_ids %></td>
+							    <td><%= f.text_field :sector_ids,:class=>"text" %></td>
+							   </tr>
+							 
+							 <tr>
+							    <td><%= f.label :location %></td>
+							    <td><%= f.text_field :location,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :description %></td>
+							    <td><%= f.text_field :description,:class=>"text" %></td>
+							   </tr>
+					 	</table>
+				 	</div>
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+							    <td><%= f.label :email %></td>
+							    <td><%= f.text_field :email,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :telephone %></td>
+							    <td><%= f.text_field :telephone,:class=>"text" %></td>
+							   </tr>
+						</table>
+				 	</div>	   
+				 	<div id="tab3" class="tab_content">
+						<table>
+							   <tr>
+							    <td><%= f.label :closing_date %></td>
+							    <td><%= f.date_select :closing_date,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :draft %></td>
+							    <td><%= f.check_box :draft,:class=>"text" %></td>
+							   </tr>
+						</table>				
+					</div>
+					<% #TODO create validatin server side n client. change css. 
+					%> 
+					<div class ="submit_link">
+						<%= f.submit %>
+					</div>
+					<% end %>
