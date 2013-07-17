@@ -29,9 +29,12 @@ end
   end
 
   def list_mentors
-    @mentors = Mentor.all #TODO Find only ones from certain organisation. 
-    @sectors = Sector.find(:all, :order=>'name')
-    
+    if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
+        @mentors = Mentor.where(:organisation => EmployerProfile.find(current_client.id).name) #TODO Find only ones from certain organisation. 
+        @sectors = Sector.find(:all, :order=>'name')
+    else
+        format.html {render clients_profile_path, notice:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @mentors }
@@ -40,7 +43,7 @@ end
 
   def new_mentor
     @mentor = Mentor.new
-    
+    @mentor.organisation = EmployerProfile.find(current_client.id).name
     @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
@@ -80,8 +83,27 @@ end
   # GET /mentors/1/edit
   def edit_mentor
     @mentor = Mentor.find(params[:id])
+    
   end
 
+  def update_mentor
+      m = clean_select_multiple_params params[:mentor]
+      m["sector_ids"] = m["sector_ids"].join(',')
+
+      @mentor = Mentor.find(m["id"])
+         
+       
+    respond_to do |format|
+      if @mentor.update_attributes(params[:mentor])
+        format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit_mentor" }
+        format.json { render json: @mentor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   def list_jobs
   end
 
@@ -94,6 +116,36 @@ end
   def dashboard
   end
 
-  def profle
+  def profile # employer profile
+    #get the employer profile record that is already in place. Or create a new one which has the same ID as the current client id, as this one client is responsible for the company.
+    if (!EmployerProfile.exists?(current_client.id))
+        @employer_profile = EmployerProfile.new
+        @employer_profile.id = current_client.id
+        @employer_profile.save
+    end
+    
+    @employer_profile = EmployerProfile.find(current_client.id) 
+  
   end
+
+  def profile_update
+    #TODO NEED TO HAVE SOME SORT OF CHECK FOR THE COMPANY NAME ENTERED AND THE ORGANISATION SO NO ONE CAN ADD ANY OLD COMPANY. TABLE OF COMPANY VS EMAIL ADD?
+       @employer_profile = EmployerProfile.find(current_client.id)
+       
+       respond_to do |format|
+         if @employer_profile.update_attributes(params[:employer_profile]) 
+           format.html { redirect_to clients_profile_path, notice: "Profile was successfully updated."}
+           format.json{head :no_content}
+         else
+            @error_str = ""
+            @employer_profile.errors.each do |field, msg|
+              @error_str = @error_str + msg + " "
+            end
+            flash[:alert] = @error_str
+            
+            format.html { render action: "profile"}
+         end
+       end
+  end 
+  
 end

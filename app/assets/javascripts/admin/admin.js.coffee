@@ -4,3 +4,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_directory .
+//= require ckeditor/init

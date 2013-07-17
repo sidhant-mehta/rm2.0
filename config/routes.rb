@@ -48,7 +48,7 @@ RaisonMentors20::Application.routes.draw do
   post "clients/create_mentor" => "clients#create_mentor"
   get "clients/edit_mentor"
   match "clients/edit_mentor/:id/:fname" => "clients#edit_mentor"
-
+  put "clients/create_mentor" => "clients#update_mentor"
   get "clients/list_jobs"
 
   get "clients/add_job"
@@ -57,7 +57,9 @@ RaisonMentors20::Application.routes.draw do
 
   get "clients/dashboard"
 
-  get "clients/profle"
+  get "clients/profile"
+  post "clients/profile_update" => "clients#profile_update"
+  put "clients/profile_update" => "clients#profile_update"
 
   get "admin/login"
 

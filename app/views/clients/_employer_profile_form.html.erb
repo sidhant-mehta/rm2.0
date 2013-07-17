@@ -1,0 +1,31 @@
+<%= form_for(@employer_profile,url: {action: "profile_update"},html: {id:"form_update_employer_profile", class: "blocks"}) do |f| %>
+					
+					
+					<div id="tab1" class="tab_content">
+						<table>
+							<tr>
+								<td><%=f.label :name, 'Company Name'%></td>
+								<td><%=f.text_field :name, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%=f.label :bio, 'About the Company'%></td>
+								<td><%= f.text_area :bio, :class => "textarea" %></td>
+							</tr>
+						</table>
+					</div>
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+								<td><%=#label_tag('image', 'Company Image/Logo (Optional)')
+								%></td>
+								<td><%=#text_field_tag 'image', @employer_profile.image, :class => "text" 
+								%></td>
+							</tr>
+						</table>
+					</div>
+					<% #TODO create validatin server side n client. change css. 
+					%> 
+					<div class ="submit_link">
+						<%= f.submit %>
+					</div>
+<% end %>

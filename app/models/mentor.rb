@@ -24,11 +24,11 @@ class Mentor < ActiveRecord::Base
     
     validates_presence_of :fname, :message => "You need to inlcude a first name."
     validates_length_of :fname, :minimum => 3, :maximum => 15, :message => "Your first name must be between 3 and 15 characters."
-    validates_format_of :fname, :with => /[a-z]/, :message => "First name can only take letters."    
+    validates_format_of :fname, :with => /[a-z ]/, :message => "First name can only take letters."    
 
     validates_presence_of :lname, :message => "You must include a last name"
     validates_length_of :lname, :within => 3..15, :message => "Your first name must be between 3 and 15 characters."
-    validates_format_of :lname, :with => /[a-z]/, :message => "Last name can only take letters."
+    validates_format_of :lname, :with => /[a-z ]/, :message => "Last name can only take letters."
   
     validates_presence_of :email, :message => "You must include an email"
     validates_length_of :email, :within => 3..50, :message => "Your email can only be between 3 to 50 characters"
@@ -41,7 +41,7 @@ class Mentor < ActiveRecord::Base
     
     validates_presence_of :description, :message => "You must include a description/bio for the mentor"
     validates_length_of :description, :minimum => 3, :maximum => 100, :message => "You must include a description/bio for the mentor of between 3 to 100 characters"
-    validates_format_of :description, :with => /^[-a-z]+$/i, :message => "Description can only contain letters"
+    validates_format_of :description, :with => /^[-a-z ]+$/i, :message => "Description can only contain letters"
     
     validates_presence_of :location, :message => "You must include a location"
     #TODO: add validation to check that the value is present in the location table.
@@ -49,7 +49,7 @@ class Mentor < ActiveRecord::Base
     
     validates_presence_of :role_title, :message => "You must include a role title"
     validates_length_of :role_title, :minimum => 3, :maximum=> 20, :message => "Role title can only be between 3 and 20 characters"
-    validates_format_of :role_title, :with => /^[a-z]+$/i, :message => "Role title can only contain letters"
+    validates_format_of :role_title, :with => /^[a-z ]+$/i, :message => "Role title can only contain letters"
     
     validates_presence_of :telephone, :message => "You must include a telephone number"
     #validates_length_of :telephone, minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number (11 digits)"

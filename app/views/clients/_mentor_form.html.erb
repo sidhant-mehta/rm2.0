@@ -1,4 +1,5 @@
 	<%= form_for(@mentor,url: {action: "create_mentor"},html: {id:"form_add_mentor", class: "blocks"}) do |f| %>
+	<%= f.hidden_field :id %>
 					<div id="tab1" class="tab_content">
 						<table>
 							<tr>
@@ -28,7 +29,7 @@
 						<table>
 							<tr>
 								<td><%= f.label :organisation %></td>
-								<td><%= f.text_field :organisation, :class => "text" %></td>
+								<td><%= f.text_field :organisation, :value => @mentor.organisation, :class => "text", :readonly =>true %></td>
 							</tr>
 							<tr>
 								<td><%= f.label :role_title %></td>
@@ -36,7 +37,7 @@
 							</tr>
 							<tr>
 								<td><%= f.label :location %></td>
-								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.id]},{}, {:class=>"text", :style=> "width:242px"} %> 
+								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %> 
 							</tr>
 							<tr>
 								<td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
@@ -66,7 +67,7 @@
 							</tr>
 						</table>				
 					</div>
-					<% #TODO create validatin server side n client. change css. 
+					<% #TODO create validatin client side.
 					%> 
 					<div class ="submit_link">
 						<%= f.submit %>
