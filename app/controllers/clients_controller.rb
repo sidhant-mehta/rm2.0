@@ -32,27 +32,39 @@ end
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
         @mentors = Mentor.where(:organisation => EmployerProfile.find(current_client.id).name) #TODO Find only ones from certain organisation. 
         @sectors = Sector.find(:all, :order=>'name')
+        
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @mentors }
+        end
+
     else
-        format.html {render clients_profile_path, notice:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+        respond_to do |format|
+              format.html {redirect_to clients_profile_path, alert:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+          end
     end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @mentors }
-    end
+
   end
 
   def new_mentor
-    @mentor = Mentor.new
-    @mentor.organisation = EmployerProfile.find(current_client.id).name
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
+    if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
+          @mentor = Mentor.new
+          @mentor.organisation = EmployerProfile.find(current_client.id).name
+          @sectors=[]
+          Sector.all.each_with_index do |s,i|
+            @sectors << Sector.find(s)
+          end
+          
+          respond_to do |format|
+            format.html # new.html.erb
+            format.json { render json: @mentor }
+          end
+    else
+          respond_to do |format|
+              format.html {redirect_to clients_profile_path, alert:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+          end
     end
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @mentor }
-    end
+
   end
 
   # POST /create_mentor
