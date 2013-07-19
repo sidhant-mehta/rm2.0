@@ -1,8 +1,9 @@
 	<%= form_for(@project,url: {action: "create_project"},html: {id:"form_add_project", class: "blocks"}) do |f| %>
+	<%= f.hidden_field :id %>
 					<div id="tab1" class="tab_content">
 						<table>
 							 <tr>
-							    <td><%= f.label :name, 'Name' %></td>
+							    <td><%= f.label :name, 'Project Name' %></td>
 							    <td><%= f.text_field :name, :class=>"text" %></td>
 							   </tr>
 							 <tr>
@@ -11,20 +12,24 @@
 							   </tr>
 							 <tr>
 							    <td><%= f.label :organisation %></td>
-							    <td><%= f.text_field :organisation,:class=>"text" %></td>
+							    <td><%= f.text_field :organisation,:class=>"text", :readonly => true%></td>
 						   </tr>
 							 <tr>
-							    <td><%= f.label :sector_ids %></td>
-							    <td><%= f.text_field :sector_ids,:class=>"text" %></td>
+							    <td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
+								<td><%=f.select :sector_ids, Sector.all.collect {|s| [ s.name, s.id ] }, {:include_blank => false}, { :multiple => true, :size => 3, :style=> "width:242px"} %></td>
 							   </tr>
 							 
 							 <tr>
 							    <td><%= f.label :location %></td>
-							    <td><%= f.text_field :location,:class=>"text" %></td>
+							    <td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %>
 							   </tr>
+						   <tr>
+								<td><%= f.label :salary, 'Salary Per Week £' %></td>
+								<td><%= f.text_field :salary, :class=>"text" %></td>   		
+						   </tr>
 							 <tr>
 							    <td><%= f.label :description %></td>
-							    <td><%= f.text_field :description,:class=>"text" %></td>
+							    <td><%= f.text_area :description,:class=>"textarea" %></td>
 							   </tr>
 					 	</table>
 				 	</div>
@@ -32,7 +37,7 @@
 						<table>
 							<tr>
 							    <td><%= f.label :email %></td>
-							    <td><%= f.text_field :email,:class=>"text" %></td>
+							    <td><%= f.text_field :email,:class=>"text", :readonly => true %></td>
 							   </tr>
 							 <tr>
 							    <td><%= f.label :telephone %></td>
@@ -44,7 +49,7 @@
 						<table>
 							   <tr>
 							    <td><%= f.label :closing_date %></td>
-							    <td><%= f.date_select :closing_date,:class=>"text" %></td>
+							    <td><%= f.text_field :closing_date, :class => "text", :id=>"datepicker_future", :readonly =>true%>
 							   </tr>
 							 <tr>
 							    <td><%= f.label :draft %></td>

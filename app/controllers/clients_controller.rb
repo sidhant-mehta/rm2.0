@@ -15,17 +15,84 @@ end
   
   
   def list_projects
+      if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
+        @projects = Project.where(:organisation => EmployerProfile.find(current_client.id).name) #TODO DO A CHECK VIA EMAIL THEN ORGANISATION NOT JUST ORG.
+        @sectors = Sector.find(:all, :order=>'name')
+        
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @project }
+        end
+
+    else
+        respond_to do |format|
+              format.html {redirect_to clients_profile_path, alert:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+          end
+    end
   end
 
-  def add_project
-    
+  def new_project
+    if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
+        @project = Project.new
+        @project.organisation = EmployerProfile.find(current_client.id).name
+        @project.email = current_client.email
+        @sectors = []
+        Sector.all.each_with_index do |s,i|
+            @sectors << Sector.find(s)
+          end
+        
+        respond_to do |format|
+          format.html
+          format.json {render json: @project}
+        end
+    else
+        respond_to do |format|
+          format.html {redirect_to clients_profile_path, alert:"You must complete your profile before adding, editing or viewing any Mentors or Projects."}
+        end
+    end
   end
   
   def create_project
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    @project = Project.new(p)
     
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Mentor was successfully created.' }
+        format.json { render json: @project, status: :created, location: @project }
+      else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + msg + " "
+        end
+        
+        flash.now[:alert] = @error_str
+        
+        format.html { render action: "new_project" }
+      end
+    end
   end
 
   def edit_project
+    @project = Project.find(params[:id])
+  end
+
+  def update_project
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    
+    @project = Project.find(p["id"])
+
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit_project" }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def list_mentors

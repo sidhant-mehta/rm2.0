@@ -39,9 +39,9 @@ RaisonMentors20::Application.routes.draw do
   get "clients/list_projects"
 
   get "clients/new_project"
-
-  get "clients/edit_project"
-
+  post "clients/create_project" => "clients#create_project"
+  match "clients/edit_project/:id/:name" => "clients#edit_project"  
+  put "clients/create_project" => "clients#update_project"
   get "clients/list_mentors"
 
   get "clients/new_mentor"
@@ -55,7 +55,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "clients/edit_job"
 
-  get "clients/dashboard"
+  get "clients/dashboard" 
 
   get "clients/profile"
   post "clients/profile_update" => "clients#profile_update"

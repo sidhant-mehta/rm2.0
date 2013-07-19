@@ -20,15 +20,15 @@
 		<h3>Projects</h3>
 		<ul class="toggle">
 			<li class="icn_new_article"><%= link_to "Add Project", clients_new_project_path %></li>
-			<li class="icn_edit_article"><a href="list_projects">Edit Project</a></li>
-			<li class="icn_categories"><a href="#list_projects">List Project</a></li>
+			<li class="icn_edit_article"><%= link_to "Edit Project", clients_list_projects_path %></li>
+			<li class="icn_categories"><%= link_to "List Project", clients_list_projects_path %></li>
 		</ul>
-		<h3>Jobs</h3>
+		<!--<h3>Jobs</h3>
 		<ul class="toggle">
 			<li class="icn_new_article"><a href="add_job">New Job</a></li>
 			<li class="icn_edit_article"><a href="list_jobs">Edit Job</a></li>
 			<li class="icn_categories"><a href="list_jobs">List Jobs</a></li>
-		</ul>
+		</ul> -->
 		<h3>Other</h3>
 		<ul class="toggle">
 			<li class="icn_profile"><%= link_to "Edit Profile", clients_profile_path %></li>
