@@ -13,6 +13,22 @@ font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
 font-size: 12px;
 }
 
+
+/* CUSTOM */
+#details { border-collapse:collapse;}
+        #details h4 { margin:0px; padding:0px;}
+        #details img { float:right;}
+        #details ul { margin:10px 0 10px 40px; padding:0px;}
+        #details th { background:#7CB8E2 url(<%= asset_path("admin/header_bkg.png") %>) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;}
+        #details td { background:#F2F6FA none repeat-x scroll center left; color:#000; padding:7px 15px; }
+        #details tr.odd td { background:#fff url(<%= asset_path("admin/row_bkg.png") %>) repeat-x scroll center left; cursor:pointer; }
+        #details div.arrow { background:transparent url(<%= asset_path("admin/arrows.png") %>) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+        #details div.up { background-position:0px 0px;}
+        #details .inner p {float:left; margin-right:1em;}
+        #details .inner p span {font-weight: bold; color: cadetblue;}
+
+/* END CUSTOM */
+
 .clear {
 clear: both;
 }
