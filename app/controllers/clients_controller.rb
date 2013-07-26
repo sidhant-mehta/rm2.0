@@ -85,6 +85,7 @@ end
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
+    
      if @project.sector_ids.blank?
      else   
         @project_sectors_ids_array = @project.sector_ids.split(",")
@@ -100,14 +101,23 @@ end
     p["sector_ids"] = p["sector_ids"].join(',')
     
     @project = Project.find(p["id"])
-
+    @sectors = []
+    Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        
+        flash.now[:alert] = @error_str.html_safe
+        
         format.html { render action: "edit_project" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end

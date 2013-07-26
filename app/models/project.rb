@@ -67,8 +67,8 @@ class Project < ActiveRecord::Base
     validates_date :closing_date, :on_or_after => lambda { Date.current  }, :on_or_after_message => "Closing date cannot be before today"
 
     validates_presence_of :telephone, :message => "You must include a telephone number"
-    validates_length_of :telephone, :minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number (11 digits)"
-    validates_format_of :telephone, :with => /^[0-9]$/, :message => "Please enter a valid UK telephone number (11 digits)"
+    validates_length_of :telephone, :minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number consisting of exactly 11 digits"
+    validates_format_of :telephone, :with => /^[0-9]+$/, :message => "Please enter a valid UK telephone number containing only digits"
 
 
 end

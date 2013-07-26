@@ -57,9 +57,9 @@
 							   </tr>
 						</table>				
 					</div>
-					<% #TODO create validatin server side n client. change css. 
+					<% #TODO create validatin client. add javascript to check is sectors are selected.  
 					%> 
 					<div class ="submit_link">
-						<%= f.submit %>
+						<%= f.submit :onclick => "return validateProjectForm();" %>
 					</div>
 					<% end %>
