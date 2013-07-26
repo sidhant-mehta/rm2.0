@@ -24,11 +24,11 @@ class Mentor < ActiveRecord::Base
     
     validates_presence_of :fname, :message => "You need to inlcude a first name."
     validates_length_of :fname, :minimum => 3, :maximum => 15, :message => "Your first name must be between 3 and 15 characters."
-    validates_format_of :fname, :with => /[a-z ]/, :message => "First name can only take letters."    
+    validates_format_of :fname, :with => /^[a-z ]+$/i, :message => "First name can only take letters."    
 
     validates_presence_of :lname, :message => "You must include a last name"
     validates_length_of :lname, :within => 3..15, :message => "Your first name must be between 3 and 15 characters."
-    validates_format_of :lname, :with => /[a-z ]/, :message => "Last name can only take letters."
+    validates_format_of :lname, :with => /^[a-z ]+$/i, :message => "Last name can only take letters."
   
     validates_presence_of :email, :message => "You must include an email"
     validates_length_of :email, :within => 3..50, :message => "Your email can only be between 3 to 50 characters"
@@ -36,12 +36,12 @@ class Mentor < ActiveRecord::Base
     validates_format_of :email, :with => EMAIL_REGEX, :message => "Please use a valid email address"
     validates_confirmation_of :email
     
-    validates_presence_of :closing_date, :message => "Please select a closing date"
-    validates_date :closing_date, :on_or_after => lambda { Date.current  }, :message => "Closing date cannot be before today"
+    validates_presence_of :closing_date, :invalid_date_message => "Please select a closing date"
+    validates_date :closing_date, :on_or_after => lambda { Date.current  }, :on_or_after_message => "Closing date cannot be before today"
     
     validates_presence_of :description, :message => "You must include a description/bio for the mentor"
-    validates_length_of :description, :minimum => 3, :maximum => 100, :message => "You must include a description/bio for the mentor of between 3 to 100 characters"
-    validates_format_of :description, :with => /^[-a-z ]+$/i, :message => "Description can only contain letters"
+    validates_length_of :description, :minimum => 3, :maximum => 500, :message => "You must include a description/bio for the mentor of between 3 to 500 characters"
+    validates_format_of :description, :with => /^(?=.*[A-Z0-9])[\w.,!"'\/$ ]+$/i, :message => "Description can only contain alphanumeric characters" # this regex allows for alphhanumeric and punctuation
     
     validates_presence_of :location, :message => "You must include a location"
     #TODO: add validation to check that the value is present in the location table.
@@ -52,6 +52,7 @@ class Mentor < ActiveRecord::Base
     validates_format_of :role_title, :with => /^[a-z ]+$/i, :message => "Role title can only contain letters"
     
     validates_presence_of :telephone, :message => "You must include a telephone number"
-    #validates_length_of :telephone, minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number (11 digits)"
+    validates_length_of :telephone, :minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number (11 digits)"
+    validates_format_of :telephone, :with => /^[0-9]$/, :message => "Please enter a valid UK telephone number (11 digits)"
 
 end

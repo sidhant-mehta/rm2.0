@@ -40,6 +40,7 @@ RaisonMentors20::Application.routes.draw do
 
   get "clients/new_project"
   post "clients/create_project" => "clients#create_project"
+  get "clients/edit_project"
   match "clients/edit_project/:id/:name" => "clients#edit_project"  
   put "clients/create_project" => "clients#update_project"
   get "clients/list_mentors"

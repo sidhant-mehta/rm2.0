@@ -12,7 +12,7 @@
 							</tr>
 							<tr>
 								<td><%= f.label :description %></td>
-								<td><%= f.text_field :description, :class => "text" %></td>
+								<td><%= f.text_area :description, :class => "textarea" %></td>
 							</tr>
 							<tr>
 								<td><%= f.label :email %></td>
@@ -41,7 +41,7 @@
 							</tr>
 							<tr>
 								<td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
-								<td><%=f.select :sector_ids, Sector.all.collect {|s| [ s.name, s.id ] }, {:include_blank => false}, { :multiple => true, :size => 3, :style=> "width:242px"} %></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@mentor_sectors_ids),{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
 							</tr>
 							<tr>
 								
@@ -63,7 +63,7 @@
 							</tr>
 							<tr>
 								<td><%= f.label :draft, 'Is this a draft?' %></td>
-								<td><%= f.check_box :draft %></td>
+								<td><%= f.check_box :draft, :class=>"text" %></td>
 							</tr>
 						</table>				
 					</div>

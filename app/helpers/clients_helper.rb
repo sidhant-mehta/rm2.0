@@ -19,8 +19,9 @@ def getSectors(obj)
   def sectorsHTML(obj)
     sectors =[] 
     sectors = getSectors(obj)
-         
-    sectors = sectors.join(" ")
+    if (!sectors.nil?)  
+        sectors = sectors.join(" ")
+    end
      return sectors
   end
 

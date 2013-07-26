@@ -35,6 +35,7 @@ end
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
         @project = Project.new
         @project.organisation = EmployerProfile.find(current_client.id).name
+        #@project_sectors_ids = {}
         @project.email = current_client.email
         @sectors = []
         Sector.all.each_with_index do |s,i|
@@ -56,18 +57,22 @@ end
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     @project = Project.new(p)
-    
+    @sectors = []
+        Sector.all.each_with_index do |s,i|
+            @sectors << Sector.find(s)
+          end
+          
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Mentor was successfully created.' }
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
         @error_str = ""
         @project.errors.each do |field, msg|
-              @error_str = @error_str + msg + " "
+              @error_str = @error_str + "<p>" + msg + "</p>"
         end
         
-        flash.now[:alert] = @error_str
+        flash.now[:alert] = @error_str.html_safe
         
         format.html { render action: "new_project" }
       end
@@ -76,6 +81,18 @@ end
 
   def edit_project
     @project = Project.find(params[:id])
+    @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @project.sector_ids.blank?
+     else   
+        @project_sectors_ids_array = @project.sector_ids.split(",")
+        @project_sectors_ids = [] #need to initialize this array first
+         @project_sectors_ids_array.each_with_index do |s, i| 
+           @project_sectors_ids << Sector.find(s).id
+     end
+    end
   end
 
   def update_project
@@ -140,6 +157,18 @@ end
     m = clean_select_multiple_params params[:mentor]
     m["sector_ids"] = m["sector_ids"].join(',')
     @mentor = Mentor.new(m)
+     @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @mentor.sector_ids.blank?
+     else   
+        @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+        @mentor_sectors_ids = [] #need to initialize this array first
+         @mentor_sectors_ids_array.each_with_index do |s, i| 
+           @mentor_sectors_ids << Sector.find(s).id
+     end
+    end
     
     respond_to do |format|
       if @mentor.save
@@ -148,10 +177,10 @@ end
       else
         @error_str = ""
         @mentor.errors.each do |field, msg|
-              @error_str = @error_str + msg + " "
+              @error_str = @error_str + "<p>" + msg + "</p>"
         end
         
-        flash.now[:alert] = @error_str
+        flash.now[:alert] = @error_str.html_safe
         
         format.html { render action: "new_mentor" }
         #format.json { render json: @mentor.errors, status: :unprocessable_entity }
@@ -163,6 +192,18 @@ end
   def edit_mentor
     @mentor = Mentor.find(params[:id])
     
+    @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @mentor.sector_ids.blank?
+     else   
+        @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+        @mentor_sectors_ids = [] #need to initialize this array first
+         @mentor_sectors_ids_array.each_with_index do |s, i| 
+           @mentor_sectors_ids << Sector.find(s).id
+     end
+    end
   end
 
   def update_mentor
@@ -170,15 +211,32 @@ end
       m["sector_ids"] = m["sector_ids"].join(',')
 
       @mentor = Mentor.find(m["id"])
-         
+       @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @mentor.sector_ids.blank?
+     else   
+        @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+        @mentor_sectors_ids = [] #need to initialize this array first
+         @mentor_sectors_ids_array.each_with_index do |s, i| 
+           @mentor_sectors_ids << Sector.find(s).id
+     end
+    end
+       
        
     respond_to do |format|
       if @mentor.update_attributes(params[:mentor])
         format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit_mentor" }
-        format.json { render json: @mentor.errors, status: :unprocessable_entity }
+        @error_str = ""
+        @mentor.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        
+        format.html { render action: "edit_mentor"}
       end
     end
   end
@@ -218,9 +276,9 @@ end
          else
             @error_str = ""
             @employer_profile.errors.each do |field, msg|
-              @error_str = @error_str + msg + " "
+              @error_str = @error_str + "<p>" + msg + "</p>"
             end
-            flash[:alert] = @error_str
+            flash[:alert] = @error_str.html_safe
             
             format.html { render action: "profile"}
          end

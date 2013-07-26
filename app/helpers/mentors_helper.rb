@@ -19,8 +19,9 @@ module MentorsHelper
   def sectorsHTML(mentor)
     sectors =[] 
     sectors = getSectors(mentor)
-         
-    sectors = sectors.join(" ")
+    if (!sectors.nil?)  
+        sectors = sectors.join(" ")
+    end     
      return sectors
   end
 

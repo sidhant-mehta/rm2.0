@@ -16,7 +16,7 @@
 						   </tr>
 							 <tr>
 							    <td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
-								<td><%=f.select :sector_ids, Sector.all.collect {|s| [ s.name, s.id ] }, {:include_blank => false}, { :multiple => true, :size => 3, :style=> "width:242px"} %></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",  @project_sectors_ids) ,{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
 							   </tr>
 							 
 							 <tr>

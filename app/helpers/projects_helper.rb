@@ -19,8 +19,9 @@ module ProjectsHelper
   def sectorsHTML(project)
     sectors =[] 
     sectors = getSectors(project)
-         
-    sectors = sectors.join(" ")
+    if (!sectors.nil?)  
+        sectors = sectors.join(" ")
+    end         
      return sectors
   end
 
