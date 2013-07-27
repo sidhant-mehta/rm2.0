@@ -35,9 +35,11 @@ RaisonMentors20::Application.routes.draw do
   get "members/" => "members#dashboard"
   get "members/dashboard"
   post "members/update" => "members#update"
-
+  get "members/new_mentor"
+  post "members/create_mentor" =>"mentor#create_mentor"
+  get "members/edit_mentor"
+  
   get "clients/list_projects"
-
   get "clients/new_project"
   post "clients/create_project" => "clients#create_project"
   get "clients/edit_project"

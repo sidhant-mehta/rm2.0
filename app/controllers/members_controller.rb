@@ -58,7 +58,7 @@ end
 #----------------END LOCAL METHODS ------------------------
 
 
-
+#-------PROFILE ----------
   def dashboard
     @member = Member.find(current_member.id)
      @all_mentor_apps= getMemberMentorApplications(current_member.id)
@@ -157,4 +157,31 @@ class Member::RegistrationsController < Devise::RegistrationsController
         resource = build_resource({})
         respond_with resource
   end
+  
+#-----END PROFILE-----
+
+#----- MENTORSHIP -----
+
+def new_mentor
+  
+end
+
+def create_mentor
+  
+end
+
+def update_mentor
+  
+end
+
+def edit_mentor
+  
+end
+
+def destroy_mentor
+  
+end
+  
+#----END MENTORSHIP----
+  
 end
