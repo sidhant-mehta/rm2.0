@@ -5,7 +5,7 @@
 			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <%= link_to "Dashboard", clients_dashboard_path %></article>
 		</div>
 	</section><!-- end of secondary bar -->
 	<aside id="sidebar" class="column">

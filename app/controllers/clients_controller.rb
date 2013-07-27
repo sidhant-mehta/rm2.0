@@ -19,7 +19,7 @@ def getMentorApplications(client_org)
 end
 
 def getProjectApplications(client_org)
-  @project_applicatoin_data 
+  @project_applicatoin_data = Project.select("member_project_applications.project_id, projects.name, member_project_applications.id, member_project_applications.created_at, member_project_applications.status").joins("JOIN member_project_applications ON projects.id = member_project_applications.project_id").where('projects.organisation = ?', client_org)
 end
   
   
@@ -274,7 +274,7 @@ end
   def dashboard
     org = OrganisationEmailDomain.getOrganisation(current_client.email)
     @mentor_application_data = getMentorApplications(org)
-    
+    @project_application_data = getProjectApplications(org)
     @limit = 10
     
   end
