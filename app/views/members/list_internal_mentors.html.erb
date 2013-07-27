@@ -16,38 +16,7 @@
 					<span class="initial_text" style="margin-bottom: 2em; float: left; clear:both"> Use our search facility below to find internal mentors that meets your requirements.
 					</span>
 					<div style="clear: both">
-						<ul class="tabs" style="width: 135px">
-		   					<li><a href="#tab1">Simple</a></li>
-							<li><a href="#tab2">Advanced</a></li>
-						</ul>
-						
-						<div class="tab_container" >
-							<%= form_tag('/'+@type_address+'s/search', :id=> 'form')%>
-							<div id="tab1" class="tab_content">
-								<%=text_field_tag(@type+'_name', nil, :placeholder => "#{@type}'s name...", :id=>@type+'_name', :style=> "padding: 10px 0")%>
-								<label>
-							    	<span class="text-form fleft">in:</span>
-							    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true, :style=>"display: inline-block" )%>
-								</label> 
-							</div>
-							<div id="tab2" class="tab_content">
-								<div class="container_24">
-									<div class="wrapper">
-										<div class="grid_12">
-											<label >Closing After:</label>
-											<input class="datepicker_future" id="closing_date" name="closing_date" readonly="readonly" type="text" class="hasDatepicker" style="background: white; display: inline-block;">		
-										</div>
-										<% if (@type == "project")%>
-										<div class="grid_12" style="width: 50%;">
-											<label for="amount">Min Salary (£):</label>
-											<div style="" class="pay_slider" id="pay_slider"></div> 
-								            <%=text_field_tag('pay_value', nil, :class => "pay_value", :id  => "pay_value")%>
-										</div> 
-										<% end%>
-									</div>
-								</div>		
-							</div>
-						</div>
+						<%= render :partial => "shared/member/internal_searchbar"%>
 					</div>
 						<%=submit_tag('Search', :class => "search_button", :style=>"margin: 1em; float: right;")%>
 						</form>
