@@ -241,7 +241,45 @@ def search_mentor
 end
   
 #----END MENTORSHIP----
+#--------PROJECTS -----
 
+def add_project
+  
+end
+
+def list_internal_projects
+  org = OrganisationEmailDomain.getOrganisation current_member.email
+  @projects = Project.where(:organisation => org, :internal => true)  
+  @type_address ="members/project"
+  @type = "project"
+  @sectors=[]
+      Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
+end
+
+def search_project
+   org = OrganisationEmailDomain.getOrganisation current_member.email
+   @type_address = "members/project"
+   @type = "project"
+     if ( params.has_key?(:project_name) )
+           @search_name =params[:project_name]    
+     else
+            @search_name =""
+     end
+     
+    @search_sector = params[:sector_id]
+    @search_closing_date = params[:closing_date]
+    @search_pay_value = params[:pay_value]
+    
+    @sectors = Sector.find(:all, :order=>'name')
+    @result_projects = Project.search(@search_name[0], @search_sector, @search_closing_date, @search_pay_value )
+    @projects = @result_projects.where(:organisation => org, :internal => true)  
+    
+    render "list_internal_projects"
+end
+
+#------END PROJECTS-----
 
 #-------PROFILE ----------
   def dashboard

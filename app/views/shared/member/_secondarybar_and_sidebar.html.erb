@@ -28,6 +28,14 @@
 				<li class="icn_view_users"><%= link_to "Internal mentors", :controller => "members", :action => "list_internal_mentors"%></li>
 			<%end%>
 		</ul>
+		<h3>Projects</h3>
+		<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Project", :controller => "members", :action => "add_project"%></li>
+				<li class="icn_categories"><%= link_to "List Projects", :controller => "members", :action => "list_projects"%></li>
+			<% if internalProjects? (current_member.email)%>
+				<li class="icn_categories"><%= link_to "Internal projects", :controller => "members", :action => "list_internal_projects"%></li>
+			<%end%>
+		</ul>
 		<h3>Other</h3>
 		<ul class="toggle">
 			<li class="icn_settings"><%= link_to "Settings", :controller => "members", :action => "settings" %></li>

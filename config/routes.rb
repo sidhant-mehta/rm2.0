@@ -42,6 +42,10 @@ RaisonMentors20::Application.routes.draw do
   put "members/create_mentor" => "members#update_mentor"
   get "members/list_internal_mentors"
   match "members/mentors/search" => "members#search_mentor"
+  get "members/add_project"
+  get "members/list_projects"
+  get "members/list_internal_projects"
+  match "members/projects/search" => "members#search_project"
   
   get "clients/list_projects"
   get "clients/new_project"

@@ -16,4 +16,15 @@ def internalMentors? (email)
   return !m.blank?
 end
 
+def internalProjects? (email)
+  org = OrganisationEmailDomain.getOrganisation (email)
+  if !org.blank?
+    m = Project.where(:organisation => org, :internal => true)
+  else
+    m = blank
+  end
+  
+  return !m.blank?
+end
+
 end
