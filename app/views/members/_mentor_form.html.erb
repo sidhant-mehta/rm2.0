@@ -1,0 +1,75 @@
+	<%= form_for(@mentor,url: {action: "create_mentor"},html: {id:"form_add_mentor", class: "blocks"}) do |f| %>
+	<%= f.hidden_field :id %>
+					<div id="tab1" class="tab_content">
+						<table>
+							<tr>
+								<td><%= f.label :fname, 'First Name:' %></td>
+								<td><%= f.text_field :fname, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td> <%= f.label :lname, 'Last Name:' %></td>
+								<td> <%= f.text_field :lname, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :description %></td>
+								<td><%= f.text_area :description, :class => "textarea" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :email %></td>
+								<td><%= f.text_field :email, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :telephone %></td>
+								<td><%= f.text_field :telephone, :class => "text" %></td>
+							</tr>
+						</table>
+					</div>
+					
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+								<td><%= f.label :organisation %></td>
+								<td><%= f.text_field :organisation, :value => @mentor.organisation, :class => "text", :readonly =>false %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :role_title %></td>
+								<td><%= f.text_field :role_title, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :location %></td>
+								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %> 
+							</tr>
+							<tr>
+								<td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@mentor_sectors_ids),{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
+							</tr>
+							<tr>
+								
+							</tr>
+						</table>
+					</div>
+						
+					<div id="tab3" class="tab_content">
+						<table>
+							<tr>
+								<td><%= f.label :closing_date %></td>
+								<td><%= f.text_field :closing_date, :class => "text", :id=>"datepicker_future", :readonly =>true%>
+								<!--<td><%= #f.date_select :closing_date 
+									%></td> -->
+							</tr>
+							<tr>
+								<td><%= f.label :image %></td>
+								<td><%= f.text_field :image, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :draft, 'Is this a draft?' %></td>
+								<td><%= f.check_box :draft, :class=>"text" %></td>
+							</tr>
+						</table>				
+					</div>
+					<% #TODO create validatin client side.
+					%> 
+					<div class ="submit_link">
+						<%= f.submit :onclick => "return validateMentorForm()"%>
+					</div>
+					<% end %>

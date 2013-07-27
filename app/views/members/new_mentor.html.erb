@@ -1,0 +1,24 @@
+<%= javascript_include_tag "members" %>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<%= render :partial => 'shared/member/header' %>
+<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
+<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+
+		<section id="main" class="column">
+			<%= render :partial => 'shared/member/alerts_and_notices'%>
+			<h4 class="alert_info">Fill in the form below to add yourself as a mentor.</h4>
+	
+			<article class="module width_full" style="border:none; background:transparent;">
+		
+				<ul class="tabs">
+		   			<li><a href="#tab1">Personal Details</a></li>
+		    		<li><a href="#tab2">Profession Details</a></li>
+		    		<li><a href="#tab3">Other</a></li>
+				</ul>
+
+				<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
+					<%= render 'mentor_form' %>
+				</div>
+			</article>
+		</section>

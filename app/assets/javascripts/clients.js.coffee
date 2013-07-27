@@ -4,4 +4,4 @@
 #  require_directory ./validation
 #  require_tree ./validation/clients
 #these are causing errors atm due to both loading at the same time on normal application-pages, and picking up the form on teh clients dashboard
-//= require ./validation/clients/client_validation
+//= require ./validation/shared/shared_validation

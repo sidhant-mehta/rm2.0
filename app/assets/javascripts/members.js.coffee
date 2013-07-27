@@ -3,3 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 //= require_directory ./validation
 //= require_directory ./validation/members
+//= require ./validation/shared/shared_validation

@@ -1,8 +1,25 @@
 class MembersController < ApplicationController
 before_filter :authenticate_member!
+before_filter :setVars
 layout 'admin'
 
+def setVars
+    @member = Member.find(current_member.id)
+end
+
+
 #------- LOCAL METHODS -----------
+def clean_select_multiple_params hash = params
+  hash.each do |k, v|
+    case v
+    when Array
+       v.reject!(&:blank?)
+       v.join(',')
+    when Hash then clean_select_multiple_params(v)
+    end
+  end
+end  
+
 def getMemberMentorApplications (member_id)
   
    @mentor_application_ids = MemberMentorApplication.where("member_id = ?", member_id).order("created_at DESC")
@@ -54,13 +71,160 @@ def getMemberJobApplications (member_id)
   
 end
 
+def getMentorId (email) #this will get the Mentor ID for the Member who has signed up to become a mentor.
+  m = Mentor.find_by_email email
+  if m.nil?
+    return -1
+  else
+    return m.id
+  end
+end
 
 #----------------END LOCAL METHODS ------------------------
 
 
+#----- MENTORSHIP -----
+
+def new_mentor
+  @mentor = Mentor.new
+  @mentor.email = current_member.email
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+  respond_to do |format|
+    format.html # new.html.erb
+    format.json { render json: @mentor }
+  end
+  
+end
+
+def create_mentor
+  m = clean_select_multiple_params params[:mentor]
+  m["sector_ids"] = m["sector_ids"].join(',')
+  @mentor = Mentor.new(m)
+   @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+   if @mentor.sector_ids.blank?
+   else   
+      @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+      @mentor_sectors_ids = [] #need to initialize this array first
+       @mentor_sectors_ids_array.each_with_index do |s, i| 
+         @mentor_sectors_ids << Sector.find(s).id
+      end
+    end
+    
+    respond_to do |format|
+          if @mentor.email== current_member.email
+            if @mentor.save
+              format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
+              format.json { render json: @mentor, status: :created, location: @mentor }
+            else
+              @error_str = ""
+              @mentor.errors.each do |field, msg|
+                    @error_str = @error_str + "<p>" + msg + "</p>"
+              end
+              
+              flash.now[:alert] = @error_str.html_safe
+              
+              format.html { render action: "new_mentor" }
+              #format.json { render json: @mentor.errors, status: :unprocessable_entity }
+          end
+        else
+          flash.now[:alert] = ("<p>Please make sure that the email address you have entered is the same as the one you are currently registered with. </p>").html_safe
+              
+          format.html { render action: "new_mentor" }
+        end
+    end
+end
+
+def update_mentor
+      m = clean_select_multiple_params params[:mentor]
+      m["sector_ids"] = m["sector_ids"].join(',')
+
+      @mentor = Mentor.find(m["id"])
+       @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @mentor.sector_ids.blank?
+     else   
+        @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+        @mentor_sectors_ids = [] #need to initialize this array first
+         @mentor_sectors_ids_array.each_with_index do |s, i| 
+           @mentor_sectors_ids << Sector.find(s).id
+     end
+    end
+       
+       
+    respond_to do |format|
+      if params[:mentor][:email] == current_member.email
+          if @mentor.update_attributes(params[:mentor])
+            format.html { redirect_to @mentor, notice: 'Mentor was successfully updated.' }
+            format.json { head :no_content }
+          else
+            @error_str = ""
+            @mentor.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+            end
+            flash[:alert] = @error_str.html_safe
+            
+            format.html { render action: "edit_mentor"}
+          end
+      else
+          flash.now[:alert] = ("<p>Please make sure that the email address you have entered is the same as the one you are currently registered with. </p>").html_safe
+              
+          format.html { render action: "new_mentor" }
+        end
+    end
+end
+
+def edit_mentor
+    
+    mentor_id = getMentorId(current_member.email)
+    if mentor_id == -1 #if there is an error in finding the mentor id then likely it does not exist, so create one. 
+      redirect_to "new_mentor"
+    else
+      @mentor = Mentor.find(mentor_id)
+         
+      @sectors=[]
+      Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
+       if @mentor.sector_ids.blank?
+       else   
+          @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
+          @mentor_sectors_ids = [] #need to initialize this array first
+           @mentor_sectors_ids_array.each_with_index do |s, i| 
+             @mentor_sectors_ids << Sector.find(s).id
+       end
+      end  
+    end
+end
+
+def list_internal_mentors
+  org = OrganisationEmailDomain.getOrganisation current_member.email
+  @mentors = Mentor.where(:organisation => org, :internal => true)  
+  @type_address ="members/mentor"
+  @type = "mentor"
+  @sectors=[]
+      Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
+end
+
+def destroy_mentor
+  mentor_id = getMentorId(current_member.email)
+  @mentor = Mentor.find(mentor_id)
+end
+  
+#----END MENTORSHIP----
+
+
 #-------PROFILE ----------
   def dashboard
-    @member = Member.find(current_member.id)
      @all_mentor_apps= getMemberMentorApplications(current_member.id)
      @all_project_apps= getMemberProjectApplications(current_member.id)
      @all_job_apps= getMemberJobApplications(current_member.id)
@@ -68,20 +232,20 @@ end
   end
   
   def applications 
-   @member = Member.find(current_member.id)
+  
    getMemberMentorApplications(current_member.id)
    getMemberProjectApplications(current_member.id)
    getMemberJobApplications(current_member.id)
   end
   
   def settings
-    @member = Member.find(current_member.id)
+   
 
   end
   
   def profile
     #date saved in american format in db.
-    @member = Member.find(current_member.id)
+   
     @locations = Location.all
     
     @sectors=[]
@@ -105,7 +269,7 @@ end
       @sectors << Sector.find(s)
     end
      
-    @member = Member.find(current_member.id)
+   
     @member.fname = params[:fname]
     @member.lname = params[:lname]
     @member.email = params[:email]
@@ -157,31 +321,5 @@ class Member::RegistrationsController < Devise::RegistrationsController
         resource = build_resource({})
         respond_with resource
   end
-  
+end
 #-----END PROFILE-----
-
-#----- MENTORSHIP -----
-
-def new_mentor
-  
-end
-
-def create_mentor
-  
-end
-
-def update_mentor
-  
-end
-
-def edit_mentor
-  
-end
-
-def destroy_mentor
-  
-end
-  
-#----END MENTORSHIP----
-  
-end

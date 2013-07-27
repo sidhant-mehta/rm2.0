@@ -125,7 +125,7 @@ class MentorsController < ApplicationController
     @mentor.destroy
 
     respond_to do |format|
-      format.html { redirect_to mentors_url }
+      format.html { redirect_to mentors_url, alert: "Mentor was successfully removed." }
       format.json { head :no_content }
     end
   end

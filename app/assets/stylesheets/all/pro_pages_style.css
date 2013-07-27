@@ -1287,7 +1287,7 @@ a#aToolTipCloseBtn{display:block;height:8px;width:8px; background: url(../images
 .tabs-vert-left .tabs-nav li a{ border-radius:3px 0 0 3px;}
 .tabs-vert-right .tabs-nav li a{ border-radius:0 3px 3px 0;}		
 .tabs-vert-left .tabs-nav{ float:left; margin-right:-1px;}
-	.tabs-vert-left .tabs-nav li,.tabs-vert-right .tabs-nav li{ float:none; margin:0 0 3px 0;}
+	.tabs-vert-left .tabs-nav li,.tabs-vert-right .tabs-nav li{ float:none; margin:0 0 3px 0; list-style:none;}
 	.tabs-vert-left .tabs-nav li a{ top:0 !important; right:-4px;}
 	.tabs-vert-left .tabs-nav li a:hover,.tabs-vert-left .tabs-nav li a.current{ right:-1px;}
 .tabs-vert-right .tabs-nav{ float:right; margin-left:-1px;}
