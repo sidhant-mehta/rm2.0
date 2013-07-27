@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
     before_filter :authenticate_client!
     layout 'admin'
-  
+ #---------LOCAL METHODS ------------------
 def clean_select_multiple_params hash = params
   hash.each do |k, v|
     case v
@@ -13,6 +13,17 @@ def clean_select_multiple_params hash = params
   end
 end  
   
+def getMentorApplications(client_org)
+  @mentor_application_data = Mentor.select("member_mentor_applications.mentor_id, mentors.fname, mentors.lname, member_mentor_applications.id, member_mentor_applications.created_at, member_mentor_applications.status").joins("JOIN member_mentor_applications ON mentors.id = member_mentor_applications.mentor_id").where('mentors.organisation = ?', client_org)
+  return @mentor_application_data
+end
+
+def getProjectApplications(client_org)
+  @project_applicatoin_data 
+end
+  
+  
+#---- END LOCAL METHDOS ---------------------  
   
   def list_projects
       if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
@@ -36,7 +47,7 @@ end
         @project = Project.new
         @project.organisation = EmployerProfile.find(current_client.id).name
         #@project_sectors_ids = {}
-        @project.email = current_client.email
+        #@project.email = current_client.email
         @sectors = []
         Sector.all.each_with_index do |s,i|
             @sectors << Sector.find(s)
@@ -261,6 +272,11 @@ end
   end
 
   def dashboard
+    org = OrganisationEmailDomain.getOrganisation(current_client.email)
+    @mentor_application_data = getMentorApplications(org)
+    
+    @limit = 10
+    
   end
 
   def profile # employer profile

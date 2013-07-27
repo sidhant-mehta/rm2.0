@@ -1,14 +1,13 @@
 	<section id="secondary_bar">
 		<div class="user">
 			<% #TODO get user name => based on email to organisation table %>
-			<p>[USER NAME]</p>
+			<p><%= getOrganisation(current_client.email) %></p>
 			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
-	<% #TODO get the correct links for the list below %>
 	<aside id="sidebar" class="column">
 		<hr/>
 		<h3>Mentors</h3>

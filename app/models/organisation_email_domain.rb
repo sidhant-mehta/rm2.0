@@ -1,7 +1,8 @@
-module ApplicationHelper
+class OrganisationEmailDomain < ActiveRecord::Base
+  attr_accessible :domain, :organisation
 
-def getOrganisation (email)
-  dom = getDomain (email)  
+def self.getOrganisation (email)
+  dom = self.getDomain (email)  
   org = OrganisationEmailDomain.where(domain: dom )
   
   if org.blank? 
@@ -12,7 +13,7 @@ def getOrganisation (email)
   return org
 end
 
-def getDomain (email)
+def self.getDomain (email)
   return email.split('@')[1]
 end
 

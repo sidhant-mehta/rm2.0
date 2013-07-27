@@ -21,49 +21,24 @@
 			<table class="tablesorter" cellspacing="0"> 
 			<thead> 
 				<tr> 
-   					<th></th> 
-    				<th>Entry Name</th> 
-    				<th>Category</th> 
+   					<th>Application ID</th>
+    				<th>Mentor Name</th> 
+    				<th>Status</th> 
     				<th>Created On</th> 
     				<th>Actions</th> 
-				</tr> 
+				</tr>
 			</thead> 
 			<tbody> 
+				<% @mentor_application_data.take(@limit).each_with_index do |application,index| %> 
 				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Lorem Ipsum Dolor Sit Amet</td> 
-    				<td>Articles</td> 
-    				<td>5th April 2011</td> 
+					<%  %> 
+   					<td><%= application.id%></td> 
+    				<td><%= link_to "#{application.fname} #{application.lname}", mentors_path + "/" + application.mentor_id.to_s %></td> 
+    				<td><%= application.status%></td> 
+    				<td><%= application.created_at %></td> 
     				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %>
 				</tr> 
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Ipsum Lorem Dolor Sit Amet</td> 
-    				<td>Freebies</td> 
-    				<td>6th April 2011</td> 
-   				 	<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
-				</tr>
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Sit Amet Dolor Ipsum</td> 
-    				<td>Tutorials</td> 
-    				<td>10th April 2011</td> 
-    				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
-				</tr> 
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Dolor Lorem Amet</td> 
-    				<td>Articles</td> 
-    				<td>16th April 2011</td> 
-   				 	<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
-				</tr>
-				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Dolor Lorem Amet</td> 
-    				<td>Articles</td> 
-    				<td>16th April 2011</td> 
-   				 	<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
-				</tr>  
+				<% end %>
 			</tbody> 
 			</table>
 			</div><!-- end of #tab1 -->
@@ -73,21 +48,24 @@
 			<table class="tablesorter" cellspacing="0"> 
 			<thead> 
 				<tr> 
-   					<th></th> 
-    				<th>Comment</th> 
-    				<th>Posted by</th> 
-    				<th>Posted On</th> 
+   					<th>Application ID</th>
+    				<th>Project Name</th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
     				<th>Actions</th> 
-				</tr> 
+				</tr>
 			</thead> 
 			<tbody> 
+				<% @mentor_application_data.take(@limit).each_with_index do |application,index| %> 
 				<tr> 
-   					<td><input type="checkbox"></td> 
-    				<td>Lorem Ipsum Dolor Sit Amet</td> 
-    				<td>Mark Corrigan</td> 
-    				<td>5th April 2011</td> 
-    				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %></td> 
+					<%  %> 
+   					<td><%= application.id%></td> 
+    				<td><%= link_to "#{application.fname} #{application.lname}", mentors_path + "/" + application.mentor_id.to_s %></td> 
+    				<td><%= application.status%></td> 
+    				<td><%= application.created_at %></td> 
+    				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %>
 				</tr> 
+				<% end %>
 				<tr> 
    					<td><input type="checkbox"></td> 
     				<td>Ipsum Lorem Dolor Sit Amet</td> 
