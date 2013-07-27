@@ -41,7 +41,7 @@ RaisonMentors20::Application.routes.draw do
   get "members/destroy_mentor"
   put "members/create_mentor" => "members#update_mentor"
   get "members/list_internal_mentors"
-  match "members/mentors/search" => "members#mentor_search"
+  match "members/mentors/search" => "members#search_mentor"
   
   get "clients/list_projects"
   get "clients/new_project"

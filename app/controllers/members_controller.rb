@@ -219,6 +219,26 @@ def destroy_mentor
   mentor_id = getMentorId(current_member.email)
   @mentor = Mentor.find(mentor_id)
 end
+
+def search_mentor
+   @type = "mentor"
+   @type_address = "members/mentor"
+   org = OrganisationEmailDomain.getOrganisation current_member.email
+     if ( params.has_key?(:mentor_name) )
+           @search_name =params[:mentor_name].split(" ")    
+     else
+            @search_name =""
+     end
+     
+    @search_sector = params[:sector_id]
+    @search_closing_date = params[:closing_date]
+    
+    @sectors = Sector.find(:all, :order=>'name')
+    @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector, @search_closing_date )
+    @mentors = @result_mentors.where(:organisation => org, :internal => true)  
+    
+    render "list_internal_mentors"
+end
   
 #----END MENTORSHIP----
 
