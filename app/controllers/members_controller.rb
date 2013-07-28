@@ -9,6 +9,10 @@ end
 
 
 #------- LOCAL METHODS -----------
+def checkEmail (obj)
+return obj.email == current_member.email  
+end
+
 def clean_select_multiple_params hash = params
   hash.each do |k, v|
     case v
@@ -262,12 +266,14 @@ def edit_project
 end
 
 def update_project
-  #chexk email matches logged in email
     @action_address = "update_project"
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     
     @project = Project.find(p["id"])
+    @project.skip_organisation_check = true
+    @project.user = current_member
+    
     @sectors = []
     Sector.all.each_with_index do |s,i|
         @sectors << Sector.find(s)
@@ -292,8 +298,6 @@ def update_project
 def new_project
   @action_address = "create_project"
   @project = Project.new
-  #@project.organisation = OrganisationEmailDomain.getOrganisation current_member.email
-  #@project_sectors_ids = {}
   @project.email = current_member.email
   @sectors = []
   Sector.all.each_with_index do |s,i|
@@ -307,16 +311,18 @@ def new_project
 end
 
 def create_project
-  #TODO CHECK NEEDS TO BE PUT IN PLACE TO MAKE SURE EMAIL IS THE USER'S EMAIL.
   @action_address = "create_project"
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     @project = Project.new(p)
+    @project.skip_organisation_check = true
+    @project.user = current_member
+    
     @sectors = []
-        Sector.all.each_with_index do |s,i|
-            @sectors << Sector.find(s)
-          end
-          
+    Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
+    
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -332,7 +338,6 @@ def create_project
         format.html { render action: "new_project" }
       end
     end
-
 end
 
 def list_projects
