@@ -12,7 +12,7 @@
 							   </tr>
 							 <tr>
 							    <td><%= f.label :organisation %></td>
-							    <td><%= f.text_field :organisation,:class=>"text", :readonly => true%></td>
+							    <td><%= f.text_field :organisation,:class=>"text", :readonly => false%></td>
 						   </tr>
 							 <tr>
 							    <td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
@@ -37,7 +37,7 @@
 						<table>
 							<tr>
 							    <td><%= f.label :email %></td>
-							    <td><%= f.text_field :email,:class=>"text" %></td>
+							    <td><%= f.text_field :email,:class=>"text" , :readonly => true%></td>
 							   </tr>
 							 <tr>
 							    <td><%= f.label :telephone %></td>

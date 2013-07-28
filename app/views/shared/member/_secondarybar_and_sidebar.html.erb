@@ -30,7 +30,7 @@
 		</ul>
 		<h3>Projects</h3>
 		<ul class="toggle">
-				<li class="icn_new_article"><%= link_to "Add Project", :controller => "members", :action => "add_project"%></li>
+				<li class="icn_new_article"><%= link_to "Add Project", :controller => "members", :action => "new_project"%></li>
 				<li class="icn_categories"><%= link_to "List Projects", :controller => "members", :action => "list_projects"%></li>
 			<% if internalProjects? (current_member.email)%>
 				<li class="icn_categories"><%= link_to "Internal projects", :controller => "members", :action => "list_internal_projects"%></li>

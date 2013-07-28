@@ -289,8 +289,50 @@ def update_project
     end
   end
 
-def add_project
-  @action = "create_project"
+def new_project
+  @action_address = "create_project"
+  @project = Project.new
+  #@project.organisation = OrganisationEmailDomain.getOrganisation current_member.email
+  #@project_sectors_ids = {}
+  @project.email = current_member.email
+  @sectors = []
+  Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+  
+  respond_to do |format|
+    format.html
+    format.json {render json: @project}
+  end
+end
+
+def create_project
+  #TODO CHECK NEEDS TO BE PUT IN PLACE TO MAKE SURE EMAIL IS THE USER'S EMAIL.
+  @action_address = "create_project"
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    @project = Project.new(p)
+    @sectors = []
+        Sector.all.each_with_index do |s,i|
+            @sectors << Sector.find(s)
+          end
+          
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render json: @project, status: :created, location: @project }
+      else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        
+        flash.now[:alert] = @error_str.html_safe
+        
+        format.html { render action: "new_project" }
+      end
+    end
+
 end
 
 def list_projects

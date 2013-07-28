@@ -47,7 +47,7 @@ end
     @action_address = "create_project"
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
         @project = Project.new
-        @project.organisation = EmployerProfile.find(current_client.id).name
+        @project.organisation = OrganisationEmailDomain.getOrganisation current_client.email
         #@project_sectors_ids = {}
         #@project.email = current_client.email
         @sectors = []
