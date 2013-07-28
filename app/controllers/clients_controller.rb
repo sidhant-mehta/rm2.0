@@ -27,7 +27,8 @@ end
   
   def list_projects
       if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
-        @projects = Project.where(:organisation => EmployerProfile.find(current_client.id).name) #TODO DO A CHECK VIA EMAIL THEN ORGANISATION NOT JUST ORG.
+        org = OrganisationEmailDomain.getOrganisation current_client.email
+        @projects = Project.where(:organisation => org)
         @sectors = Sector.find(:all, :order=>'name')
         
         respond_to do |format|
@@ -43,6 +44,7 @@ end
   end
 
   def new_project
+    @action_address = "create_project"
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
         @project = Project.new
         @project.organisation = EmployerProfile.find(current_client.id).name
@@ -65,6 +67,7 @@ end
   end
   
   def create_project
+    @action_address = "create_project"
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     @project = Project.new(p)
@@ -91,6 +94,7 @@ end
   end
 
   def edit_project
+    @action_address = "update_project"
     @project = Project.find(params[:id])
     @sectors=[]
     Sector.all.each_with_index do |s,i|
@@ -108,6 +112,7 @@ end
   end
 
   def update_project
+    @action_address = "update_project"
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     
@@ -152,6 +157,7 @@ end
   end
 
   def new_mentor
+    @action_address = "create_mentor"
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
           @mentor = Mentor.new
           @mentor.organisation = EmployerProfile.find(current_client.id).name
@@ -175,6 +181,7 @@ end
   # POST /create_mentor
   # POST /create_mentor.json
   def create_mentor
+    @action_address = "create_mentor"
     m = clean_select_multiple_params params[:mentor]
     m["sector_ids"] = m["sector_ids"].join(',')
     @mentor = Mentor.new(m)
@@ -211,6 +218,7 @@ end
   
   # GET /mentors/1/edit
   def edit_mentor
+    @action_address = "update_mentor"
     @mentor = Mentor.find(params[:id])
     
     @sectors=[]
@@ -228,6 +236,7 @@ end
   end
 
   def update_mentor
+    @action_address = "update_mentor"
       m = clean_select_multiple_params params[:mentor]
       m["sector_ids"] = m["sector_ids"].join(',')
 
@@ -287,14 +296,17 @@ end
         @employer_profile.save
     end
     
-    @employer_profile = EmployerProfile.find(current_client.id) 
+    org =OrganisationEmailDomain.getOrganisation (current_client.email)
+    @employer_profile = EmployerProfile.find_by_name org
   
   end
 
   def profile_update
-    #TODO NEED TO HAVE SOME SORT OF CHECK FOR THE COMPANY NAME ENTERED AND THE ORGANISATION SO NO ONE CAN ADD ANY OLD COMPANY. TABLE OF COMPANY VS EMAIL ADD?
-       @employer_profile = EmployerProfile.find(current_client.id)
-       
+#TODO NEED TO HAVE A SETTINGS PAGE WHERE THEY CAN EDIT THEIR EMAIL ADDRESS -> THEY ARE THEN LOCKED OUT OF THE ACCOUNT UNTIL VALIDATED VIA EMAIL
+       #@employer_profile = EmployerProfile.find(current_client.id)
+       org =OrganisationEmailDomain.getOrganisation (current_client.email)
+       @employer_profile = EmployerProfile.find_by_name org
+ 
        respond_to do |format|
          if @employer_profile.update_attributes(params[:employer_profile]) 
            format.html { redirect_to clients_profile_path, notice: "Profile was successfully updated."}

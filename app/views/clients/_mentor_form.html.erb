@@ -1,4 +1,4 @@
-	<%= form_for(@mentor,url: {action: "create_mentor"},html: {id:"form_add_mentor", class: "blocks"}) do |f| %>
+	<%= form_for(@mentor,url: {action: @action_address},html: {id:"form_add_mentor", class: "blocks"}) do |f| %>
 	<%= f.hidden_field :id %>
 					<div id="tab1" class="tab_content">
 						<table>

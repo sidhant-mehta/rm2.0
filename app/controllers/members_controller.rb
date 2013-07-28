@@ -243,8 +243,65 @@ end
 #----END MENTORSHIP----
 #--------PROJECTS -----
 
+def edit_project
+  @action_address = "update_project"
+    @project = Project.find(params[:id])
+    @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+    
+     if @project.sector_ids.blank?
+     else   
+        @project_sectors_ids_array = @project.sector_ids.split(",")
+        @project_sectors_ids = [] #need to initialize this array first
+         @project_sectors_ids_array.each_with_index do |s, i| 
+           @project_sectors_ids << Sector.find(s).id
+         end
+      end
+end
+
+def update_project
+  #chexk email matches logged in email
+    @action_address = "update_project"
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    
+    @project = Project.find(p["id"])
+    @sectors = []
+    Sector.all.each_with_index do |s,i|
+        @sectors << Sector.find(s)
+      end
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
+      else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        
+        flash.now[:alert] = @error_str.html_safe
+        
+        format.html { render action: "edit_project" }
+      end
+    end
+  end
+
 def add_project
-  
+  @action = "create_project"
+end
+
+def list_projects
+    org = OrganisationEmailDomain.getOrganisation current_member.email
+    @projects = Project.where(:email => current_member.email) # you want to get all the projects that this memebr is in charge of. their email will be the same for all their projects. 
+    @sectors = Sector.find(:all, :order=>'name')
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @project }
+    end
 end
 
 def list_internal_projects
