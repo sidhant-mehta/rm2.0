@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729000839) do
+ActiveRecord::Schema.define(:version => 20130729002053) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -162,10 +162,10 @@ ActiveRecord::Schema.define(:version => 20130729000839) do
     t.string   "telephone"
     t.string   "image"
     t.boolean  "draft"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.boolean  "internal"
-    t.boolean  "external"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "internal",     :default => true
+    t.boolean  "external",     :default => true
   end
 
   create_table "organisation_email_domains", :force => true do |t|
@@ -186,12 +186,12 @@ ActiveRecord::Schema.define(:version => 20130729000839) do
     t.string   "email"
     t.string   "telephone"
     t.boolean  "draft"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "image"
     t.string   "salary"
-    t.boolean  "internal"
-    t.boolean  "external"
+    t.boolean  "internal",       :default => true
+    t.boolean  "external",       :default => true
   end
 
   create_table "sectors", :force => true do |t|
