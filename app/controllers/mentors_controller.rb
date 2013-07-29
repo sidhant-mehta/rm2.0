@@ -27,7 +27,7 @@ class MentorsController < ApplicationController
   
   def index
     @type = "mentor"
-    @mentors = Mentor.all
+    @mentors = Mentor.where(:external => true)
     @sectors = Sector.find(:all, :order=>'name')
     
     respond_to do |format|

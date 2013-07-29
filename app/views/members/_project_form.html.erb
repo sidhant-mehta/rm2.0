@@ -52,6 +52,10 @@
 							    <td><%= f.text_field :closing_date, :class => "text", :id=>"datepicker_future", :readonly =>true%>
 							   </tr>
 							   <tr>
+							    <td><%= f.label :external %></td>
+							    <td><%= f.check_box :external,:class=>"text" %></td>
+							   </tr>
+							   <tr>
 							    <td><%= f.label :internal %></td>
 							    <td><%= f.check_box :internal,:class=>"text" %></td>
 							   </tr>

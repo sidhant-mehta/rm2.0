@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   before_update validate :email_check, :unless => :skip_email_check
   before_update validate :organisation_check, :unless => :skip_organisation_check
   
-  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal
+  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal, :external
   attr_accessor :skip_email_check, :skip_organisation_check, :user
   
   def email_check 

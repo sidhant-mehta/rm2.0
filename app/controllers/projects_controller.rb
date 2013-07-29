@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
   
   def index
     @type = "project" 
-    @projects = Project.all
+    @projects = Project.where(:external => true)
     @sectors = Sector.find(:all, :order=>'name')
     
     respond_to do |format|
