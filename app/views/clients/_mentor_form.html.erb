@@ -62,6 +62,15 @@
 								<td><%= f.text_field :image, :class => "text" %></td>
 							</tr>
 							<tr>
+							    <td><%= f.label :external %></td>
+							    <td><%= f.check_box :external,:class=>"text" %></td>
+							   </tr>
+							   <tr>
+							    <td><%= f.label :internal %></td>
+							    <td><%= f.check_box :internal,:class=>"text" %></td>
+							   </tr>
+							   <tr>
+							<tr>
 								<td><%= f.label :draft, 'Is this a draft?' %></td>
 								<td><%= f.check_box :draft, :class=>"text" %></td>
 							</tr>

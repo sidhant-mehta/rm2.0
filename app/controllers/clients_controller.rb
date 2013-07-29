@@ -71,6 +71,9 @@ end
     p = clean_select_multiple_params params[:project]
     p["sector_ids"] = p["sector_ids"].join(',')
     @project = Project.new(p)
+    @project.skip_email_check = true
+    @project.user = current_client
+    
     @sectors = []
         Sector.all.each_with_index do |s,i|
             @sectors << Sector.find(s)
@@ -117,6 +120,9 @@ end
     p["sector_ids"] = p["sector_ids"].join(',')
     
     @project = Project.find(p["id"])
+    @project.skip_email_check = true
+    @project.user = current_client
+    
     @sectors = []
     Sector.all.each_with_index do |s,i|
         @sectors << Sector.find(s)
@@ -185,6 +191,9 @@ end
     m = clean_select_multiple_params params[:mentor]
     m["sector_ids"] = m["sector_ids"].join(',')
     @mentor = Mentor.new(m)
+    @mentor.skip_email_check = true
+    @mentor.user = current_client
+    
      @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
@@ -241,6 +250,9 @@ end
       m["sector_ids"] = m["sector_ids"].join(',')
 
       @mentor = Mentor.find(m["id"])
+      @mentor.skip_email_check = true
+      @mentor.user = current_client
+      
        @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
@@ -303,9 +315,9 @@ end
 
   def profile_update
 #TODO NEED TO HAVE A SETTINGS PAGE WHERE THEY CAN EDIT THEIR EMAIL ADDRESS -> THEY ARE THEN LOCKED OUT OF THE ACCOUNT UNTIL VALIDATED VIA EMAIL
-       #@employer_profile = EmployerProfile.find(current_client.id)
        org =OrganisationEmailDomain.getOrganisation (current_client.email)
        @employer_profile = EmployerProfile.find_by_name org
+       @employer_profile.user = current_client
  
        respond_to do |format|
          if @employer_profile.update_attributes(params[:employer_profile]) 
