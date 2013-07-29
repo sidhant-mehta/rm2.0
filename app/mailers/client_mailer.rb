@@ -1,3 +1,3 @@
 class ClientMailer < ActionMailer::Base
-  default from: "sidhant.mehta01@gmail.com"
+  default from: "website@raisonmentors.com"
 end
