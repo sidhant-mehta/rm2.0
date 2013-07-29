@@ -335,4 +335,38 @@ end
        end
   end 
   
+  def settings
+    @client = current_client
+  end
+  
+  def update_client
+=begin    oldEmail = current_client.email
+    newEmail = params[:email]
+    
+    if !oldEmail==newEmail
+        client = Client.find(current_client.id)
+        client.email = params[:email]
+        if client.confirmed?
+          client.confirmed_at = nil
+          if client.save(:validate => false)
+            client.send_confirmation_instructions
+            respond_to do |format|
+              format.html {redirect_to root_path, alert: "<p>Your email address has been changed. You will receive a verification email, you must click on the link in the email to verify your email address.</p><p>Without this you cannot sign in.</p>".html_safe}
+            end
+          else
+            @error_str = ""
+            client.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+            end
+            flash[:alert] = @error_str.html_safe
+            format.html { render action: "settings"}
+          end
+            
+            
+        else
+          client.save
+        end
+        render action: "settings"
+=end    end
+  end
 end
