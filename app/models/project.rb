@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   before_update validate :email_check, :unless => :skip_email_check
   before_update validate :organisation_check, :unless => :skip_organisation_check
   
-  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary
+  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal
   attr_accessor :skip_email_check, :skip_organisation_check, :user
   
   def email_check 
@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
 
   def organisation_check 
     org= OrganisationEmailDomain.getOrganisation (user.email) 
-      unless :organisation ==  org
+      unless organisation ==  org
         errors.add(:organisation, "The organisation field must be the same as the one you have registered with.")
       end
   end

@@ -107,6 +107,9 @@ def create_mentor
   m = clean_select_multiple_params params[:mentor]
   m["sector_ids"] = m["sector_ids"].join(',')
   @mentor = Mentor.new(m)
+  @mentor.skip_organisation_check = true
+  @mentor.user = current_member
+  
    @sectors=[]
   Sector.all.each_with_index do |s,i|
     @sectors << Sector.find(s)
@@ -145,10 +148,14 @@ def create_mentor
 end
 
 def update_mentor
+      @action_address = "update_mentor"
       m = clean_select_multiple_params params[:mentor]
       m["sector_ids"] = m["sector_ids"].join(',')
 
       @mentor = Mentor.find(m["id"])
+      @mentor.skip_organisation_check = false
+      @mentor.user = current_member
+    
        @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
