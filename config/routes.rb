@@ -50,6 +50,7 @@ RaisonMentors20::Application.routes.draw do
   put "members/edit_project" => "members#update_project"
   get "members/new_project"
   post "members/create_project" => "members#create_project"
+  #post "members/edit"
   
   get "clients/settings"
   put "clients/settings" => "clients#update_client"

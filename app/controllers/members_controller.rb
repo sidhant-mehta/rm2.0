@@ -432,13 +432,36 @@ end
   end
   
   def update
+    @member = Member.find(current_member.id)
     @locations = Location.all
     @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
-     
+    @member_sectors_ids_array = @member.sector_ids.split(",")
+    @member_sectors_ids = [] #need to initialize this array first
+    @member_sectors_ids_array.each_with_index do |s, i| 
+       @member_sectors_ids << Sector.find(s).id
+     end 
+      
+    respond_to do |format|
+      debugger
+      if @member.update_attributes(params[:member])
+        format.html { redirect_to @member, notice: 'Your profile has been updated successfully.' }
+        format.json { head :no_content }
+      else
+        @error_str = ""
+        @mentor.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        
+        format.html { render action: "member_profile_path"}
+      end
+    end
    
+   
+=begin   
     @member.fname = params[:fname]
     @member.lname = params[:lname]
     @member.email = params[:email]
@@ -448,15 +471,16 @@ end
     @member.location = params[:location]
     @member.academic_institution = params[:academic_institution]
     @member.course = params[:course]
-    @member.sector_ids = params[:sector_ids].join(',')
+    if !params[:sector_ids].blank?
+      @member.sector_ids = params[:sector_ids].join(',')
+      @member_sectors_ids_array = @member.sector_ids.split(",")
+      @member_sectors_ids = [] #need to initialize this array first
+      @member_sectors_ids_array.each_with_index do |s, i| 
+         @member_sectors_ids << Sector.find(s).id
+       end 
+    end
     @member.employment_status = params[:employment_status]
     @member.cv = params[:cv]
-    
-    @member_sectors_ids_array = @member.sector_ids.split(",")
-    @member_sectors_ids = [] #need to initialize this array first
-    @member_sectors_ids_array.each_with_index do |s, i| 
-       @member_sectors_ids << Sector.find(s).id
-     end    
     
 
     if @member.save 
@@ -478,7 +502,7 @@ end
       end
     
     end
-    
+=end    
   end
   
   def destroy
