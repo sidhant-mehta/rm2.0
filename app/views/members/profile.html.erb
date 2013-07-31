@@ -19,39 +19,38 @@
 		
 		 
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
-		
+		<%= form_for(@member,url: {action: "update"},html: { :multipart => true, id:"form_profile", class: "blocks"}) do |f| %>
 			<div id="tab1" class="tab_content">
-			<%= form_tag('/members/update', :id=>"form", :class=>"blocks") %>
-			<table> 
+			<table>
 				<tr>
-					<td><%=label_tag('fname', 'First Name')%></td>
-					<td><%=text_field_tag 'fname', @member.fname, :class => "text" %></td>
+					<td><%= f.label('fname', 'First Name')%></td>
+					<td><%= f.text_field 'fname', :class => "text" %></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('lname', 'Last Name')%></td>
-					<td><%=text_field_tag'lname', @member.lname, :class => "text"%></td>
+					<td><%= f.label('lname', 'Last Name')%></td>
+					<td><%= f.text_field 'lname', :class => "text"%></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('email', 'Email Address')%></td>
-					<td><%=text_field_tag'email', @member.email, :class => "text", :readonly => true%></td>
+					<td><%= f.label('email', 'Email Address')%></td>
+					<td><%= f.text_field 'email', :class => "text", :readonly => true%></td>
 					<td><%= link_to "Click here", edit_member_registration_path%> to change your email address</td>>
 				</tr>
 				<tr> 
-					<td><%=label_tag('dob', 'Date of birth')%> <br/></td>
-					<td><%=text_field_tag'dob', @member.dob.strftime("%d-%m-%Y"), :class => "text", :id=>"datepicker", :readonly =>true%></td>
+					<td><%= f.label('dob', 'Date of birth')%> <br/></td>
+					<td><%= f.text_field 'dob', :class => "text", :id=>"datepicker", :readonly =>true%></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('gender', 'Gender')%></td>
-					<td><%=select_tag 'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), :class => "text", :style=> "width:242px" %></td>
+					<td><%= f.label 'gender', 'Gender' %></td>
+					<td><%= f.select  'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), {}, :class => "text", :style=> "width:242px" %></td>
 				</tr>
 				<tr> 
-					<td><%=label_tag('telephone', 'Telephone')%></td>
-					<td><%=telephone_field_tag'telephone', @member.telephone, :class => "text"%></td>
+					<td><%= f.label 'telephone', 'Telephone'%></td>
+					<td><%= f.telephone_field 'telephone', :class => "text"%></td>
 				</tr>
 				
 				<tr> 
-					<td><%=label_tag('location', 'You live in')%></td>
-					<td><%=select_tag 'location', options_from_collection_for_select(@locations, "id", "name", @member.location), :class => "text", :style=> "width:242px" %></td>
+					<td><%= f.label('location', 'You live in')%></td>
+					<td><%= f.select  'location', options_from_collection_for_select(@locations, "id", "name", @member.location), {}, :class => "text", :style=> "width:242px" %></td>
 				</tr>
 			</table>
 							
@@ -60,12 +59,12 @@
 			<div id="tab2" class="tab_content">
 				<table>
 					<tr> 
-						<td><%=label_tag('academic_institution', 'Your Academic Institution')%></td>
-						<td><%=text_field_tag'academic_institution', @member.academic_institution,:class => "text"%></td>
+						<td><%= f.label('academic_institution', 'Your Academic Institution')%></td>
+						<td><%= f.text_field 'academic_institution', :class => "text"%></td>
 					</tr>
 					<tr> 
-						<td><%=label_tag('course', 'Your Course')%></td>
-						<td><%=text_field_tag'course', @member.course,:class => "text"%></td>
+						<td><%= f.label('course', 'Your Course')%></td>
+						<td><%= f.text_field 'course', :class => "text"%></td>
 					</tr>
 				</table>
 			</div>
@@ -73,17 +72,17 @@
 			<div id="tab3" class="tab_content">
 				<table>
 					<tr> 
-						<td><%=label_tag('sector_ids', 'Interested in (select max 3)')%></td>
-						<td><%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {:multiple => true, :style => "background: white; width:242px;"} %></td>
+						<td><%= f.label('sector_ids', 'Interested in (select max 3)')%></td>
+						<td><%= f. select  "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {},{:multiple => true, :style => "background: white; width:242px;"} %></td>
 					</tr>
 					<tr> 
-						<td><%=label_tag('employment_status', 'Your employment status')%></td>
-						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['Other']], @member_employment_status),:class => "text", :style=>"width:242px"%></td>
+						<td><%= f.label('employment_status', 'Your employment status')%></td>
+						<td><%= f. select  "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['Other']], @member_employment_status),{}, {:class => "text", :style=>"width:242px"}%></td>
 					</tr>			
 					<tr> 
 						<%'#TODO file tag. upload cv'%>
-						<td><%=label_tag('cv', 'Upload Your CV')%></td>
-						<td><%=file_field(:cv, :attached, :accept => 'text/pdf/doc/docx')%></td>
+						<td><%= f.label('cv', 'Upload Your CV')%></td>
+						<td><%= f.file_field :cv, :accept => 'text/pdf/doc/docx' %></td>
 					</tr>
 				</table>
 			</div>
@@ -93,18 +92,20 @@
 		<div id="tab4" class="tab_content">
 			<table>
 				<tr>
-					<td><%=label_tag('hear_about_us', 'Where did you hear about us?')%></td>
-					<td><%=select_tag "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
+					<td><%= f.label('hear_about_us', 'Where did you hear about us?')%></td>
+					<td><%= f.select "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {},{:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><%= text_field_tag "hear_about_us_other",'' , {:style => 'visibility:hidden;'} %></td>
+					<!--<td><%= #f. text_field  "hear_about_us_other", {:style => 'visibility:hidden;'} 
+						%></td> -->
 				</tr>
 			</table>
 		</div>
 		
 		<div class ="submit_link">
-			<%=submit_tag('Save Changes', :onclick => "return validateForm();")%>
+			<%= f.submit('Save Changes', :onclick => "return validateForm();")%>
+			<% end%>
 		</div>
 	</article>
 	</section>

@@ -411,7 +411,7 @@ end
    
 
   end
-  
+
   def profile
     #date saved in american format in db.
    
@@ -432,31 +432,41 @@ end
   end
   
   def update
+    m = clean_select_multiple_params params[:member]
+    m["sector_ids"] = m["sector_ids"].join(',')
     @member = Member.find(current_member.id)
     @locations = Location.all
+    
     @sectors=[]
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
-    @member_sectors_ids_array = @member.sector_ids.split(",")
-    @member_sectors_ids = [] #need to initialize this array first
-    @member_sectors_ids_array.each_with_index do |s, i| 
-       @member_sectors_ids << Sector.find(s).id
-     end 
+    
+   @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+     if @member .sector_ids.blank?
+     else   
+        @member_sectors_ids_array = @member.sector_ids.split(",")
+        @member_sectors_ids = [] #need to initialize this array first
+         @member_sectors_ids_array.each_with_index do |s, i| 
+           @member_sectors_ids << Sector.find(s).id
+     end
+    end
       
     respond_to do |format|
-      debugger
       if @member.update_attributes(params[:member])
-        format.html { redirect_to @member, notice: 'Your profile has been updated successfully.' }
+        format.html { redirect_to member_path, notice: 'Your profile has been updated successfully.' }
         format.json { head :no_content }
       else
         @error_str = ""
-        @mentor.errors.each do |field, msg|
+        @member.errors.each do |field, msg|
           @error_str = @error_str + "<p>" + msg + "</p>"
         end
         flash[:alert] = @error_str.html_safe
         
-        format.html { render action: "member_profile_path"}
+        format.html { render action: "profile"}
       end
     end
    
