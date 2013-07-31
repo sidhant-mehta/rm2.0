@@ -1,3 +1,14 @@
+ function validateMemberForm()
+{
+	if( checkNumberOfSelectedSectors("member_sector_ids") ==true) // && checkHearAboutUs() == true)
+		return true;
+	else
+	{
+		alert("Please select a minimum of 1 and a maximum of 3 sectors.")		
+		return false;
+	}
+}
+
  function validateMentorForm()
 {
 	if( checkNumberOfSelectedSectors("mentor_sector_ids") ==true) // && checkHearAboutUs() == true)

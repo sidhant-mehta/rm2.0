@@ -153,7 +153,7 @@ def update_mentor
       m["sector_ids"] = m["sector_ids"].join(',')
 
       @mentor = Mentor.find(m["id"])
-      @mentor.skip_organisation_check = false
+      @mentor.skip_organisation_check = true
       @mentor.user = current_member
     
        @sectors=[]
@@ -199,7 +199,7 @@ def edit_mentor
       redirect_to "new_mentor"
     else
       @mentor = Mentor.find(mentor_id)
-         
+      
       @sectors=[]
       Sector.all.each_with_index do |s,i|
         @sectors << Sector.find(s)

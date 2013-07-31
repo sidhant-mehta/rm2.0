@@ -21,7 +21,7 @@ function validateForm()
 	 	 	count++;
 	 	 }
 	 } 	
-	return (count < 4);
+	return (count < 4 && count > 0);
  }
 
   /*where did you hear about us*/

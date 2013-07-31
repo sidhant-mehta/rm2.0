@@ -41,7 +41,7 @@
 				</tr>
 				<tr> 
 					<td><%= f.label 'gender', 'Gender' %></td>
-					<td><%= f.select  'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), {}, :class => "text", :style=> "width:242px" %></td>
+					<td><%= f.select  'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
 				</tr>
 				<tr> 
 					<td><%= f.label 'telephone', 'Telephone'%></td>
@@ -50,7 +50,7 @@
 				
 				<tr> 
 					<td><%= f.label('location', 'You live in')%></td>
-					<td><%= f.select  'location', options_from_collection_for_select(@locations, "id", "name", @member.location), {}, :class => "text", :style=> "width:242px" %></td>
+					<td><%= f.select  'location', options_from_collection_for_select(@locations, "id", "name", @member.location), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
 				</tr>
 			</table>
 							
@@ -104,7 +104,7 @@
 		</div>
 		
 		<div class ="submit_link">
-			<%= f.submit('Save Changes', :onclick => "return validateForm();")%>
+			<%= f.submit('Save Changes', :onclick => "return validateMemberForm();")%>
 			<% end%>
 		</div>
 	</article>

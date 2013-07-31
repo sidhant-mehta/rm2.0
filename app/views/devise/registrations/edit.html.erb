@@ -1,14 +1,14 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <table class="change_password">
+  <table class="change_password" style="margin: 0 auto;">
   	<tr>
 	  <td><%= f.label :email %></td>
 	  <td><%= f.email_field :email, :autofocus => true %></td>
 	</tr>
 	
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div style="margin: 1em;">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <tr>

@@ -27,7 +27,7 @@ RaisonMentors20::Application.routes.draw do
   get "pages/register"
 
   get "pages/home"
-
+  
   get "members/sign_out"
   match "members/profile", :to => "members#profile", :as => :member
   get "members/settings"
