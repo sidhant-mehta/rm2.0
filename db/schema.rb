@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20130729182646) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "organisation"
-    t.string   "unconfirmed_email"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -116,6 +115,14 @@ ActiveRecord::Schema.define(:version => 20130729182646) do
   create_table "member_project_applications", :force => true do |t|
     t.integer  "member_id"
     t.string   "project_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "member_projects_application", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "project_id"
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
