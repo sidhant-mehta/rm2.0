@@ -27,14 +27,14 @@ RaisonMentors20::Application.routes.draw do
   get "pages/register"
 
   get "pages/home"
-
+  
   get "members/sign_out"
   match "members/profile", :to => "members#profile", :as => :member
   get "members/settings"
   get "members/applications"
   get "members/" => "members#dashboard"
   get "members/dashboard"
-  post "members/update" => "members#update"
+  put "members/update" => "members#update"
   get "members/new_mentor" 
   post "members/create_mentor" =>"members#create_mentor"
   get "members/edit_mentor"
@@ -50,7 +50,6 @@ RaisonMentors20::Application.routes.draw do
   put "members/edit_project" => "members#update_project"
   get "members/new_project"
   post "members/create_project" => "members#create_project"
-  #post "members/edit"
   
   get "clients/settings"
   put "clients/settings" => "clients#update_client"

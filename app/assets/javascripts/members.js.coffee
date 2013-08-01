@@ -4,3 +4,4 @@
 //= require_directory ./validation
 //= require_directory ./validation/members
 //= require ./validation/shared/shared_validation
+//= require ./admin/UIfunctions
