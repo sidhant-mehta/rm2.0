@@ -2,7 +2,7 @@
 
 <span class="mentor_title"> <%= @mentor.fname %> <%= @mentor.lname %> </span>
 <table class="table">
-	<th><%= image_tag("/assets/mentors/#{@mentor.image}" , :class => "individual_mentor_image" )%></th>
+	<th><%= image_tag(@mentor.image.to_s , :class => "individual_mentor_image" ) %></th>
 	<td>
 		<table class="mentor_inner"> 
 			<tr><th>Organisation</th><td><%= @mentor.organisation%></td></tr>

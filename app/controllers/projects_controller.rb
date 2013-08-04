@@ -2,28 +2,6 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   
-   def apply
-    params[:member_id].each do |key,value|
-        @member_id = value.to_i
-    end 
-    
-    params[:project_id].each do |key,value|
-        @project_id = value.to_i
-    end
-  
-    if can_member_make_application_checks (@member_id)
-       @application = MemberProjectApplication.new(:member_id => @member_id, :project_id => @project_id, :status => "Applied")
-       
-       if @application.save    
-          redirect_to projects_path,  :notice => "Your application has been made successfully."
-          #TODO send email to HR => project name and id, member name and id
-       else
-          redirect_to projects_path, :notice => @application.errors
-       end
-   else
-         redirect_to new_member_session_path, :notice => "You must be logged in to make appilcations."
-    end
-  end
   
   def index
     @type = "project" 

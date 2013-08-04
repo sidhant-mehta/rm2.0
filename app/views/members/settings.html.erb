@@ -13,8 +13,9 @@
 %>
 			<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
 				<div id="tab1" class="tab_content">
-					<%= form_tag('/members/update', :id=>"form", :class=>"blocks") %>
+					
 					<table> 
+					<%= form_tag('/members/update', :id=>"form", :class=>"blocks") %>
 					<tr>
 						<td><p><%=label_tag('settings_receive_email_updates', 'Please tick this box if you do NOT want to receive monthly email updates with new mentors and projects in your selected career sector')%></p></td>
 						<td><%=check_box_tag 'settings_receive_email_updates', @member.settings_receive_email_updates  %></td>
@@ -34,13 +35,16 @@
 					<div class ="submit_link">
 						<%=submit_tag('Save Changes')%>
 					</div>
-					</table>
+				</form>
+				</table>
+				
 				</div>
 				<div id="tab2" class="tab_content">
 					<p> <%=button_to "Change your password", edit_member_registration_path, :method => :get  %> </p>
 					<p><%= button_to "Cancel my account", member_registration_path, :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
-					<p> <%=button_to "Premium Account", '#' %> </p>
+					<p> <%=# button_to "Premium Account", '#' 
+					%> </p>
 				</div>
 			</div>
 			

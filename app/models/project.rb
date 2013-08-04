@@ -9,8 +9,8 @@ class Project < ActiveRecord::Base
   before_create validate :organisation_check, :unless => :skip_organisation_check
   before_update validate :email_check, :unless => :skip_email_check
   before_update validate :organisation_check, :unless => :skip_organisation_check
-  
-  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal, :external
+  mount_uploader :image, ImageUploader
+  attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal, :external, :remove_image, :image
   attr_accessor :skip_email_check, :skip_organisation_check, :user
   
   def email_check 
@@ -25,8 +25,6 @@ class Project < ActiveRecord::Base
         errors.add(:organisation, "The organisation field must be the same as the one you have registered with.")
       end
   end
-
-#TODO add validation - general - salary
 
 
     def self.search (name, sector, closing_date, salary)
@@ -65,7 +63,6 @@ class Project < ActiveRecord::Base
      
      validates_presence_of :organisation, :message=> "You must inlude an organisation."
      validates_format_of :organisation, :with => /^[a-z ]+$/i, :message => "Organisation can contain letters only."
-     #TODO validate value of organisation -> have a method to cross ref the email with org name. 
      
      validates_presence_of :salary, :message => "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."
      validates_length_of :salary, :within => 1..9, :message=> "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."

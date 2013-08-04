@@ -24,7 +24,7 @@
 					<table class="table">
 						<tr>
 							<th class="mentor_title"><%=link_to "#{mentor.fname} #{mentor.lname}", mentor%></th>
-							<th><%= image_tag("/assets/mentors/#{mentor.image}" , :class => "mentor_image" )%></th> 	
+							<th><%= image_tag(mentor.image.to_s , :class => "mentor_image" )  if !mentor.image.blank?%></th>
 							<td>
 								<table class="mentor_inner">
 									<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>

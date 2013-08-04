@@ -146,7 +146,7 @@ end
 
   def list_mentors
     if (EmployerProfile.exists?(current_client.id) && !EmployerProfile.find(current_client.id).name.blank?)
-        @mentors = Mentor.where(:organisation => EmployerProfile.find(current_client.id).name) #TODO Find only ones from certain organisation. 
+        @mentors = Mentor.where(:organisation => EmployerProfile.find(current_client.id).name)
         @sectors = Sector.find(:all, :order=>'name')
         
         respond_to do |format|
@@ -314,7 +314,6 @@ end
   end
 
   def profile_update
-#TODO NEED TO HAVE A SETTINGS PAGE WHERE THEY CAN EDIT THEIR EMAIL ADDRESS -> THEY ARE THEN LOCKED OUT OF THE ACCOUNT UNTIL VALIDATED VIA EMAIL
        org =OrganisationEmailDomain.getOrganisation (current_client.email)
        @employer_profile = EmployerProfile.find_by_name org
        @employer_profile.user = current_client

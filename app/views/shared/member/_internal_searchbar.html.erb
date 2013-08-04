@@ -9,7 +9,7 @@
 								<%=text_field_tag(@type+'_name', nil, :placeholder => "#{@type}'s name...", :id=>@type+'_name', :style=> "padding: 10px 0")%>
 								<label>
 							    	<span class="text-form fleft">in:</span>
-							    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true, :style=>"display: inline-block" )%>
+							    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true, :style=>"display: inline-block; height:40px;" )%>
 								</label> 
 							</div>
 							<div id="tab2" class="tab_content">

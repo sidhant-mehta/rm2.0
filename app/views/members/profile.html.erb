@@ -33,7 +33,7 @@
 				<tr> 
 					<td><%= f.label('email', 'Email Address')%></td>
 					<td><%= f.text_field 'email', :class => "text", :readonly => true%></td>
-					<td><%= link_to "Click here", edit_member_registration_path%> to change your email address</td>>
+					<td><%= link_to "Click here", edit_member_registration_path%> to change your email address</td>
 				</tr>
 				<tr> 
 					<td><%= f.label('dob', 'Date of birth')%> <br/></td>
@@ -83,12 +83,16 @@
 						<%'#TODO file tag. upload cv'%>
 						<td><%= f.label('cv', 'Upload Your CV')%></td>
 						<td><%= f.file_field :cv, :accept => 'text/pdf/doc/docx' %></td>
+						<td>Currently: <%= @member.cv.file.filename if !@member.cv.blank? %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>Remove CV?: <%=f.check_box :remove_cv %></td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<% #TODO add this option to members model!
-		%>
 		<div id="tab4" class="tab_content">
 			<table>
 				<tr>

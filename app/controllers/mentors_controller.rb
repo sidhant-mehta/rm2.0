@@ -2,29 +2,7 @@ class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
  
-  def apply
-    params[:member_id].each do |key,value|
-        @member_id = value.to_i
-    end 
-    
-    params[:mentor_id].each do |key,value|
-        @mentor_id = value.to_i
-    end
-  
-    if can_member_make_application_checks (@member_id)
-       @application = MemberMentorApplication.new(:member_id => @member_id, :mentor_id => @mentor_id, :status => "Applied")
-       
-       if @application.save    
-          redirect_to mentors_path,  :notice => "Your application has been made successfully."
-          #TODO send email to HR => mentor name and id, member name and id
-       else
-          redirect_to mentors_path, :notice => @application.errors
-       end
-   else
-         redirect_to new_member_session_path, :notice => "You must be logged in to make appilcations."
-    end
-  end
-  
+   
   def index
     @type = "mentor"
     @mentors = Mentor.where(:external => true)

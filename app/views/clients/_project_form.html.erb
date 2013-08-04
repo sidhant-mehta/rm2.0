@@ -52,6 +52,16 @@
 							    <td><%= f.text_field :closing_date, :class => "text", :id=>"datepicker_future", :readonly =>true%>
 							   </tr>
 							   <tr>
+									<td><%= f.label :image %></td>
+									<td><%= f.file_field :image %></td>
+									<td>Currenty: <%= image_tag @project.image.to_s, :style=>"width: 106px" if !@project.image.blank?%></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>Remove Image?: <%= f.check_box :remove_image %></td>
+								</tr>
+							   <tr>
 							    <td><%= f.label :external %></td>
 							    <td><%= f.check_box :external,:class=>"text" %></td>
 							   </tr>
@@ -66,7 +76,7 @@
 							   </tr>
 						</table>				
 					</div>
-					<% #TODO create validatin client. add javascript to check is sectors are selected.  
+					<% #TODO create validatin client.
 					%> 
 					<div class ="submit_link">
 						<%= f.submit :onclick => "return validateProjectForm();" %>

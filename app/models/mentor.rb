@@ -3,8 +3,8 @@ class Mentor < ActiveRecord::Base
   before_create validate :organisation_check, :unless => :skip_organisation_check
   before_update validate :email_check, :unless => :skip_email_check
   before_update validate :organisation_check, :unless => :skip_organisation_check
-  
-  attr_accessible :closing_date, :description, :draft, :email, :fname, :image, :lname, :location, :organisation, :role_title, :sector_ids, :telephone, :internal, :external
+  mount_uploader :image, ImageUploader
+  attr_accessible :closing_date, :description, :draft, :email, :fname, :image, :lname, :location, :organisation, :role_title, :sector_ids, :telephone, :internal, :external, :remove_image
   attr_accessor :skip_email_check, :skip_organisation_check, :user
 
   def email_check 
