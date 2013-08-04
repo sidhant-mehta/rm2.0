@@ -1,4 +1,4 @@
-<%= form_for(@employer_profile,url: {action: "profile_update"},html: {id:"form_update_employer_profile", class: "blocks"}) do |f| %>
+<%= form_for(@employer_profile,url: {action: "profile_update"},html: { id:"form_update_employer_profile", class: "blocks"}) do |f| %>
 					
 					
 					<div id="tab1" class="tab_content">
@@ -16,10 +16,14 @@
 					<div id="tab2" class="tab_content">
 						<table>
 							<tr>
-								<td><%=#label_tag('image', 'Company Image/Logo (Optional)')
-								%></td>
-								<td><%=#text_field_tag 'image', @employer_profile.image, :class => "text" 
-								%></td>
+								<td><%= f.label :image%></td>
+								<td><%= f.file_field :image %> </td>
+								<td>Currenty: <%= image_tag @employer_profile.image.to_s, :style=>"width: 106px" if !@employer_profile.image.blank?%></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Remove Image?: <%= f.check_box :remove_image %></td>
 							</tr>
 						</table>
 					</div>

@@ -2,7 +2,7 @@
 
 <span class="project_title"> <%= @project.name %></span>
 <table class="table">
-	<th><%= image_tag(@project.image.to_s , :class => "individual_project_image" ) if !@project.image.blank? %></th>
+	<th><%= image_tag(@project.image.to_s , :class => "individual_project_image" ) %></th>
 	<td>
 		<table class="project_inner"> 
 			<tr><th>Organisation</th><td><%= @project.organisation%></td></tr>

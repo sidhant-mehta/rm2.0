@@ -1,7 +1,7 @@
 class EmployerProfile < ActiveRecord::Base
   before_update validate :emailVsOrganisationCheck,  :unless => :skipEmailVsOrganisationCheck
-  
-  attr_accessible :bio, :name
+  mount_uploader :image, ImageUploader
+  attr_accessible :bio, :name, :image, :remove_image
   attr_accessor :skipEmailVsOrganisationCheck, :user
   
   def emailVsOrganisationCheck
