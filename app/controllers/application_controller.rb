@@ -19,13 +19,15 @@ class ApplicationController < ActionController::Base
     params[:mentor_id].each do |key,value|
         @mentor_id = value.to_i
     end
-    debugger 
     @application = MemberMentorApplication.new
     @application = MemberMentorApplication.new(:member_id => @member_id, :mentor_id => @mentor_id, :status => "Applied")
     @application.user = Member.find(@member_id)       
+       
        if @application.save    
+          MemberMailer.mentor_application_confirmation(@application ).deliver #send email to member
+          HrMailer.mentor_application_confirmation(@application).deliver #send email to HR
+                    
           redirect_to mentors_path,  :notice => "Your application has been made successfully."
-          #TODO send email to HR => mentor name and id, member name and id
        else
          @error_str = ""
          @application.errors.each do |field, msg|
@@ -35,8 +37,30 @@ class ApplicationController < ActionController::Base
        end
   end
 
-def project
-  
-end
+  def project
+    params[:member_id].each do |key,value|
+        @member_id = value.to_i
+    end 
+    params[:project_id].each do |key,value|
+        @project_id = value.to_i
+    end
+    @application = MemberProjectApplication.new
+    @application = MemberProjectApplication.new(:member_id => @member_id, :project_id => @project_id, :status => "Applied")
+    @application.user = Member.find(@member_id)       
+       
+       if @application.save    
+          MemberMailer.project_application_confirmation(@application ).deliver #send email to member
+          HrMailer.project_application_confirmation(@application).deliver #send email to HR
+                    
+          redirect_to projects_path,  :notice => "Your application has been made successfully."
+       else
+         @error_str = ""
+         @application.errors.each do |field, msg|
+           @error_str = @error_str + "<p class='alert'>" + msg + "</p>"
+         end
+          redirect_to projects_path, :alert => @error_str.html_safe 
+       end
+    
+  end
 
 end

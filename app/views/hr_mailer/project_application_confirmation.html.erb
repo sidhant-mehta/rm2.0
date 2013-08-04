@@ -1,0 +1,24 @@
+<p><%= "#{@member.fname} #{@member.lname}"%> has made an application for the project <%= "#{@project.name}"%></p> <br/>
+
+<p><b>Member details:</b></p>
+<p>Name: <%= "#{@member.fname} #{@member.lname}"%></p>
+<p>ID: <%= @member.id %></p>
+<p>Member Email: <%=  @member.email%></p>
+<p> CV link: <%= @member.cv #TODO Need to make an actual link for the CV 
+%> </p> 
+
+<br />
+
+<p><b>Project Details:</b></p>
+<p>Name: <%= "#{@project.name}"%></p>
+<p>Organisation: <%=@project.organisation%></p>
+<p>Project ID: <%= @project.id%></p>
+<p>Project Leader: <%= @project.project_leader%></p>
+<p>Project Email: <%= @project.email%></p>
+<p>Project Type: <%= if @project.internal 
+						"Internal "
+					end 
+					  if @project.external 
+					 	"External " 
+					 end %></p>
+<p>Project Link: <%= link_to 'Project Profile', root_url + project_path(@project) %></p>

@@ -12,7 +12,7 @@
 			<tr><th>Biography</th><td><%=@project.description%></td></tr>
 			<tr class="individual_closing_date_row"><th>Closing Date</th><td><%=@project.closing_date%></td> 
 				<td><p>
-						<%= form_tag('/projects/apply', :id=>"project_apply_form") %>
+						<%= form_tag('/application/apply_project', :id=>"project_apply_form") %>
 						<%= hidden_field 'member_id', @member, {:value => @member} %>
 						<%= hidden_field 'project_id', @project.id, {:value => @project.id}%>
 						<%= submit_tag('Apply')%>
