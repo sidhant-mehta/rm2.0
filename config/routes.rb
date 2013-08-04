@@ -5,6 +5,10 @@ RaisonMentors20::Application.routes.draw do
 
   devise_for :members
 
+post "application/apply_mentor" => "application#mentor"
+resources :application, :collection => { :apply_mentor => :post }
+  
+
   get "about_us/index"
   get "about_us/what_we_do"
 
@@ -31,7 +35,7 @@ RaisonMentors20::Application.routes.draw do
   get "members/sign_out"
   match "members/profile", :to => "members#profile", :as => :member
   get "members/settings"
-  get "members/applications"
+ # get "members/applications" 
   get "members/" => "members#dashboard"
   get "members/dashboard"
   put "members/update" => "members#update"
