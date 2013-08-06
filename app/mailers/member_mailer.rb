@@ -1,6 +1,4 @@
 class MemberMailer < ActionMailer::Base
-default :from => "sidhant.mehta01@gmail.com"
-
 
     def mentor_application_confirmation (app)
         @member = app.user

@@ -26,7 +26,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   get "pages/terms_and_conditions"
 
   get "pages/contact_us"
-
+  post "pages/send_email" => "pages#send_email"
   get "pages/confirmation"
 
   get "pages/register"

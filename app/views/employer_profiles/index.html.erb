@@ -1,25 +1,26 @@
-<h1>Listing employer_profiles</h1>
+<h3> </h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Bio</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+ <div class="grid_24">
+<h3>Employer Profiles</h3>
+	<span class="initial_text"> Use our search facility below to find an employer's profile that meets your requirements.
+	If you cannot find a company that meets your requirement then please contact us and we will do our best to find a suitable alternative as soon as possible.
+</span>
 
-<% @employer_profiles.each do |employer_profile| %>
-  <tr>
-    <td><%= employer_profile.name %></td>
-    <td><%= employer_profile.bio %></td>
-    <td><%= link_to 'Show', employer_profile %></td>
-    <td><%= link_to 'Edit', edit_employer_profile_path(employer_profile) %></td>
-    <td><%= link_to 'Destroy', employer_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%= render :partial => "shared/searchbar" #need to change the search bar depending on spec.Need to add css too 'employer_title, employer_image, employer_inner
+%>  
+</div>
+<% @employer_profiles.each do |profile| %>
+<table class="table">
+	<tr>
+		<th class="employer_title"><%=link_to profile.name, profile %></th>
+		<th><%= image_tag(profile.image.to_s , :class => "employer_image" ) %></th> 	
+		<td>
+			<table class="employer_inner">
+				<tr><th>Field 1</th><th>Role</th><th>Field 2</th><th>Field 3</th></tr> <%#need to add fields depending on spec
+				%>
+				<tr><td><%= %></td><td><%=  %></td><td><%= %></td><td><%=%></td></tr>
+			</table>
+		</td>
+	</tr>
 </table>
-
-<br />
-
-<%= link_to 'New Employer profile', new_employer_profile_path %>
+<%end%>

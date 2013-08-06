@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <span class="mentor_title"> <%= @mentor.fname %> <%= @mentor.lname %> </span>
 <table class="table">
 	<th><%= image_tag(@mentor.image.to_s , :class => "individual_mentor_image" ) %></th>
@@ -22,7 +20,3 @@
 	</td>
 </table>
 
-<div style="display: none;">
-<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
-<%= link_to 'Back', mentors_path %>
-</div>

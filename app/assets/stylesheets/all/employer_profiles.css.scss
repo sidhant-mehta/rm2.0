@@ -1,3 +1,39 @@
 // Place all the styles related to the Employer_Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#employer_name {
+  float: left;
+  width: 382px;
+}
+.employer_title, .individual_employer_title {
+font-family: arial;
+font-size: 140%;
+letter-spacing: 2px;
+line-height: 1.3em !important;
+width: 17em;
+font-weight: normal !important;
+
+}
+
+.individual_employer_title {
+line-height: 3em !important;
+}
+
+.employer_inner tr td 
+{
+  color: rgb(80, 80, 80);
+}
+
+.table th .individual_employer_image{
+  margin-right: 5em;  
+  width: 210px;
+}
+.employer_image {
+width: 106px;
+//margin: 0 auto;
+}
+
+.individual_closing_date_row{
+  
+}
+      

@@ -24,10 +24,18 @@ class ApplicationController < ActionController::Base
     @application.user = Member.find(@member_id)       
        
        if @application.save    
+          begin
           MemberMailer.mentor_application_confirmation(@application ).deliver #send email to member
           HrMailer.mentor_application_confirmation(@application).deliver #send email to HR
-                    
-          redirect_to mentors_path,  :notice => "Your application has been made successfully."
+
+          rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+            flash[:alert] = "Unfortunately there was a problem in sending your email. Please check your email address and try again."
+          end
+          if flash[:alert].blank? 
+            redirect_to mentors_path,  :notice => "Your application has been made successfully."
+          else
+            redirect_to mentors_path
+          end
        else
          @error_str = ""
          @application.errors.each do |field, msg|
@@ -49,10 +57,19 @@ class ApplicationController < ActionController::Base
     @application.user = Member.find(@member_id)       
        
        if @application.save    
-          MemberMailer.project_application_confirmation(@application ).deliver #send email to member
-          HrMailer.project_application_confirmation(@application).deliver #send email to HR
-                    
-          redirect_to projects_path,  :notice => "Your application has been made successfully."
+          begin
+              MemberMailer.project_application_confirmation(@application ).deliver #send email to member
+              HrMailer.project_application_confirmation(@application).deliver #send email to HR
+          rescue Net::SMTPAuthenticationError, Net::SMTPServerBusy, Net::SMTPSyntaxError, Net::SMTPFatalError, Net::SMTPUnknownError => e
+            flash[:alert] = "Unfortunately there was a problem in sending your email. Please check your email address and try again."
+          end
+          
+          if flash[:alert].blank? 
+            redirect_to projects_path,  :notice => "Your application has been made successfully."
+          else
+            redirect_to projects_path
+          end          
+
        else
          @error_str = ""
          @application.errors.each do |field, msg|

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <span class="project_title"> <%= @project.name %></span>
 <table class="table">
 	<th><%= image_tag(@project.image.to_s , :class => "individual_project_image" ) %></th>
@@ -22,7 +20,3 @@
 	</td>
 </table>
 
-<div style="display: none;">
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-</div>
