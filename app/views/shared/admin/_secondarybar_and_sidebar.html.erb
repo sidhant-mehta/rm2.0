@@ -1,0 +1,95 @@
+	<section id="secondary_bar">
+		<div class="user">
+			<p><%= current_admin.email %></p>
+			<%= link_to "Logout", destroy_admin_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <%= link_to "Dashboard", admin_dashboard_path %></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	<aside id="sidebar" class="column">
+		<hr/>
+		<h3>Business Streams </h3>
+		<ul class="toggle">
+			<h3>Mentors</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Mentor", admin_new_mentor_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Mentor", admin_list_mentors_path %></li>
+				<li class="icn_categories"><%= link_to "List Mentors", admin_list_mentors_path  %></li>
+			</ul>
+			<h3>Projects</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Project", admin_new_project_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Project", admin_list_projects_path %></li>
+				<li class="icn_categories"><%= link_to "List Project", admin_list_projects_path %></li>
+			</ul>
+			<h3>Employer Profiles</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Employer Profile", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Employer Profile", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Employer Profile", admin_list_employer_profiles_path %></li>
+			</ul>
+		</ul>		
+		<h3>Users</h3>
+		<ul class="toggle">
+			<h3>Members</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Member", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Member", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Members", admin_list_employer_profiles_path %></li>
+			</ul>
+			<h3>Clients</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Client", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Client", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Clients", admin_list_employer_profiles_path %></li>
+			</ul>
+		
+			<h3>Team Members</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Team Member", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Team Member", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Team Members", admin_list_employer_profiles_path %></li>
+			</ul>
+			<h3>Admins</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Admin", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Admin", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Admins", admin_list_employer_profiles_path %></li>
+			</ul>
+		</ul>
+		<h3>Marketing and Maintenance</h3>
+		<ul class="toggle">
+			<h3>Adverts</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Advert", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Adverts", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Adverts", admin_list_employer_profiles_path %></li>
+			</ul>
+			<h3>Sectors</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Sector", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Sector", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Sectors", admin_list_employer_profiles_path %></li>
+			</ul>
+			<h3>Locations</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Location", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Location", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Locations", admin_list_employer_profiles_path %></li>
+			</ul>
+	</ul>
+		<!--<h3>Jobs</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="add_job">New Job</a></li>
+			<li class="icn_edit_article"><a href="list_jobs">Edit Job</a></li>
+			<li class="icn_categories"><a href="list_jobs">List Jobs</a></li>
+		</ul> -->
+		<h3>Other</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><%= link_to "Settings", admin_settings_path %></li>
+			<li class= "icn_jump_back"><%= link_to "Logout", destroy_admin_session_path, :method => :delete %></li>
+		</ul>
+		
+		<%= render :partial => 'shared/admin_footer' %>
+	</aside><!-- end of sidebar -->

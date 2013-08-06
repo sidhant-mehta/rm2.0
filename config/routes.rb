@@ -83,25 +83,39 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   post "clients/profile_update" => "clients#profile_update"
   put "clients/profile_update" => "clients#profile_update"
 
-  get "admin/login"
-
+  get "admin/login" => "admin#dashboard"
   get "admin/dashboard"
+  get "admin/settings"
+  put "admin/settings" => "admin#update_admin"
+  get "admin/profile"
+  post "admin/profile_update" => "admin#profile_update"
+  put "admin/profile_update" => "admin#profile_update"
+#projects  
+  get "admin/list_projects"
+  get "admin/new_project"
+  post "admin/create_project" => "admin#create_project"
+  get "admin/edit_project"
+  match "admin/edit_project/:id/:name" => "admin#edit_project"  
+  put "admin/edit_project" => "admin#update_project"
+ #mentors 
+  get "admin/list_mentors"
+  get "admin/new_mentor"
+  post "admin/create_mentor" => "admin#create_mentor"
+  get "admin/edit_mentor"
+  match "admin/edit_mentor/:id/:fname" => "admin#edit_mentor"
+  put "admin/edit_mentor" => "admin#update_mentor"
+ #employer profile 
+  get "admin/list_employer_profiles"
+  get "admin/new_employer_profile"
+  post "admin/create_employer_profile" => "admin#create_employer_profile"
+  get "admin/edit_employer_profile"
+  match "admin/employer_profile/:id/:fname" => "admin#employer_profile"
+  put "admin/employer_profile" => "admin#employer_profile" 
 
   get "admin/adverts"
-
   get "admin/team"
-
   get "admin/members"
 
-  get "admin/mentors"
-
-  get "admin/projects"
-
-  get "admin/clients"
-
-  get "admin/jobs"
-
-  get "admin/employer_profiles"
 
   resources :employer_profiles
 
