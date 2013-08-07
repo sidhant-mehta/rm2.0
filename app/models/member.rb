@@ -1,4 +1,9 @@
 class Member < ActiveRecord::Base
+  has_many :member_mentor_applications, :dependent => :destroy
+  has_many :mentors, :through => :member_mentor_applications
+  has_many :member_project_applications, :dependent => :destroy
+  has_many :projects, :through => :member_project_applications
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

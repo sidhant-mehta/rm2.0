@@ -5,6 +5,9 @@ class String
 end
 
 class Project < ActiveRecord::Base
+  has_many :member_project_applications, :dependent => :destroy
+  has_many :members, :through => :member_project_applications
+
   before_create validate :email_check, :unless => :skip_email_check
   before_create validate :organisation_check, :unless => :skip_organisation_check
   before_update validate :email_check, :unless => :skip_email_check
