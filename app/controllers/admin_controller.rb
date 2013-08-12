@@ -157,18 +157,85 @@ end
   end
   
   def new_project
+    @action_address = "create_project"
+        @project = Project.new
+        
+        respond_to do |format|
+          format.html
+          format.json {render json: @project}
+        end
   end
 
   def create_project
+    @action_address = "create_project"
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    @project = Project.new(p)
+    @project.skip_email_check = true
+    @project.skip_organisation_check = true
+    
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render json: @project, status: :created, location: @project }
+      else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        
+        flash.now[:alert] = @error_str.html_safe
+        
+        format.html { render action: "new_project" }
+      end
+    end
   end
 
   def edit_project
+    @action_address = "update_project"
+    @project = Project.find(params[:id])
+    
+     if @project.sector_ids.blank?
+     else   
+        @project_sectors_ids_array = @project.sector_ids.split(",")
+        @project_sectors_ids = [] #need to initialize this array first
+         @project_sectors_ids_array.each_with_index do |s, i| 
+           @project_sectors_ids << Sector.find(s).id
+         end
+     end
   end
  
   def list_projects
+        @projects = Project.all
+        
+        respond_to do |format|
+          format.html # index.html.erb
+          format.json { render json: @project }
+        end
   end
 
   def update_project
+    @action_address = "update_project"
+    p = clean_select_multiple_params params[:project]
+    p["sector_ids"] = p["sector_ids"].join(',')
+    
+    @project = Project.find(p["id"])
+    @project.skip_email_check = true
+    @project.skip_organisation_check=true
+        
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
+      else
+        @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash.now[:alert] = @error_str.html_safe
+        format.html { render action: "edit_project" }
+      end
+    end
   end
 
   def new_client
