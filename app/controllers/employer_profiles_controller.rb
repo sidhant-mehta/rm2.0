@@ -58,7 +58,7 @@ end
 
     respond_to do |format|
       if @employer_profile.save
-        format.html { redirect_to @employer_profile, notice: 'Employer profile was successfully created.' }
+        format.html { redirect_to @employer_profile, notice: 'Organisation profile was successfully created.' }
         format.json { render json: @employer_profile, status: :created, location: @employer_profile }
       else
         format.html { render action: "new" }
@@ -74,7 +74,7 @@ end
 
     respond_to do |format|
       if @employer_profile.update_attributes(params[:employer_profile])
-        format.html { redirect_to @employer_profile, notice: 'Employer profile was successfully updated.' }
+        format.html { redirect_to @employer_profile, notice: 'Organisation profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

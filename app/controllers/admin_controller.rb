@@ -295,7 +295,7 @@ end
     @action_address= "create_employer_profile"
     respond_to do |format|
       if @employer_profile.save
-        format.html { redirect_to @employer_profile, notice: "Employer Profile was successfully created."}
+        format.html { redirect_to @employer_profile, notice: "Organisation Profile was successfully created."}
         format.json {render json: @employer_profile, status: :created, location: @employer_profile}
       else
         @error_str = ""
