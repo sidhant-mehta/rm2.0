@@ -1,16 +1,4 @@
-	<%= javascript_include_tag "members" %>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
-	
-	<%= render :partial => 'shared/member/header' %>
-	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
-	
-	<section id="main" class="column">
-	<%= render :partial => 'shared/member/alerts_and_notices'%>
-	<article class="module width_full" style="border:none; background:transparent;">
-		
-		<ul class="tabs">
+<ul class="tabs">
    			<li><a href="#tab1">Personal Details</a></li>
     		<li><a href="#tab2">Academic Details</a></li>
     		<li><a href="#tab3">Career Details</a></li>
@@ -19,7 +7,7 @@
 		
 		 
 		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
-		<%= form_for(@member,url: {action: "update"},html: { :multipart => true, id:"form_profile", class: "blocks"}) do |f| %>
+		<%= form_for(@member,url: {action: @action_address},html: { :multipart => true, id:"form_profile", class: "blocks"}) do |f| %>
 			<div id="tab1" class="tab_content">
 			<table>
 				<tr>
@@ -111,5 +99,3 @@
 			<%= f.submit('Save Changes', :onclick => "return validateMemberForm();")%>
 			<% end%>
 		</div>
-	</article>
-	</section>

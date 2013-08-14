@@ -1,0 +1,33 @@
+<%= form_for(@employer_profile,url: {action: @action_address},html: { id:"form_update_employer_profile", class: "blocks"}) do |f| %>
+					
+					
+					<div id="tab1" class="tab_content">
+						<table>
+							<tr>
+								<td><%=f.label :name, 'Company Name'%></td>
+								<td><%=f.text_field :name, :class => "text" %></td>
+							</tr>
+							<tr>
+								<td><%=f.label :bio, 'About the Company'%></td>
+								<td><%= f.text_area :bio, :class => "textarea" %></td>
+							</tr>
+						</table>
+					</div>
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+								<td><%= f.label :image%></td>
+								<td><%= f.file_field :image %> </td>
+								<td>Currenty: <%= image_tag @employer_profile.image.to_s, :style=>"width: 106px" if !@employer_profile.image.blank?%></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Remove Image?: <%= f.check_box :remove_image %></td>
+							</tr>
+						</table>
+					</div>
+					<div class ="submit_link">
+						<%= f.submit %>
+					</div>
+<% end %>

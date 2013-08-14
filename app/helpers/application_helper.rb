@@ -16,4 +16,11 @@ def getDomain (email)
   return email.split('@')[1]
 end
 
+
+  def locationHTML(obj)
+ 
+     return Location.find(obj.location).name
+  end
+
+
 end

@@ -305,6 +305,7 @@ end
     if (!EmployerProfile.exists?(current_client.id))
         @employer_profile = EmployerProfile.new
         @employer_profile.id = current_client.id
+        @employer_profile.user = current_client
         @employer_profile.save
     end
     

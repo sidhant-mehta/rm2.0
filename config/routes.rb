@@ -109,12 +109,26 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   get "admin/new_employer_profile"
   post "admin/create_employer_profile" => "admin#create_employer_profile"
   get "admin/edit_employer_profile"
-  match "admin/employer_profile/:id/:fname" => "admin#employer_profile"
-  put "admin/employer_profile" => "admin#employer_profile" 
-
+  match "admin/edit_employer_profile/:id" => "admin#edit_employer_profile"
+  put "admin/update_employer_profile/:id" => "admin#update_employer_profile" 
+#members
+  get "admin/new_member"
+  post "admin/create_member" => "admin#create_member"
+  get "admin/edit_member/"
+  match "admin/edit_member/:id" => "admin#edit_member"
+  put "admin/update_member/:id" => "admin#update_member" 
+  get "admin/list_members"
+#clients
+  post "admin/create_client" => "admin#create_client"
+  get "admin/edit_client/"
+  match "admin/edit_client/:id" => "admin#edit_client"
+  put "admin/update_client/:id" => "admin#update_client" 
+  get "admin/list_clients"
+  # match 'admin/remove_client/:id', :to => 'admin#destroy_client', :as => :destroy_client, :via => :delete
+  delete 'admin/destroy_client/:id' => 'admin#destroy_client'  
   get "admin/adverts"
   get "admin/team"
-  get "admin/members"
+
 
 
   resources :employer_profiles

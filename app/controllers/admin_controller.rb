@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
   before_filter :authenticate_admin!
   before_filter :setVars
+  around_filter :catch_not_found
   layout 'admin'
 
 #---------------LOCAL METHODS -------------------
@@ -203,6 +204,7 @@ end
            @project_sectors_ids << Sector.find(s).id
          end
      end
+     
   end
  
   def list_projects
@@ -238,12 +240,7 @@ end
     end
   end
 
-  def new_client
-  end
-
-  def create_client
-  end
-  
+ 
   def edit_client
   end
 
@@ -251,7 +248,26 @@ end
   end
   
   def list_clients
+    @clients = Client.all
+    
   end  
+  
+  def destroy_client
+    @client = Client.find(params[:id])
+    if @client.destroy
+         respond_to do |format|
+          format.html { redirect_to admin_list_clients_path, :notice => "Client has been deleted successfully." }      
+        end
+    else
+       @error_str = ""
+        @project.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash.now[:alert] = @error_str.html_safe
+        format.html { render action: "edit_project" }
+    end    
+    
+  end
 
   def new_jobs
   end
@@ -269,14 +285,115 @@ end
   end
 
   def new_employer_profile
+    @employer_profile = EmployerProfile.new
+    @action_address = "create_employer_profile"
   end
   def create_employer_profile
+    ep = params[:employer_profile]
+    @employer_profile = EmployerProfile.new(ep)
+    @employer_profile.skipEmailVsOrganisationCheck= true
+    @action_address= "create_employer_profile"
+    respond_to do |format|
+      if @employer_profile.save
+        format.html { redirect_to @employer_profile, notice: "Employer Profile was successfully created."}
+        format.json {render json: @employer_profile, status: :created, location: @employer_profile}
+      else
+        @error_str = ""
+        @employer_profile.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash.now[:alert] = @error_str.html_safe
+        format.html {render action: "new_employer_profile"}
+      end
+    end
   end
+
   def edit_employer_profile
+      @employer_profile = EmployerProfile.find(params[:id])
+      @action_address= "update_employer_profile"
   end
   def update_employer_profile
+      @action_address= "update_employer_profile"
+      @employer_profile = EmployerProfile.find(params[:id])
+      @employer_profile.skipEmailVsOrganisationCheck = true
+     
+     respond_to do |format|
+      if @employer_profile.update_attributes(params[:employer_profile])
+        format.html {redirect_to @employer_profile, notice: "Employer Profile was updated successfully."}
+        format.json {head :no_content}
+      else
+        @error_str = ""
+            @employer_profile.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+            end
+            flash[:alert] = @error_str.html_safe
+            
+            format.html { render action: "edit_employer_profile"}
+      end
+    end
   end
   def list_employer_profiles
+    @employer_profiles = EmployerProfile.all
   end
+  
+  def edit_member
+    @member = Member.find(params[:id])
+    @action_address = "update_member"
+    
+    @locations = Location.all
+     if @member.sector_ids.blank?
+     else   
+         @member_sectors_ids_array = @member.sector_ids.split(",")
+         @member_sectors_ids = [] #need to initialize this array first
+         @member_sectors_ids_array.each_with_index do |s, i| 
+           @member_sectors_ids << Sector.find(s).id
+     end
+    end
+  end
+
+  def update_member
+    @action_address = "update_member"
+    m = clean_select_multiple_params params[:member]
+    m["sector_ids"] = m["sector_ids"].join(',')
+    @member = Member.find(params[:id])
+    @locations = Location.all
+    
+     if @member .sector_ids.blank?
+     else   
+        @member_sectors_ids_array = @member.sector_ids.split(",")
+        @member_sectors_ids = [] #need to initialize this array first
+         @member_sectors_ids_array.each_with_index do |s, i| 
+           @member_sectors_ids << Sector.find(s).id
+     end
+    end
+      
+    respond_to do |format|
+      if @member.update_attributes(params[:member])
+        format.html { redirect_to admin_edit_member_path + '/' + @member.id.to_s, notice: 'Your profile has been updated successfully.' }
+        #format.json { head :no_content }
+      else
+        @error_str = ""
+        @member.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        format.html { render action: "edit_member/#{@member.id}"}
+      end
+    end
+  end
+  
+  def list_members
+    @members = Member.all
+  end  
+
+
+#-------PRIVATE-----
+private
+
+def catch_not_found
+  yield
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url, :flash => { :alert => "Record not found." }
+end
 
 end
