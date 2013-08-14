@@ -3,7 +3,13 @@
 	<th><%= image_tag(@mentor.image.to_s , :class => "individual_mentor_image" ) %></th>
 	<td>
 		<table class="mentor_inner"> 
-			<tr><th>Organisation</th><td><%= @mentor.organisation%></td></tr>
+			<tr><th>Organisation</th><td>
+				<% if organisationProfileExists?(@mentor.organisation) != -1 %> 
+					<%= link_to @mentor.organisation, organisationProfileExists?(@mentor.organisation) %>
+				<% else %>
+				<%= @mentor.organisation %>
+				<% end %>	
+			</td></tr>
 			<tr><th>Role</th><td><%= @mentor.role_title %></td></tr>
 			<tr><th>Location</th><td><%= @mentor.location%></td></tr>
 			<tr><th>Sectors</th><td><%=sectorsHTML(@mentor)%></td></tr>

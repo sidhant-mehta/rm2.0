@@ -22,5 +22,12 @@ end
      return Location.find(obj.location).name
   end
 
+  def organisationProfileExists?(org)
+    if EmployerProfile.exists?(:name => org)
+      return employer_profile_path(EmployerProfile.find_by_name(org))
+    else
+      return -1
+    end
+  end
 
 end

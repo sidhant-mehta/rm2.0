@@ -7,7 +7,7 @@ class MentorsController < ApplicationController
     @type = "mentor"
     @mentors = Mentor.where(:external => true)
     @sectors = Sector.find(:all, :order=>'name')
-    
+    @location = Location.find(:all, :order => 'name')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @mentors }
@@ -24,10 +24,12 @@ class MentorsController < ApplicationController
      
     @search_sector = params[:sector_id]
     @search_closing_date = params[:closing_date]
+    @search_location = params[:location]
     #@search_pay_value = params[:pay_value]
     
     @sectors = Sector.find(:all, :order=>'name')
-    @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector, @search_closing_date )
+    @location = Location.find(:all, :order => 'name')
+    @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector, @search_location, @search_closing_date )
     
   end
 

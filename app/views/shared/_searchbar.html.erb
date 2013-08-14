@@ -11,7 +11,7 @@
 		    <label>
 		    	<span class="text-form fleft">in:</span>
 		    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
-			</label>   
+			</label>
  	</div>
   
    <div class="tab-content" style="display: block;"> 
@@ -21,6 +21,7 @@
 						<label >Closing After:</label>
 						<input class="closing_date" id="closing_date" name="closing_date" readonly="readonly" type="text" class="hasDatepicker">		
 					</div>
+					<label>Location: </label><%=select_tag('location', options_from_collection_for_select(@location, "name", "name"), :include_blank=>true)%>
 					<% if (@type == "project")%>
 					<div class="grid_12" style="width: 50%;">
 						<label for="amount">Min Salary (£):</label>
