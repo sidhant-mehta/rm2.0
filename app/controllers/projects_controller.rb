@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
     @type = "project" 
     @projects = Project.where(:external => true)
     @sectors = Sector.find(:all, :order=>'name')
-    
+    @location = Location.find(:all, :order => 'name')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   end
 
   def search
+    @location = Location.find(:all, :order => 'name')
     @type = "project"
      if ( params.has_key?(:project_name) )
            @search_name =params[:project_name]    
