@@ -319,7 +319,7 @@ end
      
      respond_to do |format|
       if @employer_profile.update_attributes(params[:employer_profile])
-        format.html {redirect_to @employer_profile, notice: "Employer Profile was updated successfully."}
+        format.html {redirect_to @employer_profile, notice: "Organisation Profile was updated successfully."}
         format.json {head :no_content}
       else
         @error_str = ""
