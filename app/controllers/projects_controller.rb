@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
      else
             @search_name =""
      end
-     
+    @search_location = params[:location]
     @search_sector = params[:sector_id]
     @search_closing_date = params[:closing_date]
     @search_pay_value = params[:pay_value]
     
     @sectors = Sector.find(:all, :order=>'name')
-    @result_projects = Project.search(@search_name[0], @search_sector, @search_closing_date, @search_pay_value )
+    @result_projects = Project.search(@search_name[0], @search_sector, @search_location, @search_closing_date, @search_pay_value )
     
   end
 

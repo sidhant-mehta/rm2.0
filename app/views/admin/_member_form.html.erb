@@ -85,7 +85,7 @@
 			<table>
 				<tr>
 					<td><%= f.label('hear_about_us', 'Where did you hear about us?')%></td>
-					<td><%= f.select "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {},{:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
+					<td><%= f.select "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]], @member.hear_about_us), {},{:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
 				</tr>
 				<tr>
 					<td></td>

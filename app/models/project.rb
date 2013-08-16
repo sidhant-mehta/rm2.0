@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   end
 
 
-    def self.search (name, sector, closing_date, salary)
+    def self.search (name, sector, location, closing_date, salary)
       t = Project.arel_table
 
       if (closing_date.nil?) 
@@ -40,10 +40,10 @@ class Project < ActiveRecord::Base
       d, m, y = closing_date.split '-' #need to check if date is valid otherwise tries to perform date operation on invalid input - error.
       if (Date.valid_date? y.to_i, m.to_i, d.to_i)
          
-          result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%")))).
+          result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%"))))).
                 where("closing_date > ?", Date.strptime(closing_date,"%d-%m-%Y"))
       else
-          result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%"))))
+          result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%")))))
       end
       
       if (!salary.nil? and salary.is_number? ==true) #if it is a number then you need to add another condition to have salary at least that much. If it is not a number (so "Expenses") then you can include all results hence no need to add a condition. If someone enteres another non-number except for "Expenses" same idea applies (it is not a number so show all)
