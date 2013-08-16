@@ -20,7 +20,8 @@
 		<ul class="toggle">
 			<% if isMentor?(current_member.email) %>
 				<li class="icn_edit_article"><%= link_to "Edit mentor profile", :controller => "members", :action => "edit_mentor"%></li>
-				<li class="icn_trash"><%= link_to "Remove yourself", :controller => "members", :action => "destroy_mentor", data: { confirm: 'This is an irreversible permanent action. Are you sure you wish to continue?' }%></li>
+				<!--<li class="icn_trash"><%=# link_to "Remove yourself", :controller => "members", :action => "destroy_mentor", data: { confirm: 'This is an irreversible permanent action. Are you sure you wish to continue?' }
+				%></li> -->
 			<% else%> 
 				<li class="icn_add_user"><%= link_to "Become a mentor", :controller => "members", :action => "new_mentor"%></li>
 			<% end%>
@@ -32,9 +33,12 @@
 		<ul class="toggle">
 				<li class="icn_new_article"><%= link_to "Add Project", :controller => "members", :action => "new_project"%></li>
 				<li class="icn_categories"><%= link_to "List Projects", :controller => "members", :action => "list_projects"%></li>
-			<% if internalProjects? (current_member.email)%>
-				<li class="icn_categories"><%= link_to "Internal projects", :controller => "members", :action => "list_internal_projects"%></li>
-			<%end%>
+			<% #if internalProjects? (current_member.email) 
+			%>
+				<!--<li class="icn_categories"><%= link_to "Internal projects", :controller => "members", :action => "list_internal_projects"
+					%></li> -->
+			<%#end
+			%>
 		</ul>
 		<h3>Other</h3>
 		<ul class="toggle">

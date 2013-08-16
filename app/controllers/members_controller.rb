@@ -306,6 +306,8 @@ def new_project
   @action_address = "create_project"
   @project = Project.new
   @project.email = current_member.email
+  @member = (Member.find_by_email current_member.email)
+  @project.project_leader =  @member.fname + " " + @member.lname
   @sectors = []
   Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
