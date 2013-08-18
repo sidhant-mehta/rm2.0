@@ -3,8 +3,8 @@
 
  <div class="grid_24">
 <h3>Mentors - External</h3>
-	<span class="initial_text"> Use our search facility below to find a project that meets your requirements.
-	If you cannot find a mentor that meets your requirement then please contact us and we will do our best to find a suitable mentor as soon as possible.
+<span class="initial_text">Mentors provide a reflective space and guidance on careers to the mentee; helping them to achieve their aspirations. <br /> 
+		Use the search facility to find a mentor at an external organisation.
 </span>
 
 <%= render :partial => "shared/searchbar"%>
@@ -29,11 +29,8 @@ if (!@result_mentors.empty?)
 	<table class="table" style="">
 		<tbody>
 			<div class="grid_24">
-				<h3> Sorry! </h3> <span class="initial_text">There are no mentors matching your search criteria. </span>
+				<h3> Oops... </h3> <span class="initial_text">Sorry there are currently no mentors matching your criteria. We are constantly adding new mentors so please check back soon or alternatively broaden your criteria to find a mentor today. </span>
 			</div>
 		</tbody>
 	</table>
 <% end%>
-<div style="display: none;">
-<%= link_to 'New Mentor', new_mentor_path %>
-</div>
