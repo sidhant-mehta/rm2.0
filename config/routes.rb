@@ -129,8 +129,9 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   get "admin/adverts"
   get "admin/team"
 
-
-
+  
+  get "employers/search" => "employer_profiles#search"
+  post "employers/search" => "employer_profiles#search"
   resources :employer_profiles
 
   resources :teams

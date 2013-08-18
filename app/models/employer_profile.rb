@@ -11,6 +11,13 @@ class EmployerProfile < ActiveRecord::Base
     end 
   end
   
+  def self.search (name)
+     t = Project.arel_table
+    
+      result = EmployerProfile.where("name like ?", "%#{name}%")
+      return result
+  end
+  
   validates_format_of :bio, :with => /^(?=.*[A-Z0-9])[\w.,!"'\/$ ]+$/i, :message => "The company bio/description can only take alpha numeric characters"
   validates_length_of :bio, :maximum => 500, :message => "The company bio/description can only have 500 characters"
   

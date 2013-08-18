@@ -9,12 +9,26 @@ def setVars
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
+        @location = Location.find(:all, :order => 'name')
+
 end
 #------------------------------------------------
 
+  def search
+    if ( params.has_key?(:employer_name) )
+           @search_name =params[:employer_name]    
+     else
+          @search_name =""
+   end
+   
+   @employer_profiles = EmployerProfile.search(@search_name)
+   
+   render "index"
+   
+  end
+
   def index
     @employer_profiles = EmployerProfile.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @employer_profiles }

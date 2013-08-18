@@ -2,18 +2,24 @@
 <div class="tabs-vert-left">
     <ul class="tabs-nav">
         <li><a href="">Search</a></li>
+        <% if @type != "employer" %>
         <li><a href="">Advanced</a></li>
+        <% end %>
     </ul>
 	<%= form_tag('/'+@type+'s/search', :id=> 'form')%>
  	<div class="tab-content">
 			<%=text_field_tag(@type+'_name', nil, :placeholder => "#{@type}'s name...", :id=>@type+'_name')%>
 			
-		    <label>
+		   <% if (@type != "employer") %> 
+		   <label>
 		    	<span class="text-form fleft">in:</span>
-		    	<%=select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
+		    	
+		    		<%= select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%>
+		    	
 			</label>
+			<% end %>
  	</div>
-  
+  <% if (@type != "employer") %>
    <div class="tab-content" style="display: block;"> 
 		<div class="container_24">
 				<div class="wrapper">
@@ -32,6 +38,7 @@
 				</div>
 		</div>		
 	</div>
+	<% end %>
 	
 </div>
 <%=submit_tag('Search', :class => "search_button")%>
