@@ -28,7 +28,7 @@
 		<li><a href=""><em>Login</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "members", new_member_session_path %></li>
-				<li><%= link_to "clients", new_client_session_path %></li>
+				<li><%= link_to "organisations", new_client_session_path %></li>
 			</ul> 
 		</li>
 		<% end%>
@@ -41,7 +41,7 @@
 		</li>
 		<% end%>
 		<% if client_signed_in? %>
-		<li><a href=""><em>Clients</em><strong></strong></a>
+		<li><a href=""><em>Organisations</em><strong></strong></a>
 			<ul>
 				<li><%= link_to "dashboard", clients_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_client_session_path, :method => :delete %></li>
