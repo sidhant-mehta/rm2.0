@@ -724,10 +724,11 @@ table { max-width: 100%; border-collapse: collapse; border-spacing: 0;}
 	-pie-background: linear-gradient(top, rgba(0,0,0,.3) 0%,rgba(255,255,255,0) 100%);}
 .pad-image{ padding:8px 10px 20px 0; position:relative; float:left;}
 /* hovers */
-.view {width: 300px;height: 200px;margin:0  0 15px 0;position: relative;text-align: center;cursor: default;background: #fff;overflow:hidden;}
-.view .mask, .view .content {width: 300px;height: 200px;position: absolute;overflow: hidden;top: 0;left: 0}
+.view {width: 200px;height: 200px;margin:0  0 15px 0;position: relative;text-align: center;cursor: default;background: #fff;overflow:hidden;}
+.view .mask, .view .content {width: 200px;height: 200px;position: absolute;overflow: hidden;top: 0;left: 0}
 .view img {display: block;position: relative;}
 .view h2 {text-transform: uppercase;color: #fff;text-align: center;position: relative;font-size: 17px;padding: 10px;background: rgba(0, 0, 0, 0.8);margin: 20px 0 0 0}
+.view h3 {color: white;}
 .view p {font-family: Georgia, serif;font-style: italic;font-size: 12px;position: relative;color: #fff;padding: 10px 20px 20px;text-align: center}
 .view a.btn {display: inline-block;text-decoration: none;padding: 7px 14px;background: #000;color: #fff;text-transform: uppercase;box-shadow: 0 0 1px #000; border:none; border-radius:0; text-shadow:none;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease;}
 .view a.btn:hover { background:#fff; color:#000;}
@@ -1046,7 +1047,7 @@ table { max-width: 100%; border-collapse: collapse; border-spacing: 0;}
     -o-transform-origin: 0% 100%;
     -ms-transform-origin: 0% 100%;
     transform-origin: 0% 100%;}
-.view_ninth .content {background: rgba(0, 0, 0, 0.9);height: 0;width: 361px;overflow: hidden;
+.view_ninth .content {background: rgba(0, 0, 0, 0.9);height: 0;width: 200px;overflow: hidden;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=50);
     opacity: 0.5;
@@ -1066,7 +1067,7 @@ table { max-width: 100%; border-collapse: collapse; border-spacing: 0;}
     transition: all 0.4s ease-in-out 0.3s;}
 .view_ninth h2 {background: transparent;margin-top: 5px;border-bottom: 1px solid rgba(255, 255, 255, 0.2);}
 .view_ninth a.btn {display: none;}
-.view_ninth:hover .content {height: 120px;width: 300px; top: 40px;
+.view_ninth:hover .content {height: 120px;width: 200px; top: 40px;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
     filter: alpha(opacity=90);
     opacity: 0.9;
