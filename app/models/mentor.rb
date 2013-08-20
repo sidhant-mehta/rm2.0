@@ -42,7 +42,7 @@ class Mentor < ActiveRecord::Base
       if (Date.valid_date? y.to_i, m.to_i, d.to_i)
          
           return Mentor.where( t[:fname].matches("%#{fname}%").and( t[:lname].matches("%#{lname}%").and( ( t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%") )))) ).
-                where("closing_date > ?", Date.strptime(closing_date,"%d-%m-%Y"))
+                where("closing_date < ?", Date.strptime(closing_date,"%d-%m-%Y"))
       else
           return Mentor.where( t[:fname].matches("%#{fname}%").and( t[:lname].matches("%#{lname}%").and( ( t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%") )))) )
       end

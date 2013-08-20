@@ -43,7 +43,7 @@ class Project < ActiveRecord::Base
       if (Date.valid_date? y.to_i, m.to_i, d.to_i)
          
           result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%"))))).
-                where("closing_date > ?", Date.strptime(closing_date,"%d-%m-%Y"))
+                where("closing_date < ?", Date.strptime(closing_date,"%d-%m-%Y"))
       else
           result = Project.where(t[:name].matches("%#{name}%").and((t[:sector_ids].matches("%#{sector}%").and(t[:location].matches("%#{location}%")))))
       end
