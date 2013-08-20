@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  def our_policy
+  def privacy_policy
+    
   end
 
   def terms_of_use

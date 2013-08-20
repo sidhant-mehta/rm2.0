@@ -43,11 +43,14 @@ class MentorsController < ApplicationController
     end
     
     @mentor = Mentor.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @mentor }
+    if request.path != mentor_path(@mentor)
+      redirect_to @mentor, status: :moved_permanently
     end
+
+#    respond_to do |format|
+   #   format.html # show.html.erb
+  #    format.json { render json: @mentor }
+ #   end
   end
 
   # GET /mentors/new

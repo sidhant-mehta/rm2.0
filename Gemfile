@@ -10,6 +10,7 @@ group :development, :test do
     gem 'railroady'
 end
 gem 'sqlite3'
+gem 'friendly_id'
 gem "ckeditor"
 gem 'yaml_db'
 gem 'carrierwave'

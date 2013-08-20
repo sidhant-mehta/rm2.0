@@ -19,7 +19,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
 
   get "about_us/meet_the_team"
 
-  get "pages/our_policy"
+  get "pages/privacy_policy"
 
   get "pages/terms_of_use"
 

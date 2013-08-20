@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :require_login, only: [:mentor]
+  before_filter :require_login, only: [:mentor, :project]
   #protect_from_forgery
  # private
  

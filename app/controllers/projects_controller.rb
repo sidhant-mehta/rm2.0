@@ -43,10 +43,10 @@ class ProjectsController < ApplicationController
     
     @project = Project.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @project }
+    if request.path != project_path(@project)
+      redirect_to @project, status: :moved_permanently
     end
+
   end
 
   # GET /projects/new

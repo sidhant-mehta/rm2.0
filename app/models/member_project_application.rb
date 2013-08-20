@@ -1,4 +1,8 @@
 class MemberProjectApplication < ActiveRecord::Base
+  belongs_to :projects
+  belongs_to :members
+  
+  
   before_save validate :cv_check
   attr_accessible :member_id, :project_id, :status
   attr_accessor :user

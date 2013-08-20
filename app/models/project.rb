@@ -7,7 +7,6 @@ end
 class Project < ActiveRecord::Base
   has_many :member_project_applications, :dependent => :destroy
   has_many :members, :through => :member_project_applications
-
   before_create validate :email_check, :unless => :skip_email_check
   before_create validate :organisation_check, :unless => :skip_organisation_check
   before_update validate :email_check, :unless => :skip_email_check
@@ -15,6 +14,9 @@ class Project < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   attr_accessible :closing_date, :description, :draft, :email, :location, :name, :organisation, :project_leader, :sector_ids, :telephone, :salary, :internal, :external, :remove_image, :image
   attr_accessor :skip_email_check, :skip_organisation_check, :user
+  
+  extend FriendlyId
+      friendly_id :name, use: :slugged
   
   def email_check 
      unless email == user.email
@@ -88,6 +90,5 @@ class Project < ActiveRecord::Base
     validates_presence_of :telephone, :message => "You must include a telephone number"
     validates_length_of :telephone, :minimum => 11, :maximum =>11, :message => "Please enter a valid UK telephone number consisting of exactly 11 digits"
     validates_format_of :telephone, :with => /^[0-9]+$/, :message => "Please enter a valid UK telephone number containing only digits"
-
 
 end

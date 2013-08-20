@@ -4,6 +4,9 @@ class EmployerProfile < ActiveRecord::Base
   attr_accessible :bio, :name, :image, :remove_image
   attr_accessor :skipEmailVsOrganisationCheck, :user
   
+  extend FriendlyId
+  friendly_id :name
+  
   def emailVsOrganisationCheck
     organisation_name = OrganisationEmailDomain.getOrganisation user.email
     unless name == organisation_name

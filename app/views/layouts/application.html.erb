@@ -8,6 +8,7 @@
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
   	<%= csrf_meta_tags %>
+  	<link rel="shortcut icon" href="/assets/favicon.ico"/>
 </head>
 <body>
 	<p class="notice"><%= flash[:notice] %></p>
@@ -17,13 +18,11 @@
 			<div class="container_24">
 				<div class="wrapper">
 					<div class="grid_17">
-						<%= image_tag "logo.png", {:style => "border: none; width: 8%; margin-top: 2em; margin-bottom: -29px;"}%>
 						<a class="logo_link" href = <%=root_path%> >
+						<%= image_tag "logo.png", {:style => "border: none; width: 8%; margin-top: 2em; margin-bottom: -29px;"}%>
 						<h1 style= "font-size: 2.3em; font-family: impact;margin-left: 1.6em;">Raison Mentors</h1>
 						</a>
 					</div>
-					<div class="gird_19" style="margin-top: 1em; font-style: italic;">Login: <a href="" class="login-links">Member</a> | <a href="" class="login-links">Organisation</a>
-				  </div>
 				</div>
 			</div>
 			<%= render :partial => 'shared/navigation' %>
