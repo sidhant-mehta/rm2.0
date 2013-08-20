@@ -10,19 +10,19 @@ post "application/apply_project" => "application#project"
 resources :application, :collection => { :apply_mentor => :post, :apply_project => :post }
   
 
-  get "about_us/index"
-  get "about_us/what_we_do"
+  match "about_us/" => "about_us#index"
 
   get "about_us/how_it_works"
 
   get "about_us/our_philosophy"
 
   get "about_us/meet_the_team"
-
+  get "pages/add_a_project"
+  get "pages/become_a_mentor"
   get "pages/privacy_policy"
 
   get "pages/terms_of_use"
-
+  
   get "pages/terms_and_conditions"
 
   get "pages/contact_us"

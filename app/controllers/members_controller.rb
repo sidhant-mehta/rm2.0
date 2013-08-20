@@ -1,6 +1,6 @@
-class MembersController < ApplicationController
-before_filter :authenticate_member!
-before_filter :setVars
+class MembersController < Devise::RegistrationsController
+before_filter :authenticate_member!, :except => [:become_a_mentor]
+before_filter :setVars, :except => [:become_a_mentor]
 layout 'admin'
 
 def setVars

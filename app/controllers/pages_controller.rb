@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   def privacy_policy
     
   end
@@ -8,6 +9,11 @@ class PagesController < ApplicationController
 
   def terms_and_conditions
   end
+
+def become_a_mentor
+end
+def add_a_project
+end
 
   def contact_us
   end

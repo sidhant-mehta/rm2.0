@@ -1,31 +1,30 @@
 <%#TODO fix all the a href tags to link_to rails tags with correct naems. %>
 <nav class="main-menu">
 	<ul class="sf-menu">
-		<li><em><%=link_to "About Us", about_us_index_path %></em><strong></strong>  <!-- class="current" -->
+		<li><em><%=link_to "About Us", about_us_path %></em><strong></strong>  <!-- class="current" -->
 			<ul>
 				<li><%=link_to "How it works", about_us_how_it_works_path %></li>
 				<li><%=link_to "Meet the team", about_us_meet_the_team_path %></li>
 				<li><%=link_to "Our philosophy", about_us_our_philosophy_path%></li>
-				<li><%=link_to "What we do", about_us_what_we_do_path%></li>
 			</ul>
 		</li>
 		<li><em><%=link_to "Mentors", mentors_path %></em><strong></strong>
 			<ul>
 				<li><%=link_to "Find a mentor", mentors_search_path %></li>
-				<li><%=link_to "Become a mentor", members_dashboard_path %></li><!-- look at team html-->
+				<li><%=link_to "Become a mentor", pages_become_a_mentor_path %></li><!-- look at team html-->
 			</ul>
 		</li>
 		<li><em><%=link_to "Projects", projects_path %></em><strong></strong>  <!-- class="current" -->
 			<ul>
 				<li><%=link_to "Find a project", projects_search_path %></li><!-- look at services.html-->
-				<li><%=link_to "Create a project", members_dashboard_path %></li><!-- look at team html-->
+				<li><%=link_to "Add a project", pages_add_a_project_path %></li><!-- look at team html-->
 			</ul>
 		</li>
 		<li><em><%=link_to "Organisation A-Z", employer_profiles_path %></em><strong></strong></li>
 		<li class="last"><em><%= link_to "Contact us", pages_contact_us_path%></em><strong></strong></li>
 		
 		<% if member_signed_in? == false && client_signed_in? == false %>
-		<li><a href=""><em>Login</em><strong></strong></a>
+		<li><em class="nav_button">Login</em><strong></strong>
 			<ul>
 				<li><%= link_to "members", new_member_session_path %></li>
 				<li><%= link_to "organisations", new_client_session_path %></li>
@@ -33,7 +32,7 @@
 		</li>
 		<% end%>
 		<% if member_signed_in? %>
-		<li><a href=""><em>Members</em><strong></strong></a>
+		<li><em class="nav_button">Members</em><strong></strong>
 			<ul>
 				<li><%= link_to "dashboard", members_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_member_session_path, :method => :delete %></li>
@@ -41,7 +40,7 @@
 		</li>
 		<% end%>
 		<% if client_signed_in? %>
-		<li><a href=""><em>Organisations</em><strong></strong></a>
+		<li><em class="nav_button">Organisations</em><strong></strong>
 			<ul>
 				<li><%= link_to "dashboard", clients_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_client_session_path, :method => :delete %></li>
