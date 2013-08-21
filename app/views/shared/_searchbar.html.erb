@@ -4,20 +4,16 @@
 		<li>
 			<a href="">Search</a>
 		</li>
-		<% if @type != "employer" %>
 		<li>
 			<a href="">Advanced</a>
 		</li>
-		<% end %>
 	</ul>
 	<%= form_tag('/'+@type+'s/search', :id=> 'form')%>
 	<div class="tab-content">
 		<div class="container_24">
 			<div class="wrapper">
 				<div class="grid_12">
-					<% if (@type != "employer") %>
 					<label> <span class="text-form fleft">Industry:</span> <%= select_tag('sector_id', options_from_collection_for_select(@sectors, "id", "name"), :include_blank=>true)%> </label>
-					<% end %>
 				</div>
 				<div class="grid_12">
 					<label>Location: </label><%= select_tag('location', options_from_collection_for_select(@location, "name", "name"), :include_blank=>true)%>
@@ -34,14 +30,15 @@
 		</div>
 	</div>
 
-	<% if (@type != "employer") %>
 	<div class="tab-content" style="display: block;">
 		<div class="container_24">
 			<div class="wrapper">
+				<% if (@type != "employer") %>
 				<div class="grid_12">
 					<label >Closing before:</label>
 					<input class="closing_date" id="closing_date" name="closing_date" readonly="readonly" type="text" class="hasDatepicker">
 				</div>
+				<% end %>
 				<div class="grid_12">
 					<%= text_field_tag(@type+'_name', nil, :placeholder => "#{@type}'s name...", :id=>@type+'_name')%>
 				</div>
@@ -49,7 +46,6 @@
 			</div>
 		</div>
 	</div>
-	<% end %>
 
 </div>
 

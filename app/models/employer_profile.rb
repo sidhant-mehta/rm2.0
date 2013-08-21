@@ -1,7 +1,7 @@
 class EmployerProfile < ActiveRecord::Base
   before_update validate :emailVsOrganisationCheck,  :unless => :skipEmailVsOrganisationCheck
   mount_uploader :image, ImageUploader
-  attr_accessible :bio, :name, :image, :remove_image
+  attr_accessible :bio, :name, :image, :remove_image, :sector_ids, :location
   attr_accessor :skipEmailVsOrganisationCheck, :user
   
   extend FriendlyId
@@ -14,10 +14,13 @@ class EmployerProfile < ActiveRecord::Base
     end 
   end
   
-  def self.search (name)
+  def self.search (name, sector_ids, location)
      t = Project.arel_table
     
       result = EmployerProfile.where("name like ?", "%#{name}%")
+                                    .where("sector_ids like ?", "%#{sector_ids}%")
+                                          .where("location like ?", "%#{location}%")
+                                   
       return result
   end
   

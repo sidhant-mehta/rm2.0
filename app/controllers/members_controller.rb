@@ -1,4 +1,4 @@
-class MembersController < Devise::RegistrationsController
+class MembersController < ApplicationController
 before_filter :authenticate_member!, :except => [:become_a_mentor]
 before_filter :setVars, :except => [:become_a_mentor]
 layout 'admin'
@@ -473,49 +473,6 @@ end
       end
     end
    
-   
-=begin   
-    @member.fname = params[:fname]
-    @member.lname = params[:lname]
-    @member.email = params[:email]
-    @member.dob = params[:dob]
-    @member.gender = params[:gender]
-    @member.telephone = params[:telephone]
-    @member.location = params[:location]
-    @member.academic_institution = params[:academic_institution]
-    @member.course = params[:course]
-    if !params[:sector_ids].blank?
-      @member.sector_ids = params[:sector_ids].join(',')
-      @member_sectors_ids_array = @member.sector_ids.split(",")
-      @member_sectors_ids = [] #need to initialize this array first
-      @member_sectors_ids_array.each_with_index do |s, i| 
-         @member_sectors_ids << Sector.find(s).id
-       end 
-    end
-    @member.employment_status = params[:employment_status]
-    @member.cv = params[:cv]
-    
-
-    if @member.save 
-      flash[:notice] = "Your profile has been updated successfully."
-    
-      respond_to do |format|
-        format.html { redirect_to members_dashboard_path }
-      end
-    else
-      @error_str = ""
-      @member.errors.each do |field, msg|
-            @error_str = @error_str + msg + " "
-      end
-      
-      flash.now[:alert] = @error_str
-      
-      respond_to do |format|
-        format.html { render member_path }
-      end
-    
-    end
-=end    
   end
   
   def destroy

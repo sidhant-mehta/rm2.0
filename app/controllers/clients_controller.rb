@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
     before_filter :authenticate_client!
+    before_filter :setVars
     layout 'admin'
  #---------LOCAL METHODS ------------------
 def clean_select_multiple_params hash = params
@@ -12,6 +13,13 @@ def clean_select_multiple_params hash = params
     end
   end
 end  
+  
+ def setVars
+    @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+end 
   
 def getMentorApplications(client_org)
   @mentor_application_data = Mentor.select("member_mentor_applications.mentor_id, mentors.fname, mentors.lname, member_mentor_applications.id, member_mentor_applications.created_at, member_mentor_applications.status").joins("JOIN member_mentor_applications ON mentors.id = member_mentor_applications.mentor_id").where('mentors.organisation = ?', client_org)
@@ -99,10 +107,6 @@ end
   def edit_project
     @action_address = "update_project"
     @project = Project.find(params[:id])
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
     
      if @project.sector_ids.blank?
      else   
@@ -194,10 +198,6 @@ end
     @mentor.skip_email_check = true
     @mentor.user = current_client
     
-     @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
      if @mentor.sector_ids.blank?
      else   
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -230,10 +230,6 @@ end
     @action_address = "update_mentor"
     @mentor = Mentor.find(params[:id])
     
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
      if @mentor.sector_ids.blank?
      else   
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -253,10 +249,6 @@ end
       @mentor.skip_email_check = true
       @mentor.user = current_client
       
-       @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
      if @mentor.sector_ids.blank?
      else   
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -311,11 +303,22 @@ end
     
     org =OrganisationEmailDomain.getOrganisation (current_client.email)
     @employer_profile = EmployerProfile.find_by_name org
-  
+    if @employer_profile.sector_ids.blank?
+    else   
+        @employer_profile_sectors_ids_array = @employer_profile.sector_ids.split(",")
+        @employer_profile_sectors_ids = [] #need to initialize this array first
+         @employer_profile_sectors_ids_array.each_with_index do |s, i| 
+           @employer_profile_sectors_ids << Sector.find(s).id
+          end
+    end
   end
 
   def profile_update
        org =OrganisationEmailDomain.getOrganisation (current_client.email)
+        
+       ep = clean_select_multiple_params params[:employer_profile]
+       ep["sector_ids"] = ep["sector_ids"].join(',')
+ 
        @employer_profile = EmployerProfile.find_by_name org
        @employer_profile.user = current_client
  

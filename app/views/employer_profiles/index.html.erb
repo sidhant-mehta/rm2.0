@@ -9,18 +9,27 @@
 <%= render :partial => "shared/searchbar" #need to change the search bar depending on spec.Need to add css too 'employer_title, employer_image, employer_inner
 %>  
 </div>
-<% @employer_profiles.each do |profile| %>
-<table class="table">
-	<tr>
-		<th class="employer_title"><%=link_to profile.name, profile %></th>
-		<th><%= image_tag(profile.image.to_s , :class => "employer_image" ) %></th> 	
-		<td>
-			<table class="employer_inner">
-				<tr><th>Field 1</th><th>Role</th><th>Field 2</th><th>Field 3</th></tr> <%#need to add fields depending on spec
-				%>
-				<tr><td><%= %></td><td><%=  %></td><td><%= %></td><td><%=%></td></tr>
-			</table>
-		</td>
-	</tr>
-</table>
-<%end%>
+<% if !@employer_profiles.empty? %>
+	<% @employer_profiles.each do |profile| %>
+	<table class="table">
+		<tr>
+			<th class="employer_title"><%=link_to profile.name, profile %></th>
+			<th><%= image_tag(profile.image.to_s , :class => "employer_image" ) %></th> 	
+			<td>
+				<table class="employer_inner">
+					<tr><th>Industries</th><th>Location</th></tr> 
+					<tr><td><%=sectorsHTML(profile) %></td><td><%=profile.location  %></td><td><%= %></td><td><%=%></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<%end%>
+<%else %>
+	<table class="table" style="">
+		<tbody>
+			<div class="grid_24">
+				<h3> Oops... </h3> <span class="initial_text">Sorry there are currently no organisations matching your criteria. We are constantly adding new organisations so please check back soon or alternatively broaden your criteria to find an organisations today. </span>
+			</div>
+		</tbody>
+	</table>
+<% end%>

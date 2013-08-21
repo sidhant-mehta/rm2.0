@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   before_filter :authenticate_admin!
   before_filter :setVars
-  around_filter :catch_not_found
+ # around_filter :catch_not_found
   layout 'admin'
 
 #---------------LOCAL METHODS -------------------
@@ -287,9 +287,20 @@ end
   def new_employer_profile
     @employer_profile = EmployerProfile.new
     @action_address = "create_employer_profile"
+    if @employer_profile.sector_ids.blank?
+    else   
+        @employer_profile_sectors_ids_array = @employer_profile.sector_ids.split(",")
+        @employer_profile_sectors_ids = [] #need to initialize this array first
+         @employer_profile_sectors_ids_array.each_with_index do |s, i| 
+           @employer_profile_sectors_ids << Sector.find(s).id
+          end
+    end
   end
   def create_employer_profile
-    ep = params[:employer_profile]
+    #ep = params[:employer_profile]
+    ep = clean_select_multiple_params params[:employer_profile]
+      ep["sector_ids"] = ep["sector_ids"].join(',')
+      
     @employer_profile = EmployerProfile.new(ep)
     @employer_profile.skipEmailVsOrganisationCheck= true
     @action_address= "create_employer_profile"
@@ -311,9 +322,20 @@ end
   def edit_employer_profile
       @employer_profile = EmployerProfile.find(params[:id])
       @action_address= "update_employer_profile"
+      if @employer_profile.sector_ids.blank?
+    else   
+        @employer_profile_sectors_ids_array = @employer_profile.sector_ids.split(",")
+        @employer_profile_sectors_ids = [] #need to initialize this array first
+         @employer_profile_sectors_ids_array.each_with_index do |s, i| 
+           @employer_profile_sectors_ids << Sector.find(s).id
+          end
+    end
   end
   def update_employer_profile
       @action_address= "update_employer_profile"
+       ep = clean_select_multiple_params params[:employer_profile]
+       ep["sector_ids"] = ep["sector_ids"].join(',')
+      
       @employer_profile = EmployerProfile.find(params[:id])
       @employer_profile.skipEmailVsOrganisationCheck = true
      
@@ -337,7 +359,7 @@ end
   end
   
   def edit_member
-    @member = Member.find(params[:id])
+    @member = Member.friendly.find(params[:id])
     @action_address = "update_member"
     
     @locations = Location.all

@@ -3,7 +3,7 @@
 	
 		<section id="main" class="column">
 		<%= render :partial => 'shared/member/alerts_and_notices'%>
-		<h4 class="alert_info">Welcome to your dashboard! This is where you can view, edit and adde mentors, projects and jobs for your company.</h4>
+		<h4 class="alert_info">Welcome to your dashboard! This is where you can view, edit and add mentors, projects and jobs for your company.</h4>
 		
 		<!-- start of table -->
 		<article class="module width_3_quarter">
@@ -35,7 +35,7 @@
    					<td><%= application.id%></td> 
     				<td><%= link_to "#{application.fname} #{application.lname}", mentors_path + "/" + application.mentor_id.to_s %></td> 
     				<td><%= application.status%></td> 
-    				<td><%= application.created_at %></td> 
+    				<td><%= application.created_at.strftime("%d %b %Y - %H:%M") %></td> 
     				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
 				</tr> 
 				<% end %>
@@ -62,7 +62,7 @@
    					<td><%= application.id%></td> 
     				<td><%= link_to "#{application.name}", projects_path + "/" + application.project_id.to_s %></td> 
     				<td><%= application.status%></td> 
-    				<td><%= application.created_at %></td> 
+    				<td><%= application.created_at.strftime("%d %b %Y - %H:%M") %></td> 
     				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
 				</tr> 
 				<% end %>

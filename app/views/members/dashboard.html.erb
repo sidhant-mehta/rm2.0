@@ -78,15 +78,19 @@
 			<thead> 
 				<tr>
 					<th>Coming Soon</th> 
-   					<!--<th>Application ID</th> 
+   					<% if false %>
+   					<th>Application ID</th> 
     				<th>Job Name</th> 
     				<th>Status</th> 
     				<th>Created on</th> 
-    				<th>Actions</th> -->
+    				<th>Actions</th>
+    				
+    				<% end %>
 				</tr> 
 			</thead> 
 			<tbody> 
-					<!--<% @jobs.take(@limit).each_with_index do |job,index| %> 
+					<% if false %>
+					<% @jobs.take(@limit).each_with_index do |job,index| %> 
 					<tr> 
 						<td><%= @job_application_id [index]%></td> 
 	   					<td><input type="checkbox"></td> 
@@ -95,7 +99,8 @@
 	    				<td><%=@job_application_created_at[index]%></td> 
 	    				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %>
 					</tr>  
-				<% end %>-->
+				<% end %>
+				<%end	%>
 			</tbody> 
 			</table>
 
@@ -108,6 +113,7 @@
 	</aside><!-- end of sidebar -->
 	
 	<!-- latest updates area -->
+	<% if false %>
 	<article class="module width_quarter">
 			<header><h3>Messages</h3></header>
 			<div class="message_list">
@@ -124,7 +130,7 @@
 					<p><strong>John Doe</strong></p></div>
 				</div>
 			</div>
-			<footer>
-		</article><!-- end of messages article -->
+		</article><!-- end of messages article --> 
+		<%end%>
 	
 	</section> <!-- end of column section (at top) -->

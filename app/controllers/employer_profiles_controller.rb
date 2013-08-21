@@ -21,7 +21,10 @@ end
           @search_name =""
    end
    
-   @employer_profiles = EmployerProfile.search(@search_name)
+   @search_location = params[:location]
+   @search_sector_ids = params[:sector_id]
+   
+   @employer_profiles = EmployerProfile.search(@search_name, @search_sector_ids, @search_location)
    
    render "index"
    

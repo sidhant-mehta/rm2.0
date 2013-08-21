@@ -4,7 +4,8 @@ RaisonMentors20::Application.routes.draw do
   devise_for :clients
 
   devise_for :members
-
+  
+  
 post "application/apply_mentor" => "application#mentor"
 post "application/apply_project" => "application#project"
 resources :application, :collection => { :apply_mentor => :post, :apply_project => :post }
@@ -48,7 +49,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   get "members/list_internal_mentors"
   match "members/mentors/search" => "members#search_mentor"
   get "members/list_projects"
-  get "members/list_internal_projects"
+  #get "members/list_internal_projects"
   match "members/projects/search" => "members#search_project"
   get "members/edit_project"
   match "members/edit_project/:id/:name" => "members#edit_project"

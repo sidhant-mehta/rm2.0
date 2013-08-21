@@ -11,6 +11,14 @@
 								<td><%=f.label :bio, 'About the Company'%></td>
 								<td><%= f.text_area :bio, :class => "textarea" %></td>
 							</tr>
+							<tr>
+								<td><%= f.label :sector_ids, 'Company\'s industry (choose max 3)'%></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@employer_profile_sectors_ids),{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :location, 'Location'%></td>
+								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %> 
+							</tr>
 						</table>
 					</div>
 					<div id="tab2" class="tab_content">
