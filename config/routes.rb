@@ -1,7 +1,12 @@
 RaisonMentors20::Application.routes.draw do
   devise_for :admins
 
-  devise_for :clients
+#match "clients/sign_up", :to => "pages#home" #to stop people signing up as clients, while still allowing the admin to use the devise registrations
+  devise_for :clients, :skip => [:registrations]     #stops clients/organisations registering on their own. We register them.                                     
+    as :client do
+      get 'clients/edit' => 'devise/registrations#edit', :as => 'edit_client_registration'    
+      put 'clients' => 'devise/registrations#update', :as => 'client_registration'            
+    end
 
   devise_for :members
   
@@ -120,12 +125,12 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   put "admin/update_member/:id" => "admin#update_member" 
   get "admin/list_members"
 #clients
+  get "admin/new_client" => "admin#new_client"
   post "admin/create_client" => "admin#create_client"
   get "admin/edit_client/"
   match "admin/edit_client/:id" => "admin#edit_client"
   put "admin/update_client/:id" => "admin#update_client" 
   get "admin/list_clients"
-  # match 'admin/remove_client/:id', :to => 'admin#destroy_client', :as => :destroy_client, :via => :delete
   delete 'admin/destroy_client/:id' => 'admin#destroy_client'  
   get "admin/adverts"
   get "admin/team"

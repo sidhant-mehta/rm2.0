@@ -240,8 +240,32 @@ end
     end
   end
 
+  def new_client
+    @client = Client.new
+    @action_address = "create_client"
+    
+  end
+ 
+  def create_client
+    @client = Client.new(params[:client])
+    
+    respond_to do |format|
+      if @client.save
+          format.html {redirect_to admin_list_clients_path, notice:'Organisation was created successfully.'}
+      else
+        @error_str = ""
+        @client.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash.now[:alert] = @error_str.html_safe
+        format.html { render action: "new_client" }  
+      end
+    end
+  end
  
   def edit_client
+     @client = Client.find(params[:id])
+    @action_address = "update_client"
   end
 
   def update_client

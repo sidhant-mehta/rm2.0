@@ -44,7 +44,8 @@
 					    %></td> -->
 					    <td><%= link_to 'Edit', admin_edit_client_path + "/#{client.id}" %>
 					    </td>
-					    <td><%= link_to 'Delete', admin_destroy_client_path + "/#{client.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    <td><%= link_to 'Delete', '/admin/destroy_client' + "/#{client.id}", method: :delete, data: { confirm: 'Are you sure?' } 
+					    %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>
 					  <tr>
