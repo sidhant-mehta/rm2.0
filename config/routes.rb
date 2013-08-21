@@ -134,7 +134,14 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   delete 'admin/destroy_client/:id' => 'admin#destroy_client'  
   get "admin/adverts"
   get "admin/team"
-
+#org email
+  get "admin/new_organisation_email" => "admin#new_organisation_email"
+  post "admin/create_organisation_email" => "admin#create_organisation_email"
+  get "admin/edit_organisation_email"
+  match "admin/edit_organisation_email/:id" => "admin#edit_organisation_email"
+  put "admin/update_organisation_email/:id" => "admin#update_organisation_email" 
+  get "admin/list_organisation_emails"
+  delete "admin/destroy_organisation_email/:id" => "admin#destroy_organisation_email"
   
   get "employers/search" => "employer_profiles#search"
   post "employers/search" => "employer_profiles#search"

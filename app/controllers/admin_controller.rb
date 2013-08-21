@@ -432,7 +432,65 @@ end
     @members = Member.all
   end  
 
+def list_organisation_emails
+  @oes = OrganisationEmailDomain.all
+end
+def new_organisation_email
+  @oe = OrganisationEmailDomain.new
+  @action_address="create_organisation_email"
+  
+end
 
+def create_organisation_email
+  @oe = OrganisationEmailDomain.new(params["organisation_email_domain"])
+  @action_address = "new_organisation_email"
+  respond_to do |format|
+  if @oe.save
+    format.html{redirect_to admin_list_organisation_emails_path, :notice=> 'Organisation\'s email domain has been added successfully'}
+  else
+    @error_str = ""
+        @member.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        format.html { render action: admin_new_organisation_email_path}
+      end
+  end
+end
+
+def edit_organisation_email
+  @oe = OrganisationEmailDomain.find (params[:id])
+  @action_address = "update_organisation_email"
+end
+
+def update_organisation_email
+  @oe = OrganisationEmailDomain.find(params[:id])
+  @action_address = "update_organisation_email"
+  respond_to do |format|
+    
+  if @oe.update_attributes(params["organisation_email_domain"])
+    format.html{redirect_to admin_list_organisation_emails_path, :notice=> 'Organisation\'s email domain has been editted successfully'}
+  else
+    @error_str = ""
+        @member.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        format.html { render action: admin_edit_organisation_email_path}
+      end
+  end
+  
+end
+
+def destroy_organisation_email
+  @oe = OrganisationEmailDomain.find(params[:id])
+  @oe.destroy
+  
+  respond_to do |format|
+      format.html { redirect_to admin_list_organisation_emails_path , alert: "Organisation\'s email was successfully removed." }
+      format.json { head :no_content }
+    end
+end
 #-------PRIVATE-----
 private
 

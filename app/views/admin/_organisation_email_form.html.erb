@@ -1,0 +1,8 @@
+<%= form_for(@oe,url: {action: @action_address},html: { class: "blocks"}) do |f| %>
+<div id="tab1" class="tab_content">
+	<%= f.text_field :organisation, :placeholder => "Organisation name", :class=>"text" %>
+	<%= f.text_field :domain, :placeholder => "Email domain (e.g. 'yahoo.com')", :class=>"text" %>
+</div>
+<br />
+	<%= f.submit "Save"%>
+<% end %>
