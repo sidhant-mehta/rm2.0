@@ -69,8 +69,8 @@ class Project < ActiveRecord::Base
      validates_presence_of :organisation, :message=> "You must inlude an organisation."
      validates_format_of :organisation, :with => /^[a-z ]+$/i, :message => "Organisation can contain letters only."
      
-     validates_presence_of :salary, :message => "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."
-     validates_length_of :salary, :within => 1..9, :message=> "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."
+     #validates_presence_of :salary, :message => "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."
+     #validates_length_of :salary, :within => 1..9, :message=> "You must include a salary or write 'Expenses' or 'Voluntary' if applicable."
      
      validates_presence_of :description, :message => "You must include a description."
      validates_length_of :description, :minimum => 3, :maximum => 500, :message => "You must include a description/bio for the mentor of between 3 to 500 characters"

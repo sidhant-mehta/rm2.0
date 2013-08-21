@@ -1,8 +1,7 @@
 	<section id="secondary_bar">
 		<div class="user">
-			<% #TODO get user name => based on email to organisation table %>
-			<p><%= getOrganisation(current_client.email) %></p>
-			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
+			<p><%= getOrganisation(current_client.email) %>
+			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :title => "Logout" %></p> 
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <%= link_to "Dashboard", clients_dashboard_path %></article>
@@ -12,20 +11,21 @@
 		<hr/>
 		<h3>Mentors</h3>
 		<ul class="toggle">
-			<li class="icn_edit_article"><%= link_to "Edit Mentor", clients_list_mentors_path %></li>
 			<li class="icn_categories"><%= link_to "List Mentors", clients_list_mentors_path  %></li>
 		</ul>
 		<h3>Projects</h3>
 		<ul class="toggle">
 			<li class="icn_new_article"><%= link_to "Add Project", clients_new_project_path %></li>
-			<li class="icn_edit_article"><%= link_to "Edit Project", clients_list_projects_path %></li>
 			<li class="icn_categories"><%= link_to "List Project", clients_list_projects_path %></li>
 		</ul>
-		<h3>Other</h3>
+		<h3>Organisation</h3>
 		<ul class="toggle">
 			<li class="icn_profile"><%= link_to "Organisation Profile", clients_profile_path %></li>
+		</ul>
+		
+		<h3>Settings</h3>
+		<ul class="toggle">
 			<li class="icn_settings"><%= link_to "Settings", clients_settings_path %></li>
-			<li class= "icn_jump_back"><%= link_to "Logout", destroy_client_session_path, :method => :delete %></li>
 		</ul>
 		
 		<%= render :partial => 'shared/admin_footer' %>

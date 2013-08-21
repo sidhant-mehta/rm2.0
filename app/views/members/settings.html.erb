@@ -1,53 +1,65 @@
-	<%= render :partial => 'shared/member/header' %>
-	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
-	
-	<section id="main" class="column">
-		<%= render :partial => 'shared/member/alerts_and_notices'%>
+<%= render :partial => 'shared/member/header' %>
+<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
+
+<section id="main" class="column">
+	<%= render :partial => 'shared/member/alerts_and_notices'%>
 	<article class="module width_full" style="border:none; background:transparent;">
-	
+
 		<ul class="tabs">
-   			<li><a href="#tab1">Email Preferences</a></li>
-    		<li><a href="#tab2">Accout Preferences</a></li>
+			<li>
+				<a href="#tab1">Accout Preferences</a>
+			</li>
 		</ul>
-<% #TODO add these check boxes to the member model as booleans
-%>
-			<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
-				<div id="tab1" class="tab_content">
-					
-					<table> 
+		<% if false %>
+		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
+			<div id="tab1" class="tab_content">
+
+				<table>
 					<%= form_tag('/members/update', :id=>"form", :class=>"blocks") %>
 					<tr>
-						<td><p><%=label_tag('settings_receive_email_updates', 'Please tick this box if you do NOT want to receive monthly email updates with new mentors and projects in your selected career sector')%></p></td>
-						<td><%=check_box_tag 'settings_receive_email_updates', @member.settings_receive_email_updates  %></td>
+						<td>
+						<p>
+							<%= label_tag('settings_receive_email_updates', 'Please tick this box if you do NOT want to receive monthly email updates with new mentors and projects in your selected career sector')%>
+						</p></td>
+						<td><%= check_box_tag 'settings_receive_email_updates', @member.settings_receive_email_updates  %></td>
 					</tr>
 					<tr>
-						<td><p><%=label_tag('settings_pass_info_to_employment_agencies', 'Please tick this box if you do NOT want your information to be passed on to employment agencies for potential job offers')%></p></td>
-						<td><%=check_box_tag 'settings_pass_info_to_employment_agencies', @member.settings_pass_info_to_employment_agencies%></td>
+						<td>
+						<p>
+							<%= label_tag('settings_pass_info_to_employment_agencies', 'Please tick this box if you do NOT want your information to be passed on to employment agencies for potential job offers')%>
+						</p></td>
+						<td><%= check_box_tag 'settings_pass_info_to_employment_agencies', @member.settings_pass_info_to_employment_agencies%></td>
 					</tr>
 					<tr>
-						<td><p><%=label_tag('settings_mentoring_highschool', 'Please tick this box if you do NOT want to be considered for mentoring high school students in your local area')%></p></td>
-						<td><%=check_box_tag 'settings_mentoring_highschool', @member.settings_mentoring_highschool%></td>
+						<td>
+						<p>
+							<%= label_tag('settings_mentoring_highschool', 'Please tick this box if you do NOT want to be considered for mentoring high school students in your local area')%>
+						</p></td>
+						<td><%= check_box_tag 'settings_mentoring_highschool', @member.settings_mentoring_highschool%></td>
 					</tr>
 					<tr>
-						<td><p><%=label_tag('settings_pass_info_to_marketing', 'Please tick this box if you do NOT want your details to be passed on to 3rd parties for marketing purposes')%></p></td>
-						<td><%=check_box_tag 'settings_pass_info_to_marketing', @member.settings_pass_info_to_marketing%></td>
+						<td>
+						<p>
+							<%= label_tag('settings_pass_info_to_marketing', 'Please tick this box if you do NOT want your details to be passed on to 3rd parties for marketing purposes')%>
+						</p></td>
+						<td><%= check_box_tag 'settings_pass_info_to_marketing', @member.settings_pass_info_to_marketing%></td>
 					</tr>
 					<div class ="submit_link">
-						<%=submit_tag('Save Changes')%>
+						<%= submit_tag('Save Changes')%>
 					</div>
-				</form>
+					</form>
 				</table>
-				
-				</div>
-				<div id="tab2" class="tab_content">
-					<p> <%=button_to "Change your password", edit_member_registration_path, :method => :get  %> </p>
-					<p><%= button_to "Cancel my account", member_registration_path, :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-					<p> <%=# button_to "Premium Account", '#' 
-					%> </p>
-				</div>
+				<% end%>
 			</div>
-			
-	
+			<div id="tab1" class="tab_content">
+				<p>
+					<%= button_to "Change your email address or password", edit_member_registration_path, :method => :get  %>
+				</p>
+				<p>
+					<%= button_to "Cancel my account", member_registration_path, :data => { :confirm => "Are you sure?" }, :method => :delete %>
+				</p>
+			</div>
+		</div>
+
 	</article>
-	</section>
+</section>

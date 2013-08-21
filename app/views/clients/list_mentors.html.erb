@@ -32,9 +32,6 @@
 					    <th>Sectors</th>
 					    <th>Organisation</th>
 					    <th>Closing Date</th>
-					 <!--    -->
-					    <th>Draft</th>
-					    <th></th>
 					    <th></th>
 					    <th></th>
 					    <th></th>
@@ -48,11 +45,11 @@
 					    <td><%= sectorsHTML(mentor) %></td>
 					    <td><%= mentor.organisation %></td>
 					    <td><%= mentor.closing_date %></td>
-					    <td><%= mentor.draft %></td>
 					    <td><%= link_to 'Show', mentor %></td>
+					   <%if false%> 
 					    <td><%= link_to 'Edit', clients_edit_mentor_path + "/#{mentor.id}/#{mentor.fname}" %>
-					    	<!--<a href="#" onClick="document.myForm.id.value='<%= mentor.id %>';this.href='javascript:submitForm()'">Hello World</a> -->
 					    </td>
+					    <%end%>
 					    <td><%# link_to 'Delete', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>
@@ -74,6 +71,3 @@
 					
 			</article>
 		</section>
-		
-<% #TODO FIND A WAY TO USE POST METHOD WHEN GOIG TO EDIT PAGE 
-%>

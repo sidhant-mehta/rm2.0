@@ -31,7 +31,6 @@
 					    <th>Sectors</th>
 					    <th>Organisation</th>
 					    <th>Closing date</th>
-					    <th>Draft</th>
 					    <th></th>
 					    <th></th>
 					    <th></th>
@@ -45,7 +44,6 @@
 					    <td><%= sectorsHTML(project) %></td>
 					    <td><%= project.organisation %></td>
 					    <td><%= project.closing_date %></td>
-					    <td><%= project.draft %></td>
 					    <td><%= link_to 'Show', project %></td>
 					    <td><%= link_to 'Edit', members_edit_project_path + "/#{project.id}/#{project.name}" %></td>
 					    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -56,7 +54,6 @@
 				  			<div class="inner">
 				  				<p><span>Location:</span> <%= project.location %></p>
 							    <p><span>Description:</span> <%= project.description %></p>
-							    <p><span>Salary Per Week £:</span> <%= project.salary %></p>
 							    <p><span>Email:</span> <%= project.email %></p>
 							    <p><span>Telephone:</span> <%= project.telephone %></p>
 				  			</div>
