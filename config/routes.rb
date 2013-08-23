@@ -1,6 +1,10 @@
 RaisonMentors20::Application.routes.draw do
-  devise_for :admins
-
+  devise_for :admins, :skip => [:registrations]   
+    as :admins do
+      get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
+      put 'admins' => 'devise/registrations#update', :as => 'admin_registration'            
+    end
+    
 #match "clients/sign_up", :to => "pages#home" #to stop people signing up as clients, while still allowing the admin to use the devise registrations
   devise_for :clients, :skip => [:registrations]     #stops clients/organisations registering on their own. We register them.                                     
     as :client do
