@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>Raison Mentors | <%= yield :title %></title>
+	<meta charset="utf-8">
+	<meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+	
+	<%= javascript_include_tag "jquery-1.7.1.min"%>
+	
+	<%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "application" %>
+  	<%= csrf_meta_tags %>
+</head>
+<body>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<div class="bg-main"> <!--start background main-->
+		<header>
+			<div class="container_24">
+				<div class="wrapper">
+					<div class="grid_17">
+						<h1><a href="index.html">Idealex</a></h1>
+					</div>
+				</div>
+			</div>
+			<%= render :partial => 'shared/navigation' %>
+			<%= render :partial => 'shared/homepage_slider'%>
+		</header>
+		<section class="padsection"> <!-- wrapper -->
+			<div class="container_24"><!-- container -->
+				<%= yield %>
+			</div> <!--end container-->
+		</section> <!--end wrapper-->
+	</div> <!--end background main-->
+	<%= render :partial => 'shared/footer' %>
+</body>
+</html>

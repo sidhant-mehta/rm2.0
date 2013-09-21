@@ -1,0 +1,41 @@
+<%= form_for(@employer_profile,url: {action: "profile_update"},html: { id:"form_update_employer_profile", class: "blocks"}) do |f| %>
+					
+					
+					<div id="tab1" class="tab_content">
+						<table>
+							<tr>
+								<td><%=f.label :name, 'Company Name'%></td>
+								<td><%=f.text_field :name, :class => "text", :readonly => true %></td>
+							</tr>
+							<tr>
+								<td><%=f.label :bio, 'About the Company'%></td>
+								<td><%= f.text_area :bio, :class => "textarea" %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :sector_ids, 'Company\'s industry (choose max 3)'%></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@employer_profile_sectors_ids),{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
+							</tr>
+							<tr>
+								<td><%= f.label :location, 'Location'%></td>
+								<td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %> 
+							</tr>
+						</table>
+					</div>
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+								<td><%= f.label :image%></td>
+								<td><%= f.file_field :image %> </td>
+								<td>Currenty: <%= image_tag @employer_profile.image.to_s, :style=>"width: 106px" if !@employer_profile.image.blank?%></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Remove Image?: <%= f.check_box :remove_image %></td>
+							</tr>
+						</table>
+					</div>
+					<div class ="submit_link">
+						<%= f.submit %>
+					</div>
+<% end %>

@@ -1,2 +1,49 @@
-<h1>Pages#contact_us</h1>
-<p>Find me in app/views/pages/contact_us.html.erb</p>
+<section class="padsection5" style="margin-top: 2em;">
+		<div class="container_24">
+			<div class="wrapper">
+				<div class="grid_12">
+					<h2 class="">Contact Us</h2>
+					<div class="map">
+						<table class="contact-square">
+							<tr>
+								<td><a href="https://www.facebook.com/pages/Raison-Mentors/269390666513607"><%= image_tag('Facebook Square.png', :style=>"width:120px;")%></a></td>
+								<td><a href="https://twitter.com/RaisonMentors"><%= image_tag('Twitter square.png', :style=>"width:120px;")%></a></td>
+							</tr>	
+							<tr>
+								<td><a href="http://uk.linkedin.com/groups/Raison-Mentors-4830630"><%= image_tag('Linkedin square.png', :style=>"width:120px;")%></a></td>
+								<td><a href="<%= pages_contact_us_path%>"><%= image_tag('logo.png', :style=>"width:120px;")%></a></td>
+							</tr>						
+						</table>
+					</div>
+				</div>
+				<div class="grid_12">
+					<h2 class="">Send Message</h2>
+					
+					<%= form_tag("/pages/send_email", method:"post") do %>
+						<fieldset>
+							<label class="name">
+								<%= text_field_tag :name, 'Name'%>
+								<span class="clear"></span>
+								<span class="clear"></span>
+							</label>
+							<label class="email">
+								<%= email_field_tag :email, 'E-mail'%>
+								<span class="clear"></span>
+								<span class="clear"></span>
+							</label>
+							<label class="message">
+								<%= text_area_tag :message, 'Message', :style=> "width: 284px; height: 200px" %>
+								<span class="clear"></span>
+								<span class="clear"></span>
+							</label>
+							<div class="buttons">
+								<%= submit_tag 'Send', :class => "button"%>
+							</div>
+						</fieldset>
+						<% end%>
+						
+				</div>
+			</div>
+		</div>
+	</section>	
+</div>

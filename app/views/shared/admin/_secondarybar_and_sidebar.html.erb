@@ -1,0 +1,82 @@
+	<section id="secondary_bar">
+		<div class="user">
+			<p><%= current_admin.email %></p>
+			<%= link_to "Logout", destroy_admin_session_path, :method => :delete, :class => "logout_user", :title => "Logout" %> 
+		</div>
+		<div class="breadcrumbs_container">
+			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <%= link_to "Dashboard", admin_dashboard_path %></article>
+		</div>
+	</section><!-- end of secondary bar -->
+	<aside id="sidebar" class="column">
+		<hr/>
+		<h3>Business Streams </h3>
+		<ul class="toggle">
+			<h3>Mentors</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Mentor", admin_new_mentor_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Mentor", admin_list_mentors_path %></li>
+				<li class="icn_categories"><%= link_to "List Mentors", admin_list_mentors_path  %></li>
+			</ul>
+			<h3>Projects</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Project", admin_new_project_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Project", admin_list_projects_path %></li>
+				<li class="icn_categories"><%= link_to "List Project", admin_list_projects_path %></li>
+			</ul>
+			<h3>Organisation Profiles</h3>
+			<ul class="toggle" style="display: none">
+				<li class="icn_new_article"><%= link_to "Add Organisation Profile", admin_new_employer_profile_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Organisation Profile", admin_list_employer_profiles_path %></li>
+				<li class="icn_categories"><%= link_to "List Organisation Profile", admin_list_employer_profiles_path %></li>
+			</ul>
+		</ul>		
+		<h3>Users</h3>
+		<ul class="toggle">
+			<h3>Members</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Member", new_member_registration_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Member", admin_list_members_path %></li>
+				<li class="icn_categories"><%= link_to "List Members", admin_list_members_path %></li>
+			</ul>
+			<h3>Clients</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Client", admin_new_client_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Client", admin_list_clients_path %></li>
+				<li class="icn_categories"><%= link_to "List Clients", admin_list_clients_path %></li>
+			</ul>
+		
+		</ul>
+		<h3>Marketing and Maintenance</h3>
+		<ul class="toggle">
+			<h3>Sectors</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Sector", admin_new_sector_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Sector", admin_list_sectors_path %></li>
+				<li class="icn_categories"><%= link_to "List Sectors", admin_list_sectors_path %></li>
+			</ul>
+			<h3>Locations</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Location", admin_new_location_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Location", admin_list_locations_path %></li>
+				<li class="icn_categories"><%= link_to "List Locations", admin_list_locations_path %></li>
+			</ul>
+			<h3>Organisation Emails</h3>
+			<ul class="toggle">
+				<li class="icn_new_article"><%= link_to "Add Organisation Email", admin_new_organisation_email_path %></li>
+				<li class="icn_categories"><%= link_to "List Organisation Emails", admin_list_organisation_emails_path %></li>
+			</ul>
+	</ul>
+		<!--<h3>Jobs</h3>
+		<ul class="toggle">
+			<li class="icn_new_article"><a href="add_job">New Job</a></li>
+			<li class="icn_edit_article"><a href="list_jobs">Edit Job</a></li>
+			<li class="icn_categories"><a href="list_jobs">List Jobs</a></li>
+		</ul> -->
+		<h3>Other</h3>
+		<ul class="toggle">
+			<li class="icn_settings"><%= link_to "Settings", admin_settings_path %></li>
+			<li class= "icn_jump_back"><%= link_to "Logout", destroy_admin_session_path, :method => :delete %></li>
+		</ul>
+		
+		<%= render :partial => 'shared/admin_footer' %>
+	</aside><!-- end of sidebar -->

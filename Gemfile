@@ -2,13 +2,18 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'devise'
-
+gem 'validates_timeliness', '~> 3.0'
+gem 'debugger', group: [:development, :test]
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+group :development, :test do
+    gem 'railroady'
+end
 gem 'sqlite3'
-
-
+gem 'friendly_id'
+gem "ckeditor"
+gem 'yaml_db'
+gem 'carrierwave'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

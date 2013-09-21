@@ -1,2 +1,74 @@
-<h1>Clients#list_mentors</h1>
-<p>Find me in app/views/clients/list_mentors.html.erb</p>
+<%= javascript_include_tag "clients" %>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<%= render :partial => 'shared/client/header' %>
+<%= render :partial => 'shared/client/secondarybar_and_sidebar'%>
+<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+
+<script type="text/javascript">  
+        $(document).ready(function(){
+            $("#details tr:odd").addClass("odd");
+            $("#details tr:not(.odd)").hide();
+            $("#details tr:first-child").show();
+            
+            $("#details tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#details").jExpand();
+        });
+    </script>        
+
+		<section id="main" class="column">
+			<%= render :partial => 'shared/member/alerts_and_notices'%>
+				<article class="module width_full" style="border:none; background:transparent;">			
+					<h1>Listing mentors</h1>
+					
+					<table id="details">
+					  <tr>
+					    <th>First Name</th>
+					    <th>Last Name</th>
+					    <th>Role title</th>
+					    <th>Sectors</th>
+					    <th>Organisation</th>
+					    <th>Closing Date</th>
+					    <th></th>
+					    <th></th>
+					    <th></th>
+					  </tr>
+					
+					<% @mentors.each do |mentor| %>
+					  <tr>
+					    <td><%= mentor.fname %></td>
+					    <td><%= mentor.lname %></td>
+					    <td><%= mentor.role_title %></td>
+					    <td><%= sectorsHTML(mentor) %></td>
+					    <td><%= mentor.organisation %></td>
+					    <td><%= mentor.closing_date %></td>
+					    <td><%= link_to 'Show', mentor %></td>
+					   <%if false%> 
+					    <td><%= link_to 'Edit', clients_edit_mentor_path + "/#{mentor.id}/#{mentor.fname}" %>
+					    </td>
+					    <%end%>
+					    <td><%# link_to 'Delete', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    <td><div class="arrow"></div></td>
+					  </tr>
+					  <tr>
+					  	<td colspan="11">
+					  		<div class="inner">
+				  				<p><span>Location: </span><%= mentor.location %></p>
+							 <!--   <p><span>Description: </span><%= mentor.description %></p> -->
+							    <p><span>Email: </span><%= mentor.email %></p>
+							    <p><span>Telephone: </span><%= mentor.telephone %></p>
+							    <p><span>Image: </span><%= mentor.image %></p>
+							    <p><span>Applications made: </span><%= countMentorApplications(mentor.id)%></p>
+				  			</div>
+					  	</td>
+					  </tr>
+					<% end %>
+					</table>
+					
+					<br />
+					
+			</article>
+		</section>

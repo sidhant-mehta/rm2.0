@@ -1,0 +1,110 @@
+	<%= render :partial => 'shared/member/header' %>
+	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
+	
+	<%= javascript_include_tag "validation/validate.min.js"%>
+	<%= javascript_include_tag "validation/member_profile.js"%>
+	
+	<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+	
+	<section id="main" class="column">
+	<%= render :partial => 'shared/member/alerts_and_notices'%>
+	<article class="module width_full" style="border:none; background:transparent;">
+		
+		<ul class="tabs">
+   			<li><a href="#tab1">Personal Details</a></li>
+    		<li><a href="#tab2">Academic Details</a></li>
+    		<li><a href="#tab3">Career Details</a></li>
+    		<li><a href="#tab4">Other</a></li>
+		</ul>
+		
+		 
+		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
+		
+			<div id="tab1" class="tab_content">
+			<%= form_tag('/members/update', :id=>"member_profile_form") %>
+			<% '#TODO add validation code to the below. Javascript and serverside.'  %>
+			<table> 
+				<tr>
+					<td><%=label_tag('fname', 'First Name')%></td>
+					<td><%=text_field_tag 'fname', @member.fname, :class => "text" %></td>
+				</tr>
+				<tr> 
+					<td><%=label_tag('lname', 'Last Name')%></td>
+					<td><%=text_field_tag'lname', @member.lname, :class => "text"%></td>
+				</tr>
+				<tr> 
+					<td><%=label_tag('email', 'Email Address')%></td>
+					<td><%=text_field_tag'email', @member.email, :class => "text"%></td>
+				</tr>
+				<tr> 
+					<td><%=label_tag('dob', 'Date of birth')%> <br/>dd-mm-yyyy</td>
+					<td><%=text_field_tag'dob', @member.dob.strftime("%d-%m-%Y"), :class => "text"%></td>
+				</tr>
+				<tr> 
+					<td><%=label_tag('gender', 'Gender')%></td>
+					<td><%=select_tag 'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), :class => "text" %></td>
+				</tr>
+				<tr> 
+					<td><%=label_tag('telephone', 'Telephone Number')%></td>
+					<td><%=telephone_field_tag'telephone', @member.telephone, :class => "text"%></td>
+				</tr>
+				
+				<tr> 
+					<td><%=label_tag('location', 'You live in')%></td>
+					<td><%=select_tag 'location', options_from_collection_for_select(@locations, "id", "name", @member.location) %></td>
+				</tr>
+			</table>
+							
+			</div>
+			
+			<div id="tab2" class="tab_content">
+				<table>
+					<tr> 
+						<td><%=label_tag('academic_institution', 'Your Academic Institution')%></td>
+						<td><%=text_field_tag'academic_institution', @member.academic_institution%></td>
+					</tr>
+					<tr> 
+						<td><%=label_tag('course', 'Your Course')%></td>
+						<td><%=text_field_tag'course', @member.course%></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="tab3" class="tab_content">
+				<table>
+					<tr> 
+						<td><%=label_tag('sector_ids', 'Interested in (select max 3)')%></td>
+						<td><%= select_tag "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {:multiple => true, :style => "background: white;"} %></td>
+					</tr>
+					<tr> 
+						<td><%=label_tag('employment_status', 'Your employment status')%></td>
+						<td><%= select_tag "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['other']], @member_employment_status)%></td>
+					</tr>			
+					<tr> 
+						<%'#TODO file tag. upload cv'%>
+						<td><%=label_tag('cv', 'Upload Your CV')%></td>
+						<td><%=file_field(:cv, :attached, :accept => 'text/pdf/doc/docx')%></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<% #TODO add this option to members model!
+		%>
+		<div id="tab4" class="tab_content">
+			<table>
+				<tr>
+					<td><%=label_tag('hear_about_us', 'Where did you hear about us?')%></td>
+					<td><%=select_tag "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]]), {:onchange => "checkHearAboutUs();"} %></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><%= text_field_tag "hear_about_us_other",'' , {:style => 'visibility:hidden;'} %></td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class ="submit_link">
+			<%=submit_tag('Save Changes', :onclick => "return validateForm();")	%>
+		</div>
+	</article>
+	</section>

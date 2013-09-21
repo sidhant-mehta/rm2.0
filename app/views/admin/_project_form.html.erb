@@ -1,0 +1,67 @@
+	<%= form_for(@project,url: {action: @action_address},html: {id:"form_add_project", class: "blocks"}) do |f| %>
+	<%= f.hidden_field :id %>
+					<div id="tab1" class="tab_content">
+						<table>
+							 <tr>
+							    <td><%= f.label :name, 'Project Name' %></td>
+							    <td><%= f.text_field :name, :class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :project_leader %></td>
+							    <td><%= f.text_field :project_leader,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :organisation %></td>
+							    <td><%= f.text_field :organisation,:class=>"text"%></td>
+						   </tr>
+							 <tr>
+							    <td><%= f.label :sector_ids, 'Works in (select max 3)' %></td>
+								<td><%= f.select "sector_ids", options_from_collection_for_select(@sectors, "id", "name",  @project_sectors_ids) ,{}, {:multiple => true, :style => "background: white; width:242px;"} %></td>
+							   </tr>
+							 
+							 <tr>
+							    <td><%= f.label :location %></td>
+							    <td><%= f.select :location, Location.all.collect {|l| [l.name, l.name]},{}, {:class=>"text", :style=> "width:242px"} %>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :description %></td>
+							    <td><%= f.text_area :description,:class=>"textarea" %></td>
+							   </tr>
+					 	</table>
+				 	</div>
+					<div id="tab2" class="tab_content">
+						<table>
+							<tr>
+							    <td><%= f.label :email %></td>
+							    <td><%= f.text_field :email,:class=>"text" %></td>
+							   </tr>
+							 <tr>
+							    <td><%= f.label :telephone %></td>
+							    <td><%= f.text_field :telephone,:class=>"text" %></td>
+							   </tr>
+						</table>
+				 	</div>	   
+				 	<div id="tab3" class="tab_content">
+						<table>
+							   <tr>
+							    <td><%= f.label :closing_date %></td>
+							    <td><%= f.text_field :closing_date, :class => "text", :id=>"datepicker_future", :readonly =>true%>
+							   </tr>
+							   <tr>
+									<td><%= f.label :image %></td>
+									<td><%= f.file_field :image %></td>
+									<td>Currenty: <%= image_tag @project.image.to_s, :style=>"width: 106px" if !@project.image.blank?%></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>Remove Image?: <%= f.check_box :remove_image %></td>
+								</tr>
+						</table>				
+					</div>
+					<% #TODO create validatin client.
+					%> 
+					<div class ="submit_link">
+						<%= f.submit :onclick => "return validateProjectForm();" %>
+					</div>
+					<% end %>

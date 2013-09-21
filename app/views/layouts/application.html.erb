@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RaisonMentors20</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  	<title>Raison Mentors | <%= yield :title %></title>
+	<meta charset="utf-8">
+	<meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+	<%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "application" %>
+  	<%= csrf_meta_tags %>
+  	<link rel="shortcut icon" href="/assets/favicon.ico"/>
 </head>
 <body>
- <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
-<%= yield %>
-
+	<p class="notice"><%= flash[:notice] %></p>
+	<p class="alert"><%= flash[:alert] %></p>
+	<div class="bg-main"> <!--start background main-->
+		<header>
+			<div class="container_24">
+				<div class="wrapper">
+					<div class="grid_17">
+						<a class="logo_link" href = <%=root_path%> >
+						<%= image_tag "logo.png", {:style => "border: none; width: 8%; margin-top: 2em; margin-bottom: -29px;"}%>
+						<h1 style= "font-size: 2.3em; font-family: impact;margin-left: 54px;">Raison Mentors</h1>
+						</a>
+					</div>
+				</div>
+			</div>
+			<%= render :partial => 'shared/navigation' %>
+		</header>
+		<section class="padsection"> <!-- wrapper -->
+			<div class="container_24"><!-- container -->
+				<%= yield %>
+			</div> <!--end container-->
+		</section> <!--end wrapper-->
+	</div> <!--end background main-->
+	<%= render :partial => 'shared/footer' %>
 </body>
 </html>

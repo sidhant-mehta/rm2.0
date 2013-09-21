@@ -1,6 +1,8 @@
 class AboutUsController < ApplicationController
-  def what_we_do
+  def index
+    redirect_to :action=>"how_it_works"
   end
+  
 
   def how_it_works
   end

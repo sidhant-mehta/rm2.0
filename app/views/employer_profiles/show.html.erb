@@ -1,15 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div class="tabs-horz-top2">
+	<ul class="tabs-nav" style="margin-right: 45px;">
+		<li><a href="">Company Profile</a></li>
+		<li><a href="">Company Mentors</a></li>
+		<li><a href="">Company Projects</a></li>
+	</ul>
+	<span class="employer_title" style="margin-left: 12px;"> <%= @employer_profile.name %> </span>
+		
+	<div class="tab-content" style="background: none; border: none;">
+		<table class="table">
+			<th><%= image_tag(@employer_profile.image.to_s , :class => "individual_employer_image" ) %></th>
+			<td>
+				<table class="employer_inner"> 
+					<tr><th>Industry</th><td><%=sectorsHTML(@employer_profile) %></td></tr>
+					<tr><th>Location</th><td><%= @employer_profile.location %></td></tr>
+					<tr><th>Biography</th><td><%= @employer_profile.bio%></td></tr>
+					<tr class="individual_closing_date_row"><th>Closing Date</th><td><%= %></td> <% #in the profile could mention the closing dates for internships and grad schemes.
+					%>
+					</tr>
+				</table>
+			</td>
+		</table>
+	</div>
 
-<p>
-  <b>Name:</b>
-  <%= @employer_profile.name %>
-</p>
+	<div class="tab-content" style="background: none; border: none;">
+		<% @mentors.each do |mentor| %>
+		<table class="table">
+			<tr>
+				<th class="mentor_title"><%=link_to "#{mentor.fname} #{mentor.lname}", mentor%></th>
+				<th><%= image_tag(mentor.image.to_s , :class => "mentor_image" ) %></th> 	
+				<td>
+					<table class="mentor_inner">
+						<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>
+						<tr><td><%= mentor.organisation%></td><td><%= mentor.role_title %></td><td><%=sectorsHTML(mentor)%></td><td><%=mentor.closing_date%></td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<%end%>
+	</div>
 
-<p>
-  <b>Bio:</b>
-  <%= @employer_profile.bio %>
-</p>
-
-
-<%= link_to 'Edit', edit_employer_profile_path(@employer_profile) %> |
-<%= link_to 'Back', employer_profiles_path %>
+	<div class="tab-content" style="background: none; border: none;">
+		<% @projects.each do |project| %>
+		<table class="table">
+			<tr>
+				<th class="project_title"><%=link_to "#{project.name}", project%></th>
+				<th><%= image_tag(project.image.to_s , :class => "project_image" ) %></th> 	
+				<td>
+					<table class="project_inner">
+						<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Salary</th><th>Closing Date</th></tr>
+							<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%= project.salary%></td><td><%=project.closing_date%></td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<%end%>
+	</div>
+	
+</div>

@@ -1,0 +1,105 @@
+	<%= render :partial => 'shared/member/header' %>
+	<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
+
+	<section id="main" class="column">
+		<%= render :partial => 'shared/member/alerts_and_notices'%>
+			<!-- start of table -->
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">All Applications</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Mentors</a></li>
+    		<li><a href="#tab2">Projects</a></li>
+    		<li><a href="#tab3">Jobs</a></li>
+		</ul>
+		</header>
+
+		<!-- tab 1-->
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th>Application ID</th>
+    				<th>Mentor Name</th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
+    				<!--<th>Actions</th> --> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<% @mentors.each_with_index do |mentor,index| %> 
+				<tr> 
+					<%  %> 
+   					<td><%= @mentor_application_id [index]%></td> 
+    				<td><%= link_to "#{mentor.fname} #{mentor.lname}", mentors_path + "/" + mentor.id.to_s %></td> 
+    				<td><%=@mentor_application_statuses[index]%></td> 
+    				<td><%=@mentor_application_created_at[index]%></td> 
+    				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
+				</tr> 
+				<% end %>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		
+		<!-- tab 2--> 
+			<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th>Application ID</th> 
+    				<th>Project Name</th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
+    				<!--<th>Actions</th> -->
+				</tr> 
+			</thead> 
+			<tbody> 
+				<% @projects.each_with_index do |project,index| %> 
+					<tr> 
+						<%  %> 
+	   					<td><%= @project_application_id [index]%></td> 
+	    				<td><%= project.name%></td> 
+	    				<td><%=@project_application_statuses[index]%></td> 
+	    				<td><%=@project_application_created_at[index]%></td> 
+	    			<!--	<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
+					</tr> 
+				<% end %>
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab2 -->
+			
+			<!-- tab 3--> 
+			<div id="tab3" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+					<th>Coming Soon</th>
+   					<!--<th>Application ID</th> 
+    				<th>Job Name</th> 
+    				<th>Status</th> 
+    				<th>Created on</th> 
+    				<th>Actions</th> -->
+				</tr> 
+			</thead> 
+			<tbody> 
+				<!--	<% @jobs.each_with_index do |job,index| %> 
+					<tr> 
+						<td><%= @job_application_id [index]%></td> 
+	   					<td><input type="checkbox"></td> 
+	    				<td><%= job.name%></td> 
+	    				<td><%=@job_application_statuses[index]%></td> 
+	    				<td><%=@job_application_created_at[index]%></td> 
+	    				<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %>
+					</tr> 
+				<% end %> -->
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab3 -->
+			
+		</div><!-- end of .tab_container -->
+
+		
+		</article><!-- end of content manager article -->
+	</section>

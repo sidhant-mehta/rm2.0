@@ -1,0 +1,16 @@
+	<%= javascript_include_tag "admins" %>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+	
+	<%= render :partial => 'shared/admin/header' %>
+	<%= render :partial => 'shared/admin/secondarybar_and_sidebar'%>
+	
+	<section id="main" class="column">
+	<%= render :partial => 'shared/member/alerts_and_notices'%>
+	<article class="module width_full" style="border:none; background:transparent;">
+		
+		<%= render :partial => 'member_form'%>
+		
+			</article>
+	</section>

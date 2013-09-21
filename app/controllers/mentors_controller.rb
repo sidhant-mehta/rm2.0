@@ -1,24 +1,56 @@
 class MentorsController < ApplicationController
   # GET /mentors
   # GET /mentors.json
+ 
+   
   def index
-    @mentors = Mentor.all
-
+    @type = "mentor"
+    @mentors = Mentor.where(:external => true)
+    @sectors = Sector.find(:all, :order=>'name')
+    @location = Location.find(:all, :order => 'name')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @mentors }
     end
   end
 
+  def search
+    @type = "mentor"
+     if ( params.has_key?(:mentor_name) )
+           @search_name =params[:mentor_name].split(" ")    
+     else
+            @search_name =""
+     end
+     
+    @search_sector = params[:sector_id]
+    @search_closing_date = params[:closing_date]
+    @search_location = params[:location]
+    #@search_pay_value = params[:pay_value]
+    
+    @sectors = Sector.find(:all, :order=>'name')
+    @location = Location.find(:all, :order => 'name')
+    @result_mentors = Mentor.search(@search_name[0], @search_name[1], @search_sector, @search_location, @search_closing_date )
+    
+  end
+
   # GET /mentors/1
   # GET /mentors/1.json
   def show
-    @mentor = Mentor.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @mentor }
+    if (current_member.blank? ) 
+        @member =-1
+    else
+        @member = Member.find(current_member.id).id
     end
+    
+    @mentor = Mentor.find(params[:id])
+    if request.path != mentor_path(@mentor)
+      redirect_to @mentor, status: :moved_permanently
+    end
+
+#    respond_to do |format|
+   #   format.html # show.html.erb
+  #    format.json { render json: @mentor }
+ #   end
   end
 
   # GET /mentors/new
@@ -41,7 +73,7 @@ class MentorsController < ApplicationController
   # POST /mentors.json
   def create
     @mentor = Mentor.new(params[:mentor])
-
+    
     respond_to do |format|
       if @mentor.save
         format.html { redirect_to @mentor, notice: 'Mentor was successfully created.' }
@@ -76,7 +108,7 @@ class MentorsController < ApplicationController
     @mentor.destroy
 
     respond_to do |format|
-      format.html { redirect_to mentors_url }
+      format.html { redirect_to mentors_url, alert: "Mentor was successfully removed." }
       format.json { head :no_content }
     end
   end

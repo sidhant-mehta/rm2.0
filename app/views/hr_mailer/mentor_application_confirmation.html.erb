@@ -1,0 +1,16 @@
+<p><%= "#{@member.fname} #{@member.lname}"%> has made an application for the mentor <%= "#{@mentor.fname} #{@mentor.lname}"%></p> <br/>
+
+<p><b>Member details:</b></p>
+<p>Name: <%= "#{@member.fname} #{@member.lname}"%></p>
+<p>ID: <%= @member.id %></p>
+<p>Member Email: <%=  @member.email%></p>
+<p> CV link: <%= @member.cv #TODO Need to make an actual link for the CV 
+%> </p> 
+
+<br />
+
+<p><b>Mentor Details:</b></p>
+<p>Name: <%= "#{@mentor.fname} #{@mentor.lname}"%></p>
+<p>Mentor ID: <%= @mentor.id%></p>
+<p>Mentor Email: <%= @mentor.email%></p>
+<p>Mentor Link: <%= link_to 'Mentor Profile', root_url + mentor_path(@mentor) %></p>

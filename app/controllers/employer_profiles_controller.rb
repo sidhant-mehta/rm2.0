@@ -1,9 +1,37 @@
 class EmployerProfilesController < ApplicationController
   # GET /employer_profiles
   # GET /employer_profiles.json
+before_filter :setVars
+
+def setVars
+    @type = "employer"
+    @sectors=[]
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+        @location = Location.find(:all, :order => 'name')
+
+end
+#------------------------------------------------
+
+  def search
+    if ( params.has_key?(:employer_name) )
+           @search_name =params[:employer_name]    
+     else
+          @search_name =""
+   end
+   
+   @search_location = params[:location]
+   @search_sector_ids = params[:sector_id]
+   
+   @employer_profiles = EmployerProfile.search(@search_name, @search_sector_ids, @search_location)
+   
+   render "index"
+   
+  end
+
   def index
     @employer_profiles = EmployerProfile.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @employer_profiles }
@@ -14,13 +42,16 @@ class EmployerProfilesController < ApplicationController
   # GET /employer_profiles/1.json
   def show
     @employer_profile = EmployerProfile.find(params[:id])
-
+    @mentors = Mentor.where(:organisation => @employer_profile.name)
+    @projects = Project.where(:organisation => @employer_profile.name)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @employer_profile }
     end
+
   end
 
+  
   # GET /employer_profiles/new
   # GET /employer_profiles/new.json
   def new
@@ -44,7 +75,7 @@ class EmployerProfilesController < ApplicationController
 
     respond_to do |format|
       if @employer_profile.save
-        format.html { redirect_to @employer_profile, notice: 'Employer profile was successfully created.' }
+        format.html { redirect_to @employer_profile, notice: 'Organisation profile was successfully created.' }
         format.json { render json: @employer_profile, status: :created, location: @employer_profile }
       else
         format.html { render action: "new" }
@@ -60,7 +91,7 @@ class EmployerProfilesController < ApplicationController
 
     respond_to do |format|
       if @employer_profile.update_attributes(params[:employer_profile])
-        format.html { redirect_to @employer_profile, notice: 'Employer profile was successfully updated.' }
+        format.html { redirect_to @employer_profile, notice: 'Organisation profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

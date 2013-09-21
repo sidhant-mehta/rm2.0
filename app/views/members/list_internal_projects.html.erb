@@ -1,0 +1,39 @@
+<%= javascript_include_tag "members" 
+%>
+<%= stylesheet_link_tag "all/projects", "all/pro_pages_style"
+%>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<%= render :partial => 'shared/member/header' %>
+<%= render :partial => 'shared/member/secondarybar_and_sidebar'%>
+<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+        
+
+		<section id="main" class="column">
+			<%= render :partial => 'shared/member/alerts_and_notices'%>
+				<article class="module width_full" style="border:none; background:transparent;">			
+					<h1>Internal Projects</h1>
+					<span class="initial_text" style="margin-bottom: 2em; float: left; clear:both"> Use our search facility below to find internal projects that meets your requirements.
+					</span>
+					<div style="clear: both">
+						<%= render :partial => "shared/member/internal_searchbar"%>
+					</div>
+						<%=submit_tag('Search', :class => "search_button", :style=>"margin: 1em; float: right;")%>
+						</form>
+					<% @projects.each do |project| %>
+					<table class="table">
+						<tr>
+							<th class="project_title"><%=link_to "#{project.name}", project%></th>
+							<th><%= image_tag(project.image.to_s , :class => "project_image" ) %></th> 	
+							<td>
+								<table class="project_inner">
+									<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Salary</th><th>Closing Date</th></tr>
+										<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%= project.salary%></td><td><%=project.closing_date%></td></tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<%end%>
+				
+				</article>
+		</section>

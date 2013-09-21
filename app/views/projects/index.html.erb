@@ -1,41 +1,25 @@
-<h1>Listing projects</h1>
+<h3> </h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Project leader</th>
-    <th>Sector ids</th>
-    <th>Organisation</th>
-    <th>Closing date</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th>Email</th>
-    <th>Telephone</th>
-    <th>Draft</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+ <div class="grid_24">
+<h3>Projects</h3>
+	<span class="initial_text"> Volunteer opportunities to gain valuable career experience and make your CV stand out.  <br/> 
+		Charity - volunteer placements, Healthcare Organisations – Audits/Research projects, Private Companies – Work experience
+</span>
 
+<%= render :partial => "shared/searchbar"%>
+</div>
 <% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.project_leader %></td>
-    <td><%= project.sector_ids %></td>
-    <td><%= project.organisation %></td>
-    <td><%= project.closing_date %></td>
-    <td><%= project.location %></td>
-    <td><%= project.description %></td>
-    <td><%= project.email %></td>
-    <td><%= project.telephone %></td>
-    <td><%= project.draft %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table">
+	<tr>
+		<th class="project_title"><%=link_to "#{project.name}", project%></th>
+		<th><%= image_tag(project.image.to_s , :class => "project_image" ) %></th> 	
+		<td>
+			<table class="project_inner">
+				<tr><th>Organisation</th><th>Location</th><th>Sectors</th><th>Closing Date</th></tr>
+					<tr><td><%= project.organisation%></td><td><%= project.location %></td><td><%=sectorsHTML(project)%></td><td><%=Date.strptime(project.closing_date.to_s, "%Y-%m-%d").strftime("%e %b %Y")%></td></tr>
+			</table>
+		</td>
+	</tr>
 </table>
+<%end%>
 
-<br />
-
-<%= link_to 'New Project', new_project_path %>

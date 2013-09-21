@@ -1,0 +1,149 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//search bar
+.fleft {
+  margin: 0 8px;
+}
+
+.grid_24 h3 {
+  font-size: 150%;
+letter-spacing: 2px;
+line-height: 1.5em;
+
+}
+
+.search_button {
+   float: left;
+    margin-left: 5px;
+    width: 11%;
+    padding: 4px;
+    background: -webkit-linear-gradient(top, white, rgba(145, 176, 255, 0.6));
+}
+
+.tab-content .container_24 .wrapper .grid_12{
+  width: 35%;
+}
+
+.tab-content .container_24 .wrapper .grid_12 label{
+  margin: 0 10px;
+}
+
+.tab-content .container_24 .wrapper .grid_12 .closing_date{
+  width: 50%; 
+  position: relative; 
+  z-index: 100000;
+}
+
+.tab-content .container_24 .wrapper .grid_12 .pay_slider{
+width:100px; 
+float:left; 
+position: relative;
+margin: 12px 12px 12px 0;
+}
+
+.tab-content .container_24 .wrapper .grid_12 .pay_value{
+  border: 0; 
+  width: 35%;
+}
+
+#sector_id, #location, .drop_down{
+  display: block;
+  float: none;
+  width: 184px !important;
+  background: #fff;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.1);
+  padding: 10px 0;
+}
+input[type=text], input[type=email], input[type=password] {
+  text-shadow:none;
+  font-weight:normal;//bold
+  background: white;
+  color : black;
+  letter-spacing: 1px;
+}
+input[type=text]:focus {
+  color: grey;
+}
+label{
+  width:auto;
+}
+#project_name {
+  float: left;
+  width: 290px;
+}
+.tabs-vert-left .tabs-nav{
+  margin-right:15px !important;  
+}
+.tabs-vert-left .tab-content {
+  border-radius: 11px;
+  width: 94% !important;
+  min-height: 52px !important;
+}
+.tabs-vert-left{
+  margin-top: 24px;
+}
+.btn {
+  padding: 12px 35px !important;
+  margin-left:18px;
+}
+.initial_text{
+ line-height: 2em;
+ color: #949494;
+ font-family: sans-serif;
+font-weight: lighter;
+}
+
+.grid_24 {
+margin-top: 25px !important;
+}
+
+
+.table a:hover{
+  color: cornflowerblue;
+  border: none;
+}
+
+.project_title, .individual_project_title {
+font-family: arial;
+font-size: 140%;
+letter-spacing: 2px;
+line-height: 1.3em !important;
+width: 17em;
+font-weight: normal !important;
+
+}
+
+.individual_project_title {
+line-height: 3em !important;
+}
+
+.project_inner tr td 
+{
+  color: rgb(80, 80, 80);
+}
+
+.project_inner a {
+color: cornflowerblue;
+}
+
+.table th .individual_project_image{
+  margin-right: 5em;  
+  width: 210px;
+}
+.project_image {
+width: 106px;
+//margin: 0 auto;
+}
+
+.individual_closing_date_row{
+  
+}

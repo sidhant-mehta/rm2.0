@@ -1,0 +1,35 @@
+<!-- look at services.html-->
+<h3> </h3>
+
+ <div class="grid_24">
+<h3>Mentors - External</h3>
+<span class="initial_text">Mentors provide a reflective space and guidance on careers to the mentee; helping them to achieve their aspirations. <br /> 
+</span>
+
+<%= render :partial => "shared/searchbar"%>
+</div>
+<% 
+if (!@result_mentors.empty?)
+	@result_mentors.each do |mentor| %>
+	<table class="table">
+		<tr>
+			<th class="mentor_title"><%=link_to "#{mentor.fname} #{mentor.lname}", mentor%></th>
+			<th><%= image_tag(mentor.image , :class => "mentor_image" ) %></th> 	
+			<td>
+				<table class="mentor_inner">
+					<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>
+					<tr><td><%= mentor.organisation%></td><td><%= mentor.role_title %></td><td><%=sectorsHTML(mentor)%></td><td><%=Date.strptime(mentor.closing_date.to_s, "%Y-%m-%d").strftime("%e %b %Y")%></td></tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<%end %>
+ <%else %>
+	<table class="table" style="">
+		<tbody>
+			<div class="grid_24">
+				<h3> Oops... </h3> <span class="initial_text">Sorry there are currently no mentors matching your criteria. We are constantly adding new mentors so please check back soon or alternatively broaden your criteria to find a mentor today. </span>
+			</div>
+		</tbody>
+	</table>
+<% end%>

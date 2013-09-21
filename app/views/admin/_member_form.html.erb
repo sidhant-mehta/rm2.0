@@ -1,0 +1,101 @@
+<ul class="tabs">
+   			<li><a href="#tab1">Personal Details</a></li>
+    		<li><a href="#tab2">Academic Details</a></li>
+    		<li><a href="#tab3">Career Details</a></li>
+    		<li><a href="#tab4">Other</a></li>
+		</ul>
+		
+		 
+		<div class="tab_container" style="clear:both; padding: 5% 0 0 5%;">
+		<%= form_for(@member,url: {action: @action_address},html: { :multipart => true, id:"form_profile", class: "blocks"}) do |f| %>
+			<div id="tab1" class="tab_content">
+			<table>
+				<tr>
+					<td><%= f.label('fname', 'First Name')%></td>
+					<td><%= f.text_field 'fname', :class => "text" %></td>
+				</tr>
+				<tr> 
+					<td><%= f.label('lname', 'Last Name')%></td>
+					<td><%= f.text_field 'lname', :class => "text"%></td>
+				</tr>
+				<tr> 
+					<td><%= f.label('email', 'Email Address')%></td>
+					<td><%= f.text_field 'email', :class => "text", :readonly => true%></td>
+					<td><%= link_to "Click here", edit_member_registration_path%> to change your email address</td>
+				</tr>
+				<tr> 
+					<td><%= f.label('dob', 'Date of birth')%> <br/></td>
+					<td><%= f.text_field 'dob', :class => "text", :id=>"datepicker", :readonly =>true%></td>
+				</tr>
+				<tr> 
+					<td><%= f.label 'gender', 'Gender' %></td>
+					<td><%= f.select  'gender', options_for_select([[""],["Male"],["Female"]], @member.gender), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
+				</tr>
+				<tr> 
+					<td><%= f.label 'telephone', 'Telephone'%></td>
+					<td><%= f.telephone_field 'telephone', :class => "text"%></td>
+				</tr>
+				
+				<tr> 
+					<td><%= f.label('location', 'You live in')%></td>
+					<td><%= f.select  'location', options_from_collection_for_select(@locations, "id", "name", @member.location), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
+				</tr>
+			</table>
+							
+			</div>
+			
+			<div id="tab2" class="tab_content">
+				<table>
+					<tr> 
+						<td><%= f.label('academic_institution', 'Your Academic Institution')%></td>
+						<td><%= f.text_field 'academic_institution', :class => "text"%></td>
+					</tr>
+					<tr> 
+						<td><%= f.label('course', 'Your Course')%></td>
+						<td><%= f.text_field 'course', :class => "text"%></td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="tab3" class="tab_content">
+				<table>
+					<tr> 
+						<td><%= f.label('sector_ids', 'Interested in (select max 3)')%></td>
+						<td><%= f. select  "sector_ids", options_from_collection_for_select(@sectors, "id", "name",@member_sectors_ids), {},{:multiple => true, :style => "background: white; width:242px;"} %></td>
+					</tr>
+					<tr> 
+						<td><%= f.label('employment_status', 'Your employment status')%></td>
+						<td><%= f. select  "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['Other']], @member.employment_status),{}, {:class => "text", :style=>"width:242px"}%></td>
+					</tr>			
+					<tr> 
+						<%'#TODO file tag. upload cv'%>
+						<td><%= f.label('cv', 'Upload Your CV')%></td>
+						<td><%= f.file_field :cv, :accept => 'text/pdf/doc/docx' %></td>
+						<td>Currently: <%= @member.cv.file.filename if !@member.cv.blank? %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td>Remove CV?: <%=f.check_box :remove_cv %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="tab4" class="tab_content">
+			<table>
+				<tr>
+					<td><%= f.label('hear_about_us', 'Where did you hear about us?')%></td>
+					<td><%= f.select "hear_about_us", options_for_select([["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other (please state)"]], @member.hear_about_us), {},{:onchange => "checkHearAboutUs();", :class => "text", :style=> "width:242px" } %></td>
+				</tr>
+				<tr>
+					<td></td>
+					<!--<td><%= #f. text_field  "hear_about_us_other", {:style => 'visibility:hidden;'} 
+						%></td> -->
+				</tr>
+			</table>
+		</div>
+		
+		<div class ="submit_link">
+			<%= f.submit('Save Changes', :onclick => "return validateMemberForm();")%>
+			<% end%>
+		</div>

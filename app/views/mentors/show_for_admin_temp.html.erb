@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fname:</b>
+  <%= @mentor.fname %>
+</p>
+
+<p>
+  <b>Lname:</b>
+  <%= @mentor.lname %>
+</p>
+
+<p>
+  <b>Role title:</b>
+  <%= @mentor.role_title %>
+</p>
+
+<p>
+  <b>Sector ids:</b>
+  <%= @mentor.sector_ids %>
+</p>
+
+<p>
+  <b>Organisation:</b>
+  <%= @mentor.organisation %>
+</p>
+
+<p>
+  <b>Closing date:</b>
+  <%= @mentor.closing_date %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @mentor.location %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @mentor.description %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @mentor.email %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @mentor.telephone %>
+</p>
+
+
+<p>
+	<%= form_tag('/mentors/apply', :id=>"mentor_apply_form") %>
+	<%= hidden_field 'member_id', @member, {:value => @member} %>
+	<%= hidden_field 'mentor_id', @mentor.id, {:value => @mentor.id}%>
+	<%= submit_tag('Apply')%>
+</p>
+
+
+<p>
+  <b>Image:</b>
+  <%= @mentor.image %>
+</p>
+
+<p>
+  <b>Draft:</b>
+  <%= @mentor.draft %>
+</p>
+
+
+<%= link_to 'Edit', edit_mentor_path(@mentor) %> |
+<%= link_to 'Back', mentors_path %>

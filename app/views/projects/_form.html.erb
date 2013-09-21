@@ -36,6 +36,11 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
+    <%= f.label :salary, 'salary per week' %><br />
+    <%= f.text_field :salary %>
+  </div>
+  
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
@@ -48,7 +53,7 @@
     <%= f.text_field :telephone %>
   </div>
   <div class="field">
-    <%= f.label :draft %><br />
+    <%= f.label :draft, 'Save as draft?' %><br />
     <%= f.check_box :draft %>
   </div>
   <div class="actions">

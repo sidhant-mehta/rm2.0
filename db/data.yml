@@ -1,0 +1,1241 @@
+
+---
+clients:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  - organisation
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - unconfirmed_email
+  records: 
+  - - 1
+    - sidhant_mehta@yahoo.com
+    - $2a$10$LWz7uZnf3M4S/SI8Rzkd/uW8gXaUEFJE0P8yB2j1NgcZ.F2hSkqgu
+    - 
+    - 
+    - 
+    - 64
+    - '2013-08-21 22:59:02.707988'
+    - '2013-08-21 22:58:03.841545'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2013-04-14 23:30:02.675329'
+    - '2013-08-21 22:59:02.714015'
+    - 
+    - 
+    - '2013-08-21 17:02:51.954408'
+    - '2013-08-21 17:02:26.320072'
+    - 
+  - - 8
+    - smehta@raisonmentors.com
+    - $2a$10$BZN5bUQJnGq7tzZMmk3hiesCNg2H9TlTQBZ34mvSTdA27rUyUJzvO
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - '2013-08-21 18:31:00.136828'
+    - '2013-08-21 18:31:00.136828'
+    - HSBC
+    - zMhKKQz8WMLtwmKk1Kj8
+    - 
+    - '2013-08-21 18:31:00.043954'
+    - 
+  - - 10
+    - sidhant.mehta01@gmail.com
+    - $2a$10$dLCmXAdx0dGCftTwW27zZu.9qZgL322PNlXO52XJrU8T.caqHRS7e
+    - 
+    - 
+    - 
+    - 2
+    - '2013-08-21 19:45:01.728979'
+    - '2013-08-21 19:42:28.694055'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2013-08-21 19:41:35.469073'
+    - '2013-08-21 19:45:01.733533'
+    - RBS
+    - 
+    - '2013-08-21 19:42:28.677934'
+    - '2013-08-21 19:41:35.468033'
+    - 
+
+---
+admins:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - sidhant.mehta01@gmail.com
+    - $2a$10$Dks7pYtVSvcIZYLPSGX1D.r2GR15d3icoZiHvR36aJ/hhCvQVgdDu
+    - 
+    - 
+    - 
+    - 19
+    - '2013-08-23 00:38:36.817888'
+    - '2013-08-23 00:34:02.361950'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2013-08-06 16:47:56.128086'
+    - '2013-08-23 00:38:36.822224'
+
+---
+sectors:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Accounting
+    - '2013-04-20 18:57:08.289453'
+    - '2013-04-20 18:57:08.289453'
+  - - 2
+    - Law
+    - '2013-04-20 18:57:13.263048'
+    - '2013-04-20 18:57:13.263048'
+  - - 3
+    - Consulting
+    - '2013-04-20 18:57:19.101182'
+    - '2013-04-20 18:57:19.101182'
+  - - 4
+    - Medical
+    - '2013-04-20 18:57:29.429277'
+    - '2013-04-20 18:57:29.429277'
+  - - 5
+    - Healthcare
+    - '2013-08-22 15:35:25.197798'
+    - '2013-08-22 15:35:25.197798'
+  - - 6
+    - Property & Construction
+    - '2013-08-22 15:35:43.182727'
+    - '2013-08-22 15:35:43.182727'
+  - - 7
+    - Finance
+    - '2013-08-22 15:36:10.094107'
+    - '2013-08-22 15:36:10.094107'
+  - - 8
+    - IT
+    - '2013-08-22 15:36:22.632121'
+    - '2013-08-22 15:36:22.632121'
+  - - 9
+    - Entrepreneurs & Business Management
+    - '2013-08-22 15:36:35.320606'
+    - '2013-08-22 15:36:35.320606'
+  - - 10
+    - Marketing & Advertising
+    - '2013-08-22 15:36:56.929126'
+    - '2013-08-22 15:36:56.929126'
+  - - 11
+    - Executives
+    - '2013-08-22 15:37:30.593220'
+    - '2013-08-22 15:37:30.593220'
+  - - 12
+    - Charity & Not-For-Profit
+    - '2013-08-22 15:39:11.464398'
+    - '2013-08-22 15:39:11.464398'
+  - - 13
+    - Government & Public Service
+    - '2013-08-22 15:39:26.976120'
+    - '2013-08-22 15:39:26.976120'
+  - - 14
+    - Education & Teaching
+    - '2013-08-22 15:41:11.128041'
+    - '2013-08-22 15:41:11.128041'
+  - - 15
+    - Engineering & Manufacturing
+    - '2013-08-22 15:41:24.320690'
+    - '2013-08-22 15:41:24.320690'
+  - - 16
+    - Oil and Gas
+    - '2013-08-23 00:05:37.688606'
+    - '2013-08-23 00:05:37.688606'
+
+---
+locations:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - London
+    - '2013-04-20 19:50:55.790921'
+    - '2013-04-20 19:50:55.790921'
+  - - 2
+    - Midlands
+    - '2013-04-20 19:51:02.933537'
+    - '2013-04-20 19:51:02.933537'
+  - - 3
+    - Wales
+    - '2013-04-20 19:51:11.885168'
+    - '2013-04-20 19:51:11.885168'
+  - - 4
+    - Scotland
+    - '2013-04-20 19:51:17.623217'
+    - '2013-04-20 19:51:17.623217'
+
+---
+members:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  - fname
+  - lname
+  - dob
+  - gender
+  - telephone
+  - sector_ids
+  - location
+  - employment_status
+  - academic_institution
+  - course
+  - cv
+  - settings_receive_email_updates
+  - settings_pass_info_to_employment_agencies
+  - settings_mentoring_highschool
+  - settings_pass_info_to_marketing
+  - unconfirmed_email
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - hear_about_us
+  records: 
+  - - 1
+    - sidhant_mehta@yahoo.com
+    - $2a$10$yj9ljWrQRSL0SBTJrN.N.eyW.x3RVpvZS/Y4MfyzVoUvcUiUMsrsq
+    - uJrkWjciUpqz8uBL7aeX
+    - '2013-07-27 16:54:42.110348'
+    - 
+    - 93
+    - '2013-08-21 15:36:29.393269'
+    - '2013-08-21 11:37:47.784225'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2013-04-11 20:38:18.600900'
+    - '2013-08-21 15:36:29.402503'
+    - Sidhant
+    - Mehta
+    - '1991-11-01'
+    - Male
+    - 07597034051
+    - '1,2'
+    - '2'
+    - Self-employed
+    - King's College London
+    - Maths and Comp
+    - parking_payment.pdf
+    - false
+    - false
+    - false
+    - false
+    - 
+    - 
+    - '2013-08-04 13:41:29.404384'
+    - '2013-07-31 14:52:41.871479'
+    - University Rep
+  - - 5
+    - smehta@raisonmentors.com
+    - $2a$10$cCO/Yt2PJfxp0STdN9rkX.1RgsmnAEiXuPRORCKBZ7L5Iz.UzQnPm
+    - 
+    - 
+    - 
+    - 1
+    - '2013-08-23 00:49:08.488094'
+    - '2013-08-23 00:49:08.488094'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2013-08-23 00:48:28.531768'
+    - '2013-08-23 00:50:40.080406'
+    - Sidhant
+    - Mehts
+    - '1991-01-11'
+    - Male
+    - 
+    - '1,3'
+    - '1'
+    - Young professional
+    - King's College London
+    - computing
+    - football-predictions.pdf
+    - false
+    - false
+    - false
+    - false
+    - 
+    - 
+    - '2013-08-23 00:49:08.472572'
+    - '2013-08-23 00:48:28.530878'
+    - Social Media
+
+---
+organisation_email_domains:
+  columns:
+  - id
+  - organisation
+  - domain
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Raison Mentors
+    - raisonmentors.com
+    - '2013-07-26 19:01:55.994160'
+    - '2013-07-26 19:01:55.994160'
+
+---
+projects:
+  columns:
+  - id
+  - name
+  - project_leader
+  - sector_ids
+  - organisation
+  - closing_date
+  - location
+  - description
+  - email
+  - telephone
+  - draft
+  - created_at
+  - updated_at
+  - image
+  - salary
+  - internal
+  - external
+  - slug
+  records: 
+  - - 17
+    - AMBER Care Bundle Baseline Audit
+    - Dr Caroline Stirling
+    - '5'
+    - University College London Hospitals NHS Trust
+    - '2013-08-28'
+    - London
+    - ! "The AMBER Care Bundle is a tool that facilitates decision making about patients
+      whose condition is deteriorating, are clinically unstable, with an uncertain
+      outcome. It helps clinicians have conversations with patients and carers, and
+      to work together to make informed, timely decisions in such situations. The
+      AMBER care bundle will be introduced throughout UCLH from January 2014 onwards.\r\nThe
+      aim of this project is to do a baseline notes audit before implementation to
+      look for documented evidence of clinical decision making and communication with
+      patients and carers, in patients who fulfil the AMBER bundle criteria.\r\nThe
+      clinical notes of 40 (20 per area) consecutive patients who died, either during
+      an admission to, or within 100 days of discharge from the Acute Medical Unit
+      or Care of the Elderly department, will be reviewed and a proforma completed
+      with evidence. Data will be summarised, written up and presented, with potential
+      for publication."
+    - caroline.stirling@nhs.net
+    - ''
+    - false
+    - '2013-08-22 23:57:47.802214'
+    - '2013-08-22 23:58:15.659812'
+    - 
+    - 
+    - true
+    - true
+    - amber-care-bundle-baseline-audit
+  - - 18
+    - Imperial College Peer to Peer Leadership Programme
+    - Vibha Sharma
+    - '5,12'
+    - Macmillan
+    - '2013-08-31'
+    - London
+    - ! "This pilot research aims to scope the feasibility of implementing best practice
+      approaches to delivering relational patient care, which looks to address recommendations
+      from the Keogh Review and Francis Inquiry. As a researcher you will receive
+      an induction from an independent expert advisor on the key aspects of high quality
+      relational care and current best practice approaches to delivering this.\r\nYou
+      will then be interviewing healthcare professionals at Imperial College Healthcare
+      NHS Trust on their views as to implementing these types of approaches. We will
+      then be looking to analyse the feedback  to refine these techniques and co-produce
+      interventions to improve patient experience of the relational aspects of care.\r\nThis
+      may lead to further opportunities of being involved in further refinement of
+      the techniques and implementation of the techniques across the Trust.\r\nWe
+      are looking for an Imperial College London medical student or Imperial College
+      Healthcare NHS Trust healthcare professional for this unique opportunity to
+      work with Macmillan within Imperial College Healthcare NHS Trust."
+    - vsharma@macmillan.org.uk
+    - ''
+    - false
+    - '2013-08-23 00:02:55.472666'
+    - '2013-08-23 00:13:20.563928'
+    - 
+    - 
+    - true
+    - true
+    - imperial-college-peer-to-peer-leadership-programme
+  - - 19
+    - Imperial College Peer to Peer Leadership Programme
+    - Vibha Sharma
+    - '5,12'
+    - Macmillan
+    - '2013-08-31'
+    - London
+    - ! "This pilot research aims to scope the feasibility of implementing best practice
+      approaches to delivering relational patient care, which looks to address recommendations
+      from the Keogh Review and Francis Inquiry. As a researcher you will receive
+      an induction from an independent expert advisor on the key aspects of high quality
+      relational care and current best practice approaches to delivering this.\r\nYou
+      will then be interviewing healthcare professionals at Imperial College Healthcare
+      NHS Trust on their views as to implementing these types of approaches. We will
+      then be looking to analyse the feedback  to refine these techniques and co-produce
+      interventions to improve patient experience of the relational aspects of care.\r\nThis
+      may lead to further opportunities of being involved in further refinement of
+      the techniques and implementation of the techniques across the Trust.\r\nWe
+      are looking for an Imperial College London medical student or Imperial College
+      Healthcare NHS Trust healthcare professional for this unique opportunity to
+      work with Macmillan within Imperial College Healthcare NHS Trust."
+    - vsharma@macmillan.org.uk
+    - ''
+    - false
+    - '2013-08-23 00:04:01.418091'
+    - '2013-08-23 00:14:00.673287'
+    - 
+    - 
+    - true
+    - true
+    - imperial-college-peer-to-peer-leadership-programme--2
+  - - 20
+    - KCH Peer to Peer Leadership Programme
+    - Vibha Sharma
+    - '5,12'
+    - Macmillan & King's College Hospital NHS Trust
+    - '2013-08-31'
+    - London
+    - ! "This pilot research aims to scope the feasibility of implementing best practice
+      approaches to delivering relational patient care, which looks to address recommendations
+      from the Keogh Review and Francis Inquiry. As a researcher you will receive
+      an induction from an independent expert advisor on the key aspects of high quality
+      relational care and current best practice approaches to delivering this.\r\nYou
+      will then be interviewing healthcare professionals at Imperial College Healthcare
+      NHS Trust on their views as to implementing these types of approaches. We will
+      then be looking to analyse the feedback  to refine these techniques and co-produce
+      interventions to improve patient experience of the relational aspects of care.\r\nThis
+      may lead to further opportunities of being involved in further refinement of
+      the techniques and implementation of the techniques across the Trust.\r\nWe
+      are looking for a King’s College London medical/healthcare student or King’s
+      College Hospital NHS Trust healthcare professional for this unique opportunity
+      to work with Macmillan within King’s College Hospital NHS Trust."
+    - vsharma@macmillan.org.uk
+    - ''
+    - false
+    - '2013-08-23 00:12:11.841010'
+    - '2013-08-23 00:12:11.841010'
+    - 
+    - 
+    - true
+    - true
+    - kch-peer-to-peer-leadership-programme
+  - - 21
+    - King's College London Raison Champion
+    - Sharan Reddy
+    - '9,10,14'
+    - Raison Mentors
+    - '2013-09-15'
+    - London
+    - ! "Do you have a passion for mentoring or the project services at Raison Mentors?\r\nThis
+      is an exciting opportunity to get involved with an innovative new organisation,
+      helping to promote the importance of mentoring and project experience. We are
+      looking for a set of enthusiastic team members to help develop our network at
+      King’s College London and help students gain valuable opportunities at Raison
+      Mentors.\r\nIf you would like more information about the role of a raison champion
+      please contact sreddy@raisonmentors.com"
+    - sreddy@raisonmentors.com
+    - ''
+    - false
+    - '2013-08-23 00:20:28.394695'
+    - '2013-08-23 00:21:15.146071'
+    - 
+    - 
+    - true
+    - true
+    - king-s-college-london-raison-champion
+  - - 22
+    - UCL Raison Champion
+    - Sharan Reddy
+    - '9,10,14'
+    - Raison Mentors
+    - '2013-09-15'
+    - London
+    - ! "Do you have a passion for mentoring or the project services at Raison Mentors?\r\nThis
+      is an exciting opportunity to get involved with an innovative new organisation,
+      helping to promote the importance of mentoring and project experience. We are
+      looking for a set of enthusiastic team members to help develop our network at
+      UCL and help students gain valuable opportunities at Raison Mentors.\r\nIf you
+      would like more information about the role of a raison champion please contact
+      sreddy@raisonmentors.com"
+    - sreddy@raisonmentors.com
+    - ''
+    - false
+    - '2013-08-23 00:22:36.151312'
+    - '2013-08-23 00:22:36.151312'
+    - 
+    - 
+    - true
+    - true
+    - ucl-raison-champion
+  - - 23
+    - UCLH Peer to Peer Leadership Programme
+    - Vibha Sharma
+    - '5,12'
+    - Macmillan
+    - '2013-08-31'
+    - London
+    - ! "This pilot research aims to scope the feasibility of implementing best practice
+      approaches to delivering relational patient care, which looks to address recommendations
+      from the Keogh Review and Francis Inquiry. As a researcher you will receive
+      an induction from an independent expert advisor on the key aspects of high quality
+      relational care and current best practice approaches to delivering this.\r\nYou
+      will then be interviewing healthcare professionals at UCLH on their views as
+      to implementing these types of approaches. We will then be looking to analyse
+      the feedback  to refine these techniques and co-produce interventions to improve
+      patient experience of the relational aspects of care.\r\nThis may lead to further
+      opportunities of being involved in further refinement of the techniques and
+      implementation of the techniques across the Trust.\r\nWe are looking for a UCL
+      medical student or UCLH healthcare professional for this unique opportunity
+      to work with Macmillan within UCLH NHS Trust."
+    - vsharma@macmillan.org.uk
+    - ''
+    - false
+    - '2013-08-23 00:23:44.764003'
+    - '2013-08-23 00:23:44.764003'
+    - 
+    - 
+    - true
+    - true
+    - uclh-peer-to-peer-leadership-programme
+
+---
+mentors:
+  columns:
+  - id
+  - fname
+  - lname
+  - role_title
+  - sector_ids
+  - organisation
+  - closing_date
+  - location
+  - description
+  - email
+  - telephone
+  - image
+  - draft
+  - created_at
+  - updated_at
+  - internal
+  - external
+  - slug
+  records: 
+  - - 50
+    - Dawne
+    - Bloodworth
+    - Managing Director of Education Academy at Barts Health NHS Trust
+    - '5,11,14'
+    - Barts Health
+    - '2013-09-01'
+    - London
+    - ! "A skilled and experienced executive who has delivered in Board level positions
+      in NHS in acute, primary care, community care, and mental health organisations,
+      leading operational delivery, organisational change, service improvement and
+      programme management. In a number of joint appointments with Local Government
+      she has been responsible for joint strategic planning and operational delivery
+      of adult social care and learning disability service.\r\nTrained in PRINCE project
+      methodology, she is a registered MSP Practitioner with substantial experience
+      of large scale change programmes within and across organisations. An experienced
+      leadership mentor and executive coach (CIPD/ILM) she has a track record in forming
+      and developing partnerships to deliver tangible results. A skilled influencer
+      she is comfortable working with creative tension and in complex environments.
+      Know for her energy and positive approach she is a team builder and creates
+      a climate where people are engaged in solution finding and empowered to generate
+      ideas and actions to develop sustainable change."
+    - dawne.bloodworth@bartshealth.nhs.uk
+    - ''
+    - 
+    - false
+    - '2013-08-22 16:10:52.721741'
+    - '2013-08-22 22:00:02.096345'
+    - true
+    - true
+    - dawne-bloodworth
+  - - 51
+    - Jake
+    - Mann
+    - Doctor
+    - '4,5'
+    - NHS
+    - '2013-09-01'
+    - London
+    - ! "Jake Mann is a young doctor who combines an outstanding academic profile
+      with involvement in research, teaching, philanthropy and entrepreneurship.\r\n\r\nJake
+      graduated from Birmingham medical school winning the Gold Medal as top in his
+      cohort. The Vice-Chancellor’s Award was given to Jake Mann in 2012; it is the
+      highest award at the University and illustrates scholarship, personality and
+      leadership. He is currently on an academic foundation programme at Leeds Teaching
+      Hospitals Trust and is hoping to pursue a career in academic paediatrics.\r\n\r\nDr.
+      Mann has wide research experience, with international publications and presentations.
+      He is particularly interested in inflammatory liver disease and childhood obesity.
+      He is currently undertaking research into the molecular mechanisms of colorectal
+      cancer, funded by a national bursary. Jake is lead author for a physiology textbook
+      that he is in the process of writing.\r\n\r\nJake has hundreds of hours of teaching
+      experience, especially in basic sciences. He designed and taught the UK’s first
+      pre-clinical science revision course in April 2013 with One 2 One Medicine.\r\n\r\nCharity
+      and volunteering are important to Dr. Mann – he has worked at a school in Zambia
+      and recently ran 78 miles in 24-hours to raise over £2000 for Mind. His contribution
+      to Birmingham MedSoc was recognised by being given the award for outstanding
+      contribution, voted for by the student body. Jake also has an interest in entrepreneurial
+      projects. He has authored several iPhone apps with One 2 One Medicine and writes
+      for several other educational companies.\r\nOutside of work Jake runs marathons
+      and plays the piano."
+    - jake.mann@me.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:07:51.546325'
+    - '2013-08-22 22:08:44.175364'
+    - true
+    - true
+    - jake-mann
+  - - 52
+    - Dr Martin
+    - Baggaley
+    - Medical Director
+    - '4,11'
+    - South London and Maudsley NHS Foundation Trust
+    - '2013-09-01'
+    - London
+    - Martin Baggaley is the Medical Director of the Trust and lead for Clinical Governance.
+      He joined Lewisham and Guy’s Mental Health Trust in 1997 as a consultant psychiatrist
+      based in Lewisham . He then became clinical director for Lewisham adult mental
+      health services in 1999. He has a long term interest in health informatics and
+      carried out a two-year secondment with Connecting for Health. He was a military
+      psychiatrist and has extensive experience in post-traumatic stress disorder.
+      He  contributed to the development of the Triage ward model in Lewisham and
+      works at our Triage ward at Lambeth Hospital.
+    - martin.baggaley@slam.nhs.uk
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:11:36.555673'
+    - '2013-08-22 22:11:36.555673'
+    - true
+    - true
+    - dr-martin-baggaley
+  - - 53
+    - Dr Michael
+    - Holland
+    - Associate Medical Director
+    - '5,11'
+    - South London and Maudsley NHS Trust
+    - '2013-09-01'
+    - London
+    - ! "About Dr Michael Holland\r\nIn addition to his roles as Associate Medical
+      Director and Consultant Liaison Psychiatrist, Dr Holland is a lecturer in Quality
+      Management in Healthcare at the London School of Economics on the MSc in Health
+      Policy, Economics and Management. Dr Holland has a keen interest in service
+      improvement and is a fellow at the NHS Institute for Innovation and Improvement."
+    - michael.holland@slam.nhs.uk
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:13:51.071005'
+    - '2013-08-22 22:13:51.071005'
+    - true
+    - true
+    - dr-michael-holland
+  - - 54
+    - Dr Michael
+    - Marrinan
+    - Medical Director
+    - '5,11'
+    - King's College Hospital NHS Foundation Trust
+    - '2013-09-01'
+    - London
+    - ! "Michael is a consultant thoracic surgeon and was appointed as the Trust’s
+      Medical Director in February 2010 following two years’ service as Deputy Medical
+      Director.\r\nMichael has worked at King’s for nearly 20 years, and has previously
+      chaired both the Consultants’ Committee and the Patient Records Committee.\r\nHe
+      was also heavily involved in the development of King’s activity based costing
+      system."
+    - michael.marrinan@nhs.net
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:16:42.987958'
+    - '2013-08-22 22:16:42.987958'
+    - true
+    - true
+    - dr-michael-marrinan
+  - - 55
+    - Hasmeen
+    - Deol
+    - Analyst
+    - '7'
+    - Citi
+    - '2013-09-01'
+    - London
+    - ''
+    - hasmeen.deol@citi.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:19:28.064853'
+    - '2013-08-22 22:19:28.064853'
+    - true
+    - true
+    - hasmeen-deol
+  - - 56
+    - Ishaan
+    - Malhi
+    - Analyst
+    - ''
+    - Bank Of America Merrill Lynch
+    - '2013-09-01'
+    - London
+    - Global Markets Analyst at Bank Of America Merrill Lynch – Fixed Income. Recently
+      graduated with BSc in ‘Economics with Study in Europe’ (Spain) from the University
+      of Bristol.
+    - ish.malhi@gmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:21:01.208612'
+    - '2013-08-22 22:21:01.208612'
+    - true
+    - true
+    - ishaan-malhi
+  - - 57
+    - Jaskaran
+    - Kahlon
+    - Business Consultant
+    - '3'
+    - Applied Predictive Technologies
+    - '2013-09-01'
+    - London
+    - Jaskaran is currently working as a Business Consultant for Applied Predictive
+      Technologies. Jaskaran studied Physics at Oxford University and also worked
+      as a Researcher for Oxford Centre for Quantum Computation.
+    - jaskaran.singh.kahlon@gmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:22:48.775574'
+    - '2013-08-22 22:22:48.775574'
+    - true
+    - true
+    - jaskaran-kahlon
+  - - 58
+    - Kanishk
+    - Walia
+    - Associate
+    - '7'
+    - Dean Street Advisers
+    - '2013-09-01'
+    - London
+    - ! "Kanishk began his investment banking career at Global Leisure Partners in
+      2011, following his graduation from London School of Economics, where he gained
+      a BSc. in Economics.\r\nDuring his career Kanishk has had an active role in
+      some of the largest deals in his sector, including CVC’s acquisition of Virgin
+      Active in 2011.\r\nIn addition to his experience at GLP, Kanishk has worked
+      with McKinsey & Co and PricewaterhouseCoopers.\r\nKanishk joined Dean Street
+      Advisers in July 2012, and has a long track record of working alongside Mervyn
+      and Graeme.\r\nKanishk has a keen interest in politics and has acted as a research
+      assistant on economic policies to a member of the Indian Parliament."
+    - kanishk.walia@deanst.co.uk
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:24:32.114984'
+    - '2013-08-22 22:24:32.114984'
+    - true
+    - true
+    - kanishk-walia
+  - - 59
+    - Kanwar
+    - Dhesi
+    - Engineer - Power Systems
+    - '15'
+    - National Grid
+    - '2013-09-01'
+    - London
+    - ! "Kanwar has been working as a Power Systems Engineer for 2 years at National
+      Grid.\r\nHe has studied Electrical and Electronic Engineering at City University
+      and completed a Masters in Electrical Power Engineering with Business at University
+      of Strathclyde."
+    - kanwar.dhesi@nationalgrid.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:26:41.109235'
+    - '2013-08-22 22:26:41.109235'
+    - true
+    - true
+    - kanwar-dhesi
+  - - 60
+    - Kartik
+    - Shah
+    - Audit Manager
+    - '1'
+    - PricewaterhouseCoopers
+    - '2013-09-01'
+    - London
+    - ! "Qualifications:\r\nACA – Qualified since 2010\r\nBEng – Engineering with
+      Business Finance – First Class (Honours) at UCL and LSE (Joint degree)\r\n \r\nPwC
+      – Investment Funds (Sept 2007 – Present)\r\nAudit manager role with portfolio
+      of clients which include large fund houses in the funds industry.\r\n"
+    - kartikshah456@gmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 22:30:52.549252'
+    - '2013-08-22 22:30:52.549252'
+    - true
+    - true
+    - kartik-shah
+  - - 61
+    - Mahesh
+    - Bhadresha
+    - Managed Trades
+    - '7'
+    - J.P. Morgan
+    - '2013-09-01'
+    - London
+    - ! "Mahesh is currently works for J.P. Morgan in the credit hybrids middle office
+      role. His previous roles include CDP analyst at J.P. Morgan in Hedge Fund services
+      and Global Derivatives service product control/development.\r\nMahesh gained
+      an MSc in International Business Economics at City University after studying
+      Economics at London School of Economics."
+    - smehta@raisonmentors.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:01:26.218253'
+    - '2013-08-22 23:01:26.218253'
+    - true
+    - true
+    - mahesh-bhadresha
+  - - 62
+    - Manjeet
+    - Bahra
+    - Business Analyst
+    - '8'
+    - UBS
+    - '2013-09-01'
+    - London
+    - ! "Manjeet began his I.T. career by taking various internships at UBS AG, Microsoft
+      and as a ISD Helpdesk Technician at UCL, prior to his graduation from University
+      College London, where he gained a BSc. in Geography.\r\nManjeet has now started
+      full time work at UBS AG where he will be taking up a position as a department
+      Business Analyst."
+    - smehta@raisonmentors.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:04:38.372894'
+    - '2013-08-22 23:04:38.372894'
+    - true
+    - true
+    - manjeet-bahra
+  - - 63
+    - Naman
+    - Pathak
+    - Business Analyst
+    - '3,8'
+    - Cognizant Technology Solutions
+    - '2013-09-01'
+    - London
+    - Naman is a business analyst at Cognizant Technology Solutions. He has previously
+      worked as an Analyst at the Bank of England, having studied Business, Mathematics
+      and Statistics and London School of Economics.
+    - naman_pathak@hotmail.co.uk
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:07:58.377925'
+    - '2013-08-22 23:07:58.377925'
+    - true
+    - true
+    - naman-pathak
+  - - 64
+    - Parrus
+    - Doshi
+    - Account Manager
+    - '10'
+    - Langland
+    - '2013-09-01'
+    - London
+    - Experience in marketing both UK and Global pharmaceutical brands and charity
+      accounts. Familiarity of launching a product amongst strong competitors and
+      successfully bringing it to market through traditional advertising via media
+      plan fulfilment and non-traditional digital marketing. Enthusiastic and a fast-learning
+      member of the Account Management team with a keen interest in sourcing and applying
+      relevant customer insights into brand planning and creative output.
+    - parrus_doshi@hotmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:10:46.398284'
+    - '2013-08-22 23:10:46.398284'
+    - true
+    - true
+    - parrus-doshi
+  - - 65
+    - Pooja
+    - Suri
+    - Business Manager - Equities Distribution & Cash at UBS Investment Bank
+    - '7'
+    - UBS
+    - '2013-09-01'
+    - London
+    - ! "Pooja is currently a business manager in Equities, Distribution and Cash
+      for UBS, having previously worked as a Business Analyst in Prime Service Sales
+      for UBS.\r\nShe has previously worked for Vodafone on the graduate programme
+      and briefly after this as a lead financial analyst. Pooja obtained a first class
+      honours in BSc Maths and Management at Royal Holloway University in 2010."
+    - pooja.suri@ubs.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:13:44.612115'
+    - '2013-08-22 23:13:44.612115'
+    - true
+    - true
+    - pooja-suri
+  - - 66
+    - Prabhdeep
+    - Barar
+    - IBD Finance & Reporting
+    - '7'
+    - Goldman Sachs
+    - '2013-09-01'
+    - London
+    - ! "Prabhdeep is currently working at Goldman Sachs in IBD Finance & Reporting
+      and has been with Goldman Sachs for almost 4 years. She has experience previously
+      completing an internship with Citi.\r\nPrabhdeep studied Management and South
+      Asian studies at SOAS."
+    - smehta@raisonmentors.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:16:29.284443'
+    - '2013-08-22 23:16:29.284443'
+    - true
+    - true
+    - prabhdeep-barar
+  - - 67
+    - Reece
+    - Chowdhry
+    - Consultant
+    - '3'
+    - Ernst & Young
+    - '2013-09-01'
+    - London
+    - ! "Reece is a consultant in Ernst & Young’s Advisory department. Reece also
+      has a experienced background in financial services having previously been an
+      intern at the following organisations: Barclays Capital – Equity Research Analyst
+      Intern, Serco – Consultant placement, Morgan Stanley Wealth Management – Analyst
+      Intern and Blade Network Technologies – Analyst Intern.\r\nReece has a foundation
+      in CIMA and studied a BA in Business at Durham University."
+    - rchowdhry@uk.ey.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:22:33.820784'
+    - '2013-08-22 23:22:33.820784'
+    - true
+    - true
+    - reece-chowdhry
+  - - 68
+    - Rima
+    - Patel
+    - Associate
+    - '1'
+    - PricewaterhouseCoopers
+    - '2013-09-01'
+    - London
+    - ''
+    - rima.patel@uk.pwc.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:24:45.153558'
+    - '2013-08-22 23:24:45.153558'
+    - true
+    - true
+    - rima-patel
+  - - 69
+    - Rishi
+    - Dorai
+    - Geologist
+    - '16'
+    - BP
+    - '2013-09-01'
+    - London
+    - ! "Petroleum Geology BSc graduate with 1st Class (Honours)\r\n- Awarded the
+      Shell Scholarship on the MSc Petroleum Geoscience programme at Imperial College
+      London\r\n- Joined the BP graduate programme in September 2012 as a Geologist\r\n-
+      Promoted to and currently hold the commissioned rank of Pilot Officer within
+      the Royal Air Force Volunteer Reserve (Training) branch, through extracurricular
+      involvements with the Air Training Corps\r\nExtensive regional and international
+      fieldwork experience: Torquay, Exeter, Somerset (Fractures), Pennines (Deep
+      Water Sedimentology), Jurassic Coast, Wessex Basin (Petroleum Systems), Pembrokeshire
+      (Sedimentology), Lake District (Mapping), Scotland & Isle of Mull (Volcanics),
+      Oxfordshire (Palaeontology), Charnwood (Structures), Spain (Mapping Carboneras
+      basin), Italy (Mapping Umbria Marche succession), Cyprus (Ophiolites), Utah,
+      USA (Salt Tectonics), Texas & New Mexico, USA (Carbonate Systems)."
+    - rishidorai@gmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:27:21.940331'
+    - '2013-08-23 00:06:35.895200'
+    - true
+    - true
+    - rishi-dorai
+  - - 70
+    - Sandeep
+    - Dosanjh
+    - Management Consultant
+    - '3,9'
+    - PA Consulting
+    - '2013-09-01'
+    - London
+    - Sandeep Dosanjh is the founder of Raison Mentors and has a strong passion for
+      entrepreneurship and the social impact it can have. Having experienced the benefits
+      of mentoring himself, Sandeep is keen to help develop tomorrow’s leaders.  He
+      is also currently an Analyst at PA Consulting within their Strategy and Decision
+      Sciences practice; focussing predominantly on healthcare and growth strategy.
+    - sdosanjh@raisonmentors.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:30:44.869895'
+    - '2013-08-22 23:30:44.869895'
+    - true
+    - true
+    - sandeep-dosanjh--2
+  - - 71
+    - Sanjeet
+    - Sanghera
+    - Service Delivery Consultant
+    - '3,8'
+    - Thomsons Online Benefits
+    - '2013-09-01'
+    - London
+    - ! "A professional, disciplined and highly-motivated Business Consultant who
+      has been heavily involved in SAP, as well as project management and stakeholder
+      engagement. Positive outlook and work ethic, committed to working in and contributing
+      to a team environment.\r\nHe has undertaken Salesforce.com (SaaS) – administration
+      and developer training, SAP FI, ABAP, BI, PI, PM, MM, HCM and CRM training.
+      Goal is to pursue a career within SAP. Eventually leading to manage international
+      SAP projects within the energy sector. Currently studying for his accountancy
+      qualification (CIMA)."
+    - sanj.sanghera@gmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:33:48.711177'
+    - '2013-08-22 23:33:48.711177'
+    - true
+    - true
+    - sanjeet-sanghera
+  - - 72
+    - Tao
+    - Li
+    - Senior Manager
+    - '1,7,11'
+    - Aspentech Ltd.
+    - '2013-09-01'
+    - London
+    - ''
+    - taoli88@hotmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:38:05.990818'
+    - '2013-08-22 23:53:49.144521'
+    - true
+    - true
+    - tao-li
+  - - 73
+    - Tim
+    - Smart
+    - CEO
+    - '5,11'
+    - King's College Hospital NHS Foundation Trust
+    - '2013-09-01'
+    - London
+    - ! "Before joining the NHS, Tim had a 30-year career in the commercial sector,
+      first with Shell and latterly with BT. He brings with him a wealth of experience
+      in customer service and satisfaction, developing commercial partnerships, and
+      team and people development.\r\nHe has worked in the Middle East, the Netherlands
+      and the US. He also has experience as a Non-Executive director of a US-listed
+      financial services company and as a Trustee of two national charities. He is
+      an elected member of the Foundation Trust Network Board.\r\nTim has a passion
+      for equality and inclusiveness. He is proud of the fact that King’s is now a
+      safer hospital and that it is increasingly reflective of and integrated with
+      the local communities it serves. He is also proud that the focus on closing
+      the local health inequality gap and involvement in King’s Health Partners, is
+      attracting more talent to the area, and has also resulted in the growth of employment
+      and career opportunities for the local population."
+    - tim.smart@nhs.net
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:39:58.714189'
+    - '2013-08-22 23:39:58.714189'
+    - true
+    - true
+    - tim-smart
+  - - 74
+    - Tushar
+    - Agarwal
+    - Mergers and Acquisitions Analyst
+    - '7'
+    - Greenhill & Co
+    - '2013-09-01'
+    - London
+    - ! "Currently working as an Investment Banking Analyst at Greenhill & Co. specialising
+      in Mergers & Acquisitions (M&A). Geographic generalist with experience in a
+      multitude of sectors (in particular technology, telecoms and retail)\r\nPrevious
+      internship experience in Investment Banking at Barclays Capital, RBS Global
+      Banking and Markets and Morgan Stanley\r\nInterests lie in: entrepreneurship,
+      startups, venture capital and alternative investments"
+    - t.agarwal.uk@gmail.co
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:41:46.279300'
+    - '2013-08-22 23:41:46.279300'
+    - true
+    - true
+    - tushar-agarwal
+  - - 75
+    - Udit
+    - Verma
+    - Business Analyst
+    - '8'
+    - Deutsche Bank
+    - '2013-09-01'
+    - London
+    - ! "Former Business Analyst at UBS AG along with over 6 years strategic planning
+      experience at Bakkavor Group. Successfully completed a Master’s degree in Biochemical
+      Engineering with interests in Pharmaceutical manufacturing and financial Modelling.\r\nWith
+      in-depth experience and skills across the horizon from Financial services to
+      Manufacturing I also currently maintain a 7 day work-life balance. This has
+      helped me develop a niche skill-set with a competitive edge."
+    - smehta@raisonmentors.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:43:28.229204'
+    - '2013-08-22 23:43:28.229204'
+    - true
+    - true
+    - udit-verma
+  - - 76
+    - Lakeish
+    - Verma
+    - Senior Financial Analyst
+    - '1'
+    - Symantec Corporation
+    - '2013-09-01'
+    - London
+    - ''
+    - lakeish@hotmail.com
+    - ''
+    - 
+    - false
+    - '2013-08-22 23:52:55.137531'
+    - '2013-08-22 23:52:55.137531'
+    - true
+    - true
+    - lakeish-verma
+
+---
+employer_profiles:
+  columns:
+  - id
+  - name
+  - bio
+  - created_at
+  - updated_at
+  - image
+  - sector_ids
+  - location
+  records: 
+  - - 2
+    - Ernst and Young
+    - this is about the company...
+    - '2013-08-12 13:59:59.872939'
+    - '2013-08-21 00:04:01.675059'
+    - 
+    - '1,3'
+    - London
+  - - 3
+    - HSBC
+    - bank of HSBC
+    - '2013-08-21 00:04:45.321489'
+    - '2013-08-21 22:59:25.851043'
+    - 
+    - '3'
+    - Wales
+  - - 4
+    - Raison Mentors
+    - ! ' '
+    - '2013-08-21 17:22:49.781188'
+    - '2013-08-21 17:22:49.781188'
+    - 
+    - 
+    - 
+  - - 5
+    - RBS
+    - RBS
+    - '2013-08-21 19:41:01.668722'
+    - '2013-08-21 19:41:01.668722'
+    - 
+    - '1'
+    - Scotland

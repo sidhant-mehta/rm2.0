@@ -1,0 +1,137 @@
+<style>
+	.tab-content input {
+		margin-bottom: 1em;
+	}
+	.tab-content {
+		background: none !important;
+		border: none !important;
+	}
+</style>
+
+<div style="margin: 5% auto;">
+	<h2>Register </h2>
+
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	<%= #f.error_messages
+    devise_error_messages! %>
+
+	<a href="">Personal Details</a>
+
+	<div class= "container_24">
+		<div class = "wrapper">
+			<div class= "grid_12">
+				<!--[if IE]><table><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<!--[if IE]><label>First name</label><![endif]-->
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.text_field :fname, :placeholder => "First name" %>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<!--[if IE]><label>Last name</label><![endif]-->
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.text_field :lname, :placeholder => "Last name" %>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<br />
+							<label style="clear:both;">Date of Birth</label>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<label><%= f.date_select :dob, :start_year => Time.now.year - 60, :end_year => Time.now.year, :order => [:day, :month, :year], :style=> "clear:both;" %></label> <br />
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<!--[if IE]><label>Email</label><![endif]-->
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.email_field :email, :autofocus => true, :placeholder => "Email address"%>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+				<!--[if IE]></table><![endif]-->
+			</div>
+			<div class="grid_12">
+				<!--[if IE]><table><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<!--[if IE]><label>Password</label><![endif]-->
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.password_field :password, :placeholder=>"Password" %>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<!--[if IE]><label>Retype Password</label><![endif]-->
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.password_field :password_confirmation, :placeholder => "Retype Password" %>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+					<!--[if IE]><tr><![endif]-->
+						<!--[if IE]><td><![endif]-->
+							<%= f.submit "Sign up", :class => "btn", :style => "width: 21em"%>
+						<!--[if IE]></td><![endif]-->
+					<!--[if IE]></tr><![endif]-->
+				<!--[if IE]></table><![endif]-->
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<% if admin_signed_in? == true %>
+	<br>
+	<td><%= f.label 'gender', 'Gender' %></td>
+	<td><%= f.select  'gender', options_for_select([[""],["Male"],["Female"]]), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
+	<br />
+	<td><%= f.label('location', 'You live in')%></td>
+	<td><%= f.select  'location', options_from_collection_for_select(Location.all, "id", "name"), {}, :class => "text", :style=> "width:242px; height: 35px;" %></td>
+	<br />
+	<td><%= f.label('academic_institution', 'Your Academic Institution')%></td><td><%= f.text_field 'academic_institution', :class => "text"%></td>
+	<br />
+	<td><%= f.label('course', 'Your Course')%></td><td><%= f.text_field 'course', :class => "text"%></td>
+	<br />
+
+	<br/>
+	<td><%= f.label('employment_status', 'Your employment status')%></td>
+	<td><%= f. select  "employment_status", options_for_select([[''],['Self-employed'], ['Young professional'], ['Unemployed'], ['University student'], ['Other']]),{}, {:class => "text", :style=>"width:242px"}%></td>
+	<br/>
+	<tr>
+		<td><%= f.label('cv', 'Upload Your CV')%></td>
+		<td><%= f.file_field :cv, :accept => 'text/pdf/doc/docx' %></td>
+	</tr>
+	<br/>
+
+	<%end %>
+
+	<label>Where did you hear about us? </label><%= f.select "hear_about_us", options_for_select([[""],["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other"]]), {}, {:class => "drop_down", :style=> "width:242px !important; clear:both;" }  %>
+
+<% end %>
+<%= render "devise/shared/links" %>
+</div>
+
+
+<script>
+ $(function() {
+    $( ".datepicker" ).datepicker( { dateFormat: "dd-mm-yy", minDate:"-70y", maxDate:"+0d",  changeMonth: true, changeYear: true } );
+  });
+	
+</script>

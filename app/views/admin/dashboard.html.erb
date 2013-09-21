@@ -1,2 +1,154 @@
-<h1>Admin#dashboard</h1>
-<p>Find me in app/views/admin/dashboard.html.erb</p>
+	<%= render :partial => 'shared/admin/header' %>
+	<%= render :partial => 'shared/admin/secondarybar_and_sidebar'%>
+	
+		<section id="main" class="column">
+		<%= render :partial => 'shared/member/alerts_and_notices'%>
+		
+		<!-- STATS-->
+		<article class="module width_full">
+			<header><h3>Stats</h3></header>
+			<div class="module_content">
+				<article class="stats_graph">
+					<img src="http://chart.apis.google.com/chart?chxr=0,0,3000&amp;chxt=y&amp;chs=520x140&amp;cht=lc&amp;chco=76A4FB,80C65A&amp;chd=s:Tdjpsvyvttmiihgmnrst,OTbdcfhhggcTUTTUadfk&amp;chls=2|2&amp;chma=40,20,20,30" width="520" height="140" alt="">
+				</article>
+				
+				<article class="stats_overview">
+					<div class="overview_today">
+						<p class="overview_day">Today</p>
+						<p class="overview_count">1,876</p>
+						<p class="overview_type">Hits</p>
+						<p class="overview_count">2,103</p>
+						<p class="overview_type">Views</p>
+					</div>
+					<div class="overview_previous">
+						<p class="overview_day">Yesterday</p>
+						<p class="overview_count">1,646</p>
+						<p class="overview_type">Hits</p>
+						<p class="overview_count">2,054</p>
+						<p class="overview_type">Views</p>
+					</div>
+				</article>
+				<div class="clear"></div>
+			</div>
+		</article>
+		
+		<!-- start of table -->
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">All Applications</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Mentors</a></li>
+    		<li><a href="#tab2">Projects</a></li>
+    		<li><a href="#tab3">Jobs</a></li>
+		</ul>
+		</header>
+
+		<!-- tab 1--> 
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th>Application ID</th>
+    				<th>Mentor Name</th>
+    				<th>Applicant Name</th>
+    				<th>Applicant CV </th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
+    				<!--<th>Actions</th> --> 
+				</tr>
+			</thead> 
+			<tbody> 
+				<% @mentor_application_data.each_with_index do |application,index| 
+				member = getMember(application.member_id)
+				%> 
+				<tr> 
+					<%  %> 
+   					<td><%= application.id%></td> 
+    				<td><%= link_to "#{application.fname} #{application.lname}", mentors_path + "/" + application.mentor_id.to_s %></td> 
+    				<td><%= "#{member.fname} #{member.lname}"%></td>
+    				<td><%= link_to 'Download', "/admin/dashboard/download/#{application.member_id}" %></td>
+    				<td><%= application.status%></td> 
+    				<td><%= application.created_at %></td> 
+    				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
+				</tr> 
+				<% end %>
+			</tbody> 
+			</table>
+			</div><!-- end of #tab1 -->
+		
+		<!-- tab 2--> 	
+			<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th>Application ID</th>
+    				<th>Project Name</th>
+    				<th>Applicant Name</th>
+    				<th>Applicant CV </th> 
+    				<th>Status</th> 
+    				<th>Created On</th> 
+    				<!--<th>Actions</th> --> 
+				</tr>
+			</thead> 
+			<tbody> 
+				<% @project_application_data.each_with_index do |application,index| 
+					member = getMember(application.member_id)
+
+				%> 
+				<tr> 
+					<%  %> 
+   					<td><%= application.id%></td> 
+    				<td><%= link_to "#{application.name}", projects_path + "/" + application.project_id.to_s %></td> 
+    				<td><%= "#{member.fname} #{member.lname}"%></td>
+    				<td><%= link_to 'Download', "/admin/dashboard/download/#{application.member_id}" %></td>
+    				<td><%= application.status%></td> 
+    				<td><%= application.created_at %></td> 
+    				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
+				</tr> 
+				<% end %>
+							</tbody> 
+			</table>
+
+			</div><!-- end of #tab2 -->
+			
+			<!-- tab 3--> 	
+			<div id="tab3" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+   					<th>Coming Soon</th> 
+				</tr> 
+			</thead> 
+			<tbody> 
+			</tbody> 
+			</table>
+
+			</div><!-- end of #tab3 -->
+			
+		</div><!-- end of .tab_container -->
+		
+		</article><!-- end of content manager article -->
+		
+	</aside><!-- end of sidebar -->
+	
+	<!-- latest updates area -->
+	<article class="module width_quarter">
+			<header><h3>Messages</h3></header>
+			<div class="message_list">
+				<div class="module_content">
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+					<div class="message"><p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor.</p>
+					<p><strong>John Doe</strong></p></div>
+				</div>
+			</div>
+			<footer>
+		</article><!-- end of messages article -->
+	
+	</section> <!-- end of column section (at top) -->

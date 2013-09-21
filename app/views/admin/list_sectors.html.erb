@@ -1,0 +1,59 @@
+<%= javascript_include_tag "admin" %>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<%= render :partial => 'shared/admin/header' %>
+<%= render :partial => 'shared/admin/secondarybar_and_sidebar'%>
+<%= stylesheet_link_tag "validation/validation_default", :type => "text/css", :media => "screen"%>
+
+<script type="text/javascript">  
+        $(document).ready(function(){
+            $("#details tr:odd").addClass("odd");
+            $("#details tr:not(.odd)").hide();
+            $("#details tr:first-child").show();
+            
+            $("#details tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#details").jExpand();
+        });
+    </script>        
+
+		<section id="main" class="column">
+			<%= render :partial => 'shared/member/alerts_and_notices'%>
+				<article class="module width_full" style="border:none; background:transparent;">			
+					<h1>Listing sectors</h1>
+					
+					<table id="details">
+					  <tr>
+					  	<th>ID</th>
+					    <th>Sector Name</th>
+					    <th></th>
+					    <th></th>
+					    <th></th>
+					  </tr>
+					
+					<% @sectors.each do |sector| %>
+					  <tr>
+					  	<td><%= sector.id%></td>
+					    <td><%= sector.name %></td>
+					    <td><%= link_to 'Edit', admin_edit_sector_path + "/#{sector.id}" %>
+					    </td>
+					    <td><%= link_to 'Delete', '/admin/destroy_sector' + "/#{sector.id}", method: :delete, data: { confirm: 'Are you sure?' } 
+					    %></td>
+					    <td><div class="arrow"></div></td>
+					  </tr>
+					  <tr>
+					  	<td colspan="11">
+					  		<div class="inner">
+				  			</div>
+					  	</td>
+					  </tr>
+					<% end %>
+					</table>
+					
+					<br />
+					
+			</article>
+		</section>
+		
