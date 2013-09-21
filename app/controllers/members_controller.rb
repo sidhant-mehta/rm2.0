@@ -5,6 +5,12 @@ layout 'admin'
 
 def setVars
     @member = Member.find(current_member.id)
+        @sectors= Sector.find(:all, :order => "name")
+=begin
+    Sector.all.each_with_index do |s,i|
+      @sectors << Sector.find(s)
+    end
+=end
 end
 
 
@@ -92,10 +98,12 @@ end
 def new_mentor
   @mentor = Mentor.new
   @mentor.email = current_member.email
+=begin
   @sectors=[]
   Sector.all.each_with_index do |s,i|
     @sectors << Sector.find(s)
   end
+=end
   respond_to do |format|
     format.html # new.html.erb
     format.json { render json: @mentor }
@@ -110,10 +118,12 @@ def create_mentor
   @mentor.skip_organisation_check = true
   @mentor.user = current_member
   
-   @sectors=[]
+=begin
+  @sectors=[]
   Sector.all.each_with_index do |s,i|
     @sectors << Sector.find(s)
   end
+=end
    if @mentor.sector_ids.blank?
    else   
       @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -156,10 +166,12 @@ def update_mentor
       @mentor.skip_organisation_check = true
       @mentor.user = current_member
     
-       @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
+=begin
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
      if @mentor.sector_ids.blank?
      else   
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -200,10 +212,12 @@ def edit_mentor
     else
       @mentor = Mentor.find(mentor_id)
       
-      @sectors=[]
-      Sector.all.each_with_index do |s,i|
-        @sectors << Sector.find(s)
-      end
+=begin
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
        if @mentor.sector_ids.blank?
        else   
           @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
@@ -220,10 +234,12 @@ def list_internal_mentors
   @mentors = Mentor.where(:organisation => org, :internal => true)  
   @type_address ="members/mentor"
   @type = "mentor"
+=begin
   @sectors=[]
-      Sector.all.each_with_index do |s,i|
-        @sectors << Sector.find(s)
-      end
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
 end
 
 def destroy_mentor
@@ -258,10 +274,12 @@ end
 def edit_project
   @action_address = "update_project"
     @project = Project.find(params[:id])
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
+=begin
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
     
      if @project.sector_ids.blank?
      else   
@@ -366,10 +384,12 @@ def list_internal_projects
   @projects = Project.where(:organisation => org, :internal => true)  
   @type_address ="members/project"
   @type = "project"
+=begin
   @sectors=[]
-      Sector.all.each_with_index do |s,i|
-        @sectors << Sector.find(s)
-      end
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
 end
 
 def search_project
@@ -420,16 +440,19 @@ end
    
     @locations = Location.all
     
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
+=begin
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
      if @member.sector_ids.blank?
      else   
          @member_sectors_ids_array = @member.sector_ids.split(",")
          @member_sectors_ids = [] #need to initialize this array first
          @member_sectors_ids_array.each_with_index do |s, i| 
-           @member_sectors_ids << Sector.find(s).id
+           @member_sectors_ids <<Sector.find(s).id rescue ActiveRecord::RecordNotFound
+                flash[:alert] = "Industry list has been updated please re-select your industry preferences."
      end
     end
   end
@@ -440,15 +463,12 @@ end
     @member = Member.find(current_member.id)
     @locations = Location.all
     
-    @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
-    
-   @sectors=[]
-    Sector.all.each_with_index do |s,i|
-      @sectors << Sector.find(s)
-    end
+=begin
+  @sectors=[]
+  Sector.all.each_with_index do |s,i|
+    @sectors << Sector.find(s)
+  end
+=end
      if @member .sector_ids.blank?
      else   
         @member_sectors_ids_array = @member.sector_ids.split(",")

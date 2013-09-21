@@ -41,7 +41,7 @@
 					    <td><%= oe.domain %></td>
 					    <td><%= link_to 'Edit', admin_edit_organisation_email_path + "/#{oe.id}" %>
 					    </td>
-					    <td><%= link_to 'Delete', admin_destroy_organisation_email_path + "/#{oe.id}", method: :delete, data: { confirm: 'Are you sure?' } 
+					    <td><%= link_to 'Delete', "/admin/destroy_organisation_email" + "/#{oe.id}", method: :delete, data: { confirm: 'Are you sure?' } 
 					    %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>

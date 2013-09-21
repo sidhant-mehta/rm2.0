@@ -1,6 +1,7 @@
 RaisonMentors20::Application.routes.draw do
+  
   devise_for :admins, :skip => [:registrations]   
-    as :admins do
+    as :admin do
       get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'    
       put 'admins' => 'devise/registrations#update', :as => 'admin_registration'            
     end
@@ -100,6 +101,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   get "admin/profile"
   post "admin/profile_update" => "admin#profile_update"
   put "admin/profile_update" => "admin#profile_update"
+  get "admin/dashboard/download/:id" => "admin#download"
 #projects  
   get "admin/list_projects"
   get "admin/new_project"
@@ -146,6 +148,23 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   put "admin/update_organisation_email/:id" => "admin#update_organisation_email" 
   get "admin/list_organisation_emails"
   delete "admin/destroy_organisation_email/:id" => "admin#destroy_organisation_email"
+ #sector 
+  get "admin/new_sector" => "admin#new_sector"
+  post "admin/create_sector" => "admin#create_sector"
+  get "admin/edit_sector"
+  match "admin/edit_sector/:id" => "admin#edit_sector"
+  put "admin/update_sector/:id" => "admin#update_sector" 
+  get "admin/list_sectors"
+  delete "admin/destroy_sector/:id" => "admin#destroy_sector"
+   #location
+  get "admin/new_location" => "admin#new_location"
+  post "admin/create_location" => "admin#create_location"
+  get "admin/edit_location"
+  match "admin/edit_location/:id" => "admin#edit_location"
+  put "admin/update_location/:id" => "admin#update_location" 
+  get "admin/list_locations"
+  delete "admin/destroy_location/:id" => "admin#destroy_location"
+  
   
   get "employers/search" => "employer_profiles#search"
   post "employers/search" => "employer_profiles#search"

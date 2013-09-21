@@ -9,21 +9,21 @@
 			<div class="wrapper">
 				<div class="grid_8">
 					<h2>Mentors</h2>
-					<%=# image_tag "1page_img6.jpg"
+					<%= image_tag "mentors.png"
 					%>
 					<p class="pad">You name the career we have a mentor for you; use our find a mentor search to find your ideal mentor, from your ideal career.</p>
 					<a href=<%= mentors_path%> class="button">Read More</a>
 				</div>
 				<div class="grid_8">
 					<h2>Projects</h2>
-					<%= #image_tag "1page_img7.jpg"
+					<%= image_tag "projects.png"
 					%>
 					<p class="pad">Unique volunteer opportunities to make your CV stand out! Volunteer placements, Audits/Research projects & Work-experience – in all industries; find #myraison today.</p>
 					<a href=<%= projects_path%> class="button">Read More</a>
 				</div>
 				<div class="grid_8">
-					<h2>Organisation A-Z</h2>
-					<%=# image_tag "1page_img8.jpg"
+					<h2>Organisations A-Z</h2>
+					<%= image_tag "orgs.png"
 					%>
 					<p class="pad">The only complete list of organisations by industry – discover all the organisations in your industry and learn what makes them, them!</p>
 					<a href=<%= employer_profiles_path %> class="button">Read More</a>
@@ -34,7 +34,7 @@
 					<div class="padline2"><div class="lineH"></div></div>
 					<h2 class="padtitle22">Our Clients</h2> <br />
 					<ul class="partners">
-						<li><a href=""><%= image_tag "1page_img9.png"%></a></li>
+						<li><a href="<%= employer_profiles_path %>/2"><%= image_tag "1page_img9.png"%></a></li>
 						<li><a href=""><%= image_tag "1page_img10.png"%></a></li>
 						<li><a href=""><%= image_tag "1page_img11.png"%></a></li>
 						<li><a href=""><%= image_tag "1page_img12.png"%></a></li>

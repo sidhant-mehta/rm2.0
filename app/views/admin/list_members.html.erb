@@ -46,9 +46,10 @@
 					    <td><%= member.email %></td>
 					    <td><%= sectorsHTML(member) %></td>
 					    <td><%= member.cv %></td>
-					    <td><%= link_to 'Edit', admin_edit_member_path + "/#{member.id}" %>
+					    <td><%= # link_to 'Edit', admin_edit_member_path + "/#{member.id}" 
+					    %>
 					    </td>
-					    <td><%= link_to 'Delete', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    <td><%= button_to 'Delete', member, method: :delete, data: { confirm: 'Are you sure?' }, :style=> "background: none;  border: none; box-shadow: none;" %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>
 					  <tr>
@@ -70,5 +71,3 @@
 			</article>
 		</section>
 		
-<% #TODO FIND A WAY TO USE POST METHOD WHEN GOIG TO EDIT PAGE 
-%>

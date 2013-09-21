@@ -15,10 +15,12 @@ def clean_select_multiple_params hash = params
 end  
   
  def setVars
-    @sectors=[]
+    @sectors= Sector.find(:all, :order => "name")
+=begin
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
+=end
 end 
   
 def getMentorApplications(client_org)

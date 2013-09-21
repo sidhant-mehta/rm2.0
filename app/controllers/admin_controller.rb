@@ -17,19 +17,28 @@ class AdminController < ApplicationController
 end  
 
 def setVars
-    @sectors=[]
+    @sectors= Sector.find(:all, :order => "name")
+=begin
     Sector.all.each_with_index do |s,i|
       @sectors << Sector.find(s)
     end
+=end
 end
 
 def getMentorApplications(client_org)
-  @mentor_application_data = Mentor.select("member_mentor_applications.mentor_id, mentors.fname, mentors.lname, member_mentor_applications.id, member_mentor_applications.created_at, member_mentor_applications.status").joins("JOIN member_mentor_applications ON mentors.id = member_mentor_applications.mentor_id") 
+  @mentor_application_data = Mentor.select("member_mentor_applications.mentor_id, mentors.fname, mentors.lname, member_mentor_applications.id, member_mentor_applications.created_at, member_mentor_applications.status, member_mentor_applications.member_id").joins("JOIN member_mentor_applications ON mentors.id = member_mentor_applications.mentor_id") 
   return @mentor_application_data
 end
 
 def getProjectApplications(client_org)
-  @project_applicatoin_data = Project.select("member_project_applications.project_id, projects.name, member_project_applications.id, member_project_applications.created_at, member_project_applications.status").joins("JOIN member_project_applications ON projects.id = member_project_applications.project_id")
+  @project_applicatoin_data = Project.select("member_project_applications.project_id, projects.name, member_project_applications.id, member_project_applications.created_at, member_project_applications.status, member_project_applications.member_id").joins("JOIN member_project_applications ON projects.id = member_project_applications.project_id")
+end
+
+def download
+  member = Member.find(params[:id])
+  filename = member.cv.to_s
+  filename = filename.split('/').last
+  send_file(member.cv.path, filename)
 end
 
 #---------------------------------------------------
@@ -41,7 +50,7 @@ end
     org = true
     @mentor_application_data = getMentorApplications(org)
     @project_application_data = getProjectApplications(org)
-    @limit = 10
+   # @limit = 10 not used.
     
   end
 
@@ -269,6 +278,27 @@ end
   end
 
   def update_client
+    @action_address = "update_client"
+    #below block to not have to input password upon each update.
+    if params[:client][:password].blank?
+      params[:client].delete("password")
+      params[:client].delete("password_confirmation")
+    end
+    
+    @client = Client.find(params["id"])
+    respond_to do |format|
+      if @client.update_attributes(params[:client])
+        format.html { redirect_to admin_list_clients_path, notice: 'Client was successfully updated.' }
+        format.json { head :no_content }
+      else
+        @error_str = ""
+        @client.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + field.to_s + " " + msg + "</p>"
+        end
+        flash.now[:alert] = @error_str.html_safe
+        format.html { render action: "edit_client" }
+      end
+    end
   end
   
   def list_clients
@@ -491,6 +521,129 @@ def destroy_organisation_email
       format.json { head :no_content }
     end
 end
+
+
+ def new_sector
+   @sector = Sector.new
+   @action_address = "create_sector"
+  end
+  
+  def create_sector
+    @sector = Sector.new(params[:sector])
+    @action_address = "create_sector"
+    
+    respond_to do |format|
+    if @sector.save
+      format.html{redirect_to admin_list_sectors_path, :notice=> 'Industry has been added successfully'}
+    else
+      @error_str = ""
+          @member.errors.each do |field, msg|
+            @error_str = @error_str + "<p>" + msg + "</p>"
+          end
+          flash[:alert] = @error_str.html_safe
+          format.html { render action: admin_new_list_sectors_path}
+        end
+    end
+    
+  end
+  
+  def edit_sector
+    @sector = Sector.find(params[:id])
+    @action_address = "update_sector"
+  end
+  
+  def update_sector
+  @sector = Sector.find(params[:id])
+  @action_address = "update_sector"
+  respond_to do |format|
+    
+  if @sector.update_attributes(params[:sector])
+    format.html{redirect_to admin_list_sectors_path, :notice=> 'Industry has been editted successfully'}
+  else
+    @error_str = ""
+        @member.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        format.html { render action: admin_edit_sector_path}
+      end
+  end
+  end
+  
+  def list_sectors
+    @sectors = Sector.find(:all, :order => 'name')
+  end
+  
+  def destroy_sector
+    @sector = Sector.find(params[:id])
+    @sector.destroy
+    
+    redirect_to admin_list_sectors_path
+  end
+  
+  
+  def new_location
+   @location = Location.new
+   @action_address = "create_location"
+  end
+  
+  def create_location
+    @location = Location.new(params[:location])
+    @action_address = "create_location"
+    
+    respond_to do |format|
+    if @location.save
+      format.html{redirect_to admin_list_locations_path, :notice=> 'Industry has been added successfully'}
+    else
+      @error_str = ""
+          @member.errors.each do |field, msg|
+            @error_str = @error_str + "<p>" + msg + "</p>"
+          end
+          flash[:alert] = @error_str.html_safe
+          format.html { render action: admin_new_location_path}
+        end
+    end
+    
+  end
+  
+  def edit_location
+    @location = Location.find(:id)
+    @action_address = "update_location"
+  end
+  
+  def update_location
+  @location = Location.find(params[:id])
+  @action_address = "update_location"
+  respond_to do |format|
+    
+  if @location.update_attributes(params[:location])
+    format.html{redirect_to admin_list_locations_path, :notice=> 'Industry has been editted successfully'}
+  else
+    @error_str = ""
+        @member.errors.each do |field, msg|
+          @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        flash[:alert] = @error_str.html_safe
+        format.html { render action: admin_edit_location_path}
+      end
+  end
+  end
+  
+  def list_locations
+    @locations = Location.all
+  end
+  
+  def destroy_location
+    @location = Location.find(params[:id])
+    @location.destroy
+    
+    redirect_to admin_list_locations_path
+  end
+  
+  def settings
+    @admin = current_admin
+  end
+  
 #-------PRIVATE-----
 private
 

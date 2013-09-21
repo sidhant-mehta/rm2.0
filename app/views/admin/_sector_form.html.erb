@@ -1,0 +1,7 @@
+<%= form_for(@sector,url: {action: @action_address},html: { class: "blocks"}) do |f| %>
+<div id="tab1" class="tab_content">
+	<%= f.text_field :name, :placeholder => "Industry name", :class=>"text" %>
+</div>
+<br/><br/>
+<%= f.submit "Update", :style => "width: 21em"%>
+<% end %>

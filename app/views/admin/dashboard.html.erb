@@ -34,7 +34,7 @@
 		
 		<!-- start of table -->
 		<article class="module width_3_quarter">
-		<header><h3 class="tabs_involved">Recent Applications</h3>
+		<header><h3 class="tabs_involved">All Applications</h3>
 		<ul class="tabs">
    			<li><a href="#tab1">Mentors</a></li>
     		<li><a href="#tab2">Projects</a></li>
@@ -49,18 +49,24 @@
 			<thead> 
 				<tr> 
    					<th>Application ID</th>
-    				<th>Mentor Name</th> 
+    				<th>Mentor Name</th>
+    				<th>Applicant Name</th>
+    				<th>Applicant CV </th> 
     				<th>Status</th> 
     				<th>Created On</th> 
     				<!--<th>Actions</th> --> 
 				</tr>
 			</thead> 
 			<tbody> 
-				<% @mentor_application_data.take(@limit).each_with_index do |application,index| %> 
+				<% @mentor_application_data.each_with_index do |application,index| 
+				member = getMember(application.member_id)
+				%> 
 				<tr> 
 					<%  %> 
    					<td><%= application.id%></td> 
     				<td><%= link_to "#{application.fname} #{application.lname}", mentors_path + "/" + application.mentor_id.to_s %></td> 
+    				<td><%= "#{member.fname} #{member.lname}"%></td>
+    				<td><%= link_to 'Download', "/admin/dashboard/download/#{application.member_id}" %></td>
     				<td><%= application.status%></td> 
     				<td><%= application.created_at %></td> 
     				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
@@ -76,18 +82,25 @@
 			<thead> 
 				<tr> 
    					<th>Application ID</th>
-    				<th>Project Name</th> 
+    				<th>Project Name</th>
+    				<th>Applicant Name</th>
+    				<th>Applicant CV </th> 
     				<th>Status</th> 
     				<th>Created On</th> 
     				<!--<th>Actions</th> --> 
 				</tr>
 			</thead> 
 			<tbody> 
-				<% @project_application_data.take(@limit).each_with_index do |application,index| %> 
+				<% @project_application_data.each_with_index do |application,index| 
+					member = getMember(application.member_id)
+
+				%> 
 				<tr> 
 					<%  %> 
    					<td><%= application.id%></td> 
     				<td><%= link_to "#{application.name}", projects_path + "/" + application.project_id.to_s %></td> 
+    				<td><%= "#{member.fname} #{member.lname}"%></td>
+    				<td><%= link_to 'Download', "/admin/dashboard/download/#{application.member_id}" %></td>
     				<td><%= application.status%></td> 
     				<td><%= application.created_at %></td> 
     				<!--<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->
