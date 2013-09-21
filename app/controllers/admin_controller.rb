@@ -42,6 +42,29 @@ def download
 end
 
 #---------------------------------------------------
+def member_password_reset
+  @member = Member.find(params[:id])
+  @member.password = "resetpassword123"
+  @member.password_confirmation = "resetpassword123"
+  @member.settings_receive_email_updates = true
+  if @member.save
+  	respond_to do |format|
+	  	format.html{redirect_to admin_list_members_path, :notice=> 'Password reset succeseful'}
+  	end
+  else
+  	@error_str = ""
+        @member.errors.each do |field, msg|
+              @error_str = @error_str + "<p>" + msg + "</p>"
+        end
+        
+        flash.now[:alert] = @error_str.html_safe
+        
+    	respond_to do |format|
+	  	format.html{render admin_list_members_path, :notice=> 'Password reset succeseful'}
+  	end
+  end
+  
+end
 
   def login
   end
@@ -51,7 +74,7 @@ end
     @mentor_application_data = getMentorApplications(org)
     @project_application_data = getProjectApplications(org)
    # @limit = 10 not used.
-    
+	
   end
 
   def adverts
@@ -126,7 +149,7 @@ end
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
         @mentor_sectors_ids = [] #need to initialize this array first
          @mentor_sectors_ids_array.each_with_index do |s, i| 
-           @mentor_sectors_ids << Sector.find(s).id
+           @mentor_sectors_ids << Sector.find(s).id rescue ActiveRecord::RecordNotFound
      end
     end    
   end
@@ -146,7 +169,7 @@ end
         @mentor_sectors_ids_array = @mentor.sector_ids.split(",")
         @mentor_sectors_ids = [] #need to initialize this array first
          @mentor_sectors_ids_array.each_with_index do |s, i| 
-           @mentor_sectors_ids << Sector.find(s).id
+           @mentor_sectors_ids << Sector.find(s).id rescue ActiveRecord::RecordNotFound
          end
     end
 
@@ -210,7 +233,7 @@ end
         @project_sectors_ids_array = @project.sector_ids.split(",")
         @project_sectors_ids = [] #need to initialize this array first
          @project_sectors_ids_array.each_with_index do |s, i| 
-           @project_sectors_ids << Sector.find(s).id
+           @project_sectors_ids << Sector.find(s).id rescue ActiveRecord::RecordNotFound
          end
      end
      
@@ -267,7 +290,7 @@ end
               @error_str = @error_str + "<p>" + msg + "</p>"
         end
         flash.now[:alert] = @error_str.html_safe
-        format.html { render action: "new_client" }  
+        format.html { render "new_client" }  
       end
     end
   end
@@ -577,8 +600,9 @@ end
   def destroy_sector
     @sector = Sector.find(params[:id])
     @sector.destroy
-    
-    redirect_to admin_list_sectors_path
+    respond_to do |format|
+    	format.html{  	redirect_to admin_list_sectors_path, :notice => 'Industry has been deleted successfully.'}
+    end
   end
   
   

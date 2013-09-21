@@ -40,7 +40,7 @@
 					    <td><%= profile.name %></td>
 					    <td><%= link_to 'Show', profile %></td>
 					    <td><%= link_to 'Edit', admin_edit_employer_profile_path + "/#{profile.id}" %></td>
-					    <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    <td><%= button_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' }, :style=> "background: none;  border: none; box-shadow: none;"  %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>
 					  <tr>

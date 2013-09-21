@@ -48,11 +48,11 @@
 		</ul>
 		<h3>Marketing and Maintenance</h3>
 		<ul class="toggle">
-			<h3>Sectors</h3>
+			<h3>Industries</h3>
 			<ul class="toggle">
-				<li class="icn_new_article"><%= link_to "Add Sector", admin_new_sector_path %></li>
-				<li class="icn_edit_article"><%= link_to "Edit Sector", admin_list_sectors_path %></li>
-				<li class="icn_categories"><%= link_to "List Sectors", admin_list_sectors_path %></li>
+				<li class="icn_new_article"><%= link_to "Add Industry", admin_new_sector_path %></li>
+				<li class="icn_edit_article"><%= link_to "Edit Industry", admin_list_sectors_path %></li>
+				<li class="icn_categories"><%= link_to "List Industries", admin_list_sectors_path %></li>
 			</ul>
 			<h3>Locations</h3>
 			<ul class="toggle">
@@ -75,7 +75,7 @@
 		<h3>Other</h3>
 		<ul class="toggle">
 			<li class="icn_settings"><%= link_to "Settings", admin_settings_path %></li>
-			<li class= "icn_jump_back"><%= link_to "Logout", destroy_admin_session_path, :method => :delete %></li>
+			<li class= "icn_jump_back"><%= button_to "Logout", destroy_admin_session_path, :method => :delete %></li>
 		</ul>
 		
 		<%= render :partial => 'shared/admin_footer' %>

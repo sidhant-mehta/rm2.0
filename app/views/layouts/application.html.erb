@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<title>Raison Mentors | <%= yield :title %></title>
+  	<title>Raison Mentors <%= yield :title %></title>
 	<meta charset="utf-8">
 	<meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
@@ -25,7 +25,9 @@
 					</div>
 				</div>
 			</div>
-			<%= render :partial => 'shared/navigation' %>
+			<div class="container_24">
+				<%= render :partial => 'shared/navigation' %>
+			</div>
 		</header>
 		<section class="padsection"> <!-- wrapper -->
 			<div class="container_24"><!-- container -->

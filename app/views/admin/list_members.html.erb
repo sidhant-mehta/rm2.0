@@ -31,8 +31,10 @@
 					    <th>Last Name</th>
 					    <th>Email</th>
 					    <th>Sectors</th>
-					    <th>CV</th>
-					    <th></th>
+					    <th>Confirmation sent at</th>
+					    <th>Confirmed at</th>
+					    <th>Singed in count</th>
+					    <th>Reset Passowrd (For Sid only)</th>
 					    <th></th>
 					    <th></th>
 					    <th></th>
@@ -45,7 +47,10 @@
 					    <td><%= member.lname %></td>
 					    <td><%= member.email %></td>
 					    <td><%= sectorsHTML(member) %></td>
-					    <td><%= member.cv %></td>
+					    <td><%= member.confirmation_sent_at %></td>
+					    <td><%= member.confirmed_at%></td>
+					    <td><%= member.sign_in_count%></td>
+					    <td><%= link_to 'Reset', "/admin/list_members/reset_password/#{member.id}" %></td>
 					    <td><%= # link_to 'Edit', admin_edit_member_path + "/#{member.id}" 
 					    %>
 					    </td>
@@ -60,6 +65,7 @@
 						    	<p><span>Course: </span><%= member.course %></p>
 							    <p><span>Telephone: </span><%= member.telephone %></p>
 				  				<p><span>Location: </span><%= locationHTML(member) %></p>
+				  				<p><spam>CV: </span><%= member.cv %></p>
 				  			</div>
 					  	</td>
 					  </tr>

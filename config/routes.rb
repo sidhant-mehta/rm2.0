@@ -13,7 +13,8 @@ RaisonMentors20::Application.routes.draw do
       put 'clients' => 'devise/registrations#update', :as => 'client_registration'            
     end
 
-  devise_for :members
+  devise_for :members, controllers: { confirmations: 'confirmations' }
+
   
   
 post "application/apply_mentor" => "application#mentor"
@@ -130,6 +131,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   match "admin/edit_member/:id" => "admin#edit_member"
   put "admin/update_member/:id" => "admin#update_member" 
   get "admin/list_members"
+  get "admin/list_members/reset_password/:id" => "admin#member_password_reset"
 #clients
   get "admin/new_client" => "admin#new_client"
   post "admin/create_client" => "admin#create_client"
@@ -147,6 +149,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   match "admin/edit_organisation_email/:id" => "admin#edit_organisation_email"
   put "admin/update_organisation_email/:id" => "admin#update_organisation_email" 
   get "admin/list_organisation_emails"
+  get "admin/destroy_organisation_email/:id" => "admin#destroy_organisation_email"
   delete "admin/destroy_organisation_email/:id" => "admin#destroy_organisation_email"
  #sector 
   get "admin/new_sector" => "admin#new_sector"
@@ -155,6 +158,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   match "admin/edit_sector/:id" => "admin#edit_sector"
   put "admin/update_sector/:id" => "admin#update_sector" 
   get "admin/list_sectors"
+  get "admin/destroy_sector/:id" => "admin#destroy_sector"
   delete "admin/destroy_sector/:id" => "admin#destroy_sector"
    #location
   get "admin/new_location" => "admin#new_location"
@@ -163,6 +167,7 @@ resources :application, :collection => { :apply_mentor => :post, :apply_project 
   match "admin/edit_location/:id" => "admin#edit_location"
   put "admin/update_location/:id" => "admin#update_location" 
   get "admin/list_locations"
+  get "admin/destroy_location/:id" => "admin#destroy_location"
   delete "admin/destroy_location/:id" => "admin#destroy_location"
   
   

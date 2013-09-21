@@ -46,7 +46,7 @@
 					    <td><%= project.closing_date %></td>
 					    <td><%= link_to 'Show', project %></td>
 					    <td><%= link_to 'Edit', admin_edit_project_path + "/#{project.id}/#{project.name}" %></td>
-					    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					    <td><%= button_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 					    <td><div class="arrow"></div></td>
 					  </tr>
 					  <tr>

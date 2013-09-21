@@ -65,10 +65,10 @@ class Mentor < ActiveRecord::Base
     validates_format_of :email, :with => EMAIL_REGEX, :message => "Please use a valid email address"
     validates_confirmation_of :email
     
-    validates_presence_of :closing_date, :invalid_date_message => "Please select a closing date"
+    validates_presence_of :closing_date, :message => "Please select a closing date"
     validates_date :closing_date, :on_or_after => lambda { Date.current  }, :on_or_after_message => "Closing date cannot be before today"
     
-     validates_presence_of :organisation, :message=> "You must inlude an organisation."
+     validates_presence_of :organisation, :message=> "You must include an organisation."
      validates_format_of :organisation, :with => /^[a-z.'& ]+$/i, :message => "Organisation can contain letters only."
     
     #validates_presence_of :description, :message => "You must include a description/bio for the mentor"

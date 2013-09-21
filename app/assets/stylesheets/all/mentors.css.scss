@@ -64,6 +64,11 @@ margin: 12px 12px 12px 0;
   padding: 10px 0;
   height: 40px;
 }
+
+.log_in input[type="checkbox"] {
+box-shadow: none;
+}
+
 input[type=text], input[type=email], input[type=password] {
   text-shadow:none;
   font-weight:normal;//bold
@@ -110,7 +115,8 @@ margin-top: 25px !important;
 
 .table a:hover{
   color: cornflowerblue;
-  border: none;}
+  border: none;
+}
 
 .mentor_title, .individual_mentor_title {
 font-family: arial;

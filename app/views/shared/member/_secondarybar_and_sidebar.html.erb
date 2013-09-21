@@ -1,7 +1,7 @@
 	<section id="secondary_bar">
 		<div class="user">
 			<p><%= "#{@member.fname} #{@member.lname}" %>
-			<%= link_to "Logout", destroy_member_session_path, :method => :delete, :title => "Logout" %></p>
+			<%= button_to "Logout", destroy_member_session_path, :method => :delete, :title => "Logout", :style=> "background: none;  border: none; box-shadow: none;  height: 22px; top:60px; left:226px; position:absolute;"  %></p>
 			
 		</div>
 		<div class="breadcrumbs_container">
@@ -20,8 +20,8 @@
 		<ul class="toggle">
 			<% if isMentor?(current_member.email) %>
 				<li class="icn_edit_article"><%= link_to "Edit mentor profile", :controller => "members", :action => "edit_mentor"%></li>
-				<!--<li class="icn_trash"><%=# link_to "Remove yourself", :controller => "members", :action => "destroy_mentor", data: { confirm: 'This is an irreversible permanent action. Are you sure you wish to continue?' }
-				%></li> -->
+				<li class="icn_trash"><%= link_to "Remove yourself", :controller => "members", :action => "destroy_mentor", data: { confirm: 'This is an irreversible permanent action. Are you sure you wish to continue?' }
+				%></li> 
 			<% else%> 
 				<li class="icn_add_user"><%= link_to "Become a mentor", :controller => "members", :action => "new_mentor"%></li>
 			<% end%>

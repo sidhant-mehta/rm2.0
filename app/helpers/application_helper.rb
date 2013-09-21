@@ -25,6 +25,7 @@ def getDomain (email)
   return email.split('@')[1]
 end
 
+
   def getSectors(obj)
     sectors=[]
       Sector.all.each_with_index do |s,i|
@@ -37,7 +38,7 @@ end
            obj_sectors_names = [] #need to initialize this array first
            obj_sectors_ids_array.each_with_index do |s, i| 
              obj_sectors_names << Sector.find(s).name rescue ActiveRecord::RecordNotFound
-                flash[:alert] = "Industry list has been updated please re-select your industry preferences."
+                
        end
       end
     return obj_sectors_names
@@ -52,7 +53,8 @@ end
     end         
      return sectors
   end
-  
+
+
   def locationHTML(obj)
     if !obj.location.blank?
         return Location.find(obj.location).name

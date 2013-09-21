@@ -43,7 +43,7 @@
 					<!--[if IE]></tr><![endif]-->
 					<!--[if IE]><tr><![endif]-->
 						<!--[if IE]><td><![endif]-->
-							<br />
+<br />
 							<label style="clear:both;">Date of Birth</label>
 						<!--[if IE]></td><![endif]-->
 					<!--[if IE]></tr><![endif]-->
@@ -122,7 +122,7 @@
 
 	<%end %>
 
-	<label>Where did you hear about us? </label><%= f.select "hear_about_us", options_for_select([[""],["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other"]]), {}, {:class => "drop_down", :style=> "width:242px !important; clear:both;" }  %>
+		<label>Where did you hear about us? </label><%= f.select "hear_about_us", options_for_select([[""],["University Rep"],["Social Media"], ["Advert"], ["Friends/Colleagues"], ["Google search"], ["Other"]]), {}, {:class => "drop_down", :style=> "width:242px !important; clear:both;" }  %>
 
 <% end %>
 <%= render "devise/shared/links" %>

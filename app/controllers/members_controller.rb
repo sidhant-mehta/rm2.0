@@ -245,6 +245,12 @@ end
 def destroy_mentor
   mentor_id = getMentorId(current_member.email)
   @mentor = Mentor.find(mentor_id)
+  @mentor.destroy
+  respond_to do |format|
+      format.html { redirect_to mentors_url, alert: "Mentor was successfully removed." }
+      format.json { head :no_content }
+    end
+
 end
 
 def search_mentor
@@ -416,11 +422,25 @@ end
 #------END PROJECTS-----
 
 #-------PROFILE ----------
+
+def after_sign_in_path_for(resource)
+  members_path
+end
+
   def dashboard
      @all_mentor_apps= getMemberMentorApplications(current_member.id)
      @all_project_apps= getMemberProjectApplications(current_member.id)
      @all_job_apps= getMemberJobApplications(current_member.id)
      @limit = 5 #limit for how many to show
+     
+     #TEMP: settings_receive_email_updates is used as a varaible to redirect unconfirmed web1.0 members to the password reset page.
+	if @member.settings_receive_email_updates 
+		@member.settings_receive_email_updates = false #put it back to normal
+		@member.save
+		respond_to do |format|
+			format.html{redirect_to edit_member_registration_path, :notice => 'Thank you for confirming your account. Please change your password using the form below.'}
+		end
+	end
   end
   
   def applications 
@@ -451,7 +471,7 @@ end
          @member_sectors_ids_array = @member.sector_ids.split(",")
          @member_sectors_ids = [] #need to initialize this array first
          @member_sectors_ids_array.each_with_index do |s, i| 
-           @member_sectors_ids <<Sector.find(s).id rescue ActiveRecord::RecordNotFound
+           @member_sectors_ids << Sector.find(s).id rescue ActiveRecord::RecordNotFound
                 flash[:alert] = "Industry list has been updated please re-select your industry preferences."
      end
     end
@@ -504,5 +524,14 @@ class Member::RegistrationsController < Devise::RegistrationsController
         resource = build_resource({})
         respond_with resource
   end
+end
+class ConfirmationsController < Devise::ConfirmationsController
+
+  private
+
+  def after_confirmation_path_for(resource_name, resource)
+    members_path
+  end
+
 end
 #-----END PROFILE-----

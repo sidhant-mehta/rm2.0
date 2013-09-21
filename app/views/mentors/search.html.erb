@@ -17,7 +17,7 @@ if (!@result_mentors.empty?)
 			<th><%= image_tag(mentor.image , :class => "mentor_image" ) %></th> 	
 			<td>
 				<table class="mentor_inner">
-					<tr><th>Organisation</th><th>Role</th><th>Sectors</th><th>Closing Date</th></tr>
+					<tr><th>Organisation</th><th>Role</th><th>Industry</th><th>Closing Date</th></tr>
 					<tr><td><%= mentor.organisation%></td><td><%= mentor.role_title %></td><td><%=sectorsHTML(mentor)%></td><td><%=Date.strptime(mentor.closing_date.to_s, "%Y-%m-%d").strftime("%e %b %Y")%></td></tr>
 				</table>
 			</td>

@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+    
+        
+en:
+  errors:
+    models:
+      member:
+        format: "%{message}"

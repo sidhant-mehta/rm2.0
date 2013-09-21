@@ -12,7 +12,7 @@
 			</td></tr>
 			<tr><th>Role</th><td><%= @mentor.role_title %></td></tr>
 			<tr><th>Location</th><td><%= @mentor.location%></td></tr>
-			<tr><th>Sectors</th><td><%=sectorsHTML(@mentor)%></td></tr>
+			<tr><th>Industry</th><td><%=sectorsHTML(@mentor)%></td></tr>
 			<tr><th>Biography</th><td><%=@mentor.description%></td></tr>
 			<tr class="individual_closing_date_row"><th>Closing Date</th><td><%=Date.strptime(@mentor.closing_date.to_s, "%Y-%m-%d").strftime("%e %b %Y")%></td> 
 				<td><p>

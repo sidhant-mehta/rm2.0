@@ -1,5 +1,12 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
+<p>Dear <%= @email %></p>
+<p>Thank you for signing up to Raison Mentors and hope our free service helps you develop your career.</p>
+<p>Please confirm your account email through the link below;</p>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>Should you have any queries regarding your account, mentoring, projects or any of the other services we offer please contact us at <%=pages_contact_us_url %>/</p>
+
+<p> If you need to change your accout password, please do so through the linke below;</p>
+<p><%= link_to 'Change my password', members_settings_url %></p>
+
+<p>Kind regards</p>
+<br/>
+<p>Raison Mentors Team</p>

@@ -1,7 +1,6 @@
 	<section id="secondary_bar">
 		<div class="user">
-			<p><%= getOrganisation(current_client.email) %>
-			<%= link_to "Logout", destroy_client_session_path, :method => :delete, :title => "Logout" %></p> 
+			<p><%= getOrganisation(current_client.email) %>	<%= button_to "Logout", destroy_client_session_path, :method => :delete, :title => "Logout", :style=> "background: none;  border: none; box-shadow: none;  height: 22px; top:60px; left:226px; position:absolute;" %></p> 
 		</div>
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><%= link_to "Home", root_path %><div class="breadcrumb_divider"></div> <%= link_to "Dashboard", clients_dashboard_path %></article>

@@ -23,7 +23,7 @@
 		<li><em><%=link_to "Organisations A-Z", employer_profiles_path %></em><strong></strong></li>
 		<li class="last"><em><%= link_to "Contact us", pages_contact_us_path%></em><strong></strong></li>
 		
-		<% if member_signed_in? == false && client_signed_in? == false %>
+		<% if member_signed_in? == false && client_signed_in? == false && admin_signed_in? == false %>
 		<li><em class="nav_button">Login</em><strong></strong>
 			<ul>
 				<li><%= link_to "members", members_dashboard_path %></li>
@@ -44,6 +44,14 @@
 			<ul>
 				<li><%= link_to "dashboard", clients_dashboard_path %></li>
 				<li><%= link_to "logout", destroy_client_session_path, :method => :delete %></li>
+			</ul> 
+		</li>
+		<% end%>
+		<% if admin_signed_in? %>
+		<li><em class="nav_button">Admin</em><strong></strong>
+			<ul>
+				<li><%= link_to "dashboard", admin_dashboard_path %></li>
+				<li><%= link_to "logout", destroy_admin_session_path, :method => :delete %></li>
 			</ul> 
 		</li>
 		<% end%>

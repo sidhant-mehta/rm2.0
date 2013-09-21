@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: raisonme_raisonmentors02
+  reconnect: true
   pool: 5
+  username: raisonme_rm20
+  password: 7t0y1Ch2664RSWDir
   timeout: 5000

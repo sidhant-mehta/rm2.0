@@ -58,7 +58,7 @@
 					<tr> 
 						<%  %> 
 	   					<td><%= @project_application_id [index]%></td> 
-	    				<td><%= project.name%></td> 
+	    				<td><%= link_to project.name, project%></td> 
 	    				<td><%=@project_application_statuses[index]%></td> 
 	    				<td><%=@project_application_created_at[index]%></td> 
 	    			<!--	<td><%= image_submit_tag("admin/icn_edit.png", :title => "Edit") %><%= image_submit_tag("admin/icn_trash.png", :title => "Trash") %> -->

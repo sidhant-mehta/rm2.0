@@ -1,0 +1,15 @@
+<p>Dear <%=@member.fname%></p>
+<p></p>
+<p>We have recently been developing our website to make sure we can offer you the best service possible. In order for you to make applications to mentors and projects in the future you must first activate your account with the link below.</p>
+
+
+<p>Please click here to <%= link_to 'confirm your account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p></p>
+
+<p>Should you have any issues in activating your account or changing your password please <a href="http://raisonmentors.com/pages/contact_us/">contact us</a></p>
+<p></p>
+
+<p>Kind regards</p>
+<p></p>
+<p>Raison Mentors Team</p>

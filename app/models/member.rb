@@ -21,17 +21,19 @@ class Member < ActiveRecord::Base
   validates_length_of :fname, :minimum => 3, :maximum => 15, :message => "Your first name must be between 3 and 15 characters."
   validates_format_of :fname, :with => /^[a-z ]+$/i, :message => "First name can only take letters."
   
-  validates_presence_of :lname
-  validates_length_of :lname, :within => 3..15
+  validates_presence_of :lname, :message => "You need to inlcude a last name."
+  validates_length_of :lname, :within => 3..15,  :message => "Your last name must be between 3 and 15 characters."
   validates_format_of :lname, :with => /^[a-z ]+$/i, :message => "Last name can only take letters."
   
-  validates_presence_of :email
-  validates_length_of :email, :within => 3..50
-  validates_uniqueness_of :email
-  validates_format_of :email, :with => EMAIL_REGEX
-  validates_confirmation_of :email
+  validates_presence_of :email, :message=> "You must include an email address."
+  validates_length_of :email, :within => 3..50, :message => "The email address must be between 3 and 50 characters."
+  #validates_uniqueness_of :email, :message => "This email address has already been used."
+  validates_format_of :email, :with => EMAIL_REGEX, :message => "This is an invalid email address."
+  #validates_confirmation_of :email, :message  => ""
   
-  validates_presence_of :dob
-  validates_date :dob, :on_or_before => lambda { Date.current  }
+  validates_presence_of :dob, :message => "The date of birth must be included."
+  validates_date :dob, :on_or_before => lambda { Date.current  }, :on_or_before_message => "The date of birth must before today."
   
+  #validates_presence_of :password, :message => "Password cannot be blank."
+  #validates_presence_of :password_confirmation, :message => "Password confirmation cannot be blank."
 end
